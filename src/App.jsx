@@ -4,11 +4,13 @@ import Resume from "./components/resume";
 import Portfolio from "./components/portfolio";
 import Services from "./components/services";
 import Skills from "./components/skills";
+import Header from "./components/layout/header";
+import Footer from "./components/layout/footer";
 
 const App = () => {
   return (
     <div>
-      <header>헤더</header>
+      <Header />
       <main>
         <Home />
         <Portfolio />
@@ -16,6 +18,7 @@ const App = () => {
         <Services />
         <Skills />
       </main>
+      <Footer />
       <footer>푸터</footer>
     </div>
   );
