@@ -1,12 +1,12 @@
 import React from "react";
-import shapeOne from "../assets/shape-1.png";
-import shapeTwo from "../assets/shape-2.png";
+import shapeOne from "../../assets/shape-1.png";
+import shapeTwo from "../../assets/shape-2.png";
 import { FaGithub } from "react-icons/fa";
 import "./home.scss";
 
 const Home = () => {
   return (
-    <section className="home" id="home">
+    <section className="home " id="home">
       <div className="home__wrapper">
         <div className="home__container container">
           <p className="home__subtitle text-cs">

@@ -51,91 +51,93 @@ export const links = [
   },
 ];
 
+// services 경험쪽으로..
 export const services = [
   {
     id: 1,
     name: "Web Development",
-    title: "Web Design & Logo",
-    description:
-      "Web designers craft the overall vision & plan for a website layout. Professional logo development: Business, Company, or Personal.",
-  },
-  {
-    id: 2,
-    name: " Apps Development ",
-    title: " iOS & Android ",
-    description:
-      "Design Software applications to run on mobile devices. Modern and mobile-ready application that will help you reach all of your marketing.",
-  },
-  {
-    id: 3,
-    name: " Game Development ",
-    title: " Unity & Unreal Engine ",
-    description:
-      " Creating games & describes the design, development and release of a game. Developing unique mobile android and ios games. ",
-  },
-  {
-    id: 4,
-    name: " Advertising ",
-    title: " Google Ads ",
-    description:
-      " Advertising services include: Google search result pages, gmails, YouTube and other websites participated in Google Ads program. ",
-  },
-  {
-    id: 5,
-    name: " Music Writing ",
-    title: " Sound Track ",
-    description:
-      "Music copying, writing, creating, transcription and composition services.",
+    title: "Web Design",
+    description: "웹사이트 개발을 위한 레이아웃, 디자인 작업",
   },
 ];
 
 export const skills = [
   {
     id: 1,
-    name: "PHP",
+    name: "HTML",
     percentage: 85,
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description: "웹표준, 웹접근성, seo",
   },
 
   {
     id: 2,
-    name: "JavaScript",
+    name: "CSS",
     percentage: 75,
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description: "레이아웃, 반응형",
   },
 
   {
     id: 3,
-    name: "WordPress",
+    name: "JavaScript",
     percentage: 90,
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description: "es6",
   },
 
   {
     id: 4,
-    name: "Python",
+    name: "React",
     percentage: 75,
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description: "리액트 훅, 커스텀훅, 최적화",
   },
 
   {
     id: 5,
-    name: "React",
+    name: "TypeScript",
     percentage: 70,
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description: "타입..",
   },
 
   {
     id: 6,
-    name: "Adobe XD",
+    name: "리덕스",
     percentage: 80,
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description: "상태관리",
+  },
+  {
+    id: 7,
+    name: "Axios",
+    percentage: 80,
+    description: "rest api",
+  },
+  {
+    id: 8,
+    name: "리액트쿼리",
+    percentage: 80,
+    description: "최적화..",
+  },
+  {
+    id: 9,
+    name: "피그마",
+    percentage: 80,
+    description: "디자이너와 협업이 가능",
+  },
+  {
+    id: 10,
+    name: "scss",
+    percentage: 80,
+    description: "css 재사용",
+  },
+  {
+    id: 11,
+    name: "emotion",
+    percentage: 80,
+    description: "js-in-css",
+  },
+  {
+    id: 12,
+    name: "스웨거",
+    percentage: 80,
+    description: "백엔드 협업",
   },
 ];
 
