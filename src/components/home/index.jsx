@@ -52,7 +52,12 @@ const Home = () => {
             있습니다.
           </p>
           <div className="home__socials">
-            <a href="https://github.com/miss-gif" className="home__social-link">
+            <a
+              href="https://github.com/miss-gif"
+              target="_blank"
+              className="home__social-link"
+              rel="noopener noreferrer"
+            >
               <FaGithub />
             </a>
           </div>

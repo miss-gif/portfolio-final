@@ -4,8 +4,8 @@ import Resume from "./components/resume";
 import Portfolio from "./components/portfolio";
 import Services from "./components/services";
 import Skills from "./components/skills";
-import Header from "./components/layout/header";
-import Footer from "./components/layout/footer";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
 
 const App = () => {
   return (
@@ -19,7 +19,6 @@ const App = () => {
         <Skills />
       </main>
       <Footer />
-      <footer>푸터</footer>
     </div>
   );
 };
