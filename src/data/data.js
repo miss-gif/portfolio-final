@@ -4,13 +4,6 @@ import Project3 from "../assets/project3.jpeg";
 import Project4 from "../assets/project4.jpeg";
 import Project5 from "../assets/project5.jpg";
 import Project6 from "../assets/project6.jpg";
-// import "../assets/blog1.jpg"
-
-import Testimonial1 from "../assets/testimonial1.jpg";
-import Testimonial2 from "../assets/testimonial2.jpg";
-import Testimonial3 from "../assets/testimonial3.jpg";
-import Testimonial4 from "../assets/testimonial4.jpg";
-import Testimonial5 from "../assets/testimonial5.jpg";
 
 export const links = [
   {
@@ -183,104 +176,59 @@ export const projects = [
 export const cv = [
   {
     id: 1,
-    title: "CoderHouse Courses",
-    subtitle: "Backend Programming",
-    date: "2014 - 2016",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    title:
+      "기업 요구를 반영한 프로젝트 중심 프론트엔드 React(리액트) 개발자 양성",
+    subtitle: "FE Programming",
+    date: "2024-03-29 ~ 2024-09-13",
+    description: "과정에서 배운 내용에 대한 간략한 설명",
     category: "education",
   },
-
   {
     id: 2,
-    title: "Lviv National Academy of Arts",
-    subtitle: "Faculty of Design",
-    date: "2012 - 2014",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    title: "K-MOOC x Udemy 구독권",
+    subtitle: "FE Programming",
+    date: "2023-12 ~ 2024-06",
+    description: "과정에서 배운 내용에 대한 간략한 설명",
     category: "education",
   },
-
   {
     id: 3,
-    title: "IT Future",
-    subtitle: "High School",
-    date: "2010 - 2012",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    title: "[과정평가형]정보처리산업기사(자바(Java)프로그래밍 활용 웹개발)A",
+    subtitle: "FE Programming",
+    date: "2021-12-13 ~ 2022-05-25",
+    description: "과정에서 배운 내용에 대한 간략한 설명",
     category: "education",
   },
-
   {
     id: 4,
-    title: "UI Head & Manager",
-    subtitle: "Soft Tech Inc.",
-    date: "2020 - PRESENT",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    category: "experience",
+    title: "패스트캠버스 프론트엔드 개발",
+    subtitle: "FE Programming",
+    date: "2021-12 ~ 현재 진행형",
+    description: "과정에서 배운 내용에 대한 간략한 설명",
+    category: "education",
   },
-
   {
     id: 5,
-    title: "UI / UX Specialist",
-    subtitle: "Kana Design Studio",
-    date: "2018 - 2020",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    title: "3차 프로젝트",
+    subtitle: "FE Programming",
+    date: "2024-07-23 ~ 2024-08-24",
+    description: "경험과 배운 내용 요약",
     category: "experience",
   },
-
   {
     id: 6,
-    title: "Plugins Developer",
-    subtitle: "Fiverr.com",
-    date: "2016 - 2018",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    title: "2차 프로젝트",
+    subtitle: "FE Programming",
+    date: "2024-06-23 ~ 2024-07-23",
+    description: "경험과 배운 내용 요약",
     category: "experience",
   },
-];
-
-export const testimonials = [
   {
-    id: 1,
-    img: Testimonial1,
-    name: "Barbara Wilson",
-    author: "CEO Company",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  {
-    id: 2,
-    img: Testimonial2,
-    name: "Charlie Smith",
-    author: "Designer",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  {
-    id: 3,
-    img: Testimonial3,
-    name: "Roy Wang",
-    author: "Manager GYM",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  {
-    id: 4,
-    img: Testimonial4,
-    name: "Jennifer Smith",
-    author: "CEO & Founder",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  {
-    id: 5,
-    img: Testimonial5,
-    name: "Paul Freeman",
-    author: "Photographer",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    id: 7,
+    title: "1차 프로젝트",
+    subtitle: "FE Programming",
+    date: "2024-05-23 ~ 2024-06-23",
+    description: "경험과 배운 내용 요약",
+    category: "experience",
   },
 ];
