@@ -2,7 +2,9 @@ import React from "react";
 import "./Footer.scss";
 
 const Footer = () => {
-  return <div>Footer</div>;
+  return (
+    <footer className="footer">ⓒ 2024 miss-gif. All Rights Reserved.</footer>
+  );
 };
 
 export default Footer;

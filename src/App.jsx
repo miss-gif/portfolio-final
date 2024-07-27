@@ -6,6 +6,7 @@ import Services from "./components/services";
 import Skills from "./components/skills";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
+import Project from "./components/project";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Home />
         <Services />
         <Skills />
+        <Project />
         <Portfolio />
         <Resume />
       </main>
