@@ -1,5 +1,6 @@
 import React from "react";
 import "./contact.scss";
+import ContactContent from "./ContactInfo";
 
 const Contact = () => {
   return (
@@ -8,7 +9,9 @@ const Contact = () => {
       <p className="section__subtitle">
         My <span>연락처</span>
       </p>
-      <div className="contact__container container"></div>
+      <div className="contact__container container">
+        <ContactContent />
+      </div>
     </section>
   );
 };

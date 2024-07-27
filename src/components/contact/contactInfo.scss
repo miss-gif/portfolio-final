@@ -1,0 +1,25 @@
+.contact {
+  &-content {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__left {
+    width: 40%;
+  }
+  &__right {
+    width: 60%;
+  }
+}
+
+.pure-group {
+  border: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  border: 1px solid #000;
+  border-radius: 10px;
+  height: 30px;
+  margin: 20px 0;
+}
