@@ -3,6 +3,7 @@ import shapeOne from "../../assets/shape-1.png";
 import shapeTwo from "../../assets/shape-2.png";
 import { FaGithub } from "react-icons/fa";
 import "./home.scss";
+import { MdKeyboardDoubleArrowDown } from "react-icons/md";
 
 const Home = () => {
   return (
@@ -70,6 +71,12 @@ const Home = () => {
             </a>
           </div>
         </div>
+      </div>
+      <div className="scroll-down">
+        <p>scroll down</p>
+        <span className="scroll-down__icon">
+          <MdKeyboardDoubleArrowDown />
+        </span>
       </div>
     </section>
   );
