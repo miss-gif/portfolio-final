@@ -8,10 +8,12 @@ import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Project from "./components/project";
 import Contact from "./components/contact";
+import MouseCursor from "./components/MouseCursor/MouseCursor";
 
 const App = () => {
   return (
     <div>
+      <MouseCursor />
       <Header />
       <main>
         <Home />
