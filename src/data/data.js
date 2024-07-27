@@ -40,6 +40,36 @@ export const services = [
     title: "Web Design",
     description: "웹사이트 개발을 위한 레이아웃, 디자인 작업",
   },
+  {
+    id: 1,
+    name: "Web Development",
+    title: "Web Design",
+    description: "웹사이트 개발을 위한 레이아웃, 디자인 작업",
+  },
+  {
+    id: 1,
+    name: "Web Development",
+    title: "Web Design",
+    description: "웹사이트 개발을 위한 레이아웃, 디자인 작업",
+  },
+  {
+    id: 1,
+    name: "Web Development",
+    title: "Web Design",
+    description: "웹사이트 개발을 위한 레이아웃, 디자인 작업",
+  },
+  {
+    id: 1,
+    name: "Web Development",
+    title: "Web Design",
+    description: "웹사이트 개발을 위한 레이아웃, 디자인 작업",
+  },
+  {
+    id: 1,
+    name: "Web Development",
+    title: "Web Design",
+    description: "웹사이트 개발을 위한 레이아웃, 디자인 작업",
+  },
 ];
 
 export const skills = [
