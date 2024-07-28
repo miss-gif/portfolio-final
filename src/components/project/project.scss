@@ -17,6 +17,10 @@
     padding: 20px;
     background-color: var(--container-color);
     border-radius: 18px;
+    cursor: pointer;
+    &:hover {
+      box-shadow: var(--shadow);
+    }
   }
 }
 

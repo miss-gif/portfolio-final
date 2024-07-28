@@ -41,7 +41,7 @@
   --smaller-font-size: 14px;
   --tiny-font-size: 13px;
   /* 그림자 */
-  --shadow: 5px 5px rgb(255 255 255/10%);
+  --shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   /* 전환 */
   --transition: cubic-bezier(0.3, 0, 0.3, 1);
 }
