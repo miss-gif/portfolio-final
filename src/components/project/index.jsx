@@ -7,17 +7,25 @@ import { useState } from "react";
 
 const Project = () => {
   const [isModal, setIsModal] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
 
-  const openModal = () => {
+  const openModal = (item) => {
+    setSelectedItem(item);
     setIsModal(true);
   };
+
   const closeModal = () => {
     setIsModal(false);
+    setSelectedItem(null);
   };
 
   return (
     <>
-      <ProjectDetailModal isOpen={isModal} onRequestClose={closeModal} />
+      <ProjectDetailModal
+        isOpen={isModal}
+        onRequestClose={closeModal}
+        item={selectedItem}
+      />
       <section className="project section" id="project">
         <h2 className="section__title text-cs">
           FE & BE 협업 프로젝트
@@ -31,7 +39,11 @@ const Project = () => {
         <div className="project__container container">
           <ul className="project__list">
             {project.map((item) => (
-              <li key={item.id} className="project__item" onClick={openModal}>
+              <li
+                key={item.id}
+                className="project__item"
+                onClick={() => openModal(item)}
+              >
                 <div className="project__img-wrapper">
                   <img
                     src={item.img}
