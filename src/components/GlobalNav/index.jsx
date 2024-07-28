@@ -13,6 +13,7 @@ const GlobalNav = () => {
     "contact",
   ];
   const observer = useRef(null);
+  const headerHeight = 100; // 헤더 높이
 
   useEffect(() => {
     const handleIntersect = (entries) => {
@@ -41,6 +42,17 @@ const GlobalNav = () => {
     };
   }, []);
 
+  const handleClick = (event, section) => {
+    event.preventDefault();
+    const element = document.getElementById(section);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - headerHeight,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <nav className="global-nav">
       <ul>
@@ -49,7 +61,10 @@ const GlobalNav = () => {
             key={section}
             className={activeSection === section ? "active" : ""}
           >
-            <a href={`#${section}`}>
+            <a
+              href={`#${section}`}
+              onClick={(event) => handleClick(event, section)}
+            >
               {section.charAt(0).toUpperCase() + section.slice(1)}
             </a>
           </li>
