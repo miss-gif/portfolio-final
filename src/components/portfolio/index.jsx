@@ -26,7 +26,7 @@ const Portfolio = () => {
   };
 
   return (
-    <section className="portfolio section" id="work">
+    <section className="portfolio section" id="portfolio">
       <h2 className="section__title text-cs">Portfolio</h2>
       <p className="section__subtitle">
         My <span>Cases</span>

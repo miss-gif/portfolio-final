@@ -8,6 +8,7 @@ import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Project from "./components/project";
 import Contact from "./components/contact";
+import GlobalNav from "./components/GlobalNav";
 // import MouseCursor from "./components/MouseCursor/MouseCursor";
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
     <div>
       {/* <MouseCursor /> */}
       <Header />
+      <GlobalNav />
       <main>
         <Home />
         <Services />
