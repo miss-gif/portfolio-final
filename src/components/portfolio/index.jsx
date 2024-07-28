@@ -12,7 +12,7 @@ const allNavList = [
 
 const Portfolio = () => {
   const [projectItems, setMenuItems] = useState(projects);
-  const [navList, setCategories] = useState(allNavList);
+  const [navList, setNavList] = useState(allNavList);
 
   const filterItems = (category) => {
     if (category === "all") {
