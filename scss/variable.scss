@@ -73,26 +73,6 @@ p {
   line-height: 1.7;
 }
 
-input,
-textarea,
-button {
-  border: none;
-  outline: none;
-  background: transparent;
-}
-
-button {
-  cursor: pointer;
-}
-
-a {
-  text-decoration: none;
-}
-
-img {
-  max-width: 100%;
-}
-
 /* 컴포넌트 */
 .container {
   max-width: 1300px;
