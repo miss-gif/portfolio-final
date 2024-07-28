@@ -1,9 +1,10 @@
-import { BsExclamationDiamondFill } from "react-icons/bs";
+import { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
-import "./project.scss";
 import { project } from "../../data/project";
 import ProjectDetailModal from "../modal/ProjectDetailModal";
-import { useState } from "react";
+import TooltipButton from "./TooltipButton";
+
+import "./project.scss";
 
 const Project = () => {
   const [isModal, setIsModal] = useState(false);
@@ -29,9 +30,7 @@ const Project = () => {
       <section className="project section" id="project">
         <h2 className="section__title text-cs">
           FE & BE 협업 프로젝트
-          <span>
-            <BsExclamationDiamondFill />
-          </span>
+          <TooltipButton />
         </h2>
         <p className="section__subtitle">
           My <span>역할</span>
