@@ -9,9 +9,21 @@ import { home } from "../../data/home";
 
 const Home = () => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const headerHeight = 100; // 헤더 높이
 
   const handleBannerClick = () => {
     setIsFlipped(!isFlipped);
+  };
+
+  const handleClick = (event, section) => {
+    event.preventDefault();
+    const element = document.getElementById(section);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - headerHeight,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
@@ -92,12 +104,16 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="scroll-down">
+      <a
+        className="scroll-down"
+        href="#services"
+        onClick={(event) => handleClick(event, "services")}
+      >
         <p>scroll down</p>
         <span className="scroll-down__icon">
           <MdKeyboardDoubleArrowDown />
         </span>
-      </div>
+      </a>
     </section>
   );
 };
