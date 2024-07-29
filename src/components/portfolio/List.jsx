@@ -7,12 +7,13 @@ const List = ({ categories, filterItems, selectedCategories, selectAll }) => {
 
   return (
     <div className="portfolio__list">
-      <label className="portfolio__list-item text-cs">
-        <input
-          type="checkbox"
-          checked={selectedCategories.length === 0}
-          onChange={handleSelectAll}
-        />
+      <input
+        id="seeAll"
+        type="checkbox"
+        checked={selectedCategories.length === 0}
+        onChange={handleSelectAll}
+      />
+      <label htmlFor="seeAll" className="portfolio__list-item text-cs">
         전체보기
       </label>
       {categories.map((category, index) => (
