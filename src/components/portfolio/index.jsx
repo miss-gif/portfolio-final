@@ -1,25 +1,25 @@
 import React, { useState } from "react";
 import List from "./List";
 import Items from "./Items";
-import { projects } from "../../data/data.js";
+import { portfolio } from "../../data/portfolio.js";
 import "./portfolio.scss";
 import { AnimatePresence } from "framer-motion";
 
 const allNavList = [
   "all",
-  ...new Set(projects.map((project) => project.category)),
+  ...new Set(portfolio.map((project) => project.category)),
 ];
 
 const Portfolio = () => {
-  const [projectItems, setMenuItems] = useState(projects);
+  const [projectItems, setMenuItems] = useState(portfolio);
   const [navList, setNavList] = useState(allNavList);
 
   const filterItems = (category) => {
     if (category === "all") {
-      setMenuItems(projects);
+      setMenuItems(portfolio);
       return;
     }
-    const newProjecItems = projects.filter(
+    const newProjecItems = portfolio.filter(
       (item) => item.category === category
     );
     setMenuItems(newProjecItems);
