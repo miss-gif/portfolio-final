@@ -78,12 +78,11 @@
     max-width: 680px;
   }
 
-  /* 추가 코드작성 */
-
   &__banner {
     position: relative;
     padding-bottom: 100%;
     z-index: 1;
+    cursor: pointer;
     &__front,
     &__back {
       position: absolute;
@@ -101,10 +100,10 @@
       background-color: #333;
       transform: rotateY(-180deg);
     }
-    &:hover &__front {
+    &.flipped &__front {
       transform: rotateY(180deg);
     }
-    &:hover &__back {
+    &.flipped &__back {
       transform: rotateY(0deg);
     }
   }

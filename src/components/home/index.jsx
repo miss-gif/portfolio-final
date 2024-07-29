@@ -1,21 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import shapeOne from "../../assets/shape-1.png";
 import shapeTwo from "../../assets/shape-2.png";
 import { FaGithub } from "react-icons/fa";
 import { RiNotionFill } from "react-icons/ri";
 import "./home.scss";
 import { MdKeyboardDoubleArrowDown } from "react-icons/md";
+import { home } from "../../data/home";
 
 const Home = () => {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const handleBannerClick = () => {
+    setIsFlipped(!isFlipped);
+  };
+
   return (
-    <section className="home " id="home">
+    <section className="home" id="home">
       <div className="home__wrapper">
         <div className="home__container container">
           <p className="home__subtitle text-cs">
             안녕하세요. <span>저는</span>
           </p>
           <h1 className="home__title text-cs">
-            <span>곽도억</span>
+            <span>{home.name}</span>
           </h1>
           <p className="home__job">
             <span className="text-cs">
@@ -24,7 +31,10 @@ const Home = () => {
           </p>
           <div className="home__img-wrapper">
             {/* 이미지 영역 */}
-            <div className="home__banner">
+            <div
+              className={`home__banner ${isFlipped ? "flipped" : ""}`}
+              onClick={handleBannerClick}
+            >
               <div className="home__banner__front">
                 <img src="" alt="" className="home__profile" />
               </div>
@@ -53,12 +63,7 @@ const Home = () => {
             <img src={shapeTwo} alt="" className="shape shape__3" />
           </div>
 
-          <p className="home__text">
-            웹 개발은 끊임없이 변화하지만, 저는 기술적인 숙련도뿐 아니라 사용자
-            중심의 사고를 중요하게 생각합니다. 기능성과 심미성을 갖춘 웹사이트
-            제작을 추구합니다. <br />제 포트폴리오에서 경험과 역량을 확인하실 수
-            있습니다.
-          </p>
+          <p className="home__text">{home.description}</p>
           <div className="home__socials">
             <a
               href="https://github.com/miss-gif"
