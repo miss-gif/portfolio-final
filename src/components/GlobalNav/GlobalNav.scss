@@ -14,6 +14,10 @@
 
     li {
       position: relative;
+      &.active {
+        -webkit-animation: rotate-center 0.4s ease-in-out both;
+        animation: rotate-center 0.4s ease-in-out both;
+      }
 
       &:hover .tooltip {
         display: block;
@@ -42,5 +46,26 @@
   &__link {
     color: #666;
     transition: color 0.3s;
+  }
+}
+
+@-webkit-keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
