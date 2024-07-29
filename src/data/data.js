@@ -5,30 +5,6 @@ import Project4 from "../assets/project4.jpeg";
 import Project5 from "../assets/project5.jpg";
 import Project6 from "../assets/project6.jpg";
 
-export const links = [
-  {
-    name: "home",
-  },
-  {
-    name: "services",
-  },
-  {
-    name: "skills",
-  },
-  {
-    name: "project",
-  },
-  {
-    name: "portfolio",
-  },
-  {
-    name: "resume",
-  },
-  {
-    name: "contact",
-  },
-];
-
 // services 경험쪽으로..
 export const services = [
   {
