@@ -5,24 +5,36 @@ import { portfolio } from "../../data/portfolio.js";
 import "./portfolio.scss";
 import { AnimatePresence } from "framer-motion";
 
-const allNavList = [
-  "all",
-  ...new Set(portfolio.map((project) => project.category)),
+const allCategories = [
+  ...new Set(portfolio.flatMap((project) => project.category)),
 ];
 
 const Portfolio = () => {
-  const [projectItems, setMenuItems] = useState(portfolio);
-  const [navList, setNavList] = useState(allNavList);
+  const [projectItems, setProjectItems] = useState(portfolio);
+  const [selectedCategories, setSelectedCategories] = useState([]);
 
   const filterItems = (category) => {
-    if (category === "all") {
-      setMenuItems(portfolio);
-      return;
+    let updatedCategories;
+    if (selectedCategories.includes(category)) {
+      updatedCategories = selectedCategories.filter((cat) => cat !== category);
+    } else {
+      updatedCategories = [...selectedCategories, category];
     }
-    const newProjecItems = portfolio.filter(
-      (item) => item.category === category
-    );
-    setMenuItems(newProjecItems);
+    setSelectedCategories(updatedCategories);
+
+    if (updatedCategories.length === 0) {
+      setProjectItems(portfolio);
+    } else {
+      const newProjectItems = portfolio.filter((item) =>
+        updatedCategories.every((cat) => item.category.includes(cat))
+      );
+      setProjectItems(newProjectItems);
+    }
+  };
+
+  const selectAll = () => {
+    setSelectedCategories([]);
+    setProjectItems(portfolio);
   };
 
   return (
@@ -31,7 +43,12 @@ const Portfolio = () => {
       <p className="section__subtitle">
         My <span>Cases</span>
       </p>
-      <List list={navList} filterItems={filterItems} />
+      <List
+        categories={allCategories}
+        filterItems={filterItems}
+        selectedCategories={selectedCategories}
+        selectAll={selectAll}
+      />
       <div className="portfolio__container container grid">
         <AnimatePresence initial={false}>
           <Items projectItems={projectItems} />

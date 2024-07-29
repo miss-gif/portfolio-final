@@ -6,7 +6,7 @@
   }
 }
 
-/* ltems */
+/* items */
 .portfolio {
   &__img-wrapper {
     border-radius: 18px;
@@ -79,4 +79,53 @@
 .card-two {
   border-radius: 18px;
   padding: 20px;
+}
+
+/* 체크박스 */
+.portfolio__list-item {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: var(--title-color);
+  position: relative;
+  transition: color 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--primary-color);
+  }
+}
+
+.portfolio__list-item input[type="checkbox"] {
+  appearance: none;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 2px solid var(--title-color);
+  border-radius: 0.2rem;
+  margin-right: 0.5rem;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.portfolio__list-item input[type="checkbox"]:checked {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.portfolio__list-item input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 0.3rem;
+  left: 0.45rem;
+  width: 0.2rem;
+  height: 0.6rem;
+  border: solid #fff;
+  border-width: 0 0.2rem 0.2rem 0;
+  transform: rotate(45deg);
+}
+
+.portfolio__list-item input[type="checkbox"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }

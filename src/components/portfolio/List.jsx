@@ -1,25 +1,35 @@
-import React, { useState } from "react";
+import React from "react";
 
-const List = ({ list, filterItems }) => {
-  const [active, setActive] = useState(0);
+const List = ({ categories, filterItems, selectedCategories, selectAll }) => {
+  const handleSelectAll = () => {
+    selectAll();
+  };
+
   return (
     <div className="portfolio__list">
-      {list.map((category, index) => {
-        return (
-          <button
-            className={`${
-              active === index ? "active-work" : ""
-            } portfolio__list-item text-cs`}
-            key={index}
-            onClick={() => {
-              setActive(index);
-              filterItems(category);
-            }}
-          >
-            {category}
-          </button>
-        );
-      })}
+      <label className="portfolio__list-item text-cs">
+        <input
+          type="checkbox"
+          checked={selectedCategories.length === 0}
+          onChange={handleSelectAll}
+        />
+        전체보기
+      </label>
+      {categories.map((category, index) => (
+        <div
+          key={index}
+          className="portfolio__list-item text-cs checkbox-style"
+        >
+          <input
+            type="checkbox"
+            id={`checkbox-${index}`} // 고유한 ID 부여
+            checked={selectedCategories.includes(category)}
+            onChange={() => filterItems(category)}
+          />
+          <label htmlFor={`checkbox-${index}`}>{category}</label>
+          {/* for 속성에 ID 설정 */}
+        </div>
+      ))}
     </div>
   );
 };
