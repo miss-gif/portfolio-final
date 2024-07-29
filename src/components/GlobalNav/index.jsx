@@ -1,17 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./GlobalNav.scss";
+import { sections } from "../../data/navSection";
 
 const GlobalNav = () => {
   const [activeSection, setActiveSection] = useState("");
-  const sections = [
-    "home",
-    "services",
-    "skills",
-    "project",
-    "portfolio",
-    "resume",
-    "contact",
-  ];
+
   const observer = useRef(null);
   const headerHeight = 100; // 헤더 높이
 

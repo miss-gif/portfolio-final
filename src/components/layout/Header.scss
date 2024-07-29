@@ -20,6 +20,22 @@
 .nav__list {
   display: flex;
   gap: 8px;
+  li {
+    a {
+      color: #fff;
+      font-weight: 700;
+      transition: color 0.3s;
+
+      &:hover,
+      &.active {
+        color: #007bff;
+      }
+    }
+
+    &.active a {
+      color: #007bff;
+    }
+  }
 }
 
 .logo {
