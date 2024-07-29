@@ -49,9 +49,9 @@ const Header = () => {
     <header className="header">
       <div className="container">
         <h1>
-          <div className="logo">
+          <a href="/#" className="logo">
             <img src="../../../public/logo_white.png" alt="Logo" />
-          </div>
+          </a>
         </h1>
         <nav>
           <ul className="nav__list">

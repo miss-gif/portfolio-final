@@ -22,12 +22,12 @@
 
         &:hover,
         &.active {
-          color: #007bff;
+          color: var(--primary-color);
         }
       }
 
       &.active a {
-        color: #007bff;
+        color: var(--primary-color);
       }
     }
   }
