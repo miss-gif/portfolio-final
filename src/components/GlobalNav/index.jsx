@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./GlobalNav.scss";
 import { sections } from "../../data/navSection";
+import { PiStarFourFill } from "react-icons/pi";
 
 const GlobalNav = () => {
   const [activeSection, setActiveSection] = useState("");
@@ -48,18 +49,20 @@ const GlobalNav = () => {
 
   return (
     <nav className="global-nav">
-      <ul>
+      <ul className="global-nav__list">
         {sections.map((section) => (
           <li
             key={section}
             className={activeSection === section ? "active" : ""}
           >
             <a
+              className="global-nav__link"
               href={`#${section}`}
               onClick={(event) => handleClick(event, section)}
             >
-              {section.charAt(0).toUpperCase() + section.slice(1)}
+              <PiStarFourFill />
             </a>
+            <span className="tooltip">{section}</span>
           </li>
         ))}
       </ul>
