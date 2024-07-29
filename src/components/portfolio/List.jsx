@@ -6,7 +6,7 @@ const List = ({ categories, filterItems, selectedCategories, selectAll }) => {
   };
 
   return (
-    <div className="portfolio__list">
+    <div className="portfolio__list container">
       <input
         id="seeAll"
         type="checkbox"

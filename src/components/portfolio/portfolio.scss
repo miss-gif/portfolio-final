@@ -65,7 +65,9 @@
 .portfolio__list {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 16px;
+  margin: 0 auto;
   margin-bottom: 60px;
   &-item {
     position: relative;

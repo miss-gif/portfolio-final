@@ -9,7 +9,28 @@ export const portfolio = [
   {
     id: 1,
     img: Project1,
-    category: ["리액트", "타입스크립트"],
+    category: [
+      "React",
+      "Typescript",
+      "협업 능력",
+      "문제 해결 능력",
+      "HTML",
+      "CSS",
+      "JS",
+      "반응형",
+      "Next",
+      "Redux",
+      "Zustand",
+      "Recoil",
+      "API",
+      "성능 최적화",
+      "SEO",
+      "AWS",
+      "Firebase",
+      "웹 접근성",
+      "웹 표준",
+      "UI/UX 디자인",
+    ],
     title: "Zorro",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
@@ -17,7 +38,7 @@ export const portfolio = [
   {
     id: 2,
     img: Project2,
-    category: ["리액트", "타입스크립트"],
+    category: ["React", "Typescript"],
     title: "Gooir",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
@@ -25,7 +46,7 @@ export const portfolio = [
   {
     id: 3,
     img: Project3,
-    category: ["리액트", "리덕스", "반응형"],
+    category: ["React", "Redux", "반응형"],
     title: "Explore",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
@@ -33,7 +54,7 @@ export const portfolio = [
   {
     id: 4,
     img: Project4,
-    category: ["리액트", "리코일", "SCSS"],
+    category: ["React", "Recoil", "SCSS"],
     title: "Mozar",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
