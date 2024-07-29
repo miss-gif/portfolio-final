@@ -2,6 +2,7 @@ import React from "react";
 import shapeOne from "../../assets/shape-1.png";
 import shapeTwo from "../../assets/shape-2.png";
 import { FaGithub } from "react-icons/fa";
+import { RiNotionFill } from "react-icons/ri";
 import "./home.scss";
 import { MdKeyboardDoubleArrowDown } from "react-icons/md";
 
@@ -59,7 +60,15 @@ const Home = () => {
               className="home__social-link"
               rel="noopener noreferrer"
             >
-              <FaGithub />
+              <FaGithub fontSize={28} />
+            </a>
+            <a
+              href="https://instinctive-answer-8a6.notion.site/7cc024f51ae948aca2c3bbb605a95827"
+              target="_blank"
+              className="home__social-link"
+              rel="noopener noreferrer"
+            >
+              <RiNotionFill fontSize={32} />
             </a>
           </div>
           <div className="home__btns">

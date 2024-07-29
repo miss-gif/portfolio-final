@@ -49,11 +49,14 @@
 
   &__socials {
     display: flex;
-    column-gap: 20px;
+    align-items: center;
+    gap: 8px;
     margin-bottom: 30px;
   }
 
   &__social-link {
+    display: flex;
+    align-items: center;
     color: var(--title-color);
     font-size: var(--h5-font-size);
     transition: all 0.7s var(--transit);

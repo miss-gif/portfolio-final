@@ -7,28 +7,25 @@ import Project6 from "../assets/project6.jpg";
 
 export const links = [
   {
-    name: "Home",
-    path: "home",
+    name: "home",
   },
   {
-    name: "Experience",
-    path: "experience",
+    name: "services",
   },
   {
-    name: "Skill",
-    path: "skill",
+    name: "skills",
   },
   {
-    name: "Portfolio",
-    path: "portfolio",
+    name: "project",
   },
   {
-    name: "Resume",
-    path: "resume",
+    name: "portfolio",
   },
   {
-    name: "Contact",
-    path: "contact",
+    name: "resume",
+  },
+  {
+    name: "contact",
   },
 ];
 
