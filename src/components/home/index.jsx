@@ -23,8 +23,14 @@ const Home = () => {
             </span>
           </p>
           <div className="home__img-wrapper">
+            {/* 이미지 영역 */}
             <div className="home__banner">
-              <img src="" alt="" className="home__profile" />
+              <div className="home__banner__front">
+                <img src="" alt="" className="home__profile" />
+              </div>
+              <div className="home__banner__back">
+                <img src="" alt="" className="home__profile" />
+              </div>
             </div>
             <p className="home__data home__data-one">
               <span className="text-lg">

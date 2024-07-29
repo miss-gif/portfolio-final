@@ -76,15 +76,37 @@
     right: 12px;
     width: 100%;
     max-width: 680px;
-    z-index: -1;
   }
 
+  /* 추가 코드작성 */
+
   &__banner {
-    background-color: var(--primary-color);
-    padding-bottom: 100%;
-    border-radius: 50%;
     position: relative;
+    padding-bottom: 100%;
     z-index: 1;
+    &__front,
+    &__back {
+      position: absolute;
+      backface-visibility: hidden;
+      transition: 1s;
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+    }
+    &__front {
+      background-color: var(--primary-color);
+      transform: rotateY(0deg);
+    }
+    &__back {
+      background-color: #333;
+      transform: rotateY(-180deg);
+    }
+    &:hover &__front {
+      transform: rotateY(180deg);
+    }
+    &:hover &__back {
+      transform: rotateY(0deg);
+    }
   }
 
   &__profile {
