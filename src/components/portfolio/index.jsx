@@ -4,6 +4,7 @@ import Items from "./Items";
 import { portfolio } from "../../data/portfolio.js";
 import "./portfolio.scss";
 import { AnimatePresence } from "framer-motion";
+import PortfolioDetailModal from "../modal/PortfolioDetailModal";
 
 const allCategories = [
   ...new Set(portfolio.flatMap((project) => project.category)),
@@ -12,6 +13,19 @@ const allCategories = [
 const Portfolio = () => {
   const [projectItems, setProjectItems] = useState(portfolio);
   const [selectedCategories, setSelectedCategories] = useState([]);
+
+  const [isModal, setIsModal] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const openModal = (item) => {
+    setSelectedItem(item);
+    setIsModal(true);
+  };
+
+  const closeModal = () => {
+    setIsModal(false);
+    setSelectedItem(null);
+  };
 
   const filterItems = (category) => {
     let updatedCategories;
@@ -38,23 +52,30 @@ const Portfolio = () => {
   };
 
   return (
-    <section className="portfolio section" id="portfolio">
-      <h2 className="section__title text-cs">Portfolio</h2>
-      <p className="section__subtitle">
-        My <span>Cases</span>
-      </p>
-      <List
-        categories={allCategories}
-        filterItems={filterItems}
-        selectedCategories={selectedCategories}
-        selectAll={selectAll}
+    <>
+      <PortfolioDetailModal
+        isOpen={isModal}
+        onRequestClose={closeModal}
+        item={selectedItem}
       />
-      <div className="portfolio__container container grid">
-        <AnimatePresence initial={false}>
-          <Items projectItems={projectItems} />
-        </AnimatePresence>
-      </div>
-    </section>
+      <section className="portfolio section" id="portfolio">
+        <h2 className="section__title text-cs">Portfolio</h2>
+        <p className="section__subtitle">
+          My <span>Cases</span>
+        </p>
+        <List
+          categories={allCategories}
+          filterItems={filterItems}
+          selectedCategories={selectedCategories}
+          selectAll={selectAll}
+        />
+        <div className="portfolio__container container grid">
+          <AnimatePresence initial={false}>
+            <Items projectItems={projectItems} openModal={openModal} />
+          </AnimatePresence>
+        </div>
+      </section>
+    </>
   );
 };
 
