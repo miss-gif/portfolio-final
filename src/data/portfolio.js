@@ -1,9 +1,14 @@
-import Project1 from "../assets/project1.jpeg";
-import Project2 from "../assets/project2.jpg";
-import Project3 from "../assets/project3.jpeg";
-import Project4 from "../assets/project4.jpeg";
-import Project5 from "../assets/project5.jpg";
-import Project6 from "../assets/project6.jpg";
+import Project1 from "../assets/project1.png";
+import Project2 from "../assets/project2.png";
+import Project3 from "../assets/project3.png";
+import Project4 from "../assets/project4.png";
+import Project5 from "../assets/project5.png";
+import Project6 from "../assets/project6.png";
+import Project7 from "../assets/project7.png";
+import Project8 from "../assets/project8.png";
+import Project9 from "../assets/project9.png";
+import Project10 from "../assets/project10.png";
+import Project11 from "../assets/project11.png";
 
 export const portfolio = [
   {
@@ -70,6 +75,46 @@ export const portfolio = [
   {
     id: 6,
     img: Project6,
+    category: ["HTML", "CSS", "반응형"],
+    title: "Kana",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+  },
+  {
+    id: 7,
+    img: Project7,
+    category: ["HTML", "CSS", "반응형"],
+    title: "Kana",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+  },
+  {
+    id: 8,
+    img: Project8,
+    category: ["HTML", "CSS", "반응형"],
+    title: "Kana",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+  },
+  {
+    id: 9,
+    img: Project9,
+    category: ["HTML", "CSS", "반응형"],
+    title: "Kana",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+  },
+  {
+    id: 10,
+    img: Project10,
+    category: ["HTML", "CSS", "반응형"],
+    title: "Kana",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+  },
+  {
+    id: 11,
+    img: Project11,
     category: ["HTML", "CSS", "반응형"],
     title: "Kana",
     description:
