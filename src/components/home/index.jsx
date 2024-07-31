@@ -6,24 +6,13 @@ import { RiNotionFill } from "react-icons/ri";
 import "./home.scss";
 import { MdKeyboardDoubleArrowDown } from "react-icons/md";
 import { home } from "../../data/home";
+import { handleClick } from "../../utils/scrollClick";
 
 const Home = () => {
   const [isFlipped, setIsFlipped] = useState(false);
-  const headerHeight = 100; // 헤더 높이
 
   const handleBannerClick = () => {
     setIsFlipped(!isFlipped);
-  };
-
-  const handleClick = (event, section) => {
-    event.preventDefault();
-    const element = document.getElementById(section);
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop - headerHeight,
-        behavior: "smooth",
-      });
-    }
   };
 
   return (
@@ -98,7 +87,11 @@ const Home = () => {
             <a href="#" className="btn text-cs">
               Download Cv
             </a>
-            <a href="#" className="hero__link text-cs">
+            <a
+              className="hero__link text-cs"
+              href="#skills"
+              onClick={(event) => handleClick(event, "skills")}
+            >
               My Skills
             </a>
           </div>
