@@ -11,8 +11,10 @@ import "swiper/css/pagination";
 
 const Services = () => {
   return (
-    <section className="services section" id="services">
-      <h2 className="section__title text-cs">What I do</h2>
+    <section className="services section">
+      <h2 className="section__title text-cs" id="services">
+        What I do
+      </h2>
       <p className="section__subtitle">
         My <span>경험</span>
       </p>

@@ -22,9 +22,9 @@ const Home = () => {
           <p className="home__subtitle text-cs">
             안녕하세요. <span>저는</span>
           </p>
-          <h1 className="home__title text-cs">
+          <h2 className="home__title text-cs">
             <span>{home.name}</span>
-          </h1>
+          </h2>
           <p className="home__job">
             <span className="text-cs">
               리액트 <b>웹 개발자</b>

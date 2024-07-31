@@ -16,7 +16,7 @@ function useActiveSection(sections, headerHeight = 100) {
     };
 
     observer.current = new IntersectionObserver(handleIntersect, {
-      threshold: 0.25,
+      threshold: 0.5,
     });
 
     sections.forEach((section) => {

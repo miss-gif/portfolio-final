@@ -60,8 +60,10 @@ const Portfolio = () => {
         onRequestClose={closeModal}
         item={selectedItem}
       />
-      <section className="portfolio section" id="portfolio">
-        <h2 className="section__title text-cs">Portfolio</h2>
+      <section className="portfolio section">
+        <h2 className="section__title text-cs" id="portfolio">
+          Portfolio
+        </h2>
         <p className="section__subtitle">
           My <span>Cases</span>
         </p>

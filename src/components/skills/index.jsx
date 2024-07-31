@@ -4,8 +4,10 @@ import "./skills.scss";
 
 const Skills = () => {
   return (
-    <section className="skills section" id="skills">
-      <h2 className="section__title text-cs">Professional Skills</h2>
+    <section className="skills section">
+      <h2 className="section__title text-cs" id="skills">
+        Professional Skills
+      </h2>
       <p className="section__subtitle">
         My <span>기술스택</span>
       </p>

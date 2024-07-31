@@ -29,8 +29,8 @@ const Project = () => {
         onRequestClose={closeModal}
         item={selectedItem}
       />
-      <section className="project section" id="project">
-        <h2 className="section__title text-cs">
+      <section className="project section">
+        <h2 className="section__title text-cs" id="project">
           FE & BE 협업 프로젝트
           <TooltipButton />
         </h2>
