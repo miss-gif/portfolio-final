@@ -1,5 +1,5 @@
 import "./services.scss";
-import { services } from "../../data/data";
+import { services } from "../../data/services";
 import { FaArrowRight } from "react-icons/fa";
 import shapeTwo from "../../assets/shape-2.png";
 // 스와이퍼

@@ -1,5 +1,10 @@
 .services {
   background-image: var(--second-gradient);
+  &__item {
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+  }
   &__subtitle {
     color: var(--title-color);
     font-size: var(--tiny-font-size);

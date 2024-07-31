@@ -35,6 +35,7 @@ const Home = () => {
             <div
               className={`home__banner ${isFlipped ? "flipped" : ""}`}
               onClick={handleBannerClick}
+              title="Click!"
             >
               <div className="home__banner__front">
                 <img src="" alt="" className="home__profile" />
