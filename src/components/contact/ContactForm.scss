@@ -1,0 +1,83 @@
+.contact-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+
+  &__info {
+    width: 300px;
+  }
+
+  &__form {
+    width: calc(100% - 300px);
+  }
+}
+
+.contact-info__item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  &--address,
+  &--freelance,
+  &--email,
+  &--phone {
+    .contact-info__icon {
+      font-size: 24px;
+      margin-right: 10px;
+    }
+
+    .contact-info__details {
+      .contact-info__label {
+        font-weight: bold;
+      }
+
+      .contact-info__value {
+        color: gray;
+      }
+    }
+  }
+}
+
+.contact-form {
+  &__elements {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__group {
+    margin-bottom: 20px;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  &__input,
+  &__textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  &__textarea {
+    resize: none;
+  }
+
+  &__checkbox {
+    margin-left: 10px;
+  }
+
+  &__submit-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}
