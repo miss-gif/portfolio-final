@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const Card = (props) => {
+const Card = ({ title, subtitle, date, description, allOpen }) => {
   const [showInfo, setShowInfo] = useState(false);
+
+  useEffect(() => {
+    setShowInfo(allOpen);
+  }, [allOpen]);
 
   return (
     <div className="resume__item">
@@ -11,15 +15,15 @@ const Card = (props) => {
           setShowInfo(!showInfo);
         }}
       >
-        <div className="resume__subtitle">{props.title}</div>
+        <div className="resume__subtitle">{title}</div>
         <div className="resume__icon">{showInfo ? "-" : "+"}</div>
       </div>
       <div className={`${showInfo ? "show-content" : ""} resume__content`}>
         <div className="resume__date-title">
-          <h3 className="resume__title">{props.subtitle}</h3>
-          <span className="resume__date text-cs">{props.date}</span>
+          <h3 className="resume__title">{subtitle}</h3>
+          <span className="resume__date text-cs">{date}</span>
         </div>
-        <p className="resume__description">{props.description}</p>
+        <p className="resume__description">{description}</p>
       </div>
     </div>
   );
