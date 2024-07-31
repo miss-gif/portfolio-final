@@ -84,7 +84,7 @@ const Home = () => {
             </a>
           </div>
           <div className="home__btns">
-            <a href="#" className="btn text-cs">
+            <a href="/favicon.png" className="btn text-cs" download>
               Download Cv
             </a>
             <a
