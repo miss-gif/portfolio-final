@@ -1,3 +1,5 @@
+/* observer 관련 훅 */
+
 import { useState, useEffect, useRef } from "react";
 
 function useActiveSection(sections, headerHeight = 100) {
@@ -14,7 +16,7 @@ function useActiveSection(sections, headerHeight = 100) {
     };
 
     observer.current = new IntersectionObserver(handleIntersect, {
-      threshold: 0.5,
+      threshold: 0.25,
     });
 
     sections.forEach((section) => {
