@@ -1,7 +1,26 @@
 import Modal from "react-modal";
 import "./ProjectDetailModal.scss";
 
-const ProjectDetailModal = ({ isOpen, onRequestClose, item }) => {
+// item의 타입 정의
+interface ProjectItem {
+  img: string;
+  title: string;
+  description: string;
+  tag: string[];
+}
+
+// 컴포넌트 Props 타입 정의
+interface ProjectDetailModalProps {
+  isOpen: boolean;
+  onRequestClose: () => void;
+  item?: ProjectItem;
+}
+
+const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
+  isOpen,
+  onRequestClose,
+  item,
+}) => {
   return (
     <Modal
       isOpen={isOpen}

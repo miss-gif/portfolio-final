@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { BsExclamationDiamondFill } from "react-icons/bs";
 import "./TooltipButton.scss";
 
