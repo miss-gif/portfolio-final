@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { FaGithub } from "react-icons/fa";
+import { MdKeyboardDoubleArrowDown } from "react-icons/md";
+import { RiNotionFill } from "react-icons/ri";
 import shapeOne from "../../assets/shape-1.png";
 import shapeTwo from "../../assets/shape-2.png";
-import { FaGithub } from "react-icons/fa";
-import { RiNotionFill } from "react-icons/ri";
-import "./home.scss";
-import { MdKeyboardDoubleArrowDown } from "react-icons/md";
 import { home } from "../../data/home";
 import { handleClick } from "../../utils/scrollClick";
+import "./home.scss";
 
 const Home = () => {
   const [isFlipped, setIsFlipped] = useState(false);

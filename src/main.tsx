@@ -1,10 +1,9 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import "./index.scss";
-import Modal from "react-modal";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import ReactDOM from "react-dom/client";
+import Modal from "react-modal";
+import App from "./App";
+import "./index.scss";
 
 AOS.init({
   duration: 1000, // 애니메이션 지속 시간 (밀리초)

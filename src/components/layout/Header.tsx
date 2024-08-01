@@ -3,7 +3,9 @@ import { sections } from "../../data/navSection";
 import useActiveSection from "../../hooks/useActiveSection";
 import "./Header.scss";
 
-const Header = () => {
+type SectionType = string;
+
+const Header: React.FC = () => {
   const { activeSection, handleClick } = useActiveSection(sections);
 
   return (
@@ -16,7 +18,7 @@ const Header = () => {
         </h1>
         <nav>
           <ul className="nav__list">
-            {sections.map((section) => (
+            {sections.map((section: SectionType) => (
               <li
                 key={section}
                 className={activeSection === section ? "active" : ""}
