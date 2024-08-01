@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
-import "./Header.scss";
+import React from "react";
 import { sections } from "../../data/navSection";
 import useActiveSection from "../../hooks/useActiveSection";
+import "./Header.scss";
 
 const Header = () => {
   const { activeSection, handleClick } = useActiveSection(sections);
