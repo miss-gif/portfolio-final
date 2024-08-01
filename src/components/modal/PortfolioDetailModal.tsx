@@ -1,7 +1,26 @@
 import Modal from "react-modal";
 import "./PortfolioDetailModal.scss";
 
-const PortfolioDetailModal = ({ isOpen, onRequestClose, item }) => {
+// item의 타입 정의
+interface PortfolioItem {
+  img: string;
+  title: string;
+  description: string;
+  tag: string[];
+}
+
+// 컴포넌트 Props 타입 정의
+interface PortfolioDetailModalProps {
+  isOpen: boolean;
+  onRequestClose: () => void;
+  item?: PortfolioItem;
+}
+
+const PortfolioDetailModal: React.FC<PortfolioDetailModalProps> = ({
+  isOpen,
+  onRequestClose,
+  item,
+}) => {
   return (
     <Modal
       isOpen={isOpen}
