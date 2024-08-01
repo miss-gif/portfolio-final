@@ -1,13 +1,11 @@
 import { FaArrowRight } from "react-icons/fa";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import shapeTwo from "../../assets/shape-2.png";
 import { services } from "../../data/services";
 import "./services.scss";
-// 스와이퍼
-import { Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-
-import "swiper/css";
-import "swiper/css/pagination";
 
 const Services = () => {
   return (
@@ -39,20 +37,18 @@ const Services = () => {
         }}
         className="services__container container mySwiper"
       >
-        {services.map(({ name, title, description }, index) => {
-          return (
-            <SwiperSlide className="services__item card card-one" key={index}>
-              <span className="services__subtitle text-cs">{name}</span>
-              <h3 className="services__title">{title}</h3>
-              <p className="services__description">{description}</p>
-              <a href="" className="link">
-                바로가기
-                <FaArrowRight className="link__icon"></FaArrowRight>
-              </a>
-              <img src={shapeTwo} alt="" className="shape c__shape" />
-            </SwiperSlide>
-          );
-        })}
+        {services.map(({ id, name, title, description }) => (
+          <SwiperSlide className="services__item card card-one" key={id}>
+            <span className="services__subtitle text-cs">{name}</span>
+            <h3 className="services__title">{title}</h3>
+            <p className="services__description">{description}</p>
+            <a href="" className="link">
+              바로가기
+              <FaArrowRight className="link__icon" />
+            </a>
+            <img src={shapeTwo} alt="Shape" className="shape c__shape" />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </section>
   );
