@@ -1,7 +1,7 @@
-import "./services.scss";
-import { services } from "../../data/services";
 import { FaArrowRight } from "react-icons/fa";
 import shapeTwo from "../../assets/shape-2.png";
+import { services } from "../../data/services";
+import "./services.scss";
 // 스와이퍼
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";

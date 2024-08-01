@@ -1,4 +1,12 @@
-export const skills = [
+// 객체 타입 정의
+interface Skills {
+  id: number;
+  name: string;
+  percentage: number;
+  description: string;
+}
+
+export const skills: Skills[] = [
   {
     id: 1,
     name: "HTML",

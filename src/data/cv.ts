@@ -1,4 +1,14 @@
-export const cv = [
+// 객체 타입 정의
+interface Cv {
+  id: number;
+  title: string;
+  subtitle: string;
+  date: string;
+  description: string;
+  category: string;
+}
+
+export const cv: Cv[] = [
   {
     id: 1,
     title:

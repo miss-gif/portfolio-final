@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { cv } from "../../data/data";
+import { cv } from "../../data/cv";
 import Card from "./Card";
 import "./resume.scss";
 

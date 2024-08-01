@@ -1,6 +1,16 @@
 import sample from "../assets/sample.gif";
 
-export const project = [
+// 객체 타입 정의
+interface Project {
+  id: number;
+  img: string;
+  date: string;
+  title: string;
+  description: string;
+  tag: [string, string, string];
+}
+
+export const project: Project[] = [
   {
     id: 1,
     img: sample,

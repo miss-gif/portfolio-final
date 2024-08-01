@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import List from "./List";
-import Items from "./Items";
-import { portfolio } from "../../data/portfolio.js";
-import "./portfolio.scss";
 import { AnimatePresence } from "framer-motion";
+import React, { useState } from "react";
+import { portfolio } from "../../data/portfolio";
 import PortfolioDetailModal from "../modal/PortfolioDetailModal";
+import Items from "./Items";
+import List from "./List";
+import "./portfolio.scss";
 
 const allCategories = [
   ...new Set(portfolio.flatMap((project) => project.category)),

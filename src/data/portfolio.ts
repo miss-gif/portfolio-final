@@ -10,7 +10,15 @@ import Project9 from "../assets/project9.png";
 import Project10 from "../assets/project10.png";
 import Project11 from "../assets/project11.png";
 
-export const portfolio = [
+interface PortfolioItem {
+  id: number;
+  img: string; // img는 일반적으로 이미지의 경로나 URL을 나타내는 문자열입니다.
+  category: string[]; // 여러 카테고리를 나타내기 위해 문자열 배열을 사용합니다.
+  title: string;
+  description: string;
+}
+
+export const portfolio: PortfolioItem[] = [
   {
     id: 1,
     img: Project1,

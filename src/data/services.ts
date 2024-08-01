@@ -1,4 +1,12 @@
-export const services = [
+// 객체 타입 정의
+interface Services {
+  id: number;
+  name: string;
+  title: string;
+  description: string;
+}
+
+export const services: Services[] = [
   {
     id: 1,
     name: "Web Development",
