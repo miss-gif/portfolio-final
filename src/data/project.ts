@@ -1,4 +1,6 @@
 import sample from "../assets/sample.gif";
+import team1 from "../assets/team1.png";
+import team2 from "../assets/team2.png";
 
 // 객체 타입 정의
 interface Project {
@@ -21,7 +23,7 @@ export const project: Project[] = [
   },
   {
     id: 2,
-    img: sample,
+    img: team2,
     date: "2024.06.24 ~ 2024.7.23",
     title: "주문이요 (음식주문 플랫폼)",
     description: `"모든 연령층이 쉽게 사용할 수 있는 음식주문 플랫폼입니다. 쉽고
@@ -33,7 +35,7 @@ export const project: Project[] = [
   },
   {
     id: 3,
-    img: sample,
+    img: team1,
     date: "2024.05.24 ~ 2024.6.23",
     title: "Plant Diary (식물관리 서비스)",
     description: `"사용자가 식물의 관리 일정을 쉽게 추적하고 관리할 수 있도록 돕는
