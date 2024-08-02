@@ -3,10 +3,17 @@ import "./ProjectDetailModal.scss";
 
 // item의 타입 정의
 interface ProjectItem {
+  id: number;
   img: string;
+  date: string;
   title: string;
   description: string;
-  tag: string[];
+  techStack: string[];
+  features: string;
+  role: string;
+  demoUrl: string;
+  githubUrl: string;
+  lessonsLearned: string;
 }
 
 // 컴포넌트 Props 타입 정의
@@ -30,14 +37,23 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
     >
       {item ? (
         <div className="modal__content">
-          <img src={item.img} alt={item.title} className="project-modal__img" />
+          <div className="project-modal__img">
+            <div className="project-modal__img-sub-main">
+              <img src={item.img} alt={item.title} />
+            </div>
+            <div className="project-modal__img-sub">
+              <img src={item.img} alt={item.title} />
+              <img src={item.img} alt={item.title} />
+              <img src={item.img} alt={item.title} />
+            </div>
+          </div>
           <div className="project-modal__info">
             <h2>{item.title}</h2>
             <p>{item.description}</p>
-            <ul className="tag__list">
-              {item.tag.map((tag, index) => (
-                <li key={index} className="tag__item">
-                  {tag}
+            <ul className="techStack__list">
+              {item.techStack.map((techStack, index) => (
+                <li key={index} className="techStack__item">
+                  {techStack}
                 </li>
               ))}
             </ul>

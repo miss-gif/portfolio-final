@@ -58,3 +58,21 @@
     min-height: 125px;
   }
 }
+
+.techStack__list {
+  display: flex;
+  gap: 4px;
+  padding: 10px 0;
+}
+
+.techStack__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  padding: 4px;
+  border-radius: 12px;
+  border: 1px solid #fff;
+  display: flex;
+  font-size: 12px;
+}

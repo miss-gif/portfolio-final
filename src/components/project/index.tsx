@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { project } from "./project";
-import ProjectDetailModal from "../modal/ProjectDetailModal";
+import ProjectDetailModal from "./ProjectDetailModal";
 import TooltipButton from "./TooltipButton";
 import "./project.scss";
 
@@ -12,7 +12,12 @@ interface ProjectItem {
   title: string;
   description: string;
   date: string;
-  tag: string[];
+  techStack: string[];
+  features: string;
+  role: string;
+  demoUrl: string;
+  githubUrl: string;
+  lessonsLearned: string;
 }
 
 const Project: React.FC = () => {
@@ -64,10 +69,10 @@ const Project: React.FC = () => {
                 <span className="project__category text-cs">{item.date}</span>
                 <h3 className="project__title">{item.title}</h3>
                 <p className="project__description">{item.description}</p>
-                <ul className="tag__list">
-                  {item.tag.map((tag, index) => (
-                    <li key={index} className="tag__item">
-                      {tag}
+                <ul className="techStack__list">
+                  {item.techStack.map((techStack, index) => (
+                    <li key={index} className="techStack__item">
+                      {techStack}
                     </li>
                   ))}
                 </ul>

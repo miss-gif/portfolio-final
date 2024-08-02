@@ -9,7 +9,12 @@ interface Project {
   date: string;
   title: string;
   description: string;
-  tag: string[];
+  techStack: string[];
+  features: string;
+  role: string;
+  demoUrl: string;
+  githubUrl: string;
+  lessonsLearned: string;
 }
 
 export const project: Project[] = [
@@ -19,7 +24,12 @@ export const project: Project[] = [
     date: "2024.07.24 ~ 2024.8.23",
     title: "주문이요 (음식주문 플랫폼)",
     description: "음식주문 플랫폼 서비스 고도화",
-    tag: ["html", "css", "JS"],
+    techStack: ["html", "css", "JS"],
+    features: "프로젝트 주요 기능",
+    role: "작업 영역 (기여도)",
+    demoUrl: "배포 사이트",
+    githubUrl: "깃헙 사이트",
+    lessonsLearned: "프로젝트에서 배운 점",
   },
   {
     id: 2,
@@ -31,7 +41,12 @@ export const project: Project[] = [
                 주문할 수 있도록 돕습니다. 또한, 음식점 사장님을 위한 사업자
                 서비스를 통해 매장 소개, 메뉴 등록, 주문 접수, 리뷰 관리 등 매장
                 관리 기능을 제공하여 매출 증대를 지원합니다."`,
-    tag: ["html", "css", "JS"],
+    techStack: ["html", "css", "JS"],
+    features: "프로젝트 주요 기능",
+    role: "작업 영역 (기여도)",
+    demoUrl: "배포 사이트",
+    githubUrl: "깃헙 사이트",
+    lessonsLearned: "프로젝트에서 배운 점",
   },
   {
     id: 3,
@@ -40,6 +55,11 @@ export const project: Project[] = [
     title: "Plant Diary (식물관리 서비스)",
     description: `"사용자가 식물의 관리 일정을 쉽게 추적하고 관리할 수 있도록 돕는
                 앱입니다."`,
-    tag: ["html", "css", "JS"],
+    techStack: ["html", "css", "JS"],
+    features: "프로젝트 주요 기능",
+    role: "작업 영역 (기여도)",
+    demoUrl: "배포 사이트",
+    githubUrl: "깃헙 사이트",
+    lessonsLearned: "프로젝트에서 배운 점",
   },
 ];
