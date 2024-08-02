@@ -1,13 +1,11 @@
-/* observer 관련 훅 */
+import { useEffect, useRef, useState } from "react";
 
-import { useState, useEffect, useRef } from "react";
-
-function useActiveSection(sections, headerHeight = 100) {
-  const [activeSection, setActiveSection] = useState("");
-  const observer = useRef(null);
+function useActiveSection(sections: string[], headerHeight: number = 100) {
+  const [activeSection, setActiveSection] = useState<string>("");
+  const observer = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
-    const handleIntersect = (entries) => {
+    const handleIntersect = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setActiveSection(entry.target.id);
@@ -22,7 +20,7 @@ function useActiveSection(sections, headerHeight = 100) {
     sections.forEach((section) => {
       const element = document.getElementById(section);
       if (element) {
-        observer.current.observe(element);
+        observer.current?.observe(element);
       }
     });
 
@@ -33,7 +31,10 @@ function useActiveSection(sections, headerHeight = 100) {
     };
   }, [sections]);
 
-  const handleClick = (event, section) => {
+  const handleClick = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    section: string
+  ) => {
     event.preventDefault();
     const element = document.getElementById(section);
     if (element) {

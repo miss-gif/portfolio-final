@@ -1,4 +1,3 @@
-import React from "react";
 import "./SkipNavigation.scss"; // SCSS 파일 import
 
 const SkipNavigation = () => {

@@ -1,4 +1,3 @@
-import React from "react";
 import profileImg from "../../assets/sample.gif";
 import SkipNavigation from "./SkipNavigation";
 import "./cv.scss";

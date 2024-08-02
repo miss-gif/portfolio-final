@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Cv from "./components/Cv";
+import Cv from "./components/cv/index.tsx";
 import HomePage from "./pages/HomePage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
