@@ -1,7 +1,5 @@
-import React from "react";
-import { FaArrowRight } from "react-icons/fa";
-import shapeTwo from "../../assets/shape-2.png";
 import { motion } from "framer-motion";
+import { FaArrowRight } from "react-icons/fa";
 
 const Items = ({ projectItems, openModal }) => {
   return (

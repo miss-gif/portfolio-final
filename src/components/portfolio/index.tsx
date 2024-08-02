@@ -1,9 +1,9 @@
 import { AnimatePresence } from "framer-motion";
-import React, { useState } from "react";
-import { portfolio } from "./portfolio";
+import { useState } from "react";
 import PortfolioDetailModal from "../modal/PortfolioDetailModal";
 import Items from "./Items";
 import List from "./List";
+import { portfolio } from "./portfolio";
 import "./portfolio.scss";
 
 const allCategories = [
