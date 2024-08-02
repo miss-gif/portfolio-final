@@ -1,33 +1,16 @@
+import { Route, Routes } from "react-router-dom";
 import Cv from "./components/Cv";
-import GlobalNav from "./components/GlobalNav";
-import Contact from "./components/contact";
-import Home from "./components/home";
-import Footer from "./components/layout/Footer";
-import Header from "./components/layout/Header";
-import Portfolio from "./components/portfolio";
-import Project from "./components/project";
-import Resume from "./components/resume";
-import Services from "./components/services";
-import Skills from "./components/skills";
-// import MouseCursor from "./components/MouseCursor/MouseCursor";
+import HomePage from "./pages/HomePage.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 const App = () => {
   return (
     <div>
-      {/* <MouseCursor /> */}
-      <Header />
-      <GlobalNav />
-      <main>
-        <Home />
-        <Services />
-        <Skills />
-        <Project />
-        <Portfolio />
-        <Resume />
-        <Contact />
-      </main>
-      <Footer />
-      <Cv />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/cv" element={<Cv />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
 };

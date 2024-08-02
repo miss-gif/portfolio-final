@@ -7,6 +7,7 @@ import shapeTwo from "../../assets/shape-2.png";
 import { home } from "./home";
 import { handleClick } from "../../utils/scrollClick";
 import "./home.scss";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -85,9 +86,9 @@ const Home = () => {
             </a>
           </div>
           <div className="home__btns">
-            <a href="/favicon.png" className="btn text-cs" download>
+            <Link to="/cv" className="btn text-cs">
               Download Cv
-            </a>
+            </Link>
             <a
               className="hero__link text-cs"
               href="#skills"

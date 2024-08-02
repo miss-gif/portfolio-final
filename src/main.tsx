@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 import Modal from "react-modal";
 import App from "./App";
 import "./index.scss";
+import { BrowserRouter } from "react-router-dom";
 
 AOS.init({
   duration: 1000, // 애니메이션 지속 시간 (밀리초)
@@ -16,7 +17,11 @@ Modal.setAppElement("#root");
 const rootElement = document.getElementById("root") as HTMLElement;
 
 if (rootElement) {
-  ReactDOM.createRoot(rootElement).render(<App />);
+  ReactDOM.createRoot(rootElement).render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  );
 } else {
   console.error("Root element not found");
 }
