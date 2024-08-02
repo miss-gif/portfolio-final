@@ -1,5 +1,6 @@
-import Contact from "./components/contact";
+import Cv from "./components/Cv";
 import GlobalNav from "./components/GlobalNav";
+import Contact from "./components/contact";
 import Home from "./components/home";
 import Footer from "./components/layout/Footer";
 import Header from "./components/layout/Header";
@@ -26,6 +27,7 @@ const App = () => {
         <Contact />
       </main>
       <Footer />
+      <Cv />
     </div>
   );
 };
