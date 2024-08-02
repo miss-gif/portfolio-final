@@ -1,4 +1,3 @@
-import React from "react";
 import GlobalNav from "../components/GlobalNav";
 import Contact from "../components/contact";
 import Home from "../components/home";

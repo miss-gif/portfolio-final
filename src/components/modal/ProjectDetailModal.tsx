@@ -13,7 +13,7 @@ interface ProjectItem {
 interface ProjectDetailModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
-  item?: ProjectItem;
+  item?: ProjectItem | null;
 }
 
 const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({

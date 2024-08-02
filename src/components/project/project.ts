@@ -9,7 +9,7 @@ interface Project {
   date: string;
   title: string;
   description: string;
-  tag: [string, string, string];
+  tag: string[];
 }
 
 export const project: Project[] = [

@@ -1,16 +1,25 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { project } from "./project";
 import ProjectDetailModal from "../modal/ProjectDetailModal";
 import TooltipButton from "./TooltipButton";
-
 import "./project.scss";
 
-const Project = () => {
-  const [isModal, setIsModal] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
+// 타입 정의
+interface ProjectItem {
+  id: number;
+  img: string;
+  title: string;
+  description: string;
+  date: string;
+  tag: string[];
+}
 
-  const openModal = (item) => {
+const Project: React.FC = () => {
+  const [isModal, setIsModal] = useState<boolean>(false);
+  const [selectedItem, setSelectedItem] = useState<ProjectItem | null>(null);
+
+  const openModal = (item: ProjectItem) => {
     setSelectedItem(item);
     setIsModal(true);
     document.body.style.overflow = "hidden"; // 스크롤 정지
@@ -39,7 +48,7 @@ const Project = () => {
         </p>
         <div className="project__container container">
           <ul className="project__list">
-            {project.map((item) => (
+            {project.map((item: ProjectItem) => (
               <li
                 key={item.id}
                 className="project__item"
