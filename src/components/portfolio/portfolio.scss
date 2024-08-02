@@ -36,9 +36,11 @@
     margin-bottom: 5px;
     display: block;
   }
-  &__category,
+  &__category {
+    margin-top: 15px;
+  }
   &__description {
-    margin-top: 30px;
+    margin-top: 15px;
   }
   &__title {
     font-size: var(--h4-font-size);

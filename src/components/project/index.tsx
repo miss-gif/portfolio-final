@@ -9,15 +9,15 @@ import "./project.scss";
 interface ProjectItem {
   id: number;
   img: string;
+  date: string;
   title: string;
   description: string;
-  date: string;
   techStack: string[];
-  features: string;
+  features: string | { title: string; details: string[] | string }[];
   role: string;
   demoUrl: string;
   githubUrl: string;
-  lessonsLearned: string;
+  lessonsLearned: string[] | string;
 }
 
 const Project: React.FC = () => {
@@ -77,7 +77,7 @@ const Project: React.FC = () => {
                   ))}
                 </ul>
                 <a href="#" className="link">
-                  See Pricing
+                  View More
                   <FaArrowRight className="link__icon" />
                 </a>
               </li>

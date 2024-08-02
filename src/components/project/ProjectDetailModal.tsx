@@ -48,16 +48,67 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
             </div>
           </div>
           <div className="project-modal__info">
-            <h2>{item.title}</h2>
+            <div className="project-modal__info-title">
+              <p>{item.title}</p>
+              <span>{item.date}</span>
+            </div>
             <p>{item.description}</p>
-            <ul className="techStack__list">
+            <div className="project-modal__features">
+              <p>주요 기능</p>
+              <ul>
+                {item.features.map((feature, index) => (
+                  <li key={index}>
+                    <strong>{feature.title}:</strong>
+                    {Array.isArray(feature.details) ? (
+                      <ul>
+                        {feature.details.map((detail, detailIndex) => (
+                          <li key={detailIndex}>{detail}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      feature.details
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <ul className="project-modal__techStack">
               {item.techStack.map((techStack, index) => (
-                <li key={index} className="techStack__item">
+                <li key={index} className="project-modal__techStack-item">
                   {techStack}
                 </li>
               ))}
             </ul>
-            <button onClick={onRequestClose}>확인</button>
+            <div className="project-modal__details">
+              <div>
+                <p>역할</p>
+                <p>{item.role}</p>
+              </div>
+              <div>
+                <p>배운 점</p>
+                <ul>
+                  {item.lessonsLearned.map((lesson, index) => (
+                    <li key={index}>{lesson}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="project-modal__links">
+                <a
+                  href={item.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  배포 사이트
+                </a>
+                <a
+                  href={item.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  깃헙 사이트
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       ) : (
