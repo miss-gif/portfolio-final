@@ -4,7 +4,7 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import shapeTwo from "../../assets/shape-2.png";
-import { services } from "../../data/services";
+import { services } from "./services";
 import "./services.scss";
 
 const Services = () => {

@@ -1,5 +1,5 @@
 import React from "react";
-import { sections } from "../../data/navSection";
+import { sections } from "../GlobalNav/navSection";
 import useActiveSection from "../../hooks/useActiveSection";
 import "./Header.scss";
 

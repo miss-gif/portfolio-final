@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
-import { project } from "../../data/project";
+import { project } from "./project";
 import ProjectDetailModal from "../modal/ProjectDetailModal";
 import TooltipButton from "./TooltipButton";
 

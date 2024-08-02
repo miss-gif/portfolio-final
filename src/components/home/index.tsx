@@ -4,7 +4,7 @@ import { MdKeyboardDoubleArrowDown } from "react-icons/md";
 import { RiNotionFill } from "react-icons/ri";
 import shapeOne from "../../assets/shape-1.png";
 import shapeTwo from "../../assets/shape-2.png";
-import { home } from "../../data/home";
+import { home } from "./home";
 import { handleClick } from "../../utils/scrollClick";
 import "./home.scss";
 

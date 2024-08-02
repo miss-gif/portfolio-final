@@ -1,6 +1,6 @@
 import { AnimatePresence } from "framer-motion";
 import React, { useState } from "react";
-import { portfolio } from "../../data/portfolio";
+import { portfolio } from "./portfolio";
 import PortfolioDetailModal from "../modal/PortfolioDetailModal";
 import Items from "./Items";
 import List from "./List";

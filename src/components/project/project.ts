@@ -1,6 +1,6 @@
-import sample from "../assets/sample.gif";
-import team1 from "../assets/team1.png";
-import team2 from "../assets/team2.png";
+import sample from "../../assets/sample.gif";
+import team1 from "../../assets/team1.png";
+import team2 from "../../assets/team2.png";
 
 // 객체 타입 정의
 interface Project {

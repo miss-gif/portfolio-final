@@ -1,14 +1,14 @@
-import Project1 from "../assets/project1.png";
-import Project2 from "../assets/project2.png";
-import Project3 from "../assets/project3.png";
-import Project4 from "../assets/project4.png";
-import Project5 from "../assets/project5.png";
-import Project6 from "../assets/project6.png";
-import Project7 from "../assets/project7.png";
-import Project8 from "../assets/project8.png";
-import Project9 from "../assets/project9.png";
-import Project10 from "../assets/project10.png";
-import Project11 from "../assets/project11.png";
+import Project1 from "../../assets/project1.png";
+import Project2 from "../../assets/project2.png";
+import Project3 from "../../assets/project3.png";
+import Project4 from "../../assets/project4.png";
+import Project5 from "../../assets/project5.png";
+import Project6 from "../../assets/project6.png";
+import Project7 from "../../assets/project7.png";
+import Project8 from "../../assets/project8.png";
+import Project9 from "../../assets/project9.png";
+import Project10 from "../../assets/project10.png";
+import Project11 from "../../assets/project11.png";
 
 interface PortfolioItem {
   id: number;

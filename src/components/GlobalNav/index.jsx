@@ -1,6 +1,6 @@
 import React from "react";
 import { PiStarFourFill } from "react-icons/pi";
-import { sections } from "../../data/navSection";
+import { sections } from "./navSection";
 import useActiveSection from "../../hooks/useActiveSection";
 import "./GlobalNav.scss";
 
