@@ -82,7 +82,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
             <p>{item.description}</p>
             <div className="project-modal__features">
               <p className="project-modal__section-title">주요 기능</p>
-              <ul>
+              <ul className="project-modal__section-contents">
                 {item.features.map((feature, index) => (
                   <li key={index}>
                     <strong>{feature.title}:</strong>

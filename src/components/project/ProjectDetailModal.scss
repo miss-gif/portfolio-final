@@ -101,6 +101,15 @@
   font-weight: 700;
 }
 
+.project-modal__section-contents {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  li {
+    padding: 0 8px;
+  }
+}
+
 .project-modal__features {
   strong {
     display: block;

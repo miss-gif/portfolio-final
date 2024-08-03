@@ -32,7 +32,7 @@ export const project: Project[] = [
     features: [
       {
         title: "회원 관리",
-        details: "회원가입 (일반 사용자, 사업자), 로그인, 로그아웃",
+        details: ["회원가입 (일반 사용자, 사업자), 로그인, 로그아웃"],
       },
       {
         title: "사용자 기능",
@@ -80,7 +80,7 @@ export const project: Project[] = [
     features: [
       {
         title: "회원 관리",
-        details: "회원가입 (일반 사용자, 사업자), 로그인, 로그아웃",
+        details: ["회원가입 (일반 사용자, 사업자), 로그인, 로그아웃"],
       },
       {
         title: "사용자 기능",
@@ -132,8 +132,9 @@ export const project: Project[] = [
     features: [
       {
         title: "회원 관리",
-        details:
+        details: [
           "회원가입, 로그인, 프로필 관리 기능을 통해 개인화된 서비스를 제공합니다.",
+        ],
       },
       {
         title: "식물 관리",
