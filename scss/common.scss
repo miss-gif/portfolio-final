@@ -24,3 +24,9 @@
 ::-webkit-scrollbar-track {
   background-color: var(--bg-color);
 }
+
+/* 드래그 스타일 */
+
+::selection {
+  color: #a08e82;
+}

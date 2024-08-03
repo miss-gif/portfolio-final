@@ -2,16 +2,17 @@ import { Route, Routes } from "react-router-dom";
 import Cv from "./components/cv/index.tsx";
 import HomePage from "./pages/HomePage.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import RootLayout from "./components/layout/RootLayout.jsx";
 
 const App = () => {
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
+    <Routes>
+      <Route path="/" element={<RootLayout />}>
+        <Route index element={<HomePage />} />
         <Route path="/cv" element={<Cv />} />
         <Route path="*" element={<NotFound />} />
-      </Routes>
-    </div>
+      </Route>
+    </Routes>
   );
 };
 
