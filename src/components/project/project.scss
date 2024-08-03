@@ -71,11 +71,7 @@
 
 .techStack__item {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  font-size: 12px;
-  border: 1px solid #eee;
-  padding: 5px 10px;
-  border-radius: 5px;
+  img {
+    width: 40px;
+  }
 }

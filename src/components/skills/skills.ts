@@ -11,6 +11,8 @@ import figma from "../../assets/skill/figma.svg";
 import sass from "../../assets/skill/sass.svg";
 import emotion from "../../assets/skill/emotion-light.svg";
 import swagger from "../../assets/skill/swagger.svg";
+import mui from "../../assets/skill/MaterialUI-Light.svg";
+import reactrouter from "../../assets/skill/ReactRouter.svg";
 
 // 객체 타입 정의
 interface Skills {
@@ -64,37 +66,31 @@ export const skills: Skills[] = [
     percentage: 80,
     description: "상태 관리 및 미들웨어 사용",
   },
-  // {
-  //   img: zustand,
-  //   id: 7,
-  //   name: "Zustand",
-  //   percentage: 80,
-  //   description: "간단한 상태 관리 라이브러리",
-  // },
-  // {
-  //   img: axios,
-  //   id: 8,
-  //   name: "Axios",
-  //   percentage: 80,
-  //   description: "REST API와의 비동기 통신",
-  // },
-  // {
-  //   img: reactQuery,
-  //   id: 9,
-  //   name: "React Query",
-  //   percentage: 80,
-  //   description: "데이터 패칭 및 캐싱 최적화",
-  // },
   {
-    img: figma,
-    id: 10,
-    name: "Figma",
+    img: zustand,
+    id: 7,
+    name: "Zustand",
     percentage: 80,
-    description: "디자이너와의 협업 및 UI 디자인",
+    description: "간단한 상태 관리 라이브러리",
+  },
+  {
+    img: axios,
+    id: 8,
+    name: "Axios",
+    percentage: 80,
+    description: "REST API와의 비동기 통신",
+  },
+  {
+    img: reactQuery,
+    id: 9,
+    name: "React Query",
+    percentage: 80,
+    description: "데이터 패칭 및 캐싱 최적화",
   },
   {
     img: sass,
     id: 11,
+
     name: "Sass",
     percentage: 80,
     description: "CSS 확장 및 재사용",
@@ -106,11 +102,18 @@ export const skills: Skills[] = [
     percentage: 80,
     description: "CSS-in-JS 스타일링",
   },
-  // {
-  //   img: swagger,
-  //   id: 13,
-  //   name: "Swagger",
-  //   percentage: 80,
-  //   description: "백엔드 API 문서화 및 테스트",
-  // },
+  {
+    img: swagger,
+    id: 13,
+    name: "Swagger",
+    percentage: 80,
+    description: "백엔드 API 문서화 및 테스트",
+  },
+  {
+    img: figma,
+    id: 10,
+    name: "Figma",
+    percentage: 80,
+    description: "디자이너와의 협업 및 UI 디자인",
+  },
 ];

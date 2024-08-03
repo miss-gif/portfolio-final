@@ -75,7 +75,7 @@ const Project: React.FC = () => {
                   <ul className="techStack__list">
                     {item.techStack.map((techStack, index) => (
                       <li key={index} className="techStack__item">
-                        {techStack}
+                        <img src={techStack} alt={techStack} />
                       </li>
                     ))}
                   </ul>

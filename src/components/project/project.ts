@@ -6,6 +6,21 @@ import team2_4 from "../../assets/team2/4.png";
 import team2_5 from "../../assets/team2/5.png";
 import team2_6 from "../../assets/team2/6.png";
 import team2_7 from "../../assets/team2/7.png";
+import html from "../../assets/skill/html.svg";
+import css from "../../assets/skill/css.svg";
+import js from "../../assets/skill/JavaScript.svg";
+import react from "../../assets/skill/react.svg";
+import ts from "../../assets/skill/TypeScript.svg";
+import redux from "../../assets/skill/redux.svg";
+import zustand from "../../assets/skill/zustand.svg";
+import axios from "../../assets/skill/axios.svg";
+import reactQuery from "../../assets/skill/react-query.svg";
+import figma from "../../assets/skill/figma.svg";
+import sass from "../../assets/skill/sass.svg";
+import emotion from "../../assets/skill/emotion-light.svg";
+import swagger from "../../assets/skill/swagger.svg";
+import mui from "../../assets/skill/MaterialUI-Light.svg";
+import reactrouter from "../../assets/skill/ReactRouter.svg";
 
 // 객체 타입 정의
 interface Project {
@@ -57,15 +72,7 @@ export const project: Project[] = [
         ],
       },
     ],
-    techStack: [
-      "React",
-      "React Router",
-      "Redux Toolkit",
-      "Axios",
-      "Sass",
-      "Emotion",
-      "MUI",
-    ],
+    techStack: [react, reactrouter, redux, axios, sass, emotion, mui],
     role: "작업 영역 (기여도)",
     demoUrl: "https://github.com/miss-gif",
     githubUrl: "https://github.com/miss-gif",
@@ -105,15 +112,7 @@ export const project: Project[] = [
         ],
       },
     ],
-    techStack: [
-      "React",
-      "React Router",
-      "Redux Toolkit",
-      "Axios",
-      "Sass",
-      "Emotion",
-      "MUI",
-    ],
+    techStack: [react, reactrouter, redux, axios, sass, emotion, mui],
     role: "프로젝트 총괄, 사용자 기능 개발 (80%) 외 기타 업무",
     demoUrl: "https://gybproject.com/",
     githubUrl: "https://github.com/miss-gif/jumuniyo-v2-final",
@@ -129,7 +128,7 @@ export const project: Project[] = [
     date: "2024.05.24 ~ 2024.6.23",
     title: "Plant Diary (식물관리 서비스)",
     description: `식물을 사랑하는 사용자들이 자신의 반려식물을 더욱 건강하고 아름답게 키울 수 있도록 돕는 웹 애플리케이션입니다. 사용자는 식물 등록, 물주기, 분갈이, 비료 주기 등 관리 일정을 쉽게 기록하고 알림을 받을 수 있으며, 다른 사용자들과 식물 관리 노하우를 공유하고 소통할 수 있는 커뮤니티 기능을 제공합니다.`,
-    techStack: ["React", "React Router", "Axios", "Sass", "Emotion"],
+    techStack: [react, reactrouter, axios, sass, emotion],
     features: [
       {
         title: "회원 관리",

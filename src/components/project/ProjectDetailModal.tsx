@@ -104,7 +104,7 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
               <ul className="project-modal__techStack-list">
                 {item.techStack.map((techStack, index) => (
                   <li key={index} className="project-modal__techStack-item">
-                    {techStack}
+                    <img src={techStack} alt={techStack} />
                   </li>
                 ))}
               </ul>
