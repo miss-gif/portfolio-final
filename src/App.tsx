@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
-import Cv from "./components/cv/index.tsx";
-import HomePage from "./pages/HomePage.tsx";
-import NotFound from "./pages/NotFound.tsx";
-import RootLayout from "./components/layout/RootLayout.jsx";
+import Cv from "./components/cv/index";
+import RootLayout from "./components/layout/RootLayout";
+import HomePage from "./pages/HomePage";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   return (

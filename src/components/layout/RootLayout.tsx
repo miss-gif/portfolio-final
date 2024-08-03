@@ -1,9 +1,8 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
 import GlobalNav from "../GlobalNav/index";
 import GlobalSetting from "../GlobalSetting";
-import Footer from "../layout/Footer";
-import Header from "../layout/Header";
+import Footer from "./Footer";
+import Header from "./Header";
 
 // import MouseCursor from "./MouseCursor/MouseCursor";
 
