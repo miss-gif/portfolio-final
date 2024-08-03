@@ -5,6 +5,18 @@
     row-gap: 70px;
   }
 
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    &-img__cover {
+      width: 50px;
+    }
+    &__info {
+      flex: 1;
+    }
+  }
+
   &__titles {
     display: flex;
     justify-content: space-between;

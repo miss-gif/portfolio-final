@@ -24,7 +24,7 @@ const GlobalSetting = () => {
 
   return (
     <div
-      className={`global-setting ${isDarkMode ? "theme-dark" : "theme-light"}`}
+      className={`global-setting ${isDarkMode ? "theme-light" : "theme-dark"}`}
     >
       <main className="global-setting__main-content">
         <section className="content">
