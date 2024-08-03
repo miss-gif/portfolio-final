@@ -2,7 +2,6 @@
   background-image: var(--third-gradient);
   &__container {
     grid-template-columns: repeat(3, 1fr);
-    row-gap: 70px;
   }
 
   &__item {
