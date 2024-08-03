@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./skills.scss";
 
 // 객체 타입 정의
@@ -70,24 +70,49 @@ const Skills = () => {
 
 const SkillItem = ({ img, name, percentage, description }: SkillItemProps) => {
   const [currentPercentage, setCurrentPercentage] = useState(0);
+  const skillRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentPercentage((prev) => {
-        if (prev < percentage) {
-          return Math.min(prev + 1, percentage); // 10씩 증가
-        } else {
-          clearInterval(interval); // 목표에 도달하면 인터벌 정지
-          return percentage;
-        }
-      });
-    }, 20); // 0.5초마다 실행
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      const [entry] = entries;
+      if (entry.isIntersecting) {
+        const interval = setInterval(() => {
+          setCurrentPercentage((prev) => {
+            if (prev < percentage) {
+              return Math.min(prev + 1, percentage); // 1씩 증가
+            } else {
+              clearInterval(interval); // 목표에 도달하면 인터벌 정지
+              return percentage;
+            }
+          });
+        }, 20); // 0.5초마다 실행
 
-    return () => clearInterval(interval); // 컴포넌트 언마운트 시 클리어
+        return () => clearInterval(interval); // 컴포넌트 언마운트 시 클리어
+      }
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, {
+      threshold: 0.1, // 10%가 보일 때 콜백 호출
+    });
+
+    if (skillRef.current) {
+      observer.observe(skillRef.current);
+    }
+
+    return () => {
+      if (skillRef.current) {
+        observer.unobserve(skillRef.current);
+      }
+    };
   }, [percentage]);
 
   return (
-    <li className="skills__item" data-aos="fade-up" data-aos-duration="1500">
+    <li
+      className="skills__item"
+      data-aos="fade-up"
+      data-aos-duration="1500"
+      ref={skillRef}
+    >
       <div className="skills__item-img__cover">
         <img src={img} alt={name} />
       </div>
