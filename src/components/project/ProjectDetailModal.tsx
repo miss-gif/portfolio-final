@@ -48,13 +48,13 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
             </div>
           </div>
           <div className="project-modal__info">
-            <div className="project-modal__info-title">
-              <p>{item.title}</p>
-              <span>{item.date}</span>
+            <div className="project-modal__info-header">
+              <p className="project-modal__info-title">{item.title}</p>
+              <span className="project-modal__info-date">{item.date}</span>
             </div>
             <p>{item.description}</p>
             <div className="project-modal__features">
-              <p>주요 기능</p>
+              <p className="project-modal__section-title">주요 기능</p>
               <ul>
                 {item.features.map((feature, index) => (
                   <li key={index}>
@@ -72,42 +72,40 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 ))}
               </ul>
             </div>
-            <ul className="project-modal__techStack">
-              {item.techStack.map((techStack, index) => (
-                <li key={index} className="project-modal__techStack-item">
-                  {techStack}
-                </li>
-              ))}
-            </ul>
-            <div className="project-modal__details">
-              <div>
-                <p>역할</p>
-                <p>{item.role}</p>
-              </div>
-              <div>
-                <p>배운 점</p>
-                <ul>
-                  {item.lessonsLearned.map((lesson, index) => (
-                    <li key={index}>{lesson}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="project-modal__links">
-                <a
-                  href={item.demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  배포 사이트
-                </a>
-                <a
-                  href={item.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  깃헙 사이트
-                </a>
-              </div>
+            <div className="project-modal__techStack">
+              <p className="project-modal__section-title">사용 기술</p>
+              <ul className="project-modal__techStack-list">
+                {item.techStack.map((techStack, index) => (
+                  <li key={index} className="project-modal__techStack-item">
+                    {techStack}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="project-modal__role">
+              <p className="project-modal__section-title">역할</p>
+              <p>{item.role}</p>
+            </div>
+            <div className="project-modal__lessonsLearned">
+              <p className="project-modal__section-title">배운 점</p>
+              <ul>
+                {item.lessonsLearned.map((lesson, index) => (
+                  <li key={index}>{lesson}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="project-modal__links">
+              <a href={item.demoUrl} target="_blank" rel="noopener noreferrer">
+                배포 사이트
+              </a>
+              <a
+                href={item.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                깃헙 사이트
+              </a>
             </div>
           </div>
         </div>

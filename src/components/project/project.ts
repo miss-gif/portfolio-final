@@ -42,7 +42,7 @@ export const project: Project[] = [
   {
     id: 2,
     img: team2,
-    date: "2024.06.24 ~ 2024.7.23",
+    date: "2024.06.24 ~ 2024.07.23",
     title: "주문이요 (음식주문 플랫폼)",
     description:
       "남녀노소 누구나 쉽고 빠르게 음식을 주문할 수 있는 사용자 친화적인 웹 플랫폼입니다. 직관적인 인터페이스와 필터링 기능을 통해 원하는 음식을 간편하게 찾고 주문할 수 있으며, 사업자를 위한 매장 관리 기능을 제공하여 매출 증대를 지원합니다.",
@@ -59,7 +59,7 @@ export const project: Project[] = [
           "카테고리 필터",
           "장바구니",
           "주문 및 결제",
-          "주문 확인",
+          "주문 확인 및 주문 취소",
         ],
       },
       {
@@ -75,16 +75,16 @@ export const project: Project[] = [
     ],
     techStack: [
       "React",
-      "Sass",
-      "Emotion",
-      "Axios",
       "React Router",
       "Redux Toolkit",
+      "Axios",
+      "Sass",
+      "Emotion",
       "MUI",
     ],
-    role: "프로젝트 총괄, 사용자 기능 (80%) 외 업무",
-    demoUrl: "배포 사이트",
-    githubUrl: "깃헙 사이트",
+    role: "프로젝트 총괄, 사용자 기능 개발 (80%) 외 기타 업무",
+    demoUrl: "https://gybproject.com/",
+    githubUrl: "https://github.com/miss-gif/jumuniyo-v2-final",
     lessonsLearned: [
       "Redux Toolkit을 활용한 상태 관리 학습",
       "MUI를 활용한 UI 컴포넌트 커스터마이징 경험",
@@ -97,7 +97,7 @@ export const project: Project[] = [
     date: "2024.05.24 ~ 2024.6.23",
     title: "Plant Diary (식물관리 서비스)",
     description: `식물을 사랑하는 사용자들이 자신의 반려식물을 더욱 건강하고 아름답게 키울 수 있도록 돕는 웹 애플리케이션입니다. 사용자는 식물 등록, 물주기, 분갈이, 비료 주기 등 관리 일정을 쉽게 기록하고 알림을 받을 수 있으며, 다른 사용자들과 식물 관리 노하우를 공유하고 소통할 수 있는 커뮤니티 기능을 제공합니다.`,
-    techStack: ["React", "Sass", "Emotion", "Axios", "React Router"],
+    techStack: ["React", "React Router", "Axios", "Sass", "Emotion"],
     features: [
       {
         title: "회원 관리",
@@ -122,8 +122,8 @@ export const project: Project[] = [
         ],
       },
     ],
-    role: "커뮤니티 개발 (100%)",
-    demoUrl: "배포 사이트",
+    role: "커뮤니티 기능 개발 (100%)",
+    demoUrl: "https://green-01prj.vercel.app/",
     githubUrl: "https://github.com/miss-gif/green-01prj",
     lessonsLearned: [
       "React 생태계의 다양한 라이브러리를 활용하여 효율적인 개발 방법을 익혔습니다.",
