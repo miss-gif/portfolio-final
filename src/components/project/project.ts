@@ -28,7 +28,8 @@ export const project: Project[] = [
     img: [team2_1, team2_2, team2_3, team2_4, team2_5, team2_6, team2_7],
     date: "2024.07.24 ~ 2024.8.23",
     title: "주문이요 (음식주문 플랫폼)",
-    description: "음식주문 플랫폼 서비스 고도화",
+    description:
+      "2차 프로젝트에서 구현한 기능을 고도화하는 작업을 진행 중입니다. 기존 시스템의 성능을 개선하고, 사용자 피드백을 반영하여 기능을 추가하며 지속적으로 서비스를 개선하고 있습니다.",
     features: [
       {
         title: "회원 관리",
