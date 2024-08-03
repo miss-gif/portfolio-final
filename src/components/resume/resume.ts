@@ -8,7 +8,7 @@ interface Cv {
   category: string;
 }
 
-export const cv: Cv[] = [
+export const resume: Cv[] = [
   {
     id: 1,
     title:

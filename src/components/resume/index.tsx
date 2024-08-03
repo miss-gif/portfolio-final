@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { cv } from "./cv";
+import { resume } from "./resume";
 import Card from "./Card";
 import "./resume.scss";
 
@@ -34,7 +34,7 @@ const Resume = () => {
             교육
           </h3>
           <div className="resume__items">
-            {cv
+            {resume
               .filter((val) => val.category === "education")
               .map((val) => (
                 <Card
@@ -57,7 +57,7 @@ const Resume = () => {
             경험
           </h3>
           <div className="resume__items">
-            {cv
+            {resume
               .filter((val) => val.category === "experience")
               .map((val) => (
                 <Card
