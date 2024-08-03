@@ -76,6 +76,7 @@ const SkillItem = ({ img, name, percentage, description }: SkillItemProps) => {
     const handleIntersection = (entries: IntersectionObserverEntry[]) => {
       const [entry] = entries;
       if (entry.isIntersecting) {
+        // 요소가 화면에 보일 때 애니메이션 시작
         const interval = setInterval(() => {
           setCurrentPercentage((prev) => {
             if (prev < percentage) {
@@ -85,20 +86,22 @@ const SkillItem = ({ img, name, percentage, description }: SkillItemProps) => {
               return percentage;
             }
           });
-        }, 20); // 0.5초마다 실행
-
-        return () => clearInterval(interval); // 컴포넌트 언마운트 시 클리어
+        }, 20); // 20ms마다 실행
+      } else {
+        // 요소가 화면에서 벗어날 때 `currentPercentage` 초기화
+        setCurrentPercentage(0);
       }
     };
 
     const observer = new IntersectionObserver(handleIntersection, {
-      threshold: 0.1, // 10%가 보일 때 콜백 호출
+      threshold: 0.5, // 10%가 보일 때 콜백 호출
     });
 
     if (skillRef.current) {
       observer.observe(skillRef.current);
     }
 
+    // 클린업 함수는 옵저버를 해제하지 않고 애니메이션과 초기화만 처리합니다.
     return () => {
       if (skillRef.current) {
         observer.unobserve(skillRef.current);
