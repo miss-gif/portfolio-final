@@ -8,7 +8,7 @@ import "./project.scss";
 // 타입 정의
 interface ProjectItem {
   id: number;
-  img: string;
+  img: string[];
   date: string;
   title: string;
   description: string;
@@ -62,7 +62,7 @@ const Project: React.FC = () => {
                 <div>
                   <div className="project__img-wrapper">
                     <img
-                      src={item.img}
+                      src={item.img[0]}
                       alt={item.title}
                       className="project__img"
                     />

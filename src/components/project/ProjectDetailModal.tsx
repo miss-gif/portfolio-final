@@ -1,10 +1,11 @@
+import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import "./ProjectDetailModal.scss";
 
 // item의 타입 정의
 interface ProjectItem {
   id: number;
-  img: string;
+  img: string[];
   date: string;
   title: string;
   description: string;
@@ -28,10 +29,30 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
   onRequestClose,
   item,
 }) => {
+  // 메인 이미지의 상태를 관리
+  const [mainImg, setMainImg] = useState<string>("");
+
+  // item의 변화에 따라 mainImg 상태를 초기화
+  useEffect(() => {
+    if (item && item.img.length > 0) {
+      setMainImg(item.img[0]);
+    } else {
+      setMainImg("");
+    }
+  }, [item]);
+
+  // 이미지를 클릭했을 때 메인 이미지를 변경하는 함수
+  const handleImageClick = (img: string) => {
+    setMainImg(img);
+  };
+
   return (
     <Modal
       isOpen={isOpen}
-      onRequestClose={onRequestClose}
+      onRequestClose={() => {
+        setMainImg(item?.img[0] || ""); // 모달을 닫을 때 mainImg 초기화
+        onRequestClose();
+      }}
       className="modal"
       overlayClassName="overlay"
     >
@@ -39,12 +60,18 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
         <div className="modal__content">
           <div className="project-modal__img">
             <div className="project-modal__img-sub-main">
-              <img src={item.img} alt={item.title} />
+              <img src={mainImg} alt={item.title} />
             </div>
             <div className="project-modal__img-sub">
-              <img src={item.img} alt={item.title} />
-              <img src={item.img} alt={item.title} />
-              <img src={item.img} alt={item.title} />
+              {item.img.map((image, index) => (
+                <img
+                  key={index}
+                  src={image}
+                  alt={`${item.title} ${index + 1}`}
+                  onClick={() => handleImageClick(image)}
+                  style={{ cursor: "pointer" }}
+                />
+              ))}
             </div>
           </div>
           <div className="project-modal__info">
