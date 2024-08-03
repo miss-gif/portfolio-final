@@ -55,7 +55,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: 30px;
+  gap: 20px;
   &-header {
   }
   &-title {
@@ -83,19 +83,26 @@
   }
 }
 
-.project-modal__details {
-}
-
 .project-modal__links {
   display: flex;
   gap: 12px;
 
   a {
     color: #29a385;
+    &:hover {
+      font-weight: 700;
+    }
   }
 }
 
 .project-modal__section-title {
+  margin-bottom: 4px;
   font-size: 20px;
   font-weight: 700;
+}
+
+.project-modal__features {
+  strong {
+    display: block;
+  }
 }

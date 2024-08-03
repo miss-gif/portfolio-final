@@ -18,27 +18,53 @@ interface Project {
 }
 
 export const project: Project[] = [
-  // {
-  //   id: 1,
-  //   img: sample,
-  //   date: "2024.07.24 ~ 2024.8.23",
-  //   title: "주문이요 (음식주문 플랫폼)",
-  //   description: "음식주문 플랫폼 서비스 고도화",
-  //   techStack: [
-  //     "React",
-  //     "Sass",
-  //     "Emotion",
-  //     "Axios",
-  //     "React Router",
-  //     "Redux Toolkit",
-  //     "MUI",
-  //   ],
-  //   features: "프로젝트 주요 기능",
-  //   role: "작업 영역 (기여도)",
-  //   demoUrl: "배포 사이트",
-  //   githubUrl: "깃헙 사이트",
-  //   lessonsLearned: "프로젝트에서 배운 점",
-  // },
+  {
+    id: 1,
+    img: team2,
+    date: "2024.07.24 ~ 2024.8.23",
+    title: "주문이요 (음식주문 플랫폼)",
+    description: "음식주문 플랫폼 서비스 고도화",
+    features: [
+      {
+        title: "회원 관리",
+        details: "회원가입 (일반 사용자, 사업자), 로그인, 로그아웃",
+      },
+      {
+        title: "사용자 기능",
+        details: [
+          "마이페이지 (사용자 정보 수정, 주소 관리, 주문 내역 조회, 리뷰 관리, 회원 탈퇴)",
+          "위치 기반 검색",
+          "카테고리 필터",
+          "장바구니",
+          "주문 및 결제",
+          "주문 확인 및 주문 취소",
+        ],
+      },
+      {
+        title: "사업자 기능",
+        details: [
+          "주문 관리",
+          "주문 내역 조회",
+          "리뷰 관리",
+          "매장 관리 (메뉴 등록 및 수정, 영업 시간 설정, 매장 정보 업데이트)",
+          "통계 (매출, 주문량, 인기 메뉴 등)",
+        ],
+      },
+    ],
+    techStack: [
+      "React",
+      "React Router",
+      "Redux Toolkit",
+      "Axios",
+      "Sass",
+      "Emotion",
+      "MUI",
+    ],
+    role: "작업 영역 (기여도)",
+    demoUrl: "https://github.com/miss-gif",
+    githubUrl: "https://github.com/miss-gif",
+    lessonsLearned: ["프로젝트에서 배운 점"],
+  },
   {
     id: 2,
     img: team2,

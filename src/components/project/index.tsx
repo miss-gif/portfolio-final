@@ -59,27 +59,31 @@ const Project: React.FC = () => {
                 className="project__item"
                 onClick={() => openModal(item)}
               >
-                <div className="project__img-wrapper">
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    className="project__img"
-                  />
+                <div>
+                  <div className="project__img-wrapper">
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      className="project__img"
+                    />
+                  </div>
+                  <span className="project__category text-cs">{item.date}</span>
+                  <h3 className="project__title">{item.title}</h3>
+                  <p className="project__description">{item.description}</p>
                 </div>
-                <span className="project__category text-cs">{item.date}</span>
-                <h3 className="project__title">{item.title}</h3>
-                <p className="project__description">{item.description}</p>
-                <ul className="techStack__list">
-                  {item.techStack.map((techStack, index) => (
-                    <li key={index} className="techStack__item">
-                      {techStack}
-                    </li>
-                  ))}
-                </ul>
-                <a href="#" className="link">
-                  View More
-                  <FaArrowRight className="link__icon" />
-                </a>
+                <div>
+                  <ul className="techStack__list">
+                    {item.techStack.map((techStack, index) => (
+                      <li key={index} className="techStack__item">
+                        {techStack}
+                      </li>
+                    ))}
+                  </ul>
+                  <a href="#" className="link">
+                    View More
+                    <FaArrowRight className="link__icon" />
+                  </a>
+                </div>
               </li>
             ))}
           </ul>
