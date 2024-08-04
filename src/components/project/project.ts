@@ -9,7 +9,7 @@ import team2_7 from "../../assets/team2/7.png";
 import html from "../../assets/skill/html.svg";
 import css from "../../assets/skill/css.svg";
 import js from "../../assets/skill/JavaScript.svg";
-import react from "../../assets/skill/react.svg";
+import react from "../../assets/skill/React.svg";
 import ts from "../../assets/skill/TypeScript.svg";
 import redux from "../../assets/skill/redux.svg";
 import zustand from "../../assets/skill/zustand.svg";
