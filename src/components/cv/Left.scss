@@ -1,0 +1,118 @@
+.cv__left {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: hsl(217, 18%, 14%);
+  padding: 20px;
+  border-radius: 20px;
+  color: #fff;
+}
+
+.cv_title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: hsl(165, 60%, 40%);
+}
+
+.cv__subtitle {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cv__link {
+  display: flex;
+  gap: 8px;
+}
+
+.cv__profile {
+  .cv__profile__item {
+    margin-bottom: 10px;
+    font-size: 14px;
+
+    .cv__profile__label {
+      font-weight: bold;
+    }
+  }
+}
+
+.cv__portfolio {
+  .cv__portfolio__links {
+    display: flex;
+    gap: 10px;
+
+    .cv__portfolio__link {
+      text-decoration: none;
+      color: #007bff;
+      font-size: 14px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .cv__portfolio__project {
+    .cv__portfolio__project-title {
+    }
+
+    .cv__portfolio__project-details {
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      .cv__portfolio__project-link {
+        color: #007bff;
+
+        &:hover {
+        }
+      }
+    }
+  }
+}
+
+.cv__skills {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .cv__skills__level {
+    font-size: 14px;
+    span {
+      font-weight: 700;
+    }
+  }
+
+  .cv__skills__bars {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .cv__skill {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+
+      .cv__skill__name {
+        flex: 1;
+        font-weight: 700;
+      }
+
+      .cv__skill__levels {
+        flex: 1;
+        display: flex;
+        gap: 4px;
+
+        .cv__skill__level {
+          width: 18px;
+          height: 6px;
+          background-color: #007bff;
+          border-radius: 8px;
+        }
+      }
+    }
+  }
+}

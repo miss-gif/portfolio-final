@@ -1,155 +1,67 @@
-/* 공통 스타일 */
+.inner {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 .cv {
   background-color: #fff;
   color: #333;
-
   &__container {
-    padding: 20px;
+    padding: 20px 0;
   }
-
   &__top {
-    padding-bottom: 20px;
-    border-bottom: 1px solid #ddd;
-
+    padding: 20px 0;
     .profile {
-      display: flex;
-      align-items: center;
-
+      display: flex; /* 프로필을 flex 컨테이너로 설정하여 정렬 */
+      align-items: center; /* 수직 정렬을 중앙으로 설정 */
+      gap: 20px;
       &__img-container {
-        margin-right: 20px;
       }
-
       &__img {
-        border-radius: 50%;
-        width: 150px;
-        height: 150px;
+        border-radius: 50%; /* 이미지를 원형으로 만듦 */
+        width: 150px; /* 이미지 너비 설정 */
+        height: 150px; /* 이미지 높이 설정 */
       }
-
       &__info {
-        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
       }
-
       &__name {
-        font-size: 1.8em; // 강조된 이름 크기
-        font-weight: bold;
+        font-size: 2rem;
+        font-weight: 700;
       }
-
-      &__highlight {
-        color: #0073e6;
-      }
-
       &__description {
-        font-size: 1.2em;
-        margin-top: 10px;
-        color: #555;
+        font-size: 1.2em; /* 설명의 글자 크기를 설정 */
+        color: #666; /* 설명의 글자색을 중간 회색으로 설정 */
       }
     }
   }
-
   &__bottom {
-    flex: 1;
-    display: flex;
-    padding: 20px;
-    // background-color: #fafafa;
-
-    .cv__left {
-      flex: 1;
-      padding-right: 10px;
-      border-right: 1px solid #ddd;
-
-      .details {
-        margin-bottom: 20px;
-
-        &__container {
-          display: flex;
-          flex-direction: column;
-
-          .detail-item {
-            margin-bottom: 15px;
-            font-size: 1.3em;
-            font-weight: bold;
-
-            .detail-number {
-              font-weight: bold;
-              margin-right: 5px;
-              color: #333;
-            }
-          }
-
-          .detail-content {
-            margin-top: 10px;
-
-            .detail-field {
-              margin-bottom: 15px;
-
-              .field-title {
-                font-weight: bold;
-                margin-bottom: 5px;
-              }
-
-              .field-link {
-                color: #0073e6;
-                text-decoration: none;
-              }
-
-              .field-list {
-                list-style: none;
-                padding: 0;
-              }
-            }
-          }
-        }
-      }
-    }
-
-    .cv__right {
-      flex: 2;
-      padding-left: 10px;
-
-      .profile-details,
-      .project-history,
-      .degree {
-        margin-bottom: 20px;
-
-        &-detail {
-          margin-bottom: 15px;
-
-          .project-title,
-          .degree-title {
-            font-weight: bold;
-            font-size: 1.3em;
-          }
-
-          .project-duration,
-          .degree-duration {
-            color: #999;
-            font-size: 0.9em;
-          }
-
-          .project-description,
-          .degree-description {
-            margin-top: 10px;
-            color: #555;
-          }
-        }
-      }
-    }
+    display: flex; /* 하단 섹션을 flex 컨테이너로 설정 */
   }
 }
 
-/* Skill Bars 스타일 */
-.skill-bar {
-  margin-bottom: 10px;
+/* 오른쪽 */
+.cv__right {
+  flex: 2; /* 오른쪽 섹션의 너비를 유연하게 설정 */
 
-  .skill-name {
-    font-weight: bold;
-  }
+  .profile-details,
+  .project-history,
+  .degree {
+    &__detail {
+      .project-detail__title,
+      .degree-detail__title {
+      }
 
-  .skill-level {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    background-color: #0073e6;
-    margin-right: 5px;
+      .project-detail__duration,
+      .degree-detail__duration {
+      }
+
+      .project-detail__description,
+      .degree-detail__description {
+      }
+    }
   }
 }
