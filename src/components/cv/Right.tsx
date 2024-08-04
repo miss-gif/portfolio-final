@@ -1,205 +1,55 @@
-import React from "react";
+import "./Right.scss";
 
 const Right = () => {
   return (
     <div className="cv__right">
-      <div className="profile-details">
-        <div className="detail-item">
-          <span className="detail-item__number">2</span> Profile
-        </div>
-        <div className="profile-details__description">
-          <p>
-            저는 리액트 기반의 웹 개발자로서 사용자 중심의 사고를 바탕으로
-            기능성과 심미성을 모두 갖춘 웹사이트를 제작합니다. 다양한 기술
-            스택을 활용하여 효율적인 개발 방법을 익히고, 복잡한 문제를 해결하며
-            개발 역량을 지속적으로 향상시키고 있습니다.
-          </p>
-        </div>
-      </div>
-      <div className="project-history">
-        <div className="detail-item">
-          <span className="detail-item__number">3</span> Project History
-        </div>
-        <div className="project-detail">
-          <div className="project-detail__title">
-            주문이요 (음식 주문 플랫폼){" "}
-            <span className="project-detail__duration">
-              2024.07.24 - 2024.08.23
-            </span>
-          </div>
-          <div className="project-detail__role">
-            <strong>Role:</strong> 기능 고도화 및 성능 개선
-          </div>
-          <div className="project-detail__features">
-            <strong>주요 기능:</strong>
-            <ul>
-              <li>
-                회원 관리: 회원가입 (일반 사용자, 사업자), 로그인, 로그아웃
-              </li>
-              <li>
-                사용자 기능: 마이페이지 (정보 수정, 주소 관리, 주문 내역 조회,
-                리뷰 관리, 회원 탈퇴), 위치 기반 검색, 카테고리 필터, 장바구니,
-                주문 및 결제, 주문 확인 및 취소
-              </li>
-              <li>
-                사업자 기능: 주문 관리, 주문 내역 조회, 리뷰 관리, 매장 관리
-                (메뉴 등록 및 수정, 영업 시간 설정, 매장 정보 업데이트), 통계
-                (매출, 주문량, 인기 메뉴 등)
-              </li>
-            </ul>
-          </div>
-          <div className="project-detail__technologies">
-            <strong>사용 기술:</strong> React, React Router, Redux, Axios, Sass,
-            Emotion, Material-UI
-          </div>
-          <div className="project-detail__contributions">
-            <strong>역할 및 기여도:</strong> 기존 시스템의 성능 개선 및 사용자
-            피드백 반영하여 기능 추가
-          </div>
-          <div className="project-detail__learnings">
-            <strong>배운 점:</strong>
-            <ul>
-              <li>Redux Toolkit을 활용한 상태 관리</li>
-              <li>MUI를 활용한 UI 컴포넌트 커스터마이징</li>
-              <li>Axios를 이용한 RESTful API 연동 및 데이터 처리</li>
-            </ul>
-          </div>
-          <div>
-            <strong>Project link:</strong>{" "}
-            <a className="project-detail__link" href="#none">
-              #none
-            </a>
-          </div>
-          <div className="project-detail__description">
-            <p>
-              주문이요 프로젝트에서는 사용자의 요구를 반영하여 기능을 고도화하고
-              성능을 개선하는 작업을 진행했습니다. 사용자 피드백을 반영하여
-              서비스의 품질을 높였습니다.
-            </p>
-          </div>
-        </div>
-        <div className="project-detail">
-          <div className="project-detail__title">
-            Plant Diary (식물 관리 서비스){" "}
-            <span className="project-detail__duration">
-              2024.05.24 - 2024.06.23
-            </span>
-          </div>
-          <div className="project-detail__role">
-            <strong>Role:</strong> 커뮤니티 기능 개발
-          </div>
-          <div className="project-detail__features">
-            <strong>주요 기능:</strong>
-            <ul>
-              <li>회원 관리: 회원가입, 로그인, 프로필 관리</li>
-              <li>
-                식물 관리: 식물 등록 (종류, 이름, 사진 등), 일정 관리 (물주기,
-                분갈이, 비료 주기)
-              </li>
-              <li>
-                커뮤니티: 게시글 작성, 수정, 삭제, 검색 및 정렬, 추천, 댓글,
-                페이지네이션
-              </li>
-            </ul>
-          </div>
-          <div className="project-detail__technologies">
-            <strong>사용 기술:</strong> React, React Router, Axios, Sass,
-            Emotion
-          </div>
-          <div className="project-detail__contributions">
-            <strong>역할 및 기여도:</strong> 커뮤니티 기능 개발 (100%)
-          </div>
-          <div className="project-detail__learnings">
-            <strong>배운 점:</strong>
-            <ul>
-              <li>
-                React 생태계의 다양한 라이브러리를 활용하여 효율적인 개발 방법
-                습득
-              </li>
-              <li>사용자 중심의 UI/UX 디자인 원칙 적용</li>
-              <li>
-                댓글 기능, 페이지네이션 등 복잡한 기능 구현 및 최적화 능력 향상
-              </li>
-            </ul>
-          </div>
-          <div>
-            <strong>Project link:</strong>{" "}
-            <a className="project-detail__link" href="#none">
-              #none
-            </a>
-          </div>
-          <div className="project-detail__description">
-            <p>
-              Plant Diary 프로젝트에서는 커뮤니티 기능을 중심으로 식물 관리
-              서비스를 구축했습니다. 사용자 요구에 맞춘 다양한 기능을 제공하며,
-              효율적인 개발 방법을 적용했습니다.
-            </p>
-          </div>
+      <div className="">
+        <div className="">개발자 선택 계기</div>
+        <div className="">
+          "전 직장에서 홈페이지 관리 업무를 담당하면서, 단순 반복적인 작업과
+          비효율적인 시스템에 대한 개선의 필요성을 절실히 느꼈습니다. 외주로
+          개발된 시스템을 수정할 권한이 없고, 특정 기능을 구현하기 위해
+          개발자에게 의존해야만 하는 상황이 반복되면서, 직접 개발을 통해 문제를
+          해결하고 더 나은 시스템을 구축하고 싶다는 생각을 하게 되었습니다.
+          특히, 최근 신입 개발자들의 실력을 보면서 개발이 생각보다 접근 가능한
+          분야임을 깨닫고, 웹 개발에 도전하게 되었습니다."
         </div>
       </div>
-      <div className="degree">
-        <div className="detail-item">
-          <span className="detail-item__number">4</span> Degree
+      <div className="">
+        <div className="">프로젝트 경험 / 문제해결 과정</div>
+        <div className="">
+          "최근에 참여한 음식 주문 플랫폼 개발 프로젝트에서는 팀장으로서 팀을
+          이끌며, 기획, 디자인, 기술 스택 선정, 스케줄 관리, 프론트엔드 개발 등
+          전반적인 과정을 총괄했습니다. 특히, 다양한 기기에서 최적화된 사용자
+          경험을 제공하기 위해 반응형 웹 개발에 집중했습니다. React를 베이스로
+          라이브러리를 활용하여 효율적으로 개발을 진행했습니다. 프로젝트 중 여러
+          문제를 마주했지만, 가장 큰 어려움은 프로젝트 초기에는 팀원들의 개발
+          경험이 다르고, 각자의 개발 스타일이 달라 코드 품질이 일관되지 않는
+          문제가 발생했습니다. 이를 해결하기 위해 정기적인 코드 리뷰를 진행하고,
+          팀원들과 함께 코드 스타일 가이드라인을 만들어 공유했습니다. 또한,
+          어려움을 겪는 팀원들을 위해 1:1 멘토링을 진행하고, 함께 문제를
+          해결하며 성장할 수 있도록 지원했습니다. 이러한 노력을 통해 팀원들 간의
+          협업을 강화하고, 프로젝트의 성공적인 완수에 기여할 수 있었습니다."
+          이러한 경험을 통해 프로젝트의 완성도를 높이고, 서비스 확장에 필요한
+          폴더 구조 설계 및 코드 관리 방식을 배우게 되었습니다."
         </div>
-        <div className="degree-detail">
-          <div className="degree-detail__title">
-            기업 요구를 반영한 프로젝트 중심 프론트엔드 React(리액트) 개발자
-            양성{" "}
-            <span className="degree-detail__duration">
-              2024-03-29 - 2024-09-13
-            </span>
-          </div>
-          <div className="degree-detail__description">
-            <p>
-              React 및 관련 라이브러리 활용 기술과 프로젝트 중심의 프론트엔드
-              개발 방법을 배웠습니다. 협업 프로젝트를 통해 요구 사항 분석,
-              디자인 구현, 코드 최적화 등을 경험하며 현업에서 필요한 개발 역량을
-              강화했습니다.
-            </p>
-          </div>
-        </div>
-        <div className="degree-detail">
-          <div className="degree-detail__title">
-            K-MOOC x Udemy 구독권 (6개월){" "}
-            <span className="degree-detail__duration">2023-12 - 2024-06</span>
-          </div>
-          <div className="degree-detail__description">
-            <p>
-              프론트엔드 개발에 필요한 다양한 온라인 강의를 수강하며 최신 기술
-              트렌드와 개발 방법론을 학습했습니다.
-            </p>
-          </div>
-        </div>
-        <div className="degree-detail">
-          <div className="degree-detail__title">
-            [과정평가형] 정보처리산업기사 (자바(Java) 프로그래밍 활용 웹 개발) A{" "}
-            <span className="degree-detail__duration">
-              2021-12-13 - 2022-05-25
-            </span>
-          </div>
-          <div className="degree-detail__description">
-            <p>
-              자바를 활용한 웹 개발 과정으로, 서버 사이드 프로그래밍과
-              데이터베이스 연동을 학습했습니다. 프론트엔드와 백엔드의 상호작용을
-              이해하고 웹 애플리케이션의 전체적인 구조를 설계하는 능력을
-              길렀습니다.
-            </p>
-          </div>
-        </div>
-        <div className="degree-detail">
-          <div className="degree-detail__title">
-            패스트캠퍼스 프론트엔드 개발{" "}
-            <span className="degree-detail__duration">
-              2021-12 - 현재 진행형
-            </span>
-          </div>
-          <div className="degree-detail__description">
-            <p>
-              프론트엔드 개발의 기초부터 심화까지 다양한 기술을 공부하고
-              있습니다. React를 중심으로 컴포넌트 기반 개발, 상태 관리, API 연동
-              등을 포함하여 최신 기술을 지속적으로 학습하고 있습니다.
-            </p>
-          </div>
+      </div>
+      <div className="">
+        <div className="">강점</div>
+        <div className="">
+          "저의 강점은 문제 해결을 위한 논리적 접근 방식과 효율적인 코딩
+          스타일입니다. 저는 문제 발생 시 다른 사람들이 유사한 문제를 어떻게
+          해결했는지 조사하고, 원인 분석을 통해 최적의 해결책을 찾습니다.
+          필요시에는 새로운 기술을 학습하여 문제를 해결합니다. 개발 시 가독성과
+          유지보수성을 고려한 일관된 코딩 스타일로 코드를 작성하며, 단일 책임
+          원칙으로 각 함수나 모듈은 하나의 작업만 담당하게 하고, 코드를
+          모듈화하여 분리하여 관리합니다. 또한, BEM 네이밍 규칙을 사용하여
+          일관된 코드 스타일을 유지합니다. 팀 작업에서는 건설적인 피드백과
+          긴밀한 소통을 통해 팀원들과 협력하며, 필요시 레퍼런스를 제시해 문제
+          해결 방안을 제공합니다. 팀장이 아니더라도 팀의 의견을 조율하고, 필요한
+          부분에서 지원하는 역할을 수행합니다. 이러한 능력들은 프로젝트를
+          성공적으로 이끄는 데 큰 도움이 되었고, 앞으로도 계속 발전시키고자
+          합니다."
         </div>
       </div>
     </div>

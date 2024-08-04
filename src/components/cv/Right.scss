@@ -1,0 +1,26 @@
+/* 오른쪽 */
+.cv__right {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  background-color: hsl(217, 18%, 14%);
+  color: #fff;
+  .profile-details,
+  .project-history,
+  .degree {
+    &__detail {
+      .project-detail__title,
+      .degree-detail__title {
+      }
+
+      .project-detail__duration,
+      .degree-detail__duration {
+      }
+
+      .project-detail__description,
+      .degree-detail__description {
+      }
+    }
+  }
+}

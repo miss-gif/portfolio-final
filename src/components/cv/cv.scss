@@ -7,11 +7,18 @@
 .cv {
   background-color: #fff;
   color: #333;
+
   &__container {
     padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
   &__top {
-    padding: 20px 0;
+    background-color: hsl(217, 18%, 14%);
+    color: #fff;
+    border-radius: 20px;
+    padding: 20px;
     .profile {
       display: flex; /* 프로필을 flex 컨테이너로 설정하여 정렬 */
       align-items: center; /* 수직 정렬을 중앙으로 설정 */
@@ -40,28 +47,6 @@
   }
   &__bottom {
     display: flex; /* 하단 섹션을 flex 컨테이너로 설정 */
-  }
-}
-
-/* 오른쪽 */
-.cv__right {
-  flex: 2; /* 오른쪽 섹션의 너비를 유연하게 설정 */
-
-  .profile-details,
-  .project-history,
-  .degree {
-    &__detail {
-      .project-detail__title,
-      .degree-detail__title {
-      }
-
-      .project-detail__duration,
-      .degree-detail__duration {
-      }
-
-      .project-detail__description,
-      .degree-detail__description {
-      }
-    }
+    gap: 20px;
   }
 }

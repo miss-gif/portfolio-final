@@ -17,6 +17,8 @@ const skillLevelBar = [
   { name: "Redux Toolkit", level: 3 },
   { name: "Axios", level: 4 },
   { name: "TanStack Query", level: 2 },
+  { name: "Scss", level: 4 },
+  { name: "Emotion", level: 3 },
   { name: "Figma", level: 2 },
 ];
 
