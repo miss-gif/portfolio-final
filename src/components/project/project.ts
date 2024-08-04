@@ -1,3 +1,10 @@
+import axios from "../../assets/skill/Axios.svg";
+import emotion from "../../assets/skill/Emotion-Light.svg";
+import mui from "../../assets/skill/MaterialUI-Light.svg";
+import react from "../../assets/skill/React.svg";
+import reactrouter from "../../assets/skill/ReactRouter.svg";
+import redux from "../../assets/skill/Redux.svg";
+import sass from "../../assets/skill/Sass.svg";
 import team1 from "../../assets/team1.png";
 import team2_1 from "../../assets/team2/1.png";
 import team2_2 from "../../assets/team2/2.png";
@@ -6,21 +13,6 @@ import team2_4 from "../../assets/team2/4.png";
 import team2_5 from "../../assets/team2/5.png";
 import team2_6 from "../../assets/team2/6.png";
 import team2_7 from "../../assets/team2/7.png";
-import html from "../../assets/skill/HTML.svg";
-import css from "../../assets/skill/CSS.svg";
-import js from "../../assets/skill/JavaScript.svg";
-import react from "../../assets/skill/React.svg";
-import ts from "../../assets/skill/TypeScript.svg";
-import redux from "../../assets/skill/Redux.svg";
-import zustand from "../../assets/skill/Zustand.svg";
-import axios from "../../assets/skill/Axios.svg";
-import reactQuery from "../../assets/skill/react-query.svg";
-import figma from "../../assets/skill/Figma.svg";
-import sass from "../../assets/skill/Sass.svg";
-import emotion from "../../assets/skill/Emotion-light.svg";
-import swagger from "../../assets/skill/Swagger.svg";
-import mui from "../../assets/skill/MaterialUI-Light.svg";
-import reactrouter from "../../assets/skill/ReactRouter.svg";
 
 // 객체 타입 정의
 interface Project {

@@ -10,6 +10,22 @@ import Project9 from "../../assets/project9.png";
 import Project10 from "../../assets/project10.png";
 import Project11 from "../../assets/project11.png";
 
+// import html from "../../assets/skill/HTML.svg";
+// import css from "../../assets/skill/CSS.svg";
+// import js from "../../assets/skill/JavaScript.svg";
+// import react from "../../assets/skill/React.svg";
+// import ts from "../../assets/skill/TypeScript.svg";
+// import redux from "../../assets/skill/Redux.svg";
+// import zustand from "../../assets/skill/Zustand.svg";
+// import axios from "../../assets/skill/Axios.svg";
+// import reactQuery from "../../assets/skill/react-query.svg";
+// import figma from "../../assets/skill/Figma.svg";
+// import sass from "../../assets/skill/Sass.svg";
+// import emotion from "../../assets/skill/Emotion-Light.svg";
+// import swagger from "../../assets/skill/Swagger.svg";
+// import mui from "../../assets/skill/MaterialUI-Light.svg";
+// import reactrouter from "../../assets/skill/ReactRouter.svg";
+
 interface PortfolioItem {
   id: number;
   img: string; // img는 일반적으로 이미지의 경로나 URL을 나타내는 문자열입니다.
