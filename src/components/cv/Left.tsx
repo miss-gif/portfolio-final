@@ -11,6 +11,29 @@ const skillLevels = [
 ];
 
 const Left = () => {
+  const [profile, setProfile] = useState({
+    birthdate: "",
+    contact: "",
+    email: "",
+    github: "",
+    education: [],
+    training: [],
+    certifications: [],
+  });
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await axios.get("/json/profile.json");
+        setProfile(response.data);
+      } catch (error) {
+        console.error("Error fetching profile data:", error);
+      }
+    };
+
+    fetchProfile();
+  }, []);
+
   const [skills, setSkills] = useState([]);
 
   useEffect(() => {
@@ -34,18 +57,22 @@ const Left = () => {
   return (
     <div className="cv__left">
       <div className="cv__profile">
-        <ProfileItem label="생년월일:" value="1991 (32세)" />
-        <ProfileItem label="연락처:" value="010-****-5535" />
-        <ProfileItem label="이메일:" value="svx***@naver.com" />
-        <ProfileItem label="깃허브:" value="https://github.com/miss-gif" />
+        <ProfileItem label="생년월일:" value={profile.birthdate} />
+        <ProfileItem label="연락처:" value={profile.contact} />
+        <ProfileItem label="이메일:" value={profile.email} />
+        <ProfileItem label="깃허브:" value={profile.github} />
         <ProfileItem
           label="학력:"
           value={
             <>
-              <p>2010.03 ~ 2018.02 졸업</p>
-              <p>대구가톨릭대학교(4년제)</p>
-              <p>전공 : 문헌정보학</p>
-              <p>복수전공 : 일어일문학</p>
+              {profile.education.map((edu, index) => (
+                <div key={index}>
+                  <p>{edu.period}</p>
+                  <p>{edu.university}</p>
+                  <p>전공 : {edu.major}</p>
+                  {edu.minor && <p>복수전공 : {edu.minor}</p>}
+                </div>
+              ))}
             </>
           }
         />
@@ -53,14 +80,13 @@ const Left = () => {
           label="교육이력:"
           value={
             <div className="education-gap">
-              <EducationItem
-                date="2024.03 ~ 2024.09"
-                description="기업 요구를 반영한 프로젝트 중심 프론트엔드 React(리액트) 개발자 양성"
-              />
-              <EducationItem
-                date="2021.12 ~ 2022.05"
-                description="[과정평가형]정보처리산업기사(자바(Java)프로그래밍 활용 웹개발)A"
-              />
+              {profile.training.map((train, index) => (
+                <EducationItem
+                  key={index}
+                  date={train.date}
+                  description={train.description}
+                />
+              ))}
             </div>
           }
         />
@@ -68,8 +94,9 @@ const Left = () => {
           label="관련 자격증:"
           value={
             <>
-              <p>웹디자인기능사 2022.06</p>
-              <p>컴퓨터그래픽스운용기능사 2009.07</p>
+              {profile.certifications.map((cert, index) => (
+                <p key={index}>{cert}</p>
+              ))}
             </>
           }
         />
