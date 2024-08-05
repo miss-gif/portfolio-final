@@ -7,6 +7,16 @@
   padding: 20px;
   border-radius: 4px;
   outline: none;
+  animation: slide-top 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes slide-top {
+  0% {
+    transform: translate(-50%, -50%) translateY(20px);
+  }
+  100% {
+    transform: translate(-50%, -50%) translateY(0);
+  }
 }
 
 .overlay {

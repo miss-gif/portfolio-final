@@ -87,7 +87,7 @@ const Home = () => {
           </div>
           <div className="home__btns">
             <Link to="/cv" className="btn text-cs">
-              Download Cv
+              View Cv
             </Link>
             <a
               className="hero__link text-cs"

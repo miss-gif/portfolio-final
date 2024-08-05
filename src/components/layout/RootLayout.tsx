@@ -12,9 +12,9 @@ const RootLayout = () => {
       {/* <MouseCursor /> */}
       <Header />
       <GlobalNav />
-      <GlobalSetting>
-        <Outlet />
-      </GlobalSetting>
+      {/* <GlobalSetting> */}
+      <Outlet />
+      {/* </GlobalSetting> */}
       <Footer />
     </>
   );
