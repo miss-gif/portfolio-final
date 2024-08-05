@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import GlobalNav from "../GlobalNav/index";
-// import GlobalSetting from "../GlobalSetting";
+import GlobalSetting from "../GlobalSetting";
 import Footer from "./Footer";
 import Header from "./Header";
 
@@ -12,9 +12,9 @@ const RootLayout = () => {
       {/* <MouseCursor /> */}
       <Header />
       <GlobalNav />
-      {/* <GlobalSetting> */}
-      <Outlet />
-      {/* </GlobalSetting> */}
+      <GlobalSetting>
+        <Outlet />
+      </GlobalSetting>
       <Footer />
     </>
   );

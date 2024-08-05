@@ -1,104 +1,104 @@
 [
   {
-    "img": "../../assets/skill/HTML.svg",
+    "img": "public/assets/skill/HTML.svg",
     "id": 1,
     "name": "HTML",
     "percentage": 88,
     "description": "웹표준, 웹접근성, SEO 등 기본적인 웹 개발 요소"
   },
   {
-    "img": "../../assets/skill/CSS.svg",
+    "img": "public/assets/skill/CSS.svg",
     "id": 2,
     "name": "CSS",
     "percentage": 75,
     "description": "레이아웃 구성, 반응형 디자인, 스타일링"
   },
   {
-    "img": "../../assets/skill/JavaScript.svg",
+    "img": "public/assets/skill/JavaScript.svg",
     "id": 3,
     "name": "JavaScript",
     "percentage": 90,
     "description": "ES6+ 문법 및 비동기 프로그래밍"
   },
   {
-    "img": "../../assets/skill/React.svg",
+    "img": "public/assets/skill/React.svg",
     "id": 4,
     "name": "React",
     "percentage": 75,
     "description": "리액트 훅, 커스텀 훅, 컴포넌트 최적화"
   },
   {
-    "img": "../../assets/skill/TypeScript.svg",
+    "img": "public/assets/skill/TypeScript.svg",
     "id": 5,
     "name": "TypeScript",
     "percentage": 70,
     "description": "정적 타입 체크, 타입 시스템"
   },
   {
-    "img": "../../assets/skill/Redux.svg",
+    "img": "public/assets/skill/Redux.svg",
     "id": 6,
     "name": "Redux",
     "percentage": 80,
-    "description": "상태 관리 및 미들웨어 사용"
+    "description": "Redux Toolkit으로 상태관리"
   },
   {
-    "img": "../../assets/skill/Zustand.svg",
+    "img": "public/assets/skill/Zustand.svg",
     "id": 7,
     "name": "Zustand",
     "percentage": 80,
     "description": "간단한 상태 관리 라이브러리"
   },
   {
-    "img": "../../assets/skill/Axios.svg",
+    "img": "public/assets/skill/Axios.svg",
     "id": 8,
     "name": "Axios",
     "percentage": 80,
     "description": "REST API와의 비동기 통신"
   },
   {
-    "img": "../../assets/skill/react-query.svg",
+    "img": "public/assets/skill/react-query.svg",
     "id": 9,
     "name": "React Query",
     "percentage": 80,
     "description": "데이터 패칭 및 캐싱 최적화"
   },
   {
-    "img": "../../assets/skill/Figma.svg",
+    "img": "public/assets/skill/Figma.svg",
     "id": 10,
     "name": "Figma",
     "percentage": 80,
     "description": "디자이너와의 협업 및 UI 디자인"
   },
   {
-    "img": "../../assets/skill/Sass.svg",
+    "img": "public/assets/skill/Sass.svg",
     "id": 11,
     "name": "Sass",
     "percentage": 80,
     "description": "CSS 확장 및 재사용"
   },
   {
-    "img": "../../assets/skill/Emotion-Light.svg",
+    "img": "public/assets/skill/Emotion-Light.svg",
     "id": 12,
     "name": "Emotion",
     "percentage": 80,
     "description": "CSS-in-JS 스타일링"
   },
   {
-    "img": "../../assets/skill/Swagger.svg",
+    "img": "public/assets/skill/Swagger.svg",
     "id": 13,
     "name": "Swagger",
     "percentage": 80,
     "description": "백엔드 API 문서화 및 테스트"
   },
   {
-    "img": "../../assets/skill/MaterialUI-Light.svg",
+    "img": "public/assets/skill/MaterialUI-Light.svg",
     "id": 14,
     "name": "Material UI",
     "percentage": 80,
     "description": "React용 UI 컴포넌트 라이브러리"
   },
   {
-    "img": "../../assets/skill/ReactRouter.svg",
+    "img": "public/assets/skill/ReactRouter.svg",
     "id": 15,
     "name": "React Router",
     "percentage": 80,

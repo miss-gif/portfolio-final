@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import "./Left.scss";
 
 const skillLevels = [
@@ -8,21 +10,27 @@ const skillLevels = [
   { level: 5, description: "고난도 문제 해결 및 코드 최적화 능력 보유" },
 ];
 
-const skillLevelBar = [
-  { name: "HTML", level: 4 },
-  { name: "CSS", level: 4 },
-  { name: "JavaScript", level: 3 },
-  { name: "TypeScript", level: 2 },
-  { name: "React", level: 4 },
-  { name: "Redux Toolkit", level: 3 },
-  { name: "Axios", level: 4 },
-  { name: "TanStack Query", level: 2 },
-  { name: "Scss", level: 4 },
-  { name: "Emotion", level: 3 },
-  { name: "Figma", level: 2 },
-];
-
 const Left = () => {
+  const [skills, setSkills] = useState([]);
+
+  useEffect(() => {
+    const fetchSkills = async () => {
+      try {
+        const response = await axios.get("/json/skills.json");
+        const skillsData = response.data.map((skill) => ({
+          img: skill.img,
+          name: skill.name,
+          level: Math.ceil(skill.percentage / 20),
+        }));
+        setSkills(skillsData);
+      } catch (error) {
+        console.error("Error fetching skills data:", error);
+      }
+    };
+
+    fetchSkills();
+  }, []);
+
   return (
     <div className="cv__left">
       <div className="cv__profile">
@@ -44,7 +52,7 @@ const Left = () => {
         <ProfileItem
           label="교육이력:"
           value={
-            <>
+            <div className="education-gap">
               <EducationItem
                 date="2024.03 ~ 2024.09"
                 description="기업 요구를 반영한 프로젝트 중심 프론트엔드 React(리액트) 개발자 양성"
@@ -53,7 +61,7 @@ const Left = () => {
                 date="2021.12 ~ 2022.05"
                 description="[과정평가형]정보처리산업기사(자바(Java)프로그래밍 활용 웹개발)A"
               />
-            </>
+            </div>
           }
         />
         <ProfileItem
@@ -87,7 +95,7 @@ const Left = () => {
       </div>
       <div className="cv__skills">
         <SkillLevels levels={skillLevels} />
-        <SkillBars skills={skillLevelBar} />
+        <SkillBars skills={skills} />
       </div>
     </div>
   );
@@ -153,13 +161,18 @@ const SkillLevels = ({ levels }) => (
 
 const SkillBars = ({ skills }) => (
   <ul className="cv__skills__bars">
-    {skills.map((skill) => (
-      <li key={skill.name} className="cv__skill">
-        <div className="cv__skill__name">{skill.name}</div>
-        <div className="cv__skill__levels">
-          {[...Array(skill.level)].map((_, i) => (
-            <div key={i} className="cv__skill__level"></div>
-          ))}
+    {skills.map(({ img, name, level }) => (
+      <li key={name} className="cv__skill">
+        <div>
+          <img src={img} alt="" className="cv__skill__img" />
+        </div>
+        <div className="cv__skill__info">
+          <div className="cv__skill__name">{name}</div>
+          <div className="cv__skill__levels">
+            {[...Array(level)].map((_, i) => (
+              <div key={i} className="cv__skill__level"></div>
+            ))}
+          </div>
         </div>
       </li>
     ))}

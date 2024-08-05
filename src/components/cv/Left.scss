@@ -1,8 +1,10 @@
+$color: hsl(165, 60%, 40%);
+
 .cv__left {
-  width: 300px;
+  width: 250px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   background-color: hsl(217, 18%, 14%);
   padding: 20px;
   border-radius: 20px;
@@ -43,12 +45,10 @@
     gap: 10px;
 
     .cv__portfolio__link {
-      text-decoration: none;
       color: #007bff;
       font-size: 14px;
 
       &:hover {
-        text-decoration: underline;
       }
     }
   }
@@ -65,54 +65,67 @@
 
       .cv__portfolio__project-link {
         color: #007bff;
-
         &:hover {
+          color: hsl(165, 60%, 40%);
         }
       }
     }
   }
 }
 
+// 스킬 설명 텍스트 영역
 .cv__skills {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 
-  .cv__skills__level {
+  &__level {
     font-size: 14px;
     span {
       font-weight: 700;
     }
   }
+}
 
-  .cv__skills__bars {
+// 스킬 표시 전체 영역
+.cv__skills__bars {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+// 스킬 표시 한 줄 영역
+.cv__skill {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  &__img {
+    width: 30px;
+    height: 30px;
+  }
+  &__info {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-
-    .cv__skill {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-
-      .cv__skill__name {
-        flex: 1;
-        font-weight: 700;
-      }
-
-      .cv__skill__levels {
-        flex: 1;
-        display: flex;
-        gap: 4px;
-
-        .cv__skill__level {
-          width: 18px;
-          height: 6px;
-          background-color: #007bff;
-          border-radius: 8px;
-        }
-      }
-    }
+    gap: 8px;
   }
+  &__name {
+  }
+  // 게이지 부분
+  &__levels {
+    display: flex;
+    gap: 4px;
+  }
+  &__level {
+    width: 18px;
+    height: 6px;
+    background-color: #007bff;
+    border-radius: 8px;
+  }
+}
+
+.education-gap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
