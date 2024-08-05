@@ -20,13 +20,24 @@ const Items = ({ projectItems, openModal }) => {
             <div className="portfolio__img-wrapper">
               <img src={img} alt="" className="portfolio__img" />
             </div>
-            <span className="portfolio__category text-cs">{category}</span>
+            <div className="portfolio__category text-cs">
+              <span>{category}</span>
+            </div>
             <h3 className="portfolio__title">{title}</h3>
             <p className="portfolio__description">{description}</p>
-            <a href="" className="link">
-              See Pricing
-              <FaArrowRight className="link__icon" />
-            </a>
+            <div>
+              <ul className="techStack__list">
+                {item.techStack.map((techStack, index) => (
+                  <li key={index} className="techStack__item">
+                    <img src={techStack} alt={techStack} />
+                  </li>
+                ))}
+              </ul>
+              <a href="#" className="link">
+                View More
+                <FaArrowRight className="link__icon" />
+              </a>
+            </div>
           </motion.div>
         );
       })}
