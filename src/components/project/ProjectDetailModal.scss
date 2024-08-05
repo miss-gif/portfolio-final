@@ -12,6 +12,16 @@
   max-height: 80vh;
   height: 100%;
   overflow-y: auto;
+  animation: slide-top 0.3s cubic-bezier(0.25, 0.8, 0.5, 1) both;
+}
+
+@keyframes slide-top {
+  0% {
+    transform: translate(-50%, -50%) translateY(40px);
+  }
+  100% {
+    transform: translate(-50%, -50%) translateY(0);
+  }
 }
 
 .overlay {
