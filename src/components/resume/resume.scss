@@ -1,7 +1,19 @@
+@import "../../../scss/breakPoint";
+
 .resume {
   background-image: var(--second-gradient);
   &__container {
     grid-template-columns: repeat(2, 1fr);
+    @include laptop {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  &__group {
+    @include laptop {
+      padding: 40px 20px;
+      background-color: #333;
+      border-radius: 16px;
+    }
   }
   &__heading {
     text-align: center;
