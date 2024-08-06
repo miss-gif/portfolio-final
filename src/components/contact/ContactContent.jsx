@@ -9,10 +9,10 @@ const ContactContent = () => {
   });
 
   const contactInfo = [
-    { icon: "📍", label: "Address", value: "대구광역시" },
+    { icon: "📍", label: "Address", value: "대구" },
     { icon: "📞", label: "Phone", value: "010-5116-5535" },
     { icon: "✉️", label: "Email", value: "svx327@gmail.com" },
-    { icon: "💼", label: "Github", value: "https://github.com/miss-gif" },
+    { icon: "💼", label: "Github", value: "miss-gif" },
   ];
 
   const handleChange = (e) => {

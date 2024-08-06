@@ -1,3 +1,5 @@
+@import "../../../scss/breakPoint";
+
 .tooltip__container {
   position: relative;
 }
@@ -27,6 +29,9 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
+  @include tablet {
+    display: none;
+  }
 
   &::after {
     content: "";

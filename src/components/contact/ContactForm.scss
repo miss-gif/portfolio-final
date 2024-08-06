@@ -1,5 +1,7 @@
 @import "../../../scss/breakPoint";
 
+$leftWidth: 300px;
+
 .contact-content {
   display: flex;
   justify-content: space-between;
@@ -9,17 +11,20 @@
   }
 
   &__info {
-    width: 300px;
+    width: $leftWidth;
     @include tablet {
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 100%;
     }
+    @include mobile {
+      display: none;
+    }
   }
 
   &__form {
-    width: calc(100% - 300px);
+    width: calc(100% - $leftWidth);
     @include tablet {
       width: 100%;
     }
@@ -31,24 +36,14 @@
   align-items: center;
   margin-bottom: 20px;
 
-  &--address,
-  &--freelance,
-  &--email,
-  &--phone {
-    .contact-info__icon {
-      font-size: 24px;
-      margin-right: 10px;
-    }
+  &__details {
+  }
+  &__label {
+    font-weight: 500;
+  }
 
-    .contact-info__details {
-      .contact-info__label {
-        font-weight: bold;
-      }
-
-      .contact-info__value {
-        color: gray;
-      }
-    }
+  &__value {
+    color: #888;
   }
 }
 
