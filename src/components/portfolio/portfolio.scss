@@ -1,8 +1,17 @@
+@import "../../../scss/breakPoint";
+
 .portfolio {
   background-image: var(--first-gradient);
   &__container {
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
+    @include laptop {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    @include tablet {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 }
 
