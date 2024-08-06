@@ -108,3 +108,13 @@
   font-weight: 700;
   background-color: #007bff;
 }
+
+.project__title-cover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tooltip-btn {
+  position: relative;
+}

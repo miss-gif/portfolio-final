@@ -55,7 +55,7 @@
   &__text {
     font-size: var(--large-font-size);
     margin-block: 40px 28px;
-    max-width: 520px;
+    // max-width: 400px;
   }
 
   &__socials {
@@ -84,7 +84,7 @@
   &__img-wrapper {
     position: relative;
     width: 100%;
-    max-width: 680px;
+    max-width: 600px;
   }
 
   &__banner {
@@ -199,8 +199,8 @@
   &__1 {
     width: 226px;
     height: 226px;
-    top: -6%;
-    right: -6%;
+    top: 0%;
+    right: 0%;
   }
   &__2 {
     bottom: 8%;

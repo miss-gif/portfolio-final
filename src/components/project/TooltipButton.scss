@@ -1,7 +1,5 @@
 .tooltip__container {
   position: relative;
-  display: inline-block;
-  margin: 0 8px;
 }
 
 .tooltip__button {
@@ -9,6 +7,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .tooltip__box {
@@ -16,7 +17,7 @@
   bottom: 130%;
   left: 50%;
   transform: translateX(-50%);
-  width: 600px;
+  width: 200px;
   font-size: 16px;
   background-color: #333;
   color: #fff;
@@ -25,14 +26,14 @@
   z-index: 1;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 
   &::after {
     content: "";
     position: absolute;
     top: 100%;
     left: 50%;
-    margin-left: -5px;
+    transform: translateX(-50%);
     border-width: 5px;
     border-style: solid;
     border-color: #333 transparent transparent transparent;

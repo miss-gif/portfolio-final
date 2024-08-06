@@ -45,10 +45,14 @@ const Project: React.FC = () => {
         item={selectedItem}
       />
       <section className="project section">
-        <h2 className="section__title text-cs" id="project">
-          FE & BE 협업 프로젝트
-          <TooltipButton />
-        </h2>
+        <div className="project__title-cover">
+          <h2 className="section__title text-cs" id="project">
+            FE & BE 협업 프로젝트
+          </h2>
+          <button className="tooltip-btn">
+            <TooltipButton />
+          </button>
+        </div>
         <p className="section__subtitle">
           My <span>역할</span>
         </p>
