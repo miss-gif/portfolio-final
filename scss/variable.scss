@@ -75,9 +75,13 @@ p {
 
 /* 컴포넌트 */
 .container {
-  max-width: 1300px;
-  padding-inline: 12px;
+  max-width: $desktop;
+  padding-inline: 24px;
   margin-inline: auto;
+  @include laptop {
+    max-width: $desktop;
+    background-color: orange;
+  }
 }
 
 .grid {
