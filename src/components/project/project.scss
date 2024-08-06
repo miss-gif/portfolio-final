@@ -32,6 +32,7 @@
 /* ltems */
 .project {
   &__img-wrapper {
+    position: relative;
     border-radius: 18px;
     overflow: hidden;
   }
@@ -76,4 +77,22 @@
   img {
     width: 40px;
   }
+}
+
+.project__tags {
+  position: absolute;
+  display: flex;
+  gap: 4px;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding: 8px;
+}
+
+.project__tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 700;
+  background-color: #007bff;
 }

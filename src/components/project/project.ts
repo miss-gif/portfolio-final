@@ -17,6 +17,7 @@ import team2_7 from "../../assets/team2/7.png";
 // 객체 타입 정의
 interface Project {
   id: number;
+  tag: string[];
   img: string[];
   date: string;
   title: string;
@@ -32,6 +33,7 @@ interface Project {
 export const project: Project[] = [
   {
     id: 1,
+    tag: ["신규", "최신"],
     img: [team2_1, team2_2, team2_3, team2_4, team2_5, team2_6, team2_7],
     date: "2024.07.24 ~ 2024.8.23",
     title: "주문이요 (음식주문 플랫폼)",
@@ -72,6 +74,7 @@ export const project: Project[] = [
   },
   {
     id: 2,
+    tag: ["신규", "최신"],
     img: [team2_1, team2_2, team2_3, team2_4, team2_5, team2_6, team2_7],
     date: "2024.06.24 ~ 2024.07.23",
     title: "주문이요 (음식주문 플랫폼)",
@@ -116,6 +119,7 @@ export const project: Project[] = [
   },
   {
     id: 3,
+    tag: ["최근"],
     img: [team1],
     date: "2024.05.24 ~ 2024.6.23",
     title: "Plant Diary (식물관리 서비스)",

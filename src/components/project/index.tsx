@@ -8,6 +8,7 @@ import "./project.scss";
 // 타입 정의
 interface ProjectItem {
   id: number;
+  tag: string[];
   img: string[];
   date: string;
   title: string;
@@ -66,6 +67,13 @@ const Project: React.FC = () => {
                       alt={item.title}
                       className="project__img"
                     />
+                    <ul className="project__tags">
+                      {item.tag.map((tag, index) => (
+                        <li key={index} className="project__tag">
+                          {tag}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                   <span className="project__category text-cs">{item.date}</span>
                   <h3 className="project__title">{item.title}</h3>
