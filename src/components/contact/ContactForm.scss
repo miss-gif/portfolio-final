@@ -1,14 +1,28 @@
+@import "../../../scss/breakPoint";
+
 .contact-content {
   display: flex;
   justify-content: space-between;
   gap: 8px;
+  @include tablet {
+    flex-direction: column;
+  }
 
   &__info {
     width: 300px;
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
   }
 
   &__form {
     width: calc(100% - 300px);
+    @include tablet {
+      width: 100%;
+    }
   }
 }
 
