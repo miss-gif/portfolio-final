@@ -1,3 +1,5 @@
+@import "../../../scss/breakPoint";
+
 .modal {
   position: absolute;
   top: 50%;
@@ -8,7 +10,7 @@
   border-radius: 4px;
   outline: none;
   max-width: 1200px;
-  width: 100%;
+  width: 90%;
   max-height: 80vh;
   height: 100%;
   overflow-y: auto;
@@ -37,4 +39,7 @@
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  @include mobile {
+    flex-direction: column;
+  }
 }
