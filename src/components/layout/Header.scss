@@ -84,3 +84,67 @@
     width: 100%;
   }
 }
+// 모바일 nav
+.nav__mobile {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow: hidden;
+  transition: transform 0.5s ease; // transform을 애니메이션
+  text-transform: uppercase;
+  transform: translateX(100%); // 기본 상태에서는 화면 밖으로 이동
+  font-weight: 500;
+  font-size: 2rem;
+
+  &__list {
+    position: absolute; // changed to absolute
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+
+    a {
+      display: block;
+      padding: 1rem;
+      color: #fff;
+      transition: color 0.3s ease;
+
+      &:hover,
+      &:focus {
+        color: #29a385;
+      }
+    }
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+    padding: 3rem;
+    font-size: 4rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  // 열림 상태 스타일
+  &.open {
+    transform: translateX(0); // 열릴 때 화면에 표시
+  }
+}
+
+.menu {
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  @include tablet {
+    display: flex;
+  }
+}
