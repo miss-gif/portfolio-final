@@ -78,10 +78,6 @@ p {
   max-width: $desktop;
   padding-inline: 24px;
   margin-inline: auto;
-  @include laptop {
-    max-width: $desktop;
-    background-color: orange;
-  }
 }
 
 .grid {

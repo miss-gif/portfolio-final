@@ -18,8 +18,8 @@ const Home = () => {
 
   return (
     <section className="home" id="home">
-      <div className="home__wrapper">
-        <div className="home__container container">
+      <div className="home__container container">
+        <div className="home__left">
           <p className="home__subtitle text-cs">
             안녕하세요. <span>저는</span>
           </p>
@@ -31,42 +31,9 @@ const Home = () => {
               리액트 <b>웹 개발자</b>
             </span>
           </p>
-          <div className="home__img-wrapper">
-            {/* 이미지 영역 */}
-            <div
-              className={`home__banner ${isFlipped ? "flipped" : ""}`}
-              onClick={handleBannerClick}
-              title="Click!"
-            >
-              <div className="home__banner__front">
-                <img src="" alt="" className="home__profile" />
-              </div>
-              <div className="home__banner__back">
-                <img src="" alt="" className="home__profile" />
-              </div>
-            </div>
-            <p className="home__data home__data-one">
-              <span className="text-lg">
-                1 <b>+</b>
-              </span>
-              <span className="text-sm text-cs">
-                Years of <span>Experience</span>
-              </span>
-            </p>
-
-            <p className="home__data home__data-two">
-              <span className="text-lg">10</span>
-              <span className="text-sm text-cs">
-                Completed <span>Projects</span>
-              </span>
-            </p>
-
-            <img src={shapeOne} alt="" className="shape shape__1" />
-            <img src={shapeTwo} alt="" className="shape shape__2" />
-            <img src={shapeTwo} alt="" className="shape shape__3" />
-          </div>
-
+          {/* 설명 */}
           <p className="home__text">{home.description}</p>
+          {/* 버튼2 */}
           <div className="home__socials">
             <a
               href="https://github.com/miss-gif"
@@ -85,6 +52,7 @@ const Home = () => {
               <RiNotionFill fontSize={32} />
             </a>
           </div>
+          {/* 버튼3 */}
           <div className="home__btns">
             <Link to="/cv" className="btn text-cs">
               View Cv
@@ -98,7 +66,43 @@ const Home = () => {
             </a>
           </div>
         </div>
+        <div className="home__img-wrapper">
+          {/* 이미지 영역 */}
+          <div
+            className={`home__banner ${isFlipped ? "flipped" : ""}`}
+            onClick={handleBannerClick}
+            title="Click!"
+          >
+            <div className="home__banner__front">
+              <img src="" alt="" className="home__profile" />
+            </div>
+            <div className="home__banner__back">
+              <img src="" alt="" className="home__profile" />
+            </div>
+          </div>
+          <p className="home__data home__data-one">
+            <span className="text-lg">
+              1 <b>+</b>
+            </span>
+            <span className="text-sm text-cs">
+              Years of <span>Experience</span>
+            </span>
+          </p>
+
+          <p className="home__data home__data-two">
+            <span className="text-lg">10</span>
+            <span className="text-sm text-cs">
+              Completed <span>Projects</span>
+            </span>
+          </p>
+
+          <img src={shapeOne} alt="" className="shape shape__1" />
+          <img src={shapeTwo} alt="" className="shape shape__2" />
+          <img src={shapeTwo} alt="" className="shape shape__3" />
+        </div>
       </div>
+
+      {/* 스크롤 다운 */}
       <a
         className="scroll-down"
         href="#services"
