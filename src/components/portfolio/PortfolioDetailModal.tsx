@@ -1,5 +1,6 @@
 import Modal from "react-modal";
 import "./PortfolioDetailModal.scss";
+import { IoIosClose } from "react-icons/io";
 
 // item의 타입 정의
 interface PortfolioItem {
@@ -41,7 +42,9 @@ const PortfolioDetailModal: React.FC<PortfolioDetailModalProps> = ({
                 </li>
               ))}
             </ul>
-            <button onClick={onRequestClose}>확인</button>
+            <button className="close-btn" onClick={onRequestClose}>
+              <IoIosClose />
+            </button>
           </div>
         </div>
       ) : (

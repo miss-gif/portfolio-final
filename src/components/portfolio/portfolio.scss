@@ -56,6 +56,11 @@
   }
   &__description {
     min-height: 125px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5; /* 숫자로 줄 갯수를 조절 */
   }
 }
 

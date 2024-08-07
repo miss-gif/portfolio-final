@@ -2,7 +2,7 @@ import Project1 from "../../assets/project1.png";
 import Project2 from "../../assets/project2.png";
 import Project3 from "../../assets/project3.png";
 import Project4 from "../../assets/project4.png";
-import Project5 from "../../assets/project5.png";
+import Project5 from "../../assets/project5.gif";
 import Project6 from "../../assets/project6.png";
 import Project7 from "../../assets/project7.png";
 import Project8 from "../../assets/project8.png";
@@ -42,7 +42,11 @@ export const portfolio: PortfolioItem[] = [
     category: ["HTML"],
     techStack: [html, sass, js],
     title: "애플 웹사이트",
-    description: "인터랙션 구현",
+    description: `스크롤 인터랙션 구현 원리와 구현 실습
+    고해상도 비디오 인터랙션과 스크롤 액션과 연동
+    위치와 크기 계산을 이용한 스크롤 인터랙션 구현 실습
+    더 부드럽게 고화징 비디오 제어하기
+    SVG 애니메이션 만들기`,
   },
   {
     id: 2,
@@ -71,10 +75,11 @@ export const portfolio: PortfolioItem[] = [
   {
     id: 5,
     img: Project5,
-    category: ["HTML", "CSS", "JS"],
+    category: ["HTML", "SCSS", "JS"],
     techStack: [html, sass, js],
-    title: "스타벅스 클론코딩",
-    description: "스타벅스 홈페이지를 클론 코딩",
+    title: "스타벅스 홈페이지 클론 코딩",
+    description: `스타벅스 홈페이지의 레이아웃 구조를 분석하고, HTML, CSS를 활용하여 정확하게 구현했습니다. 또한, JavaScript를 활용하여 간단한 애니메이션 효과를 구현하며 웹 개발의 재미를 느꼈습니다.
+    패스트캠퍼스 강의를 통해 학습한 내용을 바탕으로 스타벅스 홈페이지를 3회 이상 반복하여 구현하며, 실전적인 웹 개발 역량을 강화했습니다. 특히, 강의 코드에 의존하지 않고 직접 코드를 작성하며 문제 해결 능력을 키웠습니다.`,
   },
   {
     id: 6,
