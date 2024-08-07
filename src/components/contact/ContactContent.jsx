@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios"; // axios를 import합니다.
 import "./ContactContent.scss";
 
 const ContactContent = () => {
@@ -21,30 +22,33 @@ const ContactContent = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
 
-    fetch(form.action, {
-      method: form.method,
-      body: new FormData(form),
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        if (response.result === "success") {
-          setComplete(true);
-          setFormData({
-            name: "",
-            email: "",
-            message: "",
-          });
-        } else {
-          console.error("Form submission error:", response);
-        }
-      })
-      .catch((error) => {
-        console.error("Form submission failed:", error);
+    // FormData 객체를 생성합니다.
+    const data = new FormData(form);
+
+    try {
+      const response = await axios({
+        method: form.method,
+        url: form.action,
+        data: data,
       });
+
+      if (response.data.result === "success") {
+        setComplete(true);
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
+      } else {
+        console.error("Form submission error:", response.data);
+      }
+    } catch (error) {
+      console.error("Form submission failed:", error);
+    }
   };
 
   return (
