@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios"; // axios를 import합니다.
 import "./ContactContent.scss";
+import { FaPhone } from "react-icons/fa6";
+import { IoMail } from "react-icons/io5";
+import { FaGithub } from "react-icons/fa";
 
 const ContactContent = () => {
   const [formData, setFormData] = useState({
@@ -11,10 +14,9 @@ const ContactContent = () => {
   const [complete, setComplete] = useState(false);
 
   const contactInfo = [
-    { icon: "📍", label: "Address", value: "대구" },
-    { icon: "📞", label: "Phone", value: "010-5116-5535" },
-    { icon: "✉️", label: "Email", value: "svx327@gmail.com" },
-    { icon: "💼", label: "Github", value: "miss-gif" },
+    { icon: <FaPhone />, label: "Phone", value: "010-5116-5535" },
+    { icon: <IoMail />, label: "Email", value: "svx327@gmail.com" },
+    { icon: <FaGithub />, label: "Github", value: "miss-gif" },
   ];
 
   const handleChange = (e) => {

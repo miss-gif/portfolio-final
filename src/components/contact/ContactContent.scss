@@ -31,11 +31,16 @@ $leftWidth: 300px;
   }
 }
 
-.contact-info__item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-
+.contact-info {
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  &__icon {
+    font-size: 24px;
+  }
   &__details {
   }
   &__label {
@@ -43,6 +48,7 @@ $leftWidth: 300px;
   }
 
   &__value {
+    font-size: 1rem;
     color: #888;
   }
 }
