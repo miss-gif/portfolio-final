@@ -43,3 +43,13 @@
     flex-direction: column;
   }
 }
+
+.project-modal__info {
+  position: relative;
+}
+
+.modal__close-btn {
+  position: absolute;
+  right: 0;
+  font-size: 30px;
+}

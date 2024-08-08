@@ -42,7 +42,7 @@ const PortfolioDetailModal: React.FC<PortfolioDetailModalProps> = ({
                 </li>
               ))}
             </ul>
-            <button className="close-btn" onClick={onRequestClose}>
+            <button className="modal__close-btn" onClick={onRequestClose}>
               <IoIosClose />
             </button>
           </div>

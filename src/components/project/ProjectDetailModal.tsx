@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import "./ProjectDetailModal.scss";
+import { IoIosClose } from "react-icons/io";
 
 // item의 타입 정의
 interface ProjectItem {
@@ -134,6 +135,9 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 깃헙 사이트
               </a>
             </div>
+            <button className="modal__close-btn" onClick={onRequestClose}>
+              <IoIosClose />
+            </button>
           </div>
         </div>
       ) : (
