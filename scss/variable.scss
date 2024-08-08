@@ -1,12 +1,13 @@
 // variable
 
 :root {
-  --primary-color: hsl(165, 60%, 40%);
+  --primary-color: #29a385;
   --title-color: hsl(0, 0%, 100%);
   --text-color: hsl(0, 0%, 92%);
-  --bg-color: hsl(216, 18%, 15%);
+  --bg-color: #1f252d;
   --bg-color-alt: hsl(213, 10%, 21%);
-  --container-color: hsl(217, 18%, 14%);
+  --bg-color-alt: orange;
+  --container-color: #0f1520;
   --border-color: hsl(210, 2%, 65%);
   --first-gradient: linear-gradient(
     0deg,
@@ -27,19 +28,19 @@
   --body-font: "Jost", sans-serif;
   --second-font: "Caveat", cursive;
 
-  --biggest-font-size: 90px;
-  --h1-font-size: 44px;
-  --h2-font-size: 30px;
-  --h3-font-size: 28px;
-  --h4-font-size: 24px;
-  --h5-font-size: 22px;
-  --largest-font-size: 21px;
-  --larger-font-size: 20px;
-  --large-font-size: 18px;
-  --normal-font-size: 16px;
-  --small-font-size: 15px;
-  --smaller-font-size: 14px;
-  --tiny-font-size: 13px;
+  --biggest-font-size: 5.625rem;
+  --h1-font-size: 2.75rem;
+  --h2-font-size: 1.875rem;
+  --h3-font-size: 1.75rem;
+  --h4-font-size: 1.5rem;
+  --h5-font-size: 1.375rem;
+  --largest-font-size: 1.3125rem;
+  --larger-font-size: 1.25rem;
+  --large-font-size: 1.125rem;
+  --normal-font-size: 1rem;
+  --small-font-size: 0.9375rem;
+  --smaller-font-size: 0.875rem;
+  --tiny-font-size: 0.8125rem;
   /* 그림자 */
   --shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   /* 전환 */
