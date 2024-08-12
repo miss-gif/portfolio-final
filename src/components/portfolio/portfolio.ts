@@ -37,9 +37,24 @@ interface PortfolioItem {
 
 export const portfolio: PortfolioItem[] = [
   {
+    id: 0,
+    img: "",
+    category: [
+      "리액트",
+      "비동기통신",
+      "라우터",
+      "전역상태관리",
+      "타입스크립트",
+      "반응형",
+    ],
+    techStack: [react, sass, reactrouter, redux, axios, ts],
+    title: "포트폴리오",
+    description: `현재까지 작업한 작업물을 정리한 웹사이트입니다`,
+  },
+  {
     id: 1,
     img: Project1,
-    category: ["HTML"],
+    category: ["퍼블리싱", "인터랙션", "반응형"],
     techStack: [html, sass, js],
     title: "애플 웹사이트",
     description: `스크롤 인터랙션 구현 원리와 구현 실습
@@ -51,7 +66,7 @@ export const portfolio: PortfolioItem[] = [
   {
     id: 2,
     img: Project2,
-    category: ["React", "Typescript"],
+    category: ["퍼블리싱", "반응형"],
     techStack: [html, sass, js],
     title: "Gooir",
     description: "디자인 파일을 제공 받아 제작됨",
@@ -59,7 +74,7 @@ export const portfolio: PortfolioItem[] = [
   {
     id: 3,
     img: Project3,
-    category: ["React", "Redux", "반응형"],
+    category: ["리액트", "라우터", "반응형"],
     techStack: [react, reactrouter, sass, emotion],
     title: "감정 다이어리",
     description: "감정 다이어리 웹앱",
@@ -67,7 +82,7 @@ export const portfolio: PortfolioItem[] = [
   {
     id: 4,
     img: Project4,
-    category: ["React", "Recoil", "SCSS"],
+    category: ["리액트", "전역상태관리", "라우터"],
     techStack: [react, reactrouter, sass, emotion],
     title: "나라 정보를 검색하는..",
     description: "API를 사용해서 간단한 나라 정보를 받는..",
@@ -75,7 +90,7 @@ export const portfolio: PortfolioItem[] = [
   {
     id: 5,
     img: Project5,
-    category: ["HTML", "SCSS", "JS"],
+    category: ["퍼블리싱"],
     techStack: [html, sass, js],
     title: "스타벅스 홈페이지 클론 코딩",
     description: `스타벅스 홈페이지의 레이아웃 구조를 분석하고, HTML, CSS를 활용하여 정확하게 구현했습니다. 또한, JavaScript를 활용하여 간단한 애니메이션 효과를 구현하며 웹 개발의 재미를 느꼈습니다.
@@ -84,7 +99,7 @@ export const portfolio: PortfolioItem[] = [
   {
     id: 6,
     img: Project6,
-    category: ["HTML", "CSS", "반응형"],
+    category: ["퍼블리싱"],
     techStack: [html, sass],
     title: "쇼핑몰",
     description: "일반적인 쇼핑몰의..",
@@ -92,7 +107,7 @@ export const portfolio: PortfolioItem[] = [
   {
     id: 7,
     img: Project7,
-    category: ["HTML", "CSS", "반응형"],
+    category: ["리액트", "라우터", "전역상태관리"],
     techStack: [react, reactrouter, sass, emotion],
     title: "디즈니 플러스 클론코딩",
     description: "디즈니 플러스 클론코딩..",
@@ -100,7 +115,7 @@ export const portfolio: PortfolioItem[] = [
   {
     id: 8,
     img: Project8,
-    category: ["HTML", "CSS", "반응형"],
+    category: ["리액트", "반응형", "마이그레이션"],
     techStack: [react],
     title: "카카오브래인 클론코딩",
     description: "카카오브래인 클론코딩",
@@ -108,24 +123,24 @@ export const portfolio: PortfolioItem[] = [
   {
     id: 9,
     img: Project9,
-    category: ["HTML", "CSS", "반응형"],
-    techStack: [react],
+    category: ["퍼블리싱", "반응형"],
+    techStack: [html, sass, js],
     title: "메카스마",
     description: "메카스마 클론코딩",
   },
   {
     id: 10,
     img: Project10,
-    category: ["HTML", "CSS", "반응형"],
-    techStack: [react],
+    category: ["퍼블리싱", "반응형"],
+    techStack: [html, sass, js],
     title: "메가박스",
     description: "메가박스 클론코딩",
   },
   {
     id: 11,
     img: Project11,
-    category: ["HTML", "CSS", "반응형"],
-    techStack: [react],
+    category: ["퍼블리싱", "반응형"],
+    techStack: [html, sass, js],
     title: "표준 웹사이트",
     description: "표준 웹사이트의 기본형을",
   },
