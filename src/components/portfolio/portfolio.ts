@@ -82,7 +82,7 @@ export const portfolio: PortfolioItem[] = [
   {
     id: 4,
     img: Project4,
-    category: ["리액트", "전역상태관리", "라우터"],
+    category: ["리액트", "전역상태관리", "라우터", "비동기통신"],
     techStack: [react, reactrouter, sass, emotion],
     title: "나라 정보를 검색하는..",
     description: "API를 사용해서 간단한 나라 정보를 받는..",
@@ -107,7 +107,7 @@ export const portfolio: PortfolioItem[] = [
   {
     id: 7,
     img: Project7,
-    category: ["리액트", "라우터", "전역상태관리"],
+    category: ["리액트", "라우터", "전역상태관리", "비동기통신"],
     techStack: [react, reactrouter, sass, emotion],
     title: "디즈니 플러스 클론코딩",
     description: "디즈니 플러스 클론코딩..",
