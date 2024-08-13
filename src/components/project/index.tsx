@@ -54,7 +54,7 @@ const Project: React.FC = () => {
           </button>
         </div>
         <p className="section__subtitle">
-          My <span>역할</span>
+          My <span>role</span>
         </p>
         <div className="project__container container">
           <ul className="project__list">

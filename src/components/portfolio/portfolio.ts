@@ -47,7 +47,7 @@ export const portfolio: PortfolioItem[] = [
       "타입스크립트",
       "반응형",
     ],
-    techStack: [react, sass, reactrouter, redux, axios, ts],
+    techStack: [react, sass, reactrouter, axios, ts, emotion],
     title: "포트폴리오",
     description: `현재까지 작업한 작업물을 정리한 웹사이트입니다`,
   },

@@ -14,7 +14,7 @@ const Services = () => {
         What I do
       </h2>
       <p className="section__subtitle">
-        My <span>경험</span>
+        My <span>service</span>
       </p>
       <Swiper
         modules={[Pagination]}

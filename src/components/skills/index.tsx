@@ -45,7 +45,7 @@ const Skills = () => {
         Professional Skills
       </h2>
       <p className="section__subtitle">
-        My <span>기술스택</span>
+        My <span>techStack</span>
       </p>
       {loading ? (
         <p>Loading...</p>
