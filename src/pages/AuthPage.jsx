@@ -1,10 +1,13 @@
 import React from "react";
-import Login from "../components/auth/Login";
+import Login from "../components/auth/Login.jsx";
+import "./AuthPage.scss";
 
 const AuthPage = () => {
   return (
     <>
-      <Login />
+      <div className="auth-page">
+        <Login />
+      </div>
     </>
   );
 };
