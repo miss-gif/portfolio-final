@@ -3,6 +3,7 @@ import Cv from "./components/cv/index";
 import RootLayout from "./components/layout/RootLayout";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
+import Test from "./pages/Test";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
         <Route index element={<HomePage />} />
       </Route>
       <Route path="/cv" element={<Cv />} />
+      <Route path="/test" element={<Test />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
