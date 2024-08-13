@@ -17,8 +17,8 @@ const Login = () => {
   const [isScene, setIsScene] = useState("login");
   // 입력 항목 상태관리
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("test@naver.com");
-  const [pw, setPw] = useState("test!1234");
+  const [email, setEmail] = useState("test30@naver.com");
+  const [pw, setPw] = useState("test@naver.com");
   // Storage 보관용 원본 파일
   const [image, setImage] = useState(null);
   // 사용자 이미지 미리보기
@@ -68,7 +68,7 @@ const Login = () => {
       await signInWithEmailAndPassword(auth, email, pw);
       // 추후 useAuth 의 user 항목을 true 코드 위치;
       console.log("로그인 성공");
-      navigate("/");
+      navigate("/profile");
     } catch (error) {
       // console.log("error.code ", error.code);
       // console.log("error.message ", error.message);
