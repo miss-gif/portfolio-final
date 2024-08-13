@@ -3,12 +3,15 @@ import { sections } from "../GlobalNav/navSection";
 import useActiveSection from "../../hooks/useActiveSection";
 import "./Header.scss";
 import { IoIosClose, IoIosMenu } from "react-icons/io";
+import useAuth from "../../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 type SectionType = string;
 
 const Header: React.FC = () => {
   const [isNavOpen, setIsNavOpen] = useState(false); // nav__mobile 열림 상태
   const { activeSection, handleClick } = useActiveSection(sections);
+  const { user } = useAuth();
 
   // 메뉴 열기
   const openNav = () => {
@@ -57,6 +60,9 @@ const Header: React.FC = () => {
             ))}
           </ul>
         </nav>
+
+        {useAuth ? <Link to="/auth">로그인</Link> : <div>로그아웃</div>}
+
         <nav className={`nav__mobile ${isNavOpen ? "open" : ""}`}>
           <button className="close-btn" onClick={closeNav}>
             <IoIosClose />

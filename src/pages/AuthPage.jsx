@@ -1,32 +1,10 @@
 import React from "react";
+import Login from "../components/auth/Login";
 
 const AuthPage = () => {
   return (
     <>
-      <main>
-        <div>123</div>
-        <div>dd</div>
-        <div>dd</div>
-        <div>dd</div>
-        <div>dd</div>
-        <div>dd</div>
-        <div>dd</div>
-        <div>dd</div>
-        <div>dd</div>
-        <div>dd</div>
-        <div>dd</div>
-        <div>dd</div>
-        <div>dd</div>
-        <div>dd</div>
-        <div>dd</div>
-        <div>dd</div>
-        <div>dd</div>
-        <div>dd</div>
-        <div>dd</div>
-        <div>dd</div>
-        <div>dd</div>
-        <div>dd</div>
-      </main>
+      <Login />
     </>
   );
 };
