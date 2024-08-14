@@ -2,9 +2,10 @@ import axios from "../../assets/skill/Axios.svg";
 import emotion from "../../assets/skill/Emotion-Light.svg";
 import mui from "../../assets/skill/MaterialUI-Light.svg";
 import react from "../../assets/skill/React.svg";
-import reactrouter from "../../assets/skill/ReactRouter.svg";
+import reactrouter from "../../assets/skill/React-Router.svg";
 import redux from "../../assets/skill/Redux.svg";
 import sass from "../../assets/skill/Sass.svg";
+
 import team1 from "../../assets/team1.png";
 import team2_1 from "../../assets/team2/1.png";
 import team2_2 from "../../assets/team2/2.png";

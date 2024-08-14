@@ -18,13 +18,17 @@ import ts from "../../assets/skill/TypeScript.svg";
 import redux from "../../assets/skill/Redux.svg";
 import zustand from "../../assets/skill/Zustand.svg";
 import axios from "../../assets/skill/Axios.svg";
-import reactQuery from "../../assets/skill/react-query.svg";
+import reactQuery from "../../assets/skill/React-Query.svg";
 import figma from "../../assets/skill/Figma.svg";
 import sass from "../../assets/skill/Sass.svg";
 import emotion from "../../assets/skill/Emotion-Light.svg";
 import swagger from "../../assets/skill/Swagger.svg";
 import mui from "../../assets/skill/MaterialUI-Light.svg";
-import reactrouter from "../../assets/skill/ReactRouter.svg";
+import reactrouter from "../../assets/skill/React-Router.svg";
+import firebase from "../../assets/skill/Firebase-Light.svg";
+import tailwind from "../../assets/skill/TailwindCSS-Light.svg";
+import zod from "../../assets/skill/Zod.svg";
+import reacthookform from "../../assets/skill/React-Hook-Form.svg";
 
 interface PortfolioItem {
   id: number;
@@ -47,7 +51,19 @@ export const portfolio: PortfolioItem[] = [
       "타입스크립트",
       "반응형",
     ],
-    techStack: [react, sass, reactrouter, axios, ts, emotion],
+    techStack: [
+      react,
+      sass,
+      reactrouter,
+      axios,
+      ts,
+      emotion,
+      zustand,
+      firebase,
+      tailwind,
+      reacthookform,
+      zod,
+    ],
     title: "포트폴리오",
     description: `현재까지 작업한 작업물을 정리한 웹사이트입니다`,
   },
