@@ -12,7 +12,7 @@ const Profile = () => {
 
   const navigate = useNavigate();
   const handleClickEdit = () => {
-    navigate("/edit-profile");
+    navigate("/profile-edit");
   };
 
   const handleClickDeleteUser = async () => {
@@ -64,7 +64,6 @@ const Profile = () => {
             <FaUserCircle className="w-32 h-32 text-gray-400 mr-2" />
           )}
           <p className="text-lg mb-2">이름 : {userData?.name}</p>
-          <p>dddx텍스트</p>
           <p className="text-lg mb-4">이메일 : {userData?.email}</p>
           <div className="flex space-x-4">
             <button
