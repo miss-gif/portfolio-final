@@ -1,17 +1,27 @@
+import { signOut } from "firebase/auth";
 import React, { useState } from "react";
-import { sections } from "../GlobalNav/navSection";
-import useActiveSection from "../../hooks/useActiveSection";
-import "./Header.scss";
 import { IoIosClose, IoIosMenu } from "react-icons/io";
+import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../../firebaseConfig";
+import useActiveSection from "../../hooks/useActiveSection";
 import useAuth from "../../hooks/useAuth";
-import { Link } from "react-router-dom";
+import { sections } from "../GlobalNav/navSection";
+import "./Header.scss";
 
 type SectionType = string;
 
 const Header: React.FC = () => {
+  const navigate = useNavigate();
   const [isNavOpen, setIsNavOpen] = useState(false); // nav__mobile 열림 상태
   const { activeSection, handleClick } = useActiveSection(sections);
-  const { user } = useAuth();
+  const { userCurrent, userData, setUserCurrent } = useAuth();
+  const handleLogout = async () => {
+    // FB 에서 로그아웃
+    await signOut(auth);
+    setUserCurrent(null);
+    // 로그인으로 이동
+    navigate("/");
+  };
 
   // 메뉴 열기
   const openNav = () => {
@@ -61,7 +71,18 @@ const Header: React.FC = () => {
           </ul>
         </nav>
 
-        {useAuth ? <Link to="/auth">로그인</Link> : <div>로그아웃</div>}
+        {!userCurrent ? (
+          <Link to="/auth">로그인</Link>
+        ) : (
+          <button
+            onClick={() => {
+              handleLogout();
+            }}
+            className="p-2 bg-red-500 rounded text-white hover:bg-red-600"
+          >
+            로그아웃
+          </button>
+        )}
 
         <nav className={`nav__mobile ${isNavOpen ? "open" : ""}`}>
           <button className="close-btn" onClick={closeNav}>
