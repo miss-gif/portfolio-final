@@ -1,84 +1,97 @@
-// 공통 CSS
-
-.inner {
-  max-width: 768px;
-  width: 100%;
-  margin: 0 auto;
+.notice__container {
+  padding: 20px;
 }
 
-.hidden {
-  display: none;
-}
-
-.btn {
-  padding: 8px 16px;
-  background-color: #4caf50;
-  color: white;
-  border-radius: 5px;
-}
-
-// CSS
-
-.notice {
+.notice__wrapper {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  &__top {
-    display: flex;
-    justify-content: space-between;
-    &__icon {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+}
+
+.notice__header {
+  display: flex;
+  justify-content: space-between;
+
+  &__btn {
+    padding: 8px 16px;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
   }
-  &__center {
-    width: 100%;
-    border-collapse: collapse;
-    th,
-    td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: center;
-    }
-    th {
-      background-color: #f2f2f2;
-    }
-  }
-  &__bottom {
+
+  &__actions {
     display: flex;
-    justify-content: end;
-  }
-  &__pagination {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-    > button {
-      margin: 0 5px;
-      padding: 8px 16px;
-      text-decoration: none;
-      color: #333;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-    }
+    align-items: center;
+    gap: 10px;
   }
 }
 
-.search-container {
+.notice__table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+}
+
+.notice__footer {
+  display: flex;
+  justify-content: end;
+
+  &__btn {
+    padding: 8px 16px;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.notice__pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+
+  > button {
+    margin: 0 5px;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+.notice__search {
   display: flex;
   justify-content: center;
   gap: 10px;
+
   input[type="text"] {
     padding: 8px;
     width: 200px;
     border: 1px solid #ddd;
     border-radius: 5px;
   }
+
   button {
     padding: 8px 16px;
     background-color: #4caf50;
     color: white;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
   }
 }

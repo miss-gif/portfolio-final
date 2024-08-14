@@ -39,20 +39,18 @@ function Notice({ posts }) {
 
   return (
     <div className="inner">
-      <article className="notice">
+      <article className="notice__wrapper">
         <h2>게시판</h2>
-        <div className="notice__top">
-          <button className="best-post btn">추천글</button>
-          <div className="notice__top__icon">
-            {/* <button>뷰icon</button> */}
-            {/* <button>뷰icon</button> */}
-            <Link to="/notice/write" className="btn">
+        <div className="notice__header">
+          <button className="notice__header__btn best-post">추천글</button>
+          <div className="notice__header__actions">
+            <Link to="/notice/write" className="notice__header__btn">
               글쓰기
             </Link>
           </div>
         </div>
 
-        <table className="notice__center">
+        <table className="notice__table">
           <thead>
             <tr>
               <th>번호</th>
@@ -78,8 +76,8 @@ function Notice({ posts }) {
           </tbody>
         </table>
 
-        <div className="notice__bottom">
-          <Link to="/notice/write" className="btn">
+        <div className="notice__footer">
+          <Link to="/notice/write" className="notice__footer__btn">
             글쓰기
           </Link>
         </div>
@@ -92,7 +90,7 @@ function Notice({ posts }) {
           ))}
         </div>
 
-        <div className="search-container">
+        <div className="notice__search">
           <input
             type="text"
             placeholder="검색어를 입력하세요"

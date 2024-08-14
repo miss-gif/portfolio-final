@@ -71,6 +71,8 @@ const Header: React.FC = () => {
           </ul>
         </nav>
 
+        <a href="/notice">게시판</a>
+
         {!userCurrent ? (
           <Link to="/auth">로그인</Link>
         ) : (
