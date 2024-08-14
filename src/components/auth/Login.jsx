@@ -14,26 +14,13 @@ import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-// 로그인 입력 폼의 기본값
-const initLoginState = {
-  email: "",
-  pw: "",
-};
-
-// 회원가입 입력 폼의 기본값
-const initJoinState = {
-  name: "",
-  email: "",
-  pw: "",
-  image: null,
-};
-
-// 상태 관리를 위한 zustand 스토어
+// Zustand 상태 관리
 const useStore = create((set) => ({
   rUserData: null,
   setRUserData: (data) => set({ rUserData: data }),
 }));
 
+// 로그인 및 회원가입 유효성 검사 스키마
 const loginSchema = z.object({
   email: z
     .string()
@@ -57,309 +44,192 @@ const joinSchema = z.object({
     .max(12, "비밀번호는 최대 12자입니다.")
     .regex(
       /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{6,}[^\s]*$/,
-      "알파벳, 숫자, 공백을 제외한 특수문자를 모두 포함한 6자리 이상 입력해주세요"
+      "알파벳, 숫자, 특수문자를 포함해야 합니다."
     ),
 });
 
+// 입력 필드 컴포넌트
+const InputField = ({ label, register, error, ...props }) => (
+  <div className="mb-2 w-80">
+    <label className="block text-gray-700">{label}</label>
+    <input
+      {...register}
+      {...props}
+      className="mt-1 p-2 border border-gray-300 rounded w-full"
+    />
+    {error && <span className="text-red-500">{error.message}</span>}
+  </div>
+);
+
 const Login = () => {
   const loginForm = useForm({
-    defaultValues: initLoginState,
+    defaultValues: { email: "", pw: "" },
     resolver: zodResolver(loginSchema),
     mode: "onChange",
   });
-
   const joinForm = useForm({
-    defaultValues: initJoinState,
+    defaultValues: { name: "", email: "", pw: "", image: null },
     resolver: zodResolver(joinSchema),
     mode: "onChange",
   });
-
   const { userCurrent, setUserCurrent } = useAuth();
   const { rUserData, setRUserData } = useStore();
   const navigate = useNavigate();
 
-  // UI 상태 관리
   const [isScene, setIsScene] = useState("login");
   const [previewImage, setPreviewImage] = useState(null);
   const [error, setError] = useState("");
 
-  // 입력 항목 상태관리
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [pw, setPw] = useState("");
-  const [image, setImage] = useState(null);
-
-  // 이미지 파일 선택 및 미리보기 설정
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      joinForm.setValue("image", file);
+      joinForm.setValue("image", file); // 이미지 파일 저장
       const reader = new FileReader();
       reader.onloadend = () => setPreviewImage(reader.result);
       reader.readAsDataURL(file);
+      console.log("이미지 파일 저장 확인:", joinForm.getValues("image")); // 이미지 파일 확인
     }
   };
 
-  // 키보드로 로그인 시도시 처리
-  const handleKeyPress = (e) => {
-    if (e.code === "Enter") {
-      handleAuth();
+  const fbJoin = async () => {
+    // 폼 데이터 가져오기
+    const formData = joinForm.getValues();
+
+    // 이미지 파일 수동 추가
+    formData.image = joinForm.getValues("image");
+
+    console.log("formData with image:", formData); // 이미지 포함된 데이터 확인
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        formData.email,
+        formData.pw
+      );
+      setUserCurrent(userCredential.user);
+      let imageUrl = "";
+
+      if (formData.image) {
+        const imageRef = ref(
+          storage,
+          `users/${userCredential.user.uid}/profile.png`
+        );
+        await uploadBytes(imageRef, formData.image);
+        imageUrl = await getDownloadURL(imageRef);
+      }
+
+      const userDoc = doc(db, "users", userCredential.user.uid);
+      await setDoc(userDoc, {
+        name: formData.name,
+        email: formData.email,
+        imageUrl,
+      });
+
+      await signOut(auth);
+      resetForm();
+      setIsScene("login");
+    } catch (error) {
+      handleAuthError(error);
     }
-  };
-  // 실제로 FB 는 이메일 기준
-  const handleAuth = () => {
-    fbLogin();
   };
 
   const fbLogin = async (data) => {
     try {
       await signInWithEmailAndPassword(auth, data.email, data.pw);
-      // 추후 useAuth 의 user 항목을 true 코드 위치;
       navigate("/profile");
     } catch (error) {
-      switch (error.code) {
-        case "auth/user-not-found":
-          setError("사용자를 찾을 수 없습니다.");
-          break;
-        case "auth/wrong-password":
-          setError("비밀번호가 틀렸습니다.");
-          break;
-        case "auth/invalid-email":
-          setError("유효하지 않은 이메일 주소입니다.");
-          break;
-        default:
-          setError("로그인에 실패했습니다. 다시 시도해주세요.");
-      }
+      handleAuthError(error);
     }
   };
 
-  // 회원가입시 처리
-  const handleJoin = () => {
-    if (!name) {
-      setError("닉네임을 입력하세요.");
-      return;
+  const handleAuthError = (error) => {
+    switch (error.code) {
+      case "auth/user-not-found":
+        setError("사용자를 찾을 수 없습니다.");
+        break;
+      case "auth/wrong-password":
+        setError("비밀번호가 틀렸습니다.");
+        break;
+      case "auth/invalid-email":
+        setError("유효하지 않은 이메일 주소입니다.");
+        break;
+      default:
+        setError("오류가 발생했습니다. 다시 시도해주세요.");
     }
-    if (!email) {
-      setError("이메일을 입력하세요.");
-      return;
-    }
-    if (!pw) {
-      setError("비밀번호를 입력하세요.");
-      return;
-    }
-    // 사용자 이미지 파일은 체크 하지 않았어요.
-    // 만약, 이미지 업로드 안한 경우는 기본형 이미지 제공 예정
-    // console.log("FB 회원정보 등록 시도 처리");
-    fbJoin();
   };
 
-  const fbJoin = async (data) => {
-    console.log("회원가입 데이터 : ", data);
-    try {
-      // 인증기능과, 이메일, 비밀번호를 통해서 사용자 추가 API 실행
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        data.email,
-        data.pw
-      );
-      // useState 는 실시간 갱신이 안되고, 함수종료되어야 갱신
-      setUserCurrent(userCredential.user);
-      // setRUserCurrent(userCredential.user);
-      // storage : 이미지 파일 업로드
-      let imageUrl = "";
-      // 사용자가 이미지를 업로드 한다면
-      if (data.image) {
-        // Storage 에 보관
-        // users폴더 / 사용자폴더 / profile.png
-        const imageRef = ref(
-          storage,
-          `users/${userCredential.user.uid}/profile.png`
-        );
-        await uploadBytes(imageRef, data.image);
-        // db 에 저장하려고 파일의 URL 파악한다.
-        imageUrl = await getDownloadURL(imageRef);
-        console.log("업로드된 이미지의 경로 ", imageUrl);
-      }
-      // database : 사용자 닉네임, 이메일, 사용자 이미지 URL 추가
-      const userDoc = doc(db, "users", userCredential.user.uid);
-      await setDoc(userDoc, { name: data.name, email: data.email, imageUrl });
-      // 사용자 등록을 하면 즉시 FB 는 로그인 상태로 처리.
-      // UI 와 흐름이 맞지 않으므로 강제로 로그아웃을 시킨다.
-      await signOut(auth);
-      setUserCurrent(null); // 인증정보삭제
-      setRUserData(null);
-      setError("");
-      setName("");
-      setEmail("");
-      setPw("");
-      setPreviewImage(null);
-      setImage(null);
-      // 로그인 화면으로 이동시킨다.
-      setIsScene("login");
-    } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log("errorCode : ", errorCode);
-      console.log("errorMessage : ", errorMessage);
-      switch (errorCode) {
-        case "auth/invalid-email":
-          setError("이메일을 바르게 입력해주세요.");
-          break;
-        case "auth/weak-password":
-          setError("비밀번호가 너무 쉬워요.");
-          break;
-        case "auth/email-already-in-use":
-          setError("등록된 이메일 입니다.");
-          break;
-        default:
-          alert("회원가입 실패");
-          break;
-      }
-    }
+  const resetForm = () => {
+    setError("");
+    setPreviewImage(null);
+    joinForm.reset();
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <h1 className="text-2xl font-bold mb-4">
-        {isScene == "login" ? "로그인" : "회원가입"}
+        {isScene === "login" ? "로그인" : "회원가입"}
       </h1>
-      {/* FB 에 로그인 또는 회원가입시 에러메시지 출력 */}
       {error && <p className="text-red-500 mb-4">{error}</p>}
-      {isScene == "login" ? (
-        <>
-          {/* React Hook Form 에서 submit 처리 */}
-          <form
-            onSubmit={loginForm.handleSubmit(fbLogin)}
-            className="mb-2 w-80"
+
+      {isScene === "login" ? (
+        <form onSubmit={loginForm.handleSubmit(fbLogin)} className="mb-2 w-80">
+          <InputField
+            label="이메일"
+            register={loginForm.register("email")}
+            error={loginForm.formState.errors.email}
+            type="email"
+          />
+          <InputField
+            label="비밀번호"
+            register={loginForm.register("pw")}
+            error={loginForm.formState.errors.pw}
+            type="password"
+          />
+          <button
+            type="submit"
+            className="mb-2 p-2 bg-blue-500 text-white rounded hover:bg-blue-600 w-80"
           >
-            <div className="mb-2 w-80">
-              <label className="block text-gray-700">이메일</label>
-              <input
-                // value={email}
-                {...loginForm.register("email")}
-                // onChange={e => setEmail(e.target.value)}
-                onKeyDown={(e) => {
-                  // handleKeyPress(e);
-                  loginForm.handleSubmit(fbLogin);
-                }}
-                type="email"
-                placeholder="이메일"
-                className="mt-1 p-2 border border-gray-300 rounded w-full"
-              />
-              {loginForm.formState.errors.email && (
-                <span>{loginForm.formState.errors.email.message}</span>
-              )}
-            </div>
-            <div className="mb-2 w-80">
-              <label className="block text-gray-700">비밀번호</label>
-              <input
-                // value={pw}
-                {...loginForm.register("pw")}
-                // onChange={e => setPw(e.target.value)}
-                onKeyDown={(e) => {
-                  // handleKeyPress(e);
-                  loginForm.handleSubmit(fbLogin);
-                }}
-                type="password"
-                placeholder="비밀번호"
-                className="mt-1 p-2 border border-gray-300 rounded w-full"
-              />
-              {loginForm.formState.errors.pw && (
-                <span>{loginForm.formState.errors.pw.message}</span>
-              )}
-            </div>
-
-            <button
-              className="mb-2 p-2 bg-blue-500 text-white rounded hover:bg-blue-600 w-80"
-              type="submit"
-              // onClick={() => {
-              //   handleAuth();
-              // }}
-            >
-              로그인
-            </button>
-            <button
-              className="text-blue-500 hover:underline"
-              onClick={() => {
-                setIsScene("join");
-                setError("");
-                setEmail("");
-                setPw("");
-              }}
-            >
-              계정만들기
-            </button>
-          </form>
-        </>
+            로그인
+          </button>
+          <button
+            type="button"
+            className="text-blue-500 hover:underline"
+            onClick={() => setIsScene("join")}
+          >
+            계정 만들기
+          </button>
+        </form>
       ) : (
-        <form className="mb-2 w-80" onSubmit={joinForm.handleSubmit(fbJoin)}>
-          <div className="mb-2 w-80">
-            <label className="block text-gray-700">이름</label>
-            <input
-              // value={name}
-              // onChange={e => setName(e.target.value)}
-              {...joinForm.register("name")}
-              type="text"
-              placeholder="이름"
-              className="mt-1 p-2 border border-gray-300 rounded w-full"
-            />
-            {joinForm.formState.errors.name && (
-              <span>{joinForm.formState.errors.name.message}</span>
-            )}
-          </div>
-
-          <div className="mb-2 w-80">
-            <label className="block text-gray-700">이메일</label>
-            <input
-              // value={email}
-              // onChange={e => setEmail(e.target.value)}
-              {...joinForm.register("email")}
-              type="email"
-              placeholder="이메일"
-              className="mt-1 p-2 border border-gray-300 rounded w-full"
-            />
-            {joinForm.formState.errors.email && (
-              <span>{joinForm.formState.errors.email.message}</span>
-            )}
-          </div>
-
-          <div className="mb-2 w-80">
-            <label className="block text-gray-700">비밀번호</label>
-            <input
-              // value={pw}
-              // onChange={e => setPw(e.target.value)}
-              {...joinForm.register("pw")}
-              type="password"
-              placeholder="비밀번호"
-              className="mt-1 p-2 border border-gray-300 rounded w-full"
-            />
-            {/* <p className="text-xs text-red-500 mt-1">
-              비밀번호는 최소 6자입니다.
-            </p> */}
-            {joinForm.formState.errors.pw && (
-              <span>{joinForm.formState.errors.pw.message}</span>
-            )}
-          </div>
-
+        <form onSubmit={joinForm.handleSubmit(fbJoin)} className="mb-2 w-80">
+          <InputField
+            label="이름"
+            register={joinForm.register("name")}
+            error={joinForm.formState.errors.name}
+            type="text"
+          />
+          <InputField
+            label="이메일"
+            register={joinForm.register("email")}
+            error={joinForm.formState.errors.email}
+            type="email"
+          />
+          <InputField
+            label="비밀번호"
+            register={joinForm.register("pw")}
+            error={joinForm.formState.errors.pw}
+            type="password"
+          />
           <div className="mb-2 w-80">
             <label className="block text-gray-700">프로필 이미지</label>
             <div className="flex items-center mt-1">
               <label className="cursor-pointer p-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-                파일선택
+                파일 선택
                 <input
-                  onChange={(e) => {
-                    // 파일 선택시 이미지 미리보기도 작성해야 함.
-                    // 파일도 보관해야 함.
-                    handleImageChange(e);
-                  }}
-                  // {...joinForm.register("image")}
                   type="file"
-                  placeholder="이름"
                   className="hidden"
+                  onChange={handleImageChange}
                 />
               </label>
-
-              {/* 이미지가 선태된 경우는 미리보기 아니면 일반 */}
               {previewImage && (
                 <img
                   src={previewImage}
@@ -368,25 +238,16 @@ const Login = () => {
               )}
             </div>
           </div>
-
           <button
-            className="mb-2 p-2 bg-blue-500 text-white rounded hover:bg-blue-600 w-80"
-            // onClick={() => handleJoin()}
             type="submit"
+            className="mb-2 p-2 bg-blue-500 text-white rounded hover:bg-blue-600 w-80"
           >
             회원가입
           </button>
           <button
+            type="button"
             className="text-blue-500 hover:underline"
-            onClick={() => {
-              setError("");
-              setName("");
-              setEmail("");
-              setPw("");
-              setPreviewImage(null);
-              setImage(null);
-              setIsScene("login");
-            }}
+            onClick={() => setIsScene("login")}
           >
             이미 계정이 있습니까?
           </button>
