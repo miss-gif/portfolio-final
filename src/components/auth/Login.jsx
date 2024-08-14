@@ -15,7 +15,6 @@ import create from "zustand";
 import { auth, db, storage } from "../../firebaseConfig";
 import useAuth from "../../hooks/useAuth";
 
-// React Hook Form
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -144,7 +143,7 @@ const Login = () => {
     try {
       await signInWithEmailAndPassword(auth, data.email, data.pw);
       // 추후 useAuth 의 user 항목을 true 코드 위치;
-      navigate("/todo");
+      navigate("/");
     } catch (error) {
       // console.log("error.code ", error.code);
       // console.log("error.message ", error.message);
