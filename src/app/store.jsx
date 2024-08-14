@@ -1,5 +1,5 @@
 // store.js
-import create from "zustand";
+import { create } from "zustand";
 
 // 상태 스토어 생성
 export const useStore = create((set) => ({

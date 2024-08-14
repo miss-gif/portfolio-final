@@ -10,7 +10,7 @@ import { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import create from "zustand";
+import { create } from "zustand";
 
 import { auth, db, storage } from "../../firebaseConfig";
 import useAuth from "../../hooks/useAuth";
@@ -40,25 +40,28 @@ const loginSchema = z.object({
   email: z
     .string()
     .email("유효한 이메일 주소를 입력하세요.")
-    .nonempty("이메일은 필수항목입니다."),
+    .min(1, "이메일은 필수항목입니다."), // nonempty 대신 minLength(1) 사용
   pw: z
     .string()
     .min(6, "비밀번호는 최소 6자이상입니다.")
     .max(12, "비밀번호는 최대 12자입니다.")
-    .nonempty("비밀번호를 입력해주세요."),
+    .min(1, "비밀번호를 입력해주세요."), // nonempty 대신 minLength(1) 사용
 });
 
 const joinSchema = z.object({
-  name: z.string().nonempty("이름은 필수항목입니다."),
+  name: z.string().min(1, "이름은 필수항목입니다."),
   email: z
     .string()
-    .email("유효한 이메일 주소를 입력하세요.")
-    .nonempty("이메일은 필수항목입니다."),
+    .min(1, "이메일은 필수항목입니다.")
+    .email("유효한 이메일 주소를 입력하세요."),
   pw: z
     .string()
     .min(6, "비밀번호는 최소 6자이상입니다.")
     .max(12, "비밀번호는 최대 12자입니다.")
-    .nonempty("비밀번호를 입력해주세요."),
+    .regex(
+      /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{6,}[^\s]*$/,
+      "알파벳, 숫자, 공백을 제외한 특수문자를 모두 포함한 6자리 이상 입력해주세요"
+    ),
 });
 
 const Login = () => {
@@ -143,7 +146,7 @@ const Login = () => {
     try {
       await signInWithEmailAndPassword(auth, data.email, data.pw);
       // 추후 useAuth 의 user 항목을 true 코드 위치;
-      navigate("/");
+      navigate("/profile");
     } catch (error) {
       // console.log("error.code ", error.code);
       // console.log("error.message ", error.message);
