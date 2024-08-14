@@ -7,14 +7,10 @@ import {
 import { doc, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useState } from "react";
-
 import { useNavigate } from "react-router-dom";
-
 import { create } from "zustand";
-
 import { auth, db, storage } from "../../firebaseConfig";
 import useAuth from "../../hooks/useAuth";
-
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -23,6 +19,7 @@ const initLoginState = {
   email: "",
   pw: "",
 };
+
 // 회원가입 입력 폼의 기본값
 const initJoinState = {
   name: "",
@@ -31,6 +28,7 @@ const initJoinState = {
   image: null,
 };
 
+// 상태 관리를 위한 zustand 스토어
 const useStore = create((set) => ({
   rUserData: null,
   setRUserData: (data) => set({ rUserData: data }),
@@ -39,13 +37,12 @@ const useStore = create((set) => ({
 const loginSchema = z.object({
   email: z
     .string()
-    .email("유효한 이메일 주소를 입력하세요.")
-    .min(1, "이메일은 필수항목입니다."), // nonempty 대신 minLength(1) 사용
+    .min(1, "이메일은 필수항목입니다.")
+    .email("유효한 이메일 주소를 입력하세요."),
   pw: z
     .string()
     .min(6, "비밀번호는 최소 6자이상입니다.")
-    .max(12, "비밀번호는 최대 12자입니다.")
-    .min(1, "비밀번호를 입력해주세요."), // nonempty 대신 minLength(1) 사용
+    .max(12, "비밀번호는 최대 12자입니다."),
 });
 
 const joinSchema = z.object({
@@ -65,12 +62,6 @@ const joinSchema = z.object({
 });
 
 const Login = () => {
-  // React Hook Form
-  // handleSubmit :  전송 이벤트 처리
-  // register : form 의 name 참조 (<input name="uid" />>)
-  // formState :  폼의 데이터
-  // setValue : 강제로 값 셋팅
-  // error : 에러 메시지 출력
   const loginForm = useForm({
     defaultValues: initLoginState,
     resolver: zodResolver(loginSchema),
@@ -84,42 +75,31 @@ const Login = () => {
   });
 
   const { userCurrent, setUserCurrent } = useAuth();
-  // 사용자 정보를 저장함
   const { rUserData, setRUserData } = useStore();
-
-  // 패스이동하기
   const navigate = useNavigate();
-  // 현재 화면 상태 관리
+
+  // UI 상태 관리
   const [isScene, setIsScene] = useState("login");
+  const [previewImage, setPreviewImage] = useState(null);
+  const [error, setError] = useState("");
+
   // 입력 항목 상태관리
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [pw, setPw] = useState("");
-  // Storage 보관용 원본 파일
   const [image, setImage] = useState(null);
-  // 사용자 이미지 미리보기
-  const [previewImage, setPreviewImage] = useState(null);
-  // 입력 에러 상태관리
-  const [error, setError] = useState("");
-  // 미리보기 이미지 상태관리
+
+  // 이미지 파일 선택 및 미리보기 설정
   const handleImageChange = (e) => {
-    // input type="file"
     const file = e.target.files[0];
-    // console.log("file : ", file);
     if (file) {
-      // storage 업로드 할 file 원본을 보관한다.
-      setImage(file);
       joinForm.setValue("image", file);
-      // file 을 미리보기로 만든다.
-      // FileReader 사용해 보기 (Blob 처리)
       const reader = new FileReader();
-      reader.onloadend = () => {
-        // console.log(reader);
-        setPreviewImage(reader.result);
-      };
+      reader.onloadend = () => setPreviewImage(reader.result);
       reader.readAsDataURL(file);
     }
   };
+
   // 키보드로 로그인 시도시 처리
   const handleKeyPress = (e) => {
     if (e.code === "Enter") {
@@ -141,15 +121,11 @@ const Login = () => {
   };
 
   const fbLogin = async (data) => {
-    //{email:"dfsdf", pw: "dfdsf"}
-    // console.log("사용자가 입력한 값 : ", data.email, data.pw);
     try {
       await signInWithEmailAndPassword(auth, data.email, data.pw);
       // 추후 useAuth 의 user 항목을 true 코드 위치;
       navigate("/profile");
     } catch (error) {
-      // console.log("error.code ", error.code);
-      // console.log("error.message ", error.message);
       switch (error.code) {
         case "auth/user-not-found":
           setError("사용자를 찾을 수 없습니다.");
