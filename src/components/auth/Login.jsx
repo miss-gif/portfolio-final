@@ -108,15 +108,6 @@ const Login = () => {
   };
   // 실제로 FB 는 이메일 기준
   const handleAuth = () => {
-    // if (!email) {
-    //   setError("이메일을 입력하세요.");
-    //   return;
-    // }
-    // if (!pw) {
-    //   setError("비밀번호를 입력하세요.");
-    //   return;
-    // }
-    console.log("FB 로그인 시도 처리");
     fbLogin();
   };
 
