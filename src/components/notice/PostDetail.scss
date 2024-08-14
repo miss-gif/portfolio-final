@@ -1,39 +1,71 @@
-// 임시
-
-img {
-  width: 40px;
-  height: 40px;
-}
-
-// CSS
-
-.post {
+.post-detail {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  &__content {
+}
+
+.post-detail__header {
+  display: flex;
+  justify-content: space-between;
+
+  &__actions-left {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    gap: 10px;
   }
 
-  .content__top {
+  &__actions-right {
+    display: flex;
+    gap: 10px;
+  }
+}
+
+.post-detail__button {
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+
+  &--delete {
+    background-color: #f44336;
+  }
+
+  &--like {
+    background-color: #007bff;
+  }
+}
+
+.post-detail__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__header {
     &__title {
       font-size: 32px;
       font-weight: 700;
     }
-    &__info {
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+
+    &__user {
       display: flex;
-      justify-content: space-between;
-      &__user {
-        display: flex;
-        align-items: center;
-        gap: 10px;
+      align-items: center;
+      gap: 10px;
+    }
+
+    &__profile {
+      display: flex;
+      flex-direction: column;
+
+      &__username {
+        font-weight: bold;
       }
-      &__profile {
-        display: flex;
-        flex-direction: column;
-      }
+
       &__meta {
         display: flex;
         gap: 10px;
@@ -41,56 +73,40 @@ img {
     }
   }
 
-  .content__center {
+  &__body {
     line-height: 1.5;
   }
 
-  .content__bottom {
+  &__footer {
     display: flex;
     flex-direction: column;
     gap: 10px;
+
     &__user-info {
       display: flex;
       align-items: center;
+      gap: 10px;
     }
-  }
-
-  &__comment {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .comment__top {
-    display: flex;
   }
 }
 
-.comment-info {
+.post-detail__comment-info {
   display: flex;
   gap: 10px;
 }
 
-.comment-wrap {
+.post-detail__comment-wrap {
   padding: 20px;
   border: 1px solid #333;
   border-radius: 4px;
 }
 
-.comment__bottom__input {
+.post-detail__comment__bottom__input {
   display: flex;
   height: 50px;
+
   textarea {
     flex-grow: 1;
     border: 0;
   }
-}
-
-.post__header {
-  display: flex;
-  justify-content: space-between;
-}
-
-.post__footer {
-  display: flex;
-  justify-content: space-between;
 }

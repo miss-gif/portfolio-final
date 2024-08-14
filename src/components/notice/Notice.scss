@@ -1,8 +1,16 @@
-.notice__container {
+.notice-inner {
+  max-width: 765px;
+  width: 100%;
   padding: 20px;
+  margin-inline: auto;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .notice__wrapper {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;

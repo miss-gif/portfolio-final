@@ -26,24 +26,27 @@ const PostDetail = ({ posts, onDelete }) => {
   };
 
   return (
-    <div className="inner">
-      <div className="post">
-        <div className="post__header">
-          <div className="post__header__left">
+    <div className="notice-inner">
+      <div className="post-detail">
+        <div className="post-detail__header">
+          <div className="post-detail__header__actions-left">
             <button
-              className="btn"
+              className="post-detail__button"
               onClick={() => navigate(`/notice/edit/${postId}`)}
             >
               수정
             </button>
-            <button className="delete btn" onClick={handleDeleteClick}>
+            <button
+              className="post-detail__button post-detail__button--delete"
+              onClick={handleDeleteClick}
+            >
               삭제
             </button>
           </div>
 
-          <div className="post__header__right">
+          <div className="post-detail__header__actions-right">
             <button
-              className="btn"
+              className="post-detail__button"
               onClick={() =>
                 navigate(`/notice/post/${parseInt(postId, 10) - 1}`)
               }
@@ -51,56 +54,67 @@ const PostDetail = ({ posts, onDelete }) => {
               이전글
             </button>
             <button
-              className="btn"
+              className="post-detail__button"
               onClick={() =>
                 navigate(`/notice/post/${parseInt(postId, 10) + 1}`)
               }
             >
               다음글
             </button>
-            <button className="btn" onClick={() => navigate("/notice")}>
+            <button
+              className="post-detail__button"
+              onClick={() => navigate("/notice")}
+            >
               목록
             </button>
           </div>
         </div>
-        <div className="post__content">
+        <div className="post-detail__content">
           <p>디테일페이지</p>
           {post ? (
             <div>
-              <content__top>
-                <content__top__title>{post.title}</content__top__title>
-              </content__top>
+              <div className="post-detail__content__header">
+                <div className="post-detail__content__header__title">
+                  {post.title}
+                </div>
+              </div>
 
-              <div className="content__top__info">
-                <div className="content__top__info__user">
+              <div className="post-detail__content__info">
+                <div className="post-detail__content__info__user">
                   <div>
                     <img src="" alt="" />
                   </div>
-                  <div className="content__top__info__profile">
-                    <div className="username">작성자: {post.author}</div>
-                    <div className="content__top__info__meta">
-                      <div className="time">작성일: {post.date}</div>
-                      <div className="views">조회수: {post.views}</div>
-                      <div className="like">좋아요: {post.likes}</div>
+                  <div className="post-detail__content__info__profile">
+                    <div className="post-detail__content__info__profile__username">
+                      작성자: {post.author}
+                    </div>
+                    <div className="post-detail__content__info__meta">
+                      <div className="post-detail__content__info__meta__time">
+                        작성일: {post.date}
+                      </div>
+                      <div className="post-detail__content__info__meta__views">
+                        조회수: {post.views}
+                      </div>
+                      <div className="post-detail__content__info__meta__likes">
+                        좋아요: {post.likes}
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="btn">댓글</div>
+                <div className="post-detail__button">댓글</div>
               </div>
-              <div className="content__center content">{post.content}</div>
+              <div className="post-detail__content__body">{post.content}</div>
 
-              <div className="content__bottom">
-                <div className="content__bottom__user-info">
+              <div className="post-detail__content__footer">
+                <div className="post-detail__content__footer__user-info">
                   <img src="" alt="" />
-                  <a href="#" className="user-posts">
+                  <a href="#" className="post-detail__button--like">
                     죠르디님의 게시글 더보기
                   </a>
                 </div>
                 <div>
-                  <a href="#" className="btn1">
-                    좋아요 10
-                  </a>
-                  <span>댓글수 5</span>
+                  <p>좋아요 10</p>
+                  <p>댓글수 5</p>
                 </div>
               </div>
               <StyledModal

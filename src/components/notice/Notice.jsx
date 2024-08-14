@@ -38,7 +38,7 @@ function Notice({ posts }) {
   };
 
   return (
-    <div className="inner">
+    <div className="notice-inner">
       <article className="notice__wrapper">
         <h2>게시판</h2>
         <div className="notice__header">
