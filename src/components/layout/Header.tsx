@@ -20,7 +20,7 @@ const Header: React.FC = () => {
     await signOut(auth);
     setUserCurrent(null);
     // 로그인으로 이동
-    navigate("/");
+    navigate("/auth");
   };
 
   // 메뉴 열기
