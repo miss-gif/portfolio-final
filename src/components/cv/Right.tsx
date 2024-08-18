@@ -1,57 +1,83 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import "./Right.scss";
 
-const Right = () => {
+interface SubSection {
+  subTitle: string;
+  content:
+    | string
+    | Array<{
+        projectTitle: string;
+        date: string;
+        role: string;
+        teamComposition: string;
+        details: string;
+      }>;
+}
+
+interface Section {
+  sectionTitle: string;
+  subSections: SubSection[];
+}
+
+const Right: React.FC = () => {
+  const [sections, setSections] = useState<Section[]>([]);
+
+  useEffect(() => {
+    // JSON 데이터를 가져오는 함수
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/public/json/pr.json");
+        setSections(response.data.sections);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="cv__right">
-      <div className="">
-        <div className="">개발자 선택 계기</div>
-        <div className="">
-          "전 직장에서 홈페이지 관리 업무를 담당하면서, 단순 반복적인 작업과
-          비효율적인 시스템에 대한 개선의 필요성을 절실히 느꼈습니다. 외주로
-          개발된 시스템을 수정할 권한이 없고, 특정 기능을 구현하기 위해
-          개발자에게 의존해야만 하는 상황이 반복되면서, 직접 개발을 통해 문제를
-          해결하고 더 나은 시스템을 구축하고 싶다는 생각을 하게 되었습니다.
-          특히, 최근 신입 개발자들의 실력을 보면서 개발이 생각보다 접근 가능한
-          분야임을 깨닫고, 웹 개발에 도전하게 되었습니다."
+      {sections.map((section, index) => (
+        <div key={index} className="cv__right-section">
+          <div className="cv__right-section__title">{section.sectionTitle}</div>
+          <div className="cv__right-section__content">
+            {section.subSections.map((subSection, subIndex) => (
+              <div key={subIndex} className="cv__right-subsection">
+                <div className="cv__right-subsection__title">
+                  {subSection.subTitle}
+                </div>
+                <div className="cv__right-subsection__content">
+                  {Array.isArray(subSection.content) ? (
+                    subSection.content.map((project, projectIndex) => (
+                      <div key={projectIndex} className="cv__right-project">
+                        <div className="cv__right-project__title">
+                          {project.projectTitle}
+                        </div>
+                        <div className="cv__right-project__date">
+                          {project.date}
+                        </div>
+                        <div className="cv__right-project__role">
+                          {project.role}
+                        </div>
+                        <div className="cv__right-project__team">
+                          {project.teamComposition}
+                        </div>
+                        <div className="cv__right-project__details">
+                          {project.details}
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <p>{subSection.content}</p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-      <div className="">
-        <div className="">프로젝트 경험 / 문제해결 과정</div>
-        <div className="">
-          "최근에 참여한 음식 주문 플랫폼 개발 프로젝트에서는 팀장으로서 팀을
-          이끌며, 기획, 디자인, 기술 스택 선정, 스케줄 관리, 프론트엔드 개발 등
-          전반적인 과정을 총괄했습니다. 특히, 다양한 기기에서 최적화된 사용자
-          경험을 제공하기 위해 반응형 웹 개발에 집중했습니다. React를 베이스로
-          라이브러리를 활용하여 효율적으로 개발을 진행했습니다. 프로젝트 중 여러
-          문제를 마주했지만, 가장 큰 어려움은 프로젝트 초기에는 팀원들의 개발
-          경험이 다르고, 각자의 개발 스타일이 달라 코드 품질이 일관되지 않는
-          문제가 발생했습니다. 이를 해결하기 위해 정기적인 코드 리뷰를 진행하고,
-          팀원들과 함께 코드 스타일 가이드라인을 만들어 공유했습니다. 또한,
-          어려움을 겪는 팀원들을 위해 1:1 멘토링을 진행하고, 함께 문제를
-          해결하며 성장할 수 있도록 지원했습니다. 이러한 노력을 통해 팀원들 간의
-          협업을 강화하고, 프로젝트의 성공적인 완수에 기여할 수 있었습니다."
-          이러한 경험을 통해 프로젝트의 완성도를 높이고, 서비스 확장에 필요한
-          폴더 구조 설계 및 코드 관리 방식을 배우게 되었습니다."
-        </div>
-      </div>
-      <div className="">
-        <div className="">강점</div>
-        <div className="">
-          "저의 강점은 문제 해결을 위한 논리적 접근 방식과 효율적인 코딩
-          스타일입니다. 저는 문제 발생 시 다른 사람들이 유사한 문제를 어떻게
-          해결했는지 조사하고, 원인 분석을 통해 최적의 해결책을 찾습니다.
-          필요시에는 새로운 기술을 학습하여 문제를 해결합니다. 개발 시 가독성과
-          유지보수성을 고려한 일관된 코딩 스타일로 코드를 작성하며, 단일 책임
-          원칙으로 각 함수나 모듈은 하나의 작업만 담당하게 하고, 코드를
-          모듈화하여 분리하여 관리합니다. 또한, BEM 네이밍 규칙을 사용하여
-          일관된 코드 스타일을 유지합니다. 팀 작업에서는 건설적인 피드백과
-          긴밀한 소통을 통해 팀원들과 협력하며, 필요시 레퍼런스를 제시해 문제
-          해결 방안을 제공합니다. 팀장이 아니더라도 팀의 의견을 조율하고, 필요한
-          부분에서 지원하는 역할을 수행합니다. 이러한 능력들은 프로젝트를
-          성공적으로 이끄는 데 큰 도움이 되었고, 앞으로도 계속 발전시키고자
-          합니다."
-        </div>
-      </div>
+      ))}
     </div>
   );
 };

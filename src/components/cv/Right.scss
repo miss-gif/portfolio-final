@@ -5,6 +5,48 @@
   display: flex;
   flex-direction: column;
   border-radius: 20px;
-  background-color: hsl(217, 18%, 14%);
+  background-color: var(--container-color);
   color: #fff;
+}
+
+.cv__right-section {
+  margin-bottom: 20px;
+}
+
+.cv__right-section__title {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.cv__right-section__content {
+  padding-left: 20px;
+}
+
+.cv__right-subsection {
+  margin-bottom: 15px;
+}
+
+.cv__right-subsection__title {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+
+.cv__right-subsection__content {
+  padding-left: 15px;
+}
+
+.cv__right-project {
+  margin-bottom: 10px;
+}
+
+.cv__right-project__title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.cv__right-project__date,
+.cv__right-project__role,
+.cv__right-project__team,
+.cv__right-project__details {
+  margin-bottom: 3px;
 }

@@ -5,7 +5,7 @@
 }
 
 .cv {
-  background-color: #fff;
+  background-color: var(--bg-color);
   color: #333;
 
   &__container {
@@ -15,7 +15,7 @@
     gap: 20px;
   }
   &__top {
-    background-color: hsl(217, 18%, 14%);
+    background-color: var(--container-color);
     color: #fff;
     border-radius: 20px;
     padding: 20px;
