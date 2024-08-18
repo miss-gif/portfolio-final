@@ -10,7 +10,7 @@
   justify-content: center;
   align-items: center;
   z-index: 999;
-  background-color: #333;
+  background-color: #1f252d;
   .container {
     display: flex;
     justify-content: space-between;
@@ -19,9 +19,14 @@
   }
 }
 
+.scrolled {
+  background-color: #1f252d;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
 .nav__list {
   display: flex;
-  gap: 8px;
+  gap: 16px;
 
   @include tablet {
     display: none;

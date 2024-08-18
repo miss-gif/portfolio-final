@@ -12,8 +12,8 @@ const HomePage = () => {
     <>
       <main>
         <Home />
-        <Services />
         <Skills />
+        <Services />
         <Project />
         <Portfolio />
         <Resume />

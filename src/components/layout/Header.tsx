@@ -1,5 +1,5 @@
 import { signOut } from "firebase/auth";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoIosClose, IoIosMenu } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../../firebaseConfig";
@@ -15,6 +15,8 @@ const Header: React.FC = () => {
   const [isNavOpen, setIsNavOpen] = useState(false); // nav__mobile 열림 상태
   const { activeSection, handleClick } = useActiveSection(sections);
   const { userCurrent, userData, setUserCurrent } = useAuth();
+  const [isNav, setIsNav] = useState(true);
+
   const handleLogout = async () => {
     // FB 에서 로그아웃
     await signOut(auth);
@@ -44,41 +46,73 @@ const Header: React.FC = () => {
     closeNav();
   };
 
+  // 스크롤 이벤트 핸들러
+  const handleScroll = () => {
+    const header = document.querySelector(".header");
+    if (header) {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > 0) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    }
+  };
+
+  // 스크롤 이벤트 등록
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const path = window.location.pathname;
+    if (path !== "/") {
+      setIsNav(false);
+    }
+  }, []);
+
   return (
     <header className="header">
       <div className="container">
         <h1>
-          <a href="/#" className="logo">
+          <Link to="/" className="logo">
             <img src="/logo_white.png" alt="Logo" />
-          </a>
+          </Link>
         </h1>
-        <nav>
-          <ul className="nav__list">
-            {sections.map((section: SectionType) => (
-              <li
-                key={section}
-                className={activeSection === section ? "active" : ""}
-              >
-                <a
-                  className="nav__link"
-                  href={`#${section}`}
-                  onClick={(event) => handleClick(event, section)}
+
+        {isNav && (
+          <nav>
+            <ul className="nav__list">
+              {sections.map((section: SectionType) => (
+                <li
+                  key={section}
+                  className={activeSection === section ? "active" : ""}
                 >
-                  {section.charAt(0).toUpperCase() + section.slice(1)}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+                  <a
+                    className="nav__link"
+                    href={`#${section}`}
+                    onClick={(event) => handleClick(event, section)}
+                  >
+                    {section.charAt(0).toUpperCase() + section.slice(1)}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
 
         {!userCurrent ? (
           <div className="header__group">
-            <a href="/notice">게시판</a>
+            <Link to="/notice">게시판</Link>
             <Link to="/auth">로그인</Link>
           </div>
         ) : (
           <div className="header__group">
-            <a href="/notice">게시판</a>
+            <Link to="/notice">게시판</Link>
             <Link to="/profile">프로필</Link>
             <button
               onClick={() => {

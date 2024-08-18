@@ -1,8 +1,16 @@
 import "./Footer.scss";
 
+const getCurrentYear = () => {
+  return new Date().getFullYear();
+};
+
 const Footer = () => {
+  const currentYear = getCurrentYear();
+
   return (
-    <footer className="footer">ⓒ 2024 miss-gif. All Rights Reserved.</footer>
+    <footer className="footer">
+      ⓒ {currentYear} miss-gif. All Rights Reserved.
+    </footer>
   );
 };
 

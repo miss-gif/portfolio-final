@@ -3,8 +3,8 @@ type Sections = string[];
 
 export const sections: Sections = [
   "home",
-  "services",
   "skills",
+  "services",
   "project",
   "portfolio",
   "resume",

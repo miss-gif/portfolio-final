@@ -4,9 +4,11 @@ import Header from "./Header";
 
 const BlogLayout = () => {
   return (
-    <div>
-      {/* <Header /> */}
-      <Outlet />
+    <div className="blog-layout">
+      <Header />
+      <main className="h-screen flex justify-center items-center">
+        <Outlet />
+      </main>
     </div>
   );
 };
