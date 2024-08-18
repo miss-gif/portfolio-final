@@ -3,10 +3,62 @@
   bottom: 0;
   right: 0;
   padding: 20px 10px;
+  z-index: 999;
   &-btn {
     border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    background-color: orange;
+    width: 60px;
+    height: 60px;
+    background-color: #29313c;
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.Modal {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+
+  &__title {
+    margin-top: 0;
+    font-size: 24px;
+    color: #000;
+  }
+
+  &__content {
+    color: #000;
+    margin: 20px 0;
+    font-size: 16px;
+  }
+
+  &__close-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+
+    &:hover {
+      background-color: #c82333;
+    }
   }
 }

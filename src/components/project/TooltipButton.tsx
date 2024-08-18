@@ -11,13 +11,13 @@ const TooltipButton = () => {
 
   return (
     <div className="tooltip__container">
-      <button
+      <div
         onClick={handleToggle}
         className={`tooltip__button ${isActive ? "active" : ""}`}
         title="설명보기"
       >
         <BsExclamationDiamondFill />
-      </button>
+      </div>
       <div className={`tooltip__box ${isActive ? "visible" : ""}`}>
         KDT 수강생 FE/BE 팀이 협업하여 실무에 가까운 환경에서 실제 서비스를
         개발하는 프로젝트입니다. <br /> 정해진 기간 내에 서비스 완성을 목표로
