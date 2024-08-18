@@ -1,0 +1,12 @@
+.GlobalInfo {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 20px 10px;
+  &-btn {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    background-color: orange;
+  }
+}
