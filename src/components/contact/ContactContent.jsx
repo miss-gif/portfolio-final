@@ -133,7 +133,13 @@ const ContactContent = () => {
                   스팸 방지를 위해 빈 칸으로 제출해야 하는 숨겨진 필드입니다.
                   작성하지 마세요!
                 </label>
-                <input id="honeypot" type="text" name="honeypot" value="" />
+                <input
+                  id="honeypot"
+                  type="text"
+                  name="honeypot"
+                  value=""
+                  onChange={() => {}}
+                />
               </fieldset>
 
               <button type="submit" className="contact-form__submit-button">
