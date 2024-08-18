@@ -1,3 +1,4 @@
+import Project0 from "../../assets/project0.png";
 import Project1 from "../../assets/project1.png";
 import Project2 from "../../assets/project2.png";
 import Project3 from "../../assets/project3.png";
@@ -42,7 +43,7 @@ interface PortfolioItem {
 export const portfolio: PortfolioItem[] = [
   {
     id: 0,
-    img: "",
+    img: Project0,
     category: [
       "리액트",
       "비동기통신",
