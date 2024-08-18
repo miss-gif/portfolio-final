@@ -79,9 +79,9 @@ const Header: React.FC = () => {
     <header className="header">
       <div className="container">
         <h1>
-          <Link to="/" className="logo">
+          <a href="/#" className="logo">
             <img src="/logo_white.png" alt="Logo" />
-          </Link>
+          </a>
         </h1>
 
         {isNav && (

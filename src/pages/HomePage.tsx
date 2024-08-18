@@ -1,6 +1,5 @@
 import Contact from "../components/contact";
 import Home from "../components/home";
-
 import Portfolio from "../components/portfolio";
 import Project from "../components/project";
 import Resume from "../components/resume";
