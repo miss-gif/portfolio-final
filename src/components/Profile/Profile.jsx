@@ -1,7 +1,7 @@
 import { deleteUser } from "firebase/auth";
 import { deleteDoc, doc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
-import React from "react";
+import React, { useEffect } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { db, storage } from "../../firebaseConfig";
@@ -9,8 +9,13 @@ import useAuth from "../../hooks/useAuth";
 
 const Profile = () => {
   const { userCurrent, userData } = useAuth();
-
   const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log("userData", userData);
+    return () => {};
+  }, []);
+
   const handleClickEdit = () => {
     navigate("/profile-edit");
   };
@@ -50,7 +55,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center min-h-screen ">
       <h1 className="text-2xl font-bold mb-4">프로필</h1>
       {userData && (
         <div className="flex flex-col items-center">

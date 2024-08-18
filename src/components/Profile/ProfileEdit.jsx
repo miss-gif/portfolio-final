@@ -109,10 +109,10 @@ const ProfileEdit = () => {
   }, [userData]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center min-h-screen ">
       <h1 className="text-2xl font-bold mb-4">프로필 수정</h1>
 
-      <div className="p-4 bg-white shadow-md rounded w-80">
+      <div className="p-4 shadow-md rounded w-80">
         <div className="mb-2">
           <label className="block text-gray-700">이름</label>
           <input

@@ -71,12 +71,14 @@ const Header: React.FC = () => {
           </ul>
         </nav>
 
-        <a href="/notice">게시판</a>
-
         {!userCurrent ? (
-          <Link to="/auth">로그인</Link>
+          <div className="header__group">
+            <a href="/notice">게시판</a>
+            <Link to="/auth">로그인</Link>
+          </div>
         ) : (
-          <>
+          <div className="header__group">
+            <a href="/notice">게시판</a>
             <Link to="/profile">프로필</Link>
             <button
               onClick={() => {
@@ -86,7 +88,7 @@ const Header: React.FC = () => {
             >
               로그아웃
             </button>
-          </>
+          </div>
         )}
 
         <nav className={`nav__mobile ${isNavOpen ? "open" : ""}`}>

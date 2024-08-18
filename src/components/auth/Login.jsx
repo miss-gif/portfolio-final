@@ -20,32 +20,29 @@ const useStore = create((set) => ({
   setRUserData: (data) => set({ rUserData: data }),
 }));
 
-// 로그인 및 회원가입 유효성 검사 스키마
+// 유효성 검사 스키마
+const baseEmailSchema = z
+  .string()
+  .min(1, "이메일은 필수항목입니다.")
+  .email("유효한 이메일 주소를 입력하세요.");
+
+const basePasswordSchema = z
+  .string()
+  .min(6, "비밀번호는 최소 6자이상입니다.")
+  .max(12, "비밀번호는 최대 12자입니다.");
+
 const loginSchema = z.object({
-  email: z
-    .string()
-    .min(1, "이메일은 필수항목입니다.")
-    .email("유효한 이메일 주소를 입력하세요."),
-  pw: z
-    .string()
-    .min(6, "비밀번호는 최소 6자이상입니다.")
-    .max(12, "비밀번호는 최대 12자입니다."),
+  email: baseEmailSchema,
+  pw: basePasswordSchema,
 });
 
 const joinSchema = z.object({
   name: z.string().min(1, "이름은 필수항목입니다."),
-  email: z
-    .string()
-    .min(1, "이메일은 필수항목입니다.")
-    .email("유효한 이메일 주소를 입력하세요."),
-  pw: z
-    .string()
-    .min(6, "비밀번호는 최소 6자이상입니다.")
-    .max(12, "비밀번호는 최대 12자입니다.")
-    .regex(
-      /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{6,}[^\s]*$/,
-      "알파벳, 숫자, 특수문자를 포함해야 합니다."
-    ),
+  email: baseEmailSchema,
+  pw: basePasswordSchema.regex(
+    /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{6,}[^\s]*$/,
+    "알파벳, 숫자, 특수문자를 포함해야 합니다."
+  ),
 });
 
 // 입력 필드 컴포넌트
@@ -55,7 +52,7 @@ const InputField = ({ label, register, error, ...props }) => (
     <input
       {...register}
       {...props}
-      className="mt-1 p-2 border border-gray-300 rounded w-full"
+      className="mt-1 p-2 border rounded w-full"
     />
     {error && <span className="text-red-500">{error.message}</span>}
   </div>
@@ -165,7 +162,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center min-h-screen ">
       <h1 className="text-2xl font-bold mb-4">
         {isScene === "login" ? "로그인" : "회원가입"}
       </h1>
