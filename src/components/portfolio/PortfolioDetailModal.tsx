@@ -42,6 +42,18 @@ const PortfolioDetailModal: React.FC<PortfolioDetailModalProps> = ({
                 </li>
               ))}
             </ul>
+            <div className="project-modal__links">
+              <a href={item.demoUrl} target="_blank" rel="noopener noreferrer">
+                배포 사이트
+              </a>
+              <a
+                href={item.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                깃헙 사이트
+              </a>
+            </div>
             <button className="modal__close-btn" onClick={onRequestClose}>
               <IoIosClose />
             </button>

@@ -6,7 +6,7 @@ import reactrouter from "../../assets/skill/React-Router.svg";
 import redux from "../../assets/skill/Redux.svg";
 import sass from "../../assets/skill/Sass.svg";
 
-import team1 from "../../assets/team1.png";
+import team1_1 from "../../assets/team1/1.png";
 import team2_1 from "../../assets/team2/1.png";
 import team2_2 from "../../assets/team2/2.png";
 import team2_3 from "../../assets/team2/3.png";
@@ -14,6 +14,7 @@ import team2_4 from "../../assets/team2/4.png";
 import team2_5 from "../../assets/team2/5.png";
 import team2_6 from "../../assets/team2/6.png";
 import team2_7 from "../../assets/team2/7.png";
+import team3_1 from "../../assets/team3/1.png";
 
 // 객체 타입 정의
 interface Project {
@@ -35,7 +36,7 @@ export const project: Project[] = [
   {
     id: 1,
     tag: ["작업중"],
-    img: [team2_1, team2_2, team2_3, team2_4, team2_5, team2_6, team2_7],
+    img: [team3_1, team2_2, team2_3, team2_4, team2_5, team2_6, team2_7],
     date: "2024.07.24 ~ 2024.8.23",
     title: "주문이요 (음식주문 플랫폼)",
     description:
@@ -121,7 +122,7 @@ export const project: Project[] = [
   {
     id: 3,
     tag: [],
-    img: [team1],
+    img: [team1_1],
     date: "2024.05.24 ~ 2024.6.23",
     title: "Plant Diary (식물관리 서비스)",
     description: `식물을 사랑하는 사용자들이 자신의 반려식물을 더욱 건강하고 아름답게 키울 수 있도록 돕는 웹 애플리케이션입니다. 사용자는 식물 등록, 물주기, 분갈이, 비료 주기 등 관리 일정을 쉽게 기록하고 알림을 받을 수 있으며, 다른 사용자들과 식물 관리 노하우를 공유하고 소통할 수 있는 커뮤니티 기능을 제공합니다.`,
