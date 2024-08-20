@@ -7,6 +7,19 @@ import redux from "../../assets/skill/Redux.svg";
 import sass from "../../assets/skill/Sass.svg";
 
 import team1_1 from "../../assets/team1/1.png";
+import team1_2 from "../../assets/team1/1 (1).png";
+import team1_3 from "../../assets/team1/1 (2).png";
+import team1_4 from "../../assets/team1/1 (3).png";
+import team1_5 from "../../assets/team1/1 (4).png";
+import team1_6 from "../../assets/team1/1 (5).png";
+import team1_7 from "../../assets/team1/1 (6).png";
+import team1_8 from "../../assets/team1/1 (7).png";
+import team1_9 from "../../assets/team1/1 (8).png";
+import team1_10 from "../../assets/team1/1 (9).png";
+import team1_11 from "../../assets/team1/1 (10).png";
+import team1_12 from "../../assets/team1/1 (11).png";
+import team1_13 from "../../assets/team1/1 (12).png";
+
 import team2_1 from "../../assets/team2/1.png";
 import team2_2 from "../../assets/team2/2.png";
 import team2_3 from "../../assets/team2/3.png";
@@ -122,7 +135,21 @@ export const project: Project[] = [
   {
     id: 3,
     tag: [],
-    img: [team1_1],
+    img: [
+      team1_1,
+      team1_2,
+      team1_3,
+      team1_4,
+      team1_5,
+      team1_6,
+      team1_7,
+      team1_8,
+      team1_9,
+      team1_10,
+      team1_11,
+      team1_12,
+      team1_13,
+    ],
     date: "2024.05.24 ~ 2024.6.23",
     title: "Plant Diary (식물관리 서비스)",
     description: `식물을 사랑하는 사용자들이 자신의 반려식물을 더욱 건강하고 아름답게 키울 수 있도록 돕는 웹 애플리케이션입니다. 사용자는 식물 등록, 물주기, 분갈이, 비료 주기 등 관리 일정을 쉽게 기록하고 알림을 받을 수 있으며, 다른 사용자들과 식물 관리 노하우를 공유하고 소통할 수 있는 커뮤니티 기능을 제공합니다.`,
