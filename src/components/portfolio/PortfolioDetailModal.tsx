@@ -4,10 +4,17 @@ import { IoIosClose } from "react-icons/io";
 
 // item의 타입 정의
 interface PortfolioItem {
-  img: string;
+  id: number;
+  img: string[];
+  date: string;
   title: string;
   description: string;
-  tag: string[];
+  techStack: string[];
+  features: string;
+  role: string;
+  demoUrl: string;
+  githubUrl: string;
+  lessonsLearned: string;
 }
 
 // 컴포넌트 Props 타입 정의
@@ -42,6 +49,27 @@ const PortfolioDetailModal: React.FC<PortfolioDetailModalProps> = ({
                 </li>
               ))}
             </ul>
+            <div className="project-modal__features">
+              <p className="project-modal__section-title">
+                주요 기능 및 학습 결과
+              </p>
+              <ul className="project-modal__section-contents">
+                {item.features.map((feature, index) => (
+                  <li key={index}>
+                    <strong>{feature.title}:</strong>
+                    {Array.isArray(feature.details) ? (
+                      <ul>
+                        {feature.details.map((detail, detailIndex) => (
+                          <li key={detailIndex}>{detail}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      feature.details
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
             <div className="project-modal__links">
               <a href={item.demoUrl} target="_blank" rel="noopener noreferrer">
                 배포 사이트
