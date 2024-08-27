@@ -14,13 +14,7 @@ import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { toast } from "react-toastify";
-
-// Zustand 상태 관리
-const useStore = create((set) => ({
-  rUserData: null,
-  setRUserData: (data) => set({ rUserData: data }),
-  clearUserData: () => set({ rUserData: null }), // 사용자 데이터를 초기화하는 메소드 추가
-}));
+import { useStore } from "../../store/store";
 
 // 유효성 검사 스키마
 const baseEmailSchema = z
@@ -71,7 +65,7 @@ const Login = () => {
     resolver: zodResolver(joinSchema),
     mode: "onChange",
   });
-  const { setRUserData, clearUserData } = useStore();
+  const { setRUserData, setLoggedIn, clearUserData } = useStore();
   const navigate = useNavigate();
 
   const [isScene, setIsScene] = useState("login");
@@ -99,6 +93,7 @@ const Login = () => {
         formData.pw
       );
       setRUserData(userCredential.user);
+      setLoggedIn(true); // 로그인 상태 업데이트
 
       let imageUrl = "";
       if (formData.image) {
@@ -136,6 +131,7 @@ const Login = () => {
         data.pw
       );
       setRUserData(userCredential.user); // 로그인 시 사용자 정보를 Zustand에 저장
+      setLoggedIn(true); // 로그인 상태 업데이트
       navigate("/profile");
       toast.success("로그인 되었습니다.");
     } catch (error) {

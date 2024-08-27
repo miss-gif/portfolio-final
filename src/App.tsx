@@ -9,7 +9,6 @@ import usePosts from "./hooks/usePosts.jsx"; // Custom hook import
 import AuthPage from "./pages/AuthPage";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
-import Test from "./pages/Test";
 import Notice from "./components/notice/Notice.jsx";
 import PostDetail from "./components/notice/PostDetail.jsx";
 import PostEdit from "./components/notice/PostEdit.jsx";
@@ -51,7 +50,6 @@ const App = () => {
 
       {/* 기타 서브 링크 */}
       <Route path="/cv" element={<Cv />} />
-      <Route path="/test" element={<Test />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

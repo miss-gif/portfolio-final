@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Notice.scss";
+import { useStore } from "../../store/store";
 
 function Notice({ posts }) {
   const navigate = useNavigate();
+  const { isLoggedIn } = useStore((state) => state); // 로그인 상태 가져오기
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10); // 페이지당 게시물 수
   const [filteredPosts, setFilteredPosts] = useState(posts); // 검색 결과 필터링된 게시물
@@ -42,12 +44,9 @@ function Notice({ posts }) {
       <article className="notice__wrapper">
         <h2>게시판</h2>
         <div className="notice__header">
+          <button className="notice__header__btn best-post">전체글</button>
           <button className="notice__header__btn best-post">추천글</button>
-          <div className="notice__header__actions">
-            <Link to="/notice/write" className="notice__header__btn">
-              글쓰기
-            </Link>
-          </div>
+          <button className="notice__header__btn best-post">공지</button>
         </div>
 
         <table className="notice__table">
@@ -77,7 +76,13 @@ function Notice({ posts }) {
         </table>
 
         <div className="notice__footer">
-          <Link to="/notice/write" className="notice__footer__btn">
+          <Link
+            to={isLoggedIn ? "/notice/write" : "#"}
+            className={`notice__footer__btn ${!isLoggedIn ? "disabled" : ""}`}
+            onClick={(e) => {
+              if (!isLoggedIn) e.preventDefault(); // 비로그인 상태일 때 링크 클릭 방지
+            }}
+          >
             글쓰기
           </Link>
         </div>

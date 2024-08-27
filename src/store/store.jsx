@@ -1,9 +1,10 @@
-// store.js
+// store.js (Zustand 상태 저장소 설정)
 import { create } from "zustand";
 
-// 상태 스토어 생성
 export const useStore = create((set) => ({
-  count: 0,
-  increase: () => set((state) => ({ count: state.count + 1 })),
-  decrease: () => set((state) => ({ count: state.count - 1 })),
+  isLoggedIn: false, // 기본값은 false로 설정
+  rUserData: null, // 기본값은 null로 설정
+  setLoggedIn: (status) => set({ isLoggedIn: status }),
+  setRUserData: (data) => set({ rUserData: data }),
+  clearUserData: () => set({ rUserData: null, isLoggedIn: false }), // 사용자 데이터 및 로그인 상태 초기화
 }));
