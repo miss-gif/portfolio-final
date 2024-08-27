@@ -4,7 +4,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -13,11 +13,13 @@ import { auth, db, storage } from "../../firebaseConfig";
 import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { toast } from "react-toastify";
 
 // Zustand 상태 관리
 const useStore = create((set) => ({
   rUserData: null,
   setRUserData: (data) => set({ rUserData: data }),
+  clearUserData: () => set({ rUserData: null }), // 사용자 데이터를 초기화하는 메소드 추가
 }));
 
 // 유효성 검사 스키마
@@ -69,8 +71,7 @@ const Login = () => {
     resolver: zodResolver(joinSchema),
     mode: "onChange",
   });
-  const { userCurrent, setUserCurrent } = useAuth();
-  const { rUserData, setRUserData } = useStore();
+  const { setRUserData, clearUserData } = useStore();
   const navigate = useNavigate();
 
   const [isScene, setIsScene] = useState("login");
@@ -80,22 +81,16 @@ const Login = () => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      joinForm.setValue("image", file); // 이미지 파일 저장
+      joinForm.setValue("image", file);
       const reader = new FileReader();
       reader.onloadend = () => setPreviewImage(reader.result);
       reader.readAsDataURL(file);
-      console.log("이미지 파일 저장 확인:", joinForm.getValues("image")); // 이미지 파일 확인
     }
   };
 
   const fbJoin = async () => {
-    // 폼 데이터 가져오기
     const formData = joinForm.getValues();
-
-    // 이미지 파일 수동 추가
     formData.image = joinForm.getValues("image");
-
-    console.log("formData with image:", formData); // 이미지 포함된 데이터 확인
 
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -103,9 +98,9 @@ const Login = () => {
         formData.email,
         formData.pw
       );
-      setUserCurrent(userCredential.user);
-      let imageUrl = "";
+      setRUserData(userCredential.user);
 
+      let imageUrl = "";
       if (formData.image) {
         const imageRef = ref(
           storage,
@@ -125,6 +120,9 @@ const Login = () => {
       await signOut(auth);
       resetForm();
       setIsScene("login");
+
+      // 회원가입 성공 알림
+      toast.success("회원가입이 완료되었습니다!");
     } catch (error) {
       handleAuthError(error);
     }
@@ -132,8 +130,14 @@ const Login = () => {
 
   const fbLogin = async (data) => {
     try {
-      await signInWithEmailAndPassword(auth, data.email, data.pw);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.pw
+      );
+      setRUserData(userCredential.user); // 로그인 시 사용자 정보를 Zustand에 저장
       navigate("/profile");
+      toast.success("로그인 되었습니다.");
     } catch (error) {
       handleAuthError(error);
     }

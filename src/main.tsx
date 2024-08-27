@@ -6,6 +6,8 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 import "./index.scss";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 AOS.init({
   duration: 1000, // 애니메이션 지속 시간 (밀리초)
@@ -21,6 +23,17 @@ if (rootElement) {
   ReactDOM.createRoot(rootElement).render(
     <BrowserRouter>
       <App />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </BrowserRouter>
   );
 } else {
