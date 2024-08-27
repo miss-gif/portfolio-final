@@ -13,6 +13,7 @@ import Notice from "./components/notice/Notice.jsx";
 import PostDetail from "./components/notice/PostDetail.jsx";
 import PostEdit from "./components/notice/PostEdit.jsx";
 import PostWrite from "./components/notice/PostWrite.jsx";
+import FindPass from "./components/auth/FindPass.jsx";
 
 const App = () => {
   const { posts, addPost, handleDelete, handleUpdate, postIdRef } = usePosts();
@@ -22,6 +23,7 @@ const App = () => {
       {/* 인증 페이지 */}
       <Route path="/auth" element={<AuthLayout />}>
         <Route index element={<AuthPage />} />
+        <Route path="/auth/findpass" element={<FindPass />} />
       </Route>
 
       {/* 메인 페이지 */}

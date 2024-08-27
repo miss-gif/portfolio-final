@@ -37,9 +37,7 @@ const PostWrite = ({ addPost, postIdRef }) => {
       <div className="post-add">
         <div className="post-add__top">
           <h2>글쓰기</h2>
-          <button onClick={handleSubmit}>등록</button>
-
-          {/* 구현 보류 */}
+          {/* 카테고리 기능 보류 */}
           <div className="form-group none">
             <label htmlFor="category">카테고리</label>
             <select id="category" name="category">
@@ -48,7 +46,7 @@ const PostWrite = ({ addPost, postIdRef }) => {
               <option value="질문답변">질문답변</option>
             </select>
           </div>
-
+          {/* 글내용 영역 */}
           <form className="form-group">
             <label htmlFor="title">제목</label>
             <input
@@ -66,6 +64,7 @@ const PostWrite = ({ addPost, postIdRef }) => {
               placeholder="내용을 입력하세요"
             />
           </form>
+          <button onClick={handleSubmit}>등록</button>
         </div>
       </div>
       {/* 모달 */}
@@ -102,7 +101,7 @@ const StyledModal = styled(Modal)`
   width: 300px;
   padding: 40px 20px;
   border: 1px solid #ccc;
-  background-color: white;
+  background: #333;
   border-radius: 5px;
   display: flex;
   align-items: center;

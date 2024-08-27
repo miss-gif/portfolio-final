@@ -132,7 +132,7 @@ const Login = () => {
       );
       setRUserData(userCredential.user); // 로그인 시 사용자 정보를 Zustand에 저장
       setLoggedIn(true); // 로그인 상태 업데이트
-      navigate("/profile");
+      navigate("/notice");
       toast.success("로그인 되었습니다.");
     } catch (error) {
       handleAuthError(error);
@@ -194,6 +194,15 @@ const Login = () => {
             onClick={() => setIsScene("join")}
           >
             계정 만들기
+          </button>
+          <button
+            type="button"
+            className="text-blue-500 hover:underline"
+            onClick={() => {
+              navigate("/auth/findpass");
+            }}
+          >
+            비밀번호 찾기
           </button>
         </form>
       ) : (

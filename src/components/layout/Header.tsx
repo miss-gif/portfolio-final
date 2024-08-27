@@ -7,6 +7,7 @@ import useActiveSection from "../../hooks/useActiveSection";
 import useAuth from "../../hooks/useAuth";
 import { sections } from "../GlobalNav/navSection";
 import "./Header.scss";
+import { toast } from "react-toastify";
 
 type SectionType = string;
 
@@ -23,6 +24,7 @@ const Header: React.FC = () => {
     setUserCurrent(null);
     // 로그인으로 이동
     navigate("/auth");
+    toast.success("로그아웃 되었습니다.");
   };
 
   // 메뉴 열기
@@ -59,6 +61,12 @@ const Header: React.FC = () => {
       }
     }
   };
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   // 스크롤 이벤트 등록
   useEffect(() => {
@@ -79,9 +87,9 @@ const Header: React.FC = () => {
     <header className="header">
       <div className="container">
         <h1>
-          <a href="/#" className="logo">
+          <Link to="/" className="logo" onClick={scrollToTop}>
             <img src="/logo_white.png" alt="Logo" />
-          </a>
+          </Link>
         </h1>
 
         {isNav && (
