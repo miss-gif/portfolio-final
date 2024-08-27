@@ -4,16 +4,14 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { doc, setDoc, getDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { create } from "zustand";
-import { auth, db, storage } from "../../firebaseConfig";
-import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { z } from "zod";
+import { auth, db, storage } from "../../firebaseConfig";
 import { useStore } from "../../store/store";
 
 // 유효성 검사 스키마
@@ -65,6 +63,7 @@ const Login = () => {
     resolver: zodResolver(joinSchema),
     mode: "onChange",
   });
+
   const { setRUserData, setLoggedIn, clearUserData } = useStore();
   const navigate = useNavigate();
 
@@ -82,10 +81,8 @@ const Login = () => {
     }
   };
 
-  const fbJoin = async () => {
+  const handleRegister = async () => {
     const formData = joinForm.getValues();
-    formData.image = joinForm.getValues("image");
-
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -93,7 +90,7 @@ const Login = () => {
         formData.pw
       );
       setRUserData(userCredential.user);
-      setLoggedIn(true); // 로그인 상태 업데이트
+      setLoggedIn(true);
 
       let imageUrl = "";
       if (formData.image) {
@@ -116,43 +113,47 @@ const Login = () => {
       resetForm();
       setIsScene("login");
 
-      // 회원가입 성공 알림
       toast.success("회원가입이 완료되었습니다!");
     } catch (error) {
       handleAuthError(error);
+      toast.error("회원가입에 실패했습니다.");
     }
   };
 
-  const fbLogin = async (data) => {
+  const handleLogin = async (data) => {
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
         data.email,
         data.pw
       );
-      setRUserData(userCredential.user); // 로그인 시 사용자 정보를 Zustand에 저장
-      setLoggedIn(true); // 로그인 상태 업데이트
+      setRUserData(userCredential.user);
+      setLoggedIn(true);
       navigate("/notice");
       toast.success("로그인 되었습니다.");
     } catch (error) {
       handleAuthError(error);
+      toast.error("로그인에 실패했습니다.");
     }
   };
 
   const handleAuthError = (error) => {
+    let message = "";
     switch (error.code) {
       case "auth/user-not-found":
-        setError("사용자를 찾을 수 없습니다.");
+        message = "사용자를 찾을 수 없습니다.";
         break;
       case "auth/wrong-password":
-        setError("비밀번호가 틀렸습니다.");
+        message = "비밀번호가 틀렸습니다.";
         break;
       case "auth/invalid-email":
-        setError("유효하지 않은 이메일 주소입니다.");
+        message = "유효하지 않은 이메일 주소입니다.";
         break;
       default:
-        setError("오류가 발생했습니다. 다시 시도해주세요.");
+        message = "오류가 발생했습니다. 다시 시도해주세요.";
     }
+    setError(message);
+    toast.error(message);
   };
 
   const resetForm = () => {
@@ -169,7 +170,10 @@ const Login = () => {
       {error && <p className="text-red-500 mb-4">{error}</p>}
 
       {isScene === "login" ? (
-        <form onSubmit={loginForm.handleSubmit(fbLogin)} className="mb-2 w-80">
+        <form
+          onSubmit={loginForm.handleSubmit(handleLogin)}
+          className="mb-2 w-80"
+        >
           <InputField
             label="이메일"
             register={loginForm.register("email")}
@@ -206,7 +210,10 @@ const Login = () => {
           </button>
         </form>
       ) : (
-        <form onSubmit={joinForm.handleSubmit(fbJoin)} className="mb-2 w-80">
+        <form
+          onSubmit={joinForm.handleSubmit(handleRegister)}
+          className="mb-2 w-80"
+        >
           <InputField
             label="이름"
             register={joinForm.register("name")}

@@ -57,7 +57,7 @@ const FindPass = () => {
   };
 
   const handleClickBack = () => {
-    navigate("/");
+    navigate(-1);
   };
 
   return (
