@@ -24,9 +24,25 @@
     var(var(--bg-color)) 0%,
     var(var(--bg-color)) 100%
   );
+
+  @font-face {
+    font-family: "MYHaemalgeunSangsang";
+    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/MYHaemalgeunSangsang.woff2")
+      format("woff2");
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "netmarbleB";
+    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.1/netmarbleB.woff")
+      format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+
   /* 글꼴 */
-  --body-font: "Jost", sans-serif;
-  --second-font: "Caveat", cursive;
+  --body-font: "netmarbleB", sans-serif;
+  --second-font: "netmarbleB", cursive;
 
   --biggest-font-size: 5.625rem;
   --h1-font-size: 2.75rem;
@@ -159,7 +175,6 @@ p {
 
 .card {
   background-color: var(--container-color);
-  // background-color: #fff;
   overflow: hidden;
   text-align: left;
   &-one {
