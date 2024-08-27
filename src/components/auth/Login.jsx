@@ -60,7 +60,7 @@ const InputField = ({ label, register, error, ...props }) => (
 
 const Login = () => {
   const loginForm = useForm({
-    defaultValues: { email: "", pw: "" },
+    defaultValues: { email: "test30@b.com", pw: "test30@b.com" },
     resolver: zodResolver(loginSchema),
     mode: "onChange",
   });

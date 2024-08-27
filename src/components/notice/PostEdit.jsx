@@ -49,9 +49,7 @@ const PostEdit = ({ posts, onUpdate }) => {
       <div className="post-add">
         <div className="post-add__top">
           <h2>글쓰기</h2>
-          <button className="btn" onClick={handleUpdate}>
-            수정
-          </button>
+          <button onClick={handleUpdate}>수정</button>
 
           {/* 구현 보류 */}
           <div className="form-group none">
