@@ -9,6 +9,7 @@ import shapeTwo from "../../assets/shape-2.png";
 import { handleClick } from "../../utils/scrollClick";
 import { home } from "./home";
 import "./home.scss";
+import VideoMain from "./VideoMain.jsx";
 
 const Home = () => {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -19,6 +20,7 @@ const Home = () => {
 
   return (
     <section className="home" id="home">
+      <VideoMain />
       <div className="home__container container">
         <div className="home__left">
           <p className="home__subtitle text-cs">
