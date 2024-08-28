@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import axios from "axios"; // axios를 import합니다.
-import "./ContactContent.scss";
+import axios from "axios";
+import { useState } from "react";
+import { FaGithub } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa6";
 import { IoMail } from "react-icons/io5";
-import { FaGithub } from "react-icons/fa";
+import "./ContactContent.scss";
 
 const ContactContent = () => {
   const [formData, setFormData] = useState({
@@ -152,6 +152,13 @@ const ContactContent = () => {
             <h2>
               <em>감사합니다</em> 연락주셔서 감사합니다! 곧 답변드리겠습니다.
             </h2>
+            <button
+              onClick={() => {
+                setComplete(false);
+              }}
+            >
+              더 보내기
+            </button>
           </div>
         )}
       </div>

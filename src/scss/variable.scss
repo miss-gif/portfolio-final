@@ -2,6 +2,7 @@
 
 :root {
   --primary-color: #29a385;
+  --hover-color: #42b973;
   --title-color: hsl(0, 0%, 100%);
   --text-color: hsl(0, 0%, 92%);
   --bg-color: #1f252d;
@@ -9,6 +10,7 @@
   --bg-color-alt: orange;
   --container-color: #0f1520;
   --border-color: hsl(210, 2%, 65%);
+  --red-color: #f44336;
   --first-gradient: linear-gradient(
     0deg,
     var(var(--bg-color-alt)) 0%,

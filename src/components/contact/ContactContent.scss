@@ -86,14 +86,20 @@ $leftWidth: 300px;
   }
 
   &__submit-button {
-    background-color: #007bff;
+    background-color: var(--primary-color);
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     &:hover {
-      background-color: #0056b3;
+      background-color: var(--hover-color);
     }
   }
+}
+
+.contact-form__error {
+  color: var(--red-color);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
 }
