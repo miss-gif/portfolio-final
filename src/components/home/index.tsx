@@ -10,6 +10,7 @@ import { handleClick } from "../../utils/scrollClick";
 import { home } from "./home";
 import "./home.scss";
 import VideoMain from "./VideoMain.jsx";
+import "animate.css";
 
 const Home = () => {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -26,7 +27,7 @@ const Home = () => {
           <p className="home__subtitle text-cs">
             안녕하세요. <span>제 이름은</span>
           </p>
-          <h2 className="home__title text-cs">
+          <h2 className="home__title text-cs animate__animated animate__flipInX">
             <span>{home.name}</span>
           </h2>
           <p className="home__job">
