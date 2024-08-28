@@ -27,7 +27,7 @@ const Resume = () => {
       <div className="resume__container container grid">
         <div className="resume__group">
           <h3
-            className="resume__heading"
+            className={`resume__heading ${isEducationOpen ? "active" : ""}`}
             onClick={toggleEducation}
             title="Click!"
           >
@@ -50,7 +50,7 @@ const Resume = () => {
         </div>
         <div className="resume__group">
           <h3
-            className="resume__heading"
+            className={`resume__heading ${isExperienceOpen ? "active" : ""}`}
             onClick={toggleExperience}
             title="Click!"
           >

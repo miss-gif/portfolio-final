@@ -23,7 +23,17 @@
 
 /* Card */
 .resume {
-  &__heading,
+  &__heading {
+    padding: 8px;
+    border-radius: 8px;
+    &:hover {
+      background-color: var(--primary-color);
+      box-sizing: border-box;
+    }
+    &.active {
+      background-color: var(--primary-color);
+    }
+  }
   &__item {
     border-bottom: 2px solid var(--border-color);
   }
@@ -34,7 +44,7 @@
     }
   }
   &__header {
-    padding: 32px 30px;
+    padding: 24px;
   }
   &__subtitle {
     font-size: var(--largest-font-size);
