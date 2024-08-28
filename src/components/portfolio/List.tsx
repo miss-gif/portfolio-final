@@ -23,12 +23,11 @@ const List = ({ categories, filterItems, selectedCategories, selectAll }) => {
         >
           <input
             type="checkbox"
-            id={`checkbox-${index}`} // 고유한 ID 부여
+            id={`checkbox-${index}`}
             checked={selectedCategories.includes(category)}
             onChange={() => filterItems(category)}
           />
           <label htmlFor={`checkbox-${index}`}>{category}</label>
-          {/* for 속성에 ID 설정 */}
         </div>
       ))}
     </div>

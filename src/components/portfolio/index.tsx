@@ -1,5 +1,5 @@
 import { AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PortfolioDetailModal from "./PortfolioDetailModal";
 import Items from "./Items";
 import List from "./List";
@@ -29,13 +29,16 @@ const Portfolio = () => {
     document.body.style.overflow = "auto"; // 스크롤 해제
   };
 
-  const filterItems = (category) => {
+  const filterItems = (categories) => {
     let updatedCategories;
-    if (selectedCategories.includes(category)) {
-      updatedCategories = selectedCategories.filter((cat) => cat !== category);
+    if (Array.isArray(categories)) {
+      updatedCategories = categories;
     } else {
-      updatedCategories = [...selectedCategories, category];
+      updatedCategories = selectedCategories.includes(categories)
+        ? selectedCategories.filter((cat) => cat !== categories)
+        : [...selectedCategories, categories];
     }
+
     setSelectedCategories(updatedCategories);
 
     if (updatedCategories.length === 0) {
@@ -52,6 +55,19 @@ const Portfolio = () => {
     setSelectedCategories([]);
     setProjectItems(portfolio);
   };
+
+  const defaultCategories = [
+    "리액트",
+    "비동기통신",
+    "라우터",
+    "전역상태관리",
+    "타입스크립트",
+    "반응형",
+  ];
+
+  useEffect(() => {
+    filterItems(defaultCategories);
+  }, []);
 
   return (
     <>
