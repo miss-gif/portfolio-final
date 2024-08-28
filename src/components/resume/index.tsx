@@ -1,6 +1,7 @@
+import classNames from "classnames";
 import { useState } from "react";
-import { resume } from "./resume";
 import Card from "./Card";
+import { resume } from "./resume";
 import "./resume.scss";
 
 const Resume = () => {
@@ -27,7 +28,9 @@ const Resume = () => {
       <div className="resume__container container grid">
         <div className="resume__group">
           <h3
-            className={`resume__heading ${isEducationOpen ? "active" : ""}`}
+            className={classNames("resume__heading", {
+              active: isEducationOpen,
+            })}
             onClick={toggleEducation}
             title="Click!"
           >
@@ -50,7 +53,9 @@ const Resume = () => {
         </div>
         <div className="resume__group">
           <h3
-            className={`resume__heading ${isExperienceOpen ? "active" : ""}`}
+            className={classNames("resume__heading", {
+              active: isExperienceOpen,
+            })}
             onClick={toggleExperience}
             title="Click!"
           >
