@@ -1,17 +1,30 @@
+import { useForm } from "react-hook-form";
+import { z, ZodSchema } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { useState } from "react";
-import { FaGithub } from "react-icons/fa";
-import { FaPhone } from "react-icons/fa6";
+import { FaGithub, FaPhone } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import "./ContactContent.scss";
 
+// Zod 스키마 정의
+const schema: ZodSchema = z.object({
+  name: z.string().min(1, "이름을 입력해 주세요."),
+  email: z.string().email("유효한 이메일 주소를 입력해 주세요."),
+  message: z.string().min(1, "메시지를 입력해 주세요."),
+  honeypot: z.string().optional(), // 숨겨진 필드는 옵션으로 처리
+});
+
 const ContactContent = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
   const [complete, setComplete] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(schema),
+  });
 
   const contactInfo = [
     { icon: <FaPhone />, label: "Phone", value: "010-5116-5535" },
@@ -19,38 +32,30 @@ const ContactContent = () => {
     { icon: <FaGithub />, label: "Github", value: "miss-gif" },
   ];
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const form = e.target;
-
-    // FormData 객체를 생성합니다.
-    const data = new FormData(form);
+  const onSubmit = async (data) => {
+    const formData = new FormData();
+    Object.keys(data).forEach((key) => formData.append(key, data[key]));
 
     try {
-      const response = await axios({
-        method: form.method,
-        url: form.action,
-        data: data,
-      });
+      const response = await axios.post(
+        "https://script.google.com/macros/s/AKfycbyeWNQ90Hjbb1Pd7iKaRdHbHY1wVfNO7v_0g_Ky-cK60d6HkKXf1d7If58fPVg9rwp_ZA/exec",
+        formData,
+        { headers: { "Content-Type": "multipart/form-data" } }
+      );
 
       if (response.data.result === "success") {
         setComplete(true);
-        setFormData({
-          name: "",
-          email: "",
-          message: "",
-        });
       } else {
         console.error("Form submission error:", response.data);
       }
     } catch (error) {
       console.error("Form submission failed:", error);
     }
+  };
+
+  const handleReset = () => {
+    setComplete(false);
+    reset(); // react-hook-form의 reset 메서드를 호출하여 폼 데이터 초기화
   };
 
   return (
@@ -71,12 +76,7 @@ const ContactContent = () => {
 
       <div className="contact-content__form">
         {!complete ? (
-          <form
-            className="contact-form"
-            method="POST"
-            action="https://script.google.com/macros/s/AKfycbyeWNQ90Hjbb1Pd7iKaRdHbHY1wVfNO7v_0g_Ky-cK60d6HkKXf1d7If58fPVg9rwp_ZA/exec"
-            onSubmit={handleSubmit}
-          >
+          <form className="contact-form" onSubmit={handleSubmit(onSubmit)}>
             <div className="contact-form__elements">
               <fieldset className="contact-form__group">
                 <label htmlFor="name" className="contact-form__label">
@@ -86,11 +86,12 @@ const ContactContent = () => {
                   id="name"
                   name="name"
                   className="contact-form__input"
-                  required
                   placeholder="귀하의 성함을 적어주세요."
-                  value={formData.name}
-                  onChange={handleChange}
+                  {...register("name")}
                 />
+                {errors.name && (
+                  <p className="error-message">{errors.name.message}</p>
+                )}
               </fieldset>
 
               <fieldset className="contact-form__group">
@@ -102,11 +103,12 @@ const ContactContent = () => {
                   name="email"
                   type="email"
                   className="contact-form__input"
-                  required
                   placeholder="답변받으실 이메일 주소를 적어주세요."
-                  value={formData.email}
-                  onChange={handleChange}
+                  {...register("email")}
                 />
+                {errors.email && (
+                  <p className="error-message">{errors.email.message}</p>
+                )}
               </fieldset>
 
               <fieldset className="contact-form__group">
@@ -118,13 +120,15 @@ const ContactContent = () => {
                   name="message"
                   rows="5"
                   className="contact-form__textarea"
-                  required
                   placeholder="궁금하신 점이 있으시면 언제든지 문의해 주세요."
-                  value={formData.message}
-                  onChange={handleChange}
+                  {...register("message")}
                 />
+                {errors.message && (
+                  <p className="error-message">{errors.message.message}</p>
+                )}
               </fieldset>
 
+              {/* 스팸 방지를 위한 숨겨진 필드 추가 */}
               <fieldset
                 className="contact-form__group honeypot-field"
                 style={{ display: "none" }}
@@ -135,10 +139,9 @@ const ContactContent = () => {
                 </label>
                 <input
                   id="honeypot"
-                  type="text"
                   name="honeypot"
-                  value=""
-                  onChange={() => {}}
+                  type="text"
+                  {...register("honeypot")} // react-hook-form의 register 메서드를 사용하여 숨겨진 필드 등록
                 />
               </fieldset>
 
@@ -152,13 +155,7 @@ const ContactContent = () => {
             <h2>
               <em>감사합니다</em> 연락주셔서 감사합니다! 곧 답변드리겠습니다.
             </h2>
-            <button
-              onClick={() => {
-                setComplete(false);
-              }}
-            >
-              더 보내기
-            </button>
+            <button onClick={handleReset}>더 보내기</button>
           </div>
         )}
       </div>
