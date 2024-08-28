@@ -22,14 +22,14 @@ const Home = () => {
       <div className="home__container container">
         <div className="home__left">
           <p className="home__subtitle text-cs">
-            안녕하세요. <span>저는</span>
+            안녕하세요. <span>제 이름은</span>
           </p>
           <h2 className="home__title text-cs">
             <span>{home.name}</span>
           </h2>
           <p className="home__job">
             <span className="text-cs">
-              리액트 <b>웹 개발자</b>
+              리액트 <b>web developer</b>
             </span>
           </p>
           {/* 설명 */}
@@ -99,7 +99,9 @@ const Home = () => {
           </p>
 
           <p className="home__data home__data-two">
-            <span className="text-lg">10</span>
+            <span className="text-lg">
+              10<b>+</b>
+            </span>
             <span className="text-sm text-cs">
               Completed <span>Projects</span>
             </span>
@@ -114,8 +116,8 @@ const Home = () => {
       {/* 스크롤 다운 */}
       <a
         className="scroll-down"
-        href="#services"
-        onClick={(event) => handleClick(event, "services")}
+        href="#skills"
+        onClick={(event) => handleClick(event, "skills")}
       >
         <p>scroll down</p>
         <span className="scroll-down__icon">

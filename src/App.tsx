@@ -14,6 +14,7 @@ import PostDetail from "./components/notice/PostDetail.jsx";
 import PostEdit from "./components/notice/PostEdit.jsx";
 import PostWrite from "./components/notice/PostWrite.jsx";
 import FindPass from "./components/auth/FindPass.jsx";
+import Test from "./Test.js";
 
 const App = () => {
   const { posts, addPost, handleDelete, handleUpdate, postIdRef } = usePosts();
@@ -52,6 +53,7 @@ const App = () => {
 
       {/* 기타 서브 링크 */}
       <Route path="/cv" element={<Cv />} />
+      <Route path="/test" element={<Test />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
