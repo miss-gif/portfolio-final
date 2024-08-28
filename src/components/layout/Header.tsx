@@ -126,7 +126,7 @@ const Header: React.FC = () => {
               onClick={() => {
                 handleLogout();
               }}
-              className="p-2 bg-red-500 rounded text-white hover:bg-red-600"
+              className="p-2 underline rounded text-white hover:bg-red-600"
             >
               로그아웃
             </button>

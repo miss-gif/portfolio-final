@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { z, ZodSchema } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaGithub, FaPhone } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import "./ContactContent.scss";
@@ -17,6 +17,12 @@ const schema: ZodSchema = z.object({
 
 const ContactContent = () => {
   const [complete, setComplete] = useState(false);
+  const [profile, setProfile] = useState({
+    contact: "",
+    email: "",
+    github: "",
+  });
+
   const {
     register,
     handleSubmit,
@@ -26,10 +32,32 @@ const ContactContent = () => {
     resolver: zodResolver(schema),
   });
 
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await axios.get("/json/profile.json");
+        setProfile(response.data);
+      } catch (error) {
+        console.error("Error fetching profile data:", error);
+      }
+    };
+
+    fetchProfile();
+  }, []);
+
+  // contactInfo 배열을 profile 데이터로 동적으로 업데이트
   const contactInfo = [
-    { icon: <FaPhone />, label: "Phone", value: "010-5116-5535" },
-    { icon: <IoMail />, label: "Email", value: "svx327@gmail.com" },
-    { icon: <FaGithub />, label: "Github", value: "miss-gif" },
+    {
+      icon: <FaPhone />,
+      label: "Phone",
+      value: profile.contact || "정보 없음",
+    },
+    { icon: <IoMail />, label: "Email", value: profile.email || "정보 없음" },
+    {
+      icon: <FaGithub />,
+      label: "Github",
+      value: profile.github || "정보 없음",
+    },
   ];
 
   const onSubmit = async (data) => {
@@ -60,19 +88,19 @@ const ContactContent = () => {
 
   return (
     <div className="contact-content">
-      <div className="contact-content__info">
+      <ul className="contact-content__info">
         {contactInfo.map((info, index) => (
-          <div key={index} className="contact-info__item">
-            <span className="contact-info__icon" aria-hidden="true">
-              {info.icon}
-            </span>
+          <li key={index} className="contact-info__item">
             <div className="contact-info__details">
+              <span className="contact-info__icon" aria-hidden="true">
+                {info.icon}
+              </span>
               <p className="contact-info__label">{info.label}</p>
               <p className="contact-info__value">{info.value}</p>
             </div>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
 
       <div className="contact-content__form">
         {!complete ? (
@@ -90,7 +118,7 @@ const ContactContent = () => {
                   {...register("name")}
                 />
                 {errors.name && (
-                  <p className="error-message">{errors.name.message}</p>
+                  <p className="contact-form__error">{errors.name.message}</p>
                 )}
               </fieldset>
 
@@ -107,7 +135,7 @@ const ContactContent = () => {
                   {...register("email")}
                 />
                 {errors.email && (
-                  <p className="error-message">{errors.email.message}</p>
+                  <p className="contact-form__error">{errors.email.message}</p>
                 )}
               </fieldset>
 
@@ -124,7 +152,9 @@ const ContactContent = () => {
                   {...register("message")}
                 />
                 {errors.message && (
-                  <p className="error-message">{errors.message.message}</p>
+                  <p className="contact-form__error">
+                    {errors.message.message}
+                  </p>
                 )}
               </fieldset>
 

@@ -1,11 +1,13 @@
 @import "./../../scss/breakPoint";
 
-$leftWidth: 300px;
+$leftWidth: 40%;
+
+// 왼쪽
 
 .contact-content {
   display: flex;
   justify-content: space-between;
-  gap: 8px;
+  gap: 100px;
   @include tablet {
     flex-direction: column;
   }
@@ -16,6 +18,7 @@ $leftWidth: 300px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-direction: column;
       width: 100%;
     }
     @include mobile {
@@ -32,17 +35,30 @@ $leftWidth: 300px;
 }
 
 .contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
   &__item {
-    padding: 16px 0;
+    padding: 20px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 16px;
-    margin-bottom: 20px;
+    gap: 10px;
   }
   &__icon {
     font-size: 24px;
   }
   &__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
   }
   &__label {
     font-weight: 500;
@@ -53,6 +69,8 @@ $leftWidth: 300px;
     color: #888;
   }
 }
+
+// 오른쪽
 
 .contact-form {
   &__elements {
@@ -97,6 +115,8 @@ $leftWidth: 300px;
     }
   }
 }
+
+// 유효성 검사
 
 .contact-form__error {
   color: var(--red-color);
