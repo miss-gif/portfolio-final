@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { FaGithub } from "react-icons/fa";
+import { GiNotebook } from "react-icons/gi";
 import { MdKeyboardDoubleArrowDown } from "react-icons/md";
 import { RiNotionFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 import shapeOne from "../../assets/shape-1.png";
 import shapeTwo from "../../assets/shape-2.png";
-import { home } from "./home";
 import { handleClick } from "../../utils/scrollClick";
+import { home } from "./home";
 import "./home.scss";
-import { Link } from "react-router-dom";
 
 const Home = () => {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -50,6 +51,14 @@ const Home = () => {
               rel="noopener noreferrer"
             >
               <RiNotionFill fontSize={32} />
+            </a>
+            <a
+              href="https://instinctive-answer-8a6.notion.site/74e393256dd24977beb8733d1fc23937"
+              target="_blank"
+              className="home__social-link"
+              rel="noopener noreferrer"
+            >
+              <GiNotebook fontSize={32} />
             </a>
           </div>
           {/* 버튼3 */}
