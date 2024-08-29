@@ -14,7 +14,7 @@ import PostDetail from "./components/notice/PostDetail.jsx";
 import PostEdit from "./components/notice/PostEdit.jsx";
 import PostWrite from "./components/notice/PostWrite.jsx";
 import FindPass from "./components/auth/FindPass.jsx";
-import Test from "./Test.js";
+import Test from "./Test.jsx";
 
 const App = () => {
   const { posts, addPost, handleDelete, handleUpdate, postIdRef } = usePosts();

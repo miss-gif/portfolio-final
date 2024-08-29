@@ -1,7 +1,8 @@
 // ContactInfo.js
 import React from "react";
-import { FaFire, FaGithub, FaPhoneSquareAlt, FaSeedling } from "react-icons/fa";
+import { FaGithub, FaPhoneSquareAlt, FaSeedling } from "react-icons/fa";
 import { FaMapLocationDot } from "react-icons/fa6";
+import { ImFire } from "react-icons/im";
 import { IoMail } from "react-icons/io5";
 
 const ContactInfo = ({ profile }) => {
@@ -44,9 +45,9 @@ const ContactInfo = ({ profile }) => {
       <li className="contact-info__item">
         <div className="contact-info__details">
           <span className="contact-info__icon" aria-hidden="true">
-            <FaFire />
+            <ImFire />
           </span>
-          <p className="contact-info__label">공부중</p>
+          <p className="contact-info__label">흥미진진</p>
           <p className="contact-info__value">TypeScript</p>
         </div>
       </li>
