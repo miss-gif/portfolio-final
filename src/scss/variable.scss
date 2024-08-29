@@ -131,6 +131,7 @@ p {
 }
 
 .section {
+  min-height: 100vh;
   padding-bottom: 220px;
   &__title,
   &__subtitle {
