@@ -42,6 +42,8 @@ interface Project {
   role: string;
   demoUrl: string;
   githubUrl: string;
+  canvaUrl?: string;
+  figmaUrl?: string;
   lessonsLearned: string[] | string;
 }
 
@@ -83,8 +85,12 @@ export const project: Project[] = [
     ],
     techStack: [react, reactrouter, redux, axios, sass, emotion, mui],
     role: "작업 영역 (기여도)",
-    demoUrl: "https://github.com/miss-gif",
-    githubUrl: "https://github.com/miss-gif",
+    demoUrl: "https://jumuniyo.gybproject.com/",
+    githubUrl: "https://github.com/miss-gif/jumunyo",
+    canvaUrl:
+      "https://www.canva.com/design/DAGOX4a8SaE/F06Qj7PFzV0Ck796fnsNLA/edit",
+    figmaUrl:
+      "https://www.figma.com/design/wo9ijijb6eANcrwEzBAFQA/%EC%A3%BC%EB%AC%B8%EC%9D%B4%EC%9A%94-(%EA%B0%80%EC%B9%AD)?node-id=25-2&t=KnhWp6vxL0mDpwiK-1",
     lessonsLearned: ["프로젝트에서 배운 점"],
   },
   {
@@ -124,8 +130,12 @@ export const project: Project[] = [
     ],
     techStack: [react, reactrouter, redux, axios, sass, emotion, mui],
     role: "프로젝트 총괄, 사용자 기능 개발 (80%) 외 기타 업무",
-    demoUrl: "https://gybproject.com/",
+    demoUrl: "https://jumuniyo.gybproject.com/",
     githubUrl: "https://github.com/miss-gif/jumuniyo-v2-final",
+    canvaUrl:
+      "https://www.canva.com/design/DAGLYEhJ6nk/gAYEVyu2zAcb906KrDz7Hw/edit",
+    figmaUrl:
+      "https://www.figma.com/design/wo9ijijb6eANcrwEzBAFQA/%EC%A3%BC%EB%AC%B8%EC%9D%B4%EC%9A%94-(%EA%B0%80%EC%B9%AD)?node-id=25-2&t=KnhWp6vxL0mDpwiK-1",
     lessonsLearned: [
       "Redux Toolkit을 활용한 상태 관리 학습",
       "MUI를 활용한 UI 컴포넌트 커스터마이징 경험",
@@ -182,6 +192,10 @@ export const project: Project[] = [
     role: "커뮤니티 기능 개발 (100%)",
     demoUrl: "https://green-01prj.vercel.app/",
     githubUrl: "https://github.com/miss-gif/green-01prj",
+    canvaUrl:
+      "https://www.canva.com/design/DAGLYEhJ6nk/gAYEVyu2zAcb906KrDz7Hw/edit",
+    figmaUrl:
+      "https://www.figma.com/design/wo9ijijb6eANcrwEzBAFQA/%EC%A3%BC%EB%AC%B8%EC%9D%B4%EC%9A%94-(%EA%B0%80%EC%B9%AD)?node-id=25-2&t=KnhWp6vxL0mDpwiK-1",
     lessonsLearned: [
       "React 생태계의 다양한 라이브러리를 활용하여 효율적인 개발 방법을 익혔습니다.",
       "사용자 중심의 UI/UX 디자인 원칙을 적용하여 직관적이고 편리한 서비스를 구현했습니다.",

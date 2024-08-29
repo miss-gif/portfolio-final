@@ -15,6 +15,8 @@ interface ProjectItem {
   role: string;
   demoUrl: string;
   githubUrl: string;
+  canvaUrl?: string;
+  figmaUrl?: string;
   lessonsLearned: string;
 }
 
@@ -125,14 +127,20 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
             </div>
             <div className="project-modal__links">
               <a href={item.demoUrl} target="_blank" rel="noopener noreferrer">
-                배포 사이트
+                배포-Link
               </a>
               <a
                 href={item.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                깃헙 사이트
+                깃헙-Link
+              </a>
+              <a href={item.canvaUrl} target="_blank" rel="noopener noreferrer">
+                Canva-Link
+              </a>
+              <a href={item.figmaUrl} target="_blank" rel="noopener noreferrer">
+                피그마-Link
               </a>
             </div>
             <button className="modal__close-btn" onClick={onRequestClose}>
