@@ -1,14 +1,18 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-// React Hook Form
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { sendPasswordResetEmail } from "firebase/auth";
+import React, { useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { z } from "zod";
 import { auth } from "../../firebaseConfig";
 
-// 초기 상태
-const initFindPassState = {
+// 초기 상태 인터페이스
+interface FindPassState {
+  email: string;
+}
+
+// 초기 상태 값
+const initFindPassState: FindPassState = {
   email: "",
 };
 
@@ -20,30 +24,33 @@ const findPassSchema = z.object({
     .email("유효한 이메일 주소를 입력하세요."),
 });
 
-const FindPass = () => {
+// 폼 데이터 타입
+type FindPassFormData = z.infer<typeof findPassSchema>;
+
+const FindPass: React.FC = () => {
   const navigate = useNavigate();
-  // 에러 메시지
-  const [erroMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
   const {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm({
+  } = useForm<FindPassFormData>({
     defaultValues: initFindPassState,
     resolver: zodResolver(findPassSchema),
     mode: "onChange",
   });
 
-  // 데이터 전송
-  const handleFindPassSubmit = async (data) => {
+  // 데이터 전송 핸들러
+  const handleFindPassSubmit: SubmitHandler<FindPassFormData> = async (
+    data
+  ) => {
     try {
       await sendPasswordResetEmail(auth, data.email);
       alert("비밀번호 재설정 메일을 보내드렸습니다. 확인해 주세요.");
       navigate("/");
     } catch (error) {
-      const errorCode = error.code;
-      // const errorMessage = error.message; // 사용하지 않으므로 제거
+      const errorCode = (error as { code?: string }).code;
 
       switch (errorCode) {
         case "auth/user-not-found":
@@ -63,7 +70,7 @@ const FindPass = () => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <h1 className="text-2xl font-bold mb-4">비밀번호 찾기</h1>
-      {erroMessage && <p className="text-red-500 mb-4">{erroMessage}</p>}
+      {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>}
       <form onSubmit={handleSubmit(handleFindPassSubmit)}>
         <div className="mb-2 w-80">
           <label className="block text-gray-700">이메일</label>
