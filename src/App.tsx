@@ -1,20 +1,21 @@
 import { Route, Routes } from "react-router-dom";
+import Test from "./Test.jsx";
 import Profile from "./components/Profile/Profile.jsx";
 import ProfileEdit from "./components/Profile/ProfileEdit.jsx";
+import FindPass from "./components/auth/FindPass.jsx";
 import Cv from "./components/cv/index";
 import AuthLayout from "./components/layout/AuthLayout";
 import BlogLayout from "./components/layout/BlogLayout";
 import RootLayout from "./components/layout/RootLayout";
-import usePosts from "./hooks/usePosts.jsx"; // Custom hook import
-import AuthPage from "./pages/AuthPage";
-import HomePage from "./pages/HomePage";
-import NotFound from "./pages/NotFound";
 import Notice from "./components/notice/Notice.jsx";
 import PostDetail from "./components/notice/PostDetail.jsx";
 import PostEdit from "./components/notice/PostEdit.jsx";
 import PostWrite from "./components/notice/PostWrite.jsx";
-import FindPass from "./components/auth/FindPass.jsx";
-import Test from "./Test.jsx";
+import usePosts from "./hooks/usePosts.jsx"; // Custom hook import
+import AuthPage from "./pages/AuthPage";
+import GraphPage from "./pages/GraphPage";
+import HomePage from "./pages/HomePage";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   const { posts, addPost, handleDelete, handleUpdate, postIdRef } = usePosts();
@@ -36,6 +37,7 @@ const App = () => {
 
       {/* 블로그/공지사항 관련 페이지 */}
       <Route path="/" element={<BlogLayout />}>
+        <Route path="graph" element={<GraphPage />} />
         <Route path="notice" element={<Notice posts={posts} />} />
         <Route
           path="notice/write"
