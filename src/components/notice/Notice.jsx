@@ -1,24 +1,24 @@
-// src/Notice.js
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { db } from "../../firebaseConfig"; // Firestore 초기화된 db를 import합니다.
+import { db } from "../../firebaseConfig";
 import { useStore } from "../../store/store";
 import "./Notice.scss";
 
 function Notice() {
   const navigate = useNavigate();
-  const { isLoggedIn } = useStore((state) => state); // 로그인 상태 가져오기
+  const { isLoggedIn } = useStore((state) => state);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(10); // 페이지당 게시물 수
+  const [postsPerPage] = useState(10);
+  const [allPosts, setAllPosts] = useState([]); // 모든 게시물
   const [filteredPosts, setFilteredPosts] = useState([]); // 검색 결과 필터링된 게시물
+  const [searchTerm, setSearchTerm] = useState(""); // 검색어 상태
 
   useEffect(() => {
-    // Firestore에서 게시물 가져오기
     async function fetchPosts() {
       try {
         const postsRef = collection(db, "posts");
-        const q = query(postsRef, orderBy("postNumber", "desc")); // 내림차순으로 정렬
+        const q = query(postsRef, orderBy("postNumber", "desc"));
         const querySnapshot = await getDocs(q);
 
         const posts = querySnapshot.docs.map((doc) => ({
@@ -27,7 +27,8 @@ function Notice() {
         }));
 
         console.log("게시물 가져오기 성공: ", posts);
-        setFilteredPosts(posts);
+        setAllPosts(posts);
+        setFilteredPosts(posts); // 초기 상태는 모든 게시물을 표시
       } catch (error) {
         console.error("게시물 가져오기 실패: ", error);
       }
@@ -45,7 +46,6 @@ function Notice() {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
-  // 페이지 번호 배열 생성
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(filteredPosts.length / postsPerPage); i++) {
     pageNumbers.push(i);
@@ -54,11 +54,21 @@ function Notice() {
   // 검색 기능
   const handleSearch = (event) => {
     const searchTerm = event.target.value.toLowerCase();
-    const filtered = filteredPosts.filter((post) =>
-      post.title.toLowerCase().includes(searchTerm)
+    setSearchTerm(searchTerm);
+
+    const filtered = allPosts.filter(
+      (post) =>
+        post.title.toLowerCase().includes(searchTerm) ||
+        post.author.toLowerCase().includes(searchTerm) // 작성자 검색 가능
     );
+
     setFilteredPosts(filtered);
     setCurrentPage(1); // 검색 시 첫 페이지로 이동
+  };
+
+  const resetSearch = () => {
+    setSearchTerm("");
+    setFilteredPosts(allPosts);
   };
 
   return (
@@ -69,6 +79,16 @@ function Notice() {
           <button className="notice__header__btn best-post">전체글</button>
           <button className="notice__header__btn best-post">추천글</button>
           <button className="notice__header__btn best-post">공지</button>
+        </div>
+
+        <div className="notice__search">
+          <input
+            type="text"
+            value={searchTerm}
+            placeholder="제목 또는 작성자를 검색하세요"
+            onChange={handleSearch}
+          />
+          <button onClick={resetSearch}>초기화</button>
         </div>
 
         <table className="notice__table">
@@ -102,7 +122,7 @@ function Notice() {
             to={isLoggedIn ? "/notice/write" : "#"}
             className={`notice__footer__btn ${!isLoggedIn ? "disabled" : ""}`}
             onClick={(e) => {
-              if (!isLoggedIn) e.preventDefault(); // 비로그인 상태일 때 링크 클릭 방지
+              if (!isLoggedIn) e.preventDefault();
             }}
           >
             글쓰기
@@ -115,15 +135,6 @@ function Notice() {
               {number}
             </button>
           ))}
-        </div>
-
-        <div className="notice__search">
-          <input
-            type="text"
-            placeholder="검색어를 입력하세요"
-            onChange={handleSearch}
-          />
-          <button>검색</button>
         </div>
       </article>
     </div>
