@@ -7,12 +7,13 @@ import {
   getDocs,
   deleteDoc,
   doc,
+  writeBatch,
 } from "firebase/firestore";
 import { useStore } from "../store/store";
 import { useNavigate } from "react-router-dom";
 
 const BoardPage = () => {
-  const { isLoggedIn, rUserData } = useStore();
+  const { isLoggedIn } = useStore();
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const [newPost, setNewPost] = useState("");
@@ -21,55 +22,74 @@ const BoardPage = () => {
     if (!isLoggedIn) {
       navigate("/login");
     } else {
-      async function fetchPosts() {
-        const querySnapshot = await getDocs(collection(db, "posts"));
-        const postsData = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setPosts(postsData);
-      }
-
       fetchPosts();
     }
   }, [isLoggedIn, navigate]);
 
-  const handleAddPost = async () => {
-    if (newPost.trim()) {
-      await addDoc(collection(db, "posts"), {
-        content: newPost,
-        timestamp: new Date(),
-      });
-      setNewPost("");
+  const fetchPosts = async () => {
+    try {
       const querySnapshot = await getDocs(collection(db, "posts"));
       const postsData = querySnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
       setPosts(postsData);
+    } catch (error) {
+      console.error("게시물 가져오기 실패: ", error);
+    }
+  };
+
+  const handleAddPost = async () => {
+    if (newPost.trim()) {
+      try {
+        await addDoc(collection(db, "posts"), {
+          content: newPost,
+          timestamp: new Date(),
+        });
+        setNewPost("");
+        fetchPosts();
+      } catch (error) {
+        console.error("게시물 추가 실패: ", error);
+      }
     }
   };
 
   const handleDeletePost = async (postId) => {
-    await deleteDoc(doc(db, "posts", postId));
-    const querySnapshot = await getDocs(collection(db, "posts"));
-    const postsData = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-    setPosts(postsData);
+    try {
+      await deleteDoc(doc(db, "posts", postId));
+      fetchPosts();
+    } catch (error) {
+      console.error("게시물 삭제 실패: ", error);
+    }
+  };
+
+  const handleDeleteAllPosts = async () => {
+    try {
+      const querySnapshot = await getDocs(collection(db, "posts"));
+      const batch = writeBatch(db);
+
+      querySnapshot.docs.forEach((doc) => {
+        batch.delete(doc.ref);
+      });
+
+      await batch.commit();
+      fetchPosts();
+    } catch (error) {
+      console.error("전체 게시물 삭제 실패: ", error);
+    }
   };
 
   return (
     <div>
-      <h1>게시판</h1>
+      <h2>게시물 관리</h2>
       <div>
-        <textarea
+        <input
+          type="text"
           value={newPost}
           onChange={(e) => setNewPost(e.target.value)}
-          placeholder="새 게시글 작성"
+          placeholder="새 게시물 내용"
         />
-        <button onClick={handleAddPost}>게시</button>
+        <button onClick={handleAddPost}>추가</button>
       </div>
       <div>
         {posts.map((post) => (
@@ -79,6 +99,7 @@ const BoardPage = () => {
           </div>
         ))}
       </div>
+      <button onClick={handleDeleteAllPosts}>전체 삭제</button>
     </div>
   );
 };

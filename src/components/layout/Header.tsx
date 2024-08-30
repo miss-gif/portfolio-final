@@ -122,8 +122,8 @@ const Header: React.FC = () => {
         ) : (
           <div className="header__group">
             <Link to="/graph">통계</Link>
-            <Link to="/board">게시판2</Link>
-            <Link to="/notice">공지</Link>
+            <Link to="/board">게시판관리</Link>
+            <Link to="/notice">게시판</Link>
             <Link to="/profile">프로필</Link>
             <button
               onClick={() => {
