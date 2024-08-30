@@ -16,6 +16,7 @@ import AuthPage from "./pages/AuthPage";
 import GraphPage from "./pages/GraphPage";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
+import BoardPage from "./pages/BoardPage.jsx";
 
 const App = () => {
   const { posts, addPost, handleDelete, handleUpdate, postIdRef } = usePosts();
@@ -51,6 +52,7 @@ const App = () => {
           path="notice/edit/:postId"
           element={<PostEdit posts={posts} onUpdate={handleUpdate} />}
         />
+        <Route path="/board" element={<BoardPage />} />
       </Route>
 
       {/* 기타 서브 링크 */}
