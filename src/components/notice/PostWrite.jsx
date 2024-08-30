@@ -1,11 +1,19 @@
 // src/PostWrite.js
-import { useState, useEffect } from "react";
 import styled from "@emotion/styled";
-import { useNavigate } from "react-router-dom";
-import Modal from "react-modal";
-import { collection, addDoc } from "firebase/firestore";
-import { db, auth } from "../../firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  increment,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
+import { useEffect, useState } from "react";
+import Modal from "react-modal";
+import { useNavigate } from "react-router-dom";
+import { auth, db } from "../../firebaseConfig";
 import "./PostWrite.scss";
 
 Modal.setAppElement("#root");
@@ -30,11 +38,33 @@ const PostWrite = ({ postIdRef }) => {
     return () => unsubscribe();
   }, []);
 
+  const incrementPostNumber = async () => {
+    const counterDoc = doc(db, "counters", "postCounter");
+    const counterSnap = await getDoc(counterDoc);
+
+    let postNumber;
+
+    if (counterSnap.exists()) {
+      postNumber = counterSnap.data().count;
+      await updateDoc(counterDoc, {
+        count: increment(1),
+      });
+    } else {
+      postNumber = 1;
+      await setDoc(counterDoc, { count: 2 });
+    }
+
+    return postNumber;
+  };
+
   const handleSubmit = async () => {
+    const postNumber = await incrementPostNumber();
+
     const newPost = {
+      postNumber, // 새로 생성한 번호 추가
       title,
       content,
-      author, // 로그인된 사용자 이름 사용
+      author,
       date: new Date().toLocaleDateString(),
       views: 0,
       likes: 0,

@@ -82,7 +82,7 @@ function Notice() {
           <tbody>
             {currentPosts.map((post) => (
               <tr key={post.postId} onClick={() => handleRowClick(post.postId)}>
-                <td>{post.postId}</td>
+                <td>{post.postNumber}</td>
                 <td>{post.title}</td>
                 <td>{post.author}</td>
                 <td>{post.date}</td>
