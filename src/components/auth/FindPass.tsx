@@ -5,6 +5,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { auth } from "../../firebaseConfig";
+import { toast } from "react-toastify";
 
 // 초기 상태 인터페이스
 interface FindPassState {
@@ -47,20 +48,24 @@ const FindPass: React.FC = () => {
   ) => {
     try {
       await sendPasswordResetEmail(auth, data.email);
-      alert("비밀번호 재설정 메일을 보내드렸습니다. 확인해 주세요.");
-      navigate("/");
+      toast.success("등록된 이메일로 메일을 발송했습니다.");
+      navigate("/auth");
     } catch (error) {
-      const errorCode = (error as { code?: string }).code;
-
-      switch (errorCode) {
-        case "auth/user-not-found":
-          setErrorMessage("이메일을 찾을 수 없습니다.");
-          break;
-        default:
-          setErrorMessage("이메일을 확인해 주세요.");
-          break;
-      }
+      handleAuthError(error);
+      toast.error("비밀번호 찾기에 실패했습니다.");
     }
+  };
+
+  const handleAuthError = (error) => {
+    let message = "";
+    switch (error.code) {
+      case "auth/user-not-found":
+        message = "이메일을 찾을 수 없습니다.";
+        break;
+      default:
+        message = "이메일을 확인해 주세요.";
+    }
+    toast.error(message);
   };
 
   const handleClickBack = () => {
