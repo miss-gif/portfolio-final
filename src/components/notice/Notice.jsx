@@ -1,7 +1,7 @@
 // src/Notice.js
-import React, { useState, useEffect } from "react";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebaseConfig"; // Firestore 초기화된 db를 import합니다.
 import { useStore } from "../../store/store";
 import "./Notice.scss";
@@ -17,11 +17,15 @@ function Notice() {
     // Firestore에서 게시물 가져오기
     async function fetchPosts() {
       try {
-        const querySnapshot = await getDocs(collection(db, "posts")); // "posts" 컬렉션에서 데이터 가져오기
+        const postsRef = collection(db, "posts");
+        const q = query(postsRef, orderBy("postNumber", "desc")); // 내림차순으로 정렬
+        const querySnapshot = await getDocs(q);
+
         const posts = querySnapshot.docs.map((doc) => ({
           postId: doc.id,
           ...doc.data(),
         }));
+
         console.log("게시물 가져오기 성공: ", posts);
         setFilteredPosts(posts);
       } catch (error) {
