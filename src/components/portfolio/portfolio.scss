@@ -72,36 +72,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 60px;
-  &-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    color: var(--title-color);
-    font-size: var(--tiny-font-size);
-    font-weight: 700;
-    cursor: pointer;
-    &:hover {
-      color: var(--primary-color);
-    }
-  }
-}
-
-/* list */
-.portfolio__list {
-  display: flex;
-  justify-content: center;
   flex-wrap: wrap;
   gap: 16px;
-  margin: 0 auto;
   margin-bottom: 60px;
   &-item {
-    position: relative;
     color: var(--title-color);
     font-size: var(--tiny-font-size);
-    font-weight: 700;
+    cursor: pointer;
     &:hover {
       color: var(--primary-color);
     }
