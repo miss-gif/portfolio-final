@@ -1,20 +1,56 @@
-import React, { useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+// src/PostDetail.js
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import styled from "@emotion/styled";
+import { doc, getDoc, deleteDoc } from "firebase/firestore";
+import { db } from "../../firebaseConfig"; // Firestore 초기화된 db를 import합니다.
 import CommentComponent from "./CommentContainer";
 import "./PostDetail.scss";
 
+Modal.setAppElement("#root"); // 모달 앱 엘리먼트 설정
+
 const PostDetail = ({ posts, onDelete }) => {
+  if (!posts || !Array.isArray(posts)) {
+    return <div>Posts data is not available</div>;
+  }
+
   const { postId } = useParams();
   const navigate = useNavigate();
+  const [post, setPost] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const post = posts.find((post) => post.postId === parseInt(postId, 10));
+  useEffect(() => {
+    const fetchPost = async () => {
+      try {
+        const docRef = doc(db, "posts", postId); // Firestore에서 게시글 문서 참조
+        const docSnap = await getDoc(docRef); // 게시글 문서 가져오기
 
-  const handleDelete = () => {
-    onDelete(post.postId);
-    navigate("/notice");
+        if (docSnap.exists()) {
+          setPost(docSnap.data());
+        } else {
+          alert("게시물을 찾을 수 없습니다.");
+          navigate("/notice");
+        }
+      } catch (error) {
+        console.error("게시물 로딩 실패: ", error);
+        alert("게시물 로딩 실패");
+        navigate("/notice");
+      }
+    };
+
+    fetchPost();
+  }, [postId, navigate]);
+
+  const handleDelete = async () => {
+    try {
+      const docRef = doc(db, "posts", postId); // Firestore에서 게시글 문서 참조
+      await deleteDoc(docRef); // 게시글 문서 삭제
+      navigate("/notice"); // 삭제 후 게시판 목록으로 이동
+    } catch (error) {
+      console.error("게시물 삭제 실패: ", error);
+      alert("게시물 삭제 실패");
+    }
   };
 
   const handleDeleteClick = () => {
@@ -23,6 +59,10 @@ const PostDetail = ({ posts, onDelete }) => {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+  };
+
+  const handleNavigateToPost = (offset) => {
+    navigate(`/notice/post/${parseInt(postId, 10) + offset}`);
   };
 
   return (
@@ -47,17 +87,13 @@ const PostDetail = ({ posts, onDelete }) => {
           <div className="post-detail__header__actions-right">
             <button
               className="post-detail__button"
-              onClick={() =>
-                navigate(`/notice/post/${parseInt(postId, 10) - 1}`)
-              }
+              onClick={() => handleNavigateToPost(-1)}
             >
               이전글
             </button>
             <button
               className="post-detail__button"
-              onClick={() =>
-                navigate(`/notice/post/${parseInt(postId, 10) + 1}`)
-              }
+              onClick={() => handleNavigateToPost(1)}
             >
               다음글
             </button>
@@ -70,7 +106,6 @@ const PostDetail = ({ posts, onDelete }) => {
           </div>
         </div>
         <div className="post-detail__content">
-          <p>디테일페이지</p>
           {post ? (
             <div>
               <div className="post-detail__content__header">
@@ -109,7 +144,7 @@ const PostDetail = ({ posts, onDelete }) => {
                 <div className="post-detail__content__footer__user-info">
                   <img src="" alt="" />
                   <a href="#" className="post-detail__button--like">
-                    죠르디님의 게시글 더보기
+                    작성자의 게시글 더보기
                   </a>
                 </div>
                 <div>
