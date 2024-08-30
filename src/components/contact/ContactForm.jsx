@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import { z } from "zod";
 
 const schema = z.object({
@@ -34,11 +35,14 @@ const ContactForm = ({ onSubmitSuccess }) => {
 
       if (response.data.result === "success") {
         onSubmitSuccess();
+        toast.success("메일을 발송했습니다.");
       } else {
         console.error("Form submission error:", response.data);
+        toast.error("메일 발송에 실패했습니다.");
       }
     } catch (error) {
       console.error("Form submission failed:", error);
+      toast.error("메일 발송에 실패했습니다.");
     }
   };
 
