@@ -92,6 +92,10 @@ $leftWidth: 40%;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    &:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
   }
 
   &__textarea {
@@ -110,6 +114,9 @@ $leftWidth: 40%;
     border-radius: 5px;
     cursor: pointer;
     &:hover {
+      background-color: var(--hover-color);
+    }
+    &:focus {
       background-color: var(--hover-color);
     }
   }

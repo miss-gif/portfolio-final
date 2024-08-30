@@ -83,7 +83,7 @@ const FindPass: React.FC = () => {
             {...register("email")}
             type="email"
             placeholder="이메일"
-            className="mt-1 p-2 border border-gray-300 rounded w-full"
+            className="my-2 p-2 border rounded w-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500 "
           />
           {errors.email && (
             <p className="text-red-500 mb-4">{errors.email.message}</p>
