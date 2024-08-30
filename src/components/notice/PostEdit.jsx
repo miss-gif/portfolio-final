@@ -1,54 +1,60 @@
+// src/PostEdit.js
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { db } from "../../firebaseConfig"; // Firestore 초기화된 db를 import합니다.
 import "./PostEdit.scss";
 
-const PostEdit = ({ posts, onUpdate }) => {
-  console.log("posts", posts);
+const PostEdit = () => {
   const { postId } = useParams();
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
   useEffect(() => {
-    const postToEdit = posts.find(
-      (post) => post.postId === parseInt(postId, 10)
-    );
+    const fetchPost = async () => {
+      try {
+        const docRef = doc(db, "posts", postId); // Firestore에서 게시글 문서 참조
+        const docSnap = await getDoc(docRef); // 게시글 문서 가져오기
 
-    if (postToEdit) {
-      setTitle(postToEdit.title);
-      setContent(postToEdit.content);
-    } else {
-      alert("게시물을 찾을 수 없습니다.");
-      navigate("/");
-    }
-  }, [postId, posts]);
-
-  const handleUpdate = () => {
-    const postToEdit = posts.find(
-      (post) => post.postId === parseInt(postId, 10)
-    );
-
-    if (!postToEdit) {
-      alert("게시물을 찾을 수 없습니다.");
-      return;
-    }
-
-    const updatedPost = {
-      ...postToEdit, // 기존 게시글 정보 복사
-      title: title, // 수정된 제목
-      content: content, // 수정된 내용
-      date: new Date().toLocaleDateString(), // 수정된 날짜
+        if (docSnap.exists()) {
+          const postData = docSnap.data();
+          setTitle(postData.title);
+          setContent(postData.content);
+        } else {
+          alert("게시물을 찾을 수 없습니다.");
+          navigate("/");
+        }
+      } catch (error) {
+        console.error("게시물 로딩 실패: ", error);
+        alert("게시물 로딩 실패");
+        navigate("/");
+      }
     };
 
-    onUpdate(updatedPost);
-    navigate(`/notice/post/${postId}`);
+    fetchPost();
+  }, [postId, navigate]);
+
+  const handleUpdate = async () => {
+    try {
+      const docRef = doc(db, "posts", postId); // Firestore에서 게시글 문서 참조
+      await updateDoc(docRef, {
+        title,
+        content,
+        date: new Date().toLocaleDateString(), // 수정된 날짜
+      });
+      navigate(`/notice/post/${postId}`); // 수정 완료 후 상세 페이지로 이동
+    } catch (error) {
+      console.error("게시물 수정 실패: ", error);
+      alert("게시물 수정 실패");
+    }
   };
 
   return (
     <div className="inner">
       <div className="post-add">
         <div className="post-add__top">
-          <h2>글쓰기</h2>
+          <h2>글 수정</h2>
           <button onClick={handleUpdate}>수정</button>
 
           {/* 구현 보류 */}
