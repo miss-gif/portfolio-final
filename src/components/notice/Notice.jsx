@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { db } from "../../firebaseConfig";
 import { useStore } from "../../store/store";
 import "./Notice.scss";
+import useDebounce from "../../hooks/useDebounce";
 
 function Notice() {
   const navigate = useNavigate();
@@ -46,6 +47,8 @@ function Notice() {
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(filteredPosts.length / postsPerPage); i++) {
     pageNumbers.push(i);
@@ -76,19 +79,9 @@ function Notice() {
       <article className="notice__wrapper">
         <h2>게시판</h2>
         <div className="notice__header">
-          <button className="notice__header__btn best-post">전체글</button>
-          <button className="notice__header__btn best-post">추천글</button>
+          <button className="notice__header__btn best-post">오름차순</button>
+          <button className="notice__header__btn best-post">내림차순</button>
           <button className="notice__header__btn best-post">공지</button>
-        </div>
-
-        <div className="notice__search">
-          <input
-            type="text"
-            value={searchTerm}
-            placeholder="제목 또는 작성자를 검색하세요"
-            onChange={handleSearch}
-          />
-          <button onClick={resetSearch}>초기화</button>
         </div>
 
         <table className="notice__table">
@@ -98,8 +91,8 @@ function Notice() {
               <th>제목</th>
               <th>작성자</th>
               <th>작성일</th>
-              <th>조회</th>
-              <th>좋아요</th>
+              <th>조회수</th>
+              <th>추천수</th>
             </tr>
           </thead>
 
@@ -135,6 +128,16 @@ function Notice() {
               {number}
             </button>
           ))}
+        </div>
+
+        <div className="notice__search">
+          <input
+            type="text"
+            value={searchTerm}
+            placeholder="제목 또는 작성자를 검색하세요"
+            onChange={handleSearch}
+          />
+          <button onClick={resetSearch}>초기화</button>
         </div>
       </article>
     </div>
