@@ -1,35 +1,58 @@
-import { useState } from "react";
+// src/PostWrite.js
+import { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
-import Modal from "react-modal"; // react-modal 라이브러리 사용
+import Modal from "react-modal";
+import { collection, addDoc } from "firebase/firestore";
+import { db, auth } from "../../firebaseConfig";
+import { onAuthStateChanged } from "firebase/auth";
 import "./PostWrite.scss";
 
-Modal.setAppElement("#root"); // 모달 앱 엘리먼트 설정
+Modal.setAppElement("#root");
 
-const PostWrite = ({ addPost, postIdRef }) => {
-  const [showModal, setShowModal] = useState(false); // 모달 상태
-  const navigate = useNavigate(); // useNavigate 훅 사용
+const PostWrite = ({ postIdRef }) => {
+  const [showModal, setShowModal] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [author, setAuthor] = useState(""); // 현재 로그인된 사용자 이름
+  const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  // 현재 로그인된 사용자 정보를 가져오는 useEffect
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setAuthor(user.displayName || user.email || "익명");
+      } else {
+        setAuthor("익명");
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const handleSubmit = async () => {
     const newPost = {
-      postId: postIdRef.current, // props로 받은 postIdRef 사용
       title,
       content,
-      author: "작성자", // 작성자 정보 추가 (필요에 따라 수정)
-      date: new Date().toLocaleDateString(), // 현재 날짜
+      author, // 로그인된 사용자 이름 사용
+      date: new Date().toLocaleDateString(),
       views: 0,
       likes: 0,
     };
-    addPost(newPost); // App 컴포넌트의 addPost 함수 호출
-    // 모달 열기
-    setShowModal(true);
+
+    try {
+      const docRef = await addDoc(collection(db, "posts"), newPost);
+      console.log("게시물 작성 완료, ID:", docRef.id);
+      postIdRef.current = docRef.id;
+      setShowModal(true);
+    } catch (error) {
+      console.error("게시물 작성 실패: ", error);
+    }
   };
 
   const handleCloseModal = (destination) => {
     setShowModal(false);
-    navigate(destination); // 선택한 페이지로 이동
+    navigate(destination);
   };
 
   return (
@@ -37,7 +60,6 @@ const PostWrite = ({ addPost, postIdRef }) => {
       <div className="post-add">
         <div className="post-add__top">
           <h2>글쓰기</h2>
-          {/* 카테고리 기능 보류 */}
           <div className="form-group none">
             <label htmlFor="category">카테고리</label>
             <select id="category" name="category">
@@ -46,7 +68,6 @@ const PostWrite = ({ addPost, postIdRef }) => {
               <option value="질문답변">질문답변</option>
             </select>
           </div>
-          {/* 글내용 영역 */}
           <form className="form-group">
             <label htmlFor="title">제목</label>
             <input
@@ -67,7 +88,6 @@ const PostWrite = ({ addPost, postIdRef }) => {
           <button onClick={handleSubmit}>등록</button>
         </div>
       </div>
-      {/* 모달 */}
       <StyledModal
         isOpen={showModal}
         onRequestClose={() => setShowModal(false)}
@@ -81,7 +101,7 @@ const PostWrite = ({ addPost, postIdRef }) => {
           </button>
           <button
             onClick={() =>
-              handleCloseModal(`/notice/post/${postIdRef.current - 1}`)
+              handleCloseModal(`/notice/post/${postIdRef.current}`)
             }
           >
             게시글 상세
@@ -91,6 +111,7 @@ const PostWrite = ({ addPost, postIdRef }) => {
     </div>
   );
 };
+
 export default PostWrite;
 
 const StyledModal = styled(Modal)`
