@@ -1,22 +1,40 @@
+// src/Notice.js
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Notice.scss";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebaseConfig"; // Firestore 초기화된 db를 import합니다.
 import { useStore } from "../../store/store";
+import "./Notice.scss";
 
-function Notice({ posts }) {
+function Notice() {
   const navigate = useNavigate();
   const { isLoggedIn } = useStore((state) => state); // 로그인 상태 가져오기
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10); // 페이지당 게시물 수
-  const [filteredPosts, setFilteredPosts] = useState(posts); // 검색 결과 필터링된 게시물
+  const [filteredPosts, setFilteredPosts] = useState([]); // 검색 결과 필터링된 게시물
+
+  useEffect(() => {
+    // Firestore에서 게시물 가져오기
+    async function fetchPosts() {
+      try {
+        const querySnapshot = await getDocs(collection(db, "posts")); // "posts" 컬렉션에서 데이터 가져오기
+        const posts = querySnapshot.docs.map((doc) => ({
+          postId: doc.id,
+          ...doc.data(),
+        }));
+        console.log("게시물 가져오기 성공: ", posts);
+        setFilteredPosts(posts);
+      } catch (error) {
+        console.error("게시물 가져오기 실패: ", error);
+      }
+    }
+
+    fetchPosts();
+  }, []);
 
   const handleRowClick = (postId) => {
     navigate(`/notice/post/${postId}`);
   };
-
-  useEffect(() => {
-    setFilteredPosts(posts);
-  }, [posts]);
 
   // 페이지네이션 관련 계산
   const indexOfLastPost = currentPage * postsPerPage;
@@ -32,7 +50,7 @@ function Notice({ posts }) {
   // 검색 기능
   const handleSearch = (event) => {
     const searchTerm = event.target.value.toLowerCase();
-    const filtered = posts.filter((post) =>
+    const filtered = filteredPosts.filter((post) =>
       post.title.toLowerCase().includes(searchTerm)
     );
     setFilteredPosts(filtered);
