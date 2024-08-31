@@ -1,6 +1,6 @@
 // src/BoardPage.js
 import React, { useState, useEffect } from "react";
-import { db } from "../firebaseConfig";
+import { db } from "../../firebaseConfig";
 import {
   collection,
   addDoc,
@@ -9,10 +9,10 @@ import {
   doc,
   writeBatch,
 } from "firebase/firestore";
-import { useStore } from "../store/store";
+import { useStore } from "../../store/store";
 import { useNavigate } from "react-router-dom";
 
-const BoardPage = () => {
+const PostManager = () => {
   const { isLoggedIn } = useStore();
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
@@ -104,4 +104,4 @@ const BoardPage = () => {
   );
 };
 
-export default BoardPage;
+export default PostManager;

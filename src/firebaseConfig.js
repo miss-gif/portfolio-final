@@ -4,6 +4,7 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { getDatabase } from "firebase/database";
 import { getAnalytics } from "firebase/analytics";
+import { getMessaging } from "firebase/messaging";
 
 // API 키 및 기타 설정
 const firebaseConfig = {
@@ -25,5 +26,6 @@ const db = getFirestore(app);
 const storage = getStorage(app);
 const database = getDatabase(app);
 const analytics = getAnalytics(app);
+const messaging = getMessaging(app);
 
-export { auth, db, storage, database, analytics };
+export { auth, db, storage, database, analytics, messaging };
