@@ -1,20 +1,12 @@
 // src/PostWrite.js
-import styled from "@emotion/styled";
 import { onAuthStateChanged } from "firebase/auth";
-import {
-  addDoc,
-  collection,
-  doc,
-  getDoc,
-  increment,
-  setDoc,
-  updateDoc,
-} from "firebase/firestore";
+import { addDoc, collection, doc, runTransaction } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../../firebaseConfig";
 import "./PostWrite.scss";
+import StyledModal from "./StyledModal";
 
 Modal.setAppElement("#root");
 
@@ -40,21 +32,26 @@ const PostWrite = ({ postIdRef }) => {
 
   const incrementPostNumber = async () => {
     const counterDoc = doc(db, "counters", "postCounter");
-    const counterSnap = await getDoc(counterDoc);
 
-    let postNumber;
+    try {
+      const postNumber = await runTransaction(db, async (transaction) => {
+        const counterSnap = await transaction.get(counterDoc);
 
-    if (counterSnap.exists()) {
-      postNumber = counterSnap.data().count;
-      await updateDoc(counterDoc, {
-        count: increment(1),
+        if (counterSnap.exists()) {
+          const newCount = counterSnap.data().count + 1;
+          transaction.update(counterDoc, { count: newCount });
+          return newCount;
+        } else {
+          transaction.set(counterDoc, { count: 2 });
+          return 1;
+        }
       });
-    } else {
-      postNumber = 1;
-      await setDoc(counterDoc, { count: 2 });
-    }
 
-    return postNumber;
+      return postNumber;
+    } catch (error) {
+      console.error("트랜잭션 실패: ", error);
+      throw error; // 트랜잭션 실패 시 오류를 던져서 게시물 작성이 중단되도록 처리
+    }
   };
 
   const handleSubmit = async () => {
@@ -143,33 +140,3 @@ const PostWrite = ({ postIdRef }) => {
 };
 
 export default PostWrite;
-
-const StyledModal = styled(Modal)`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px;
-  padding: 40px 20px;
-  border: 1px solid #ccc;
-  background: #333;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 40px;
-
-  p {
-    margin: 0;
-  }
-
-  button {
-    padding: 8px 15px;
-    margin-right: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-`;

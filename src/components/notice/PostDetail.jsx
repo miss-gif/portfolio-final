@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import Modal from "react-modal";
-import styled from "@emotion/styled";
 import {
+  deleteDoc,
   doc,
   getDoc,
-  deleteDoc,
-  updateDoc,
   increment,
+  updateDoc,
 } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
+import Modal from "react-modal";
+import { useNavigate, useParams } from "react-router-dom";
 import { db } from "../../firebaseConfig"; // Firestore 초기화된 db를 import합니다.
 import CommentComponent from "./CommentContainer";
 import "./PostDetail.scss";
+import StyledModal from "./StyledModal";
 
 Modal.setAppElement("#root"); // 모달 앱 엘리먼트 설정
 
@@ -233,33 +233,3 @@ const PostDetail = ({ posts, onDelete }) => {
 };
 
 export default PostDetail;
-
-const StyledModal = styled(Modal)`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px;
-  padding: 40px 20px;
-  border: 1px solid #ccc;
-  background-color: white;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 40px;
-
-  p {
-    margin: 0;
-  }
-
-  button {
-    padding: 8px 15px;
-    margin-right: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-`;
