@@ -5,7 +5,7 @@ import GlobalSetting from "../GlobalSetting";
 import Footer from "./Footer";
 import Header from "./Header";
 
-// import MouseCursor from "./MouseCursor/MouseCursor";
+// import MouseCursor from "../MouseCursor/MouseCursor.jsx";
 
 const RootLayout = () => {
   return (

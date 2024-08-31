@@ -47,7 +47,7 @@ const Profile = () => {
         // 4. 안내창
         toast.success("회원탈퇴가 완료되었습니다.");
         // 5. 패스이동("/")
-        navigate("/");
+        navigate("/auth");
       } catch (error) {
         console.log("회원탈퇴 실패 : ", error);
         toast.error("회원탈퇴에 실패하였습니다. 다시 시도해 주세요.");
