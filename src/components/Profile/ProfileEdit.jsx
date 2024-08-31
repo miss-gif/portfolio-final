@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "react-toastify";
 
 // zod 스키마 정의
 const schema = z
@@ -86,7 +87,7 @@ const ProfileEdit = () => {
       }
     }
 
-    alert("정보가 수정 되었습니다.");
+    toast.success("정보가 수정 되었습니다.");
     navigate("/profile");
   };
 

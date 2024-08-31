@@ -56,7 +56,7 @@ const PostWrite = ({ postIdRef }) => {
     const postNumber = await incrementPostNumber();
 
     const newPost = {
-      postNumber, // 새로 생성한 번호 추가
+      postNumber, // 게시물 번호는 사용자에게 보여지는 용도로만 사용
       title,
       content,
       author,
@@ -66,9 +66,14 @@ const PostWrite = ({ postIdRef }) => {
     };
 
     try {
+      // Firestore에 게시물 저장
       const docRef = await addDoc(collection(db, "posts"), newPost);
       console.log("게시물 작성 완료, ID:", docRef.id);
+
+      // postIdRef에 새로 생성된 게시물의 ID 저장
       postIdRef.current = docRef.id;
+
+      // 모달 창 열기
       setShowModal(true);
     } catch (error) {
       console.error("게시물 작성 실패: ", error);

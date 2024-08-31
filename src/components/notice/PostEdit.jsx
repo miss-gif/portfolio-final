@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebaseConfig"; // Firestore 초기화된 db를 import합니다.
 import "./PostEdit.scss";
+import { toast } from "react-toastify";
 
 const PostEdit = () => {
   const { postId } = useParams();
@@ -22,12 +23,12 @@ const PostEdit = () => {
           setTitle(postData.title);
           setContent(postData.content);
         } else {
-          alert("게시물을 찾을 수 없습니다.");
+          toast.error("게시물을 찾을 수 없습니다.");
           navigate("/");
         }
       } catch (error) {
         console.error("게시물 로딩 실패: ", error);
-        alert("게시물 로딩 실패");
+        toast.error("게시물 로딩 실패");
         navigate("/");
       }
     };
@@ -46,7 +47,7 @@ const PostEdit = () => {
       navigate(`/notice/post/${postId}`); // 수정 완료 후 상세 페이지로 이동
     } catch (error) {
       console.error("게시물 수정 실패: ", error);
-      alert("게시물 수정 실패");
+      toast.error("게시물 수정 실패");
     }
   };
 

@@ -52,7 +52,7 @@ const CommentComponent = ({ postId }) => {
         setComment("");
       } catch (error) {
         console.error("Failed to add comment: ", error);
-        alert("댓글 추가 실패");
+        toast.error("댓글 추가 실패");
       }
     }
   };
@@ -63,7 +63,7 @@ const CommentComponent = ({ postId }) => {
       await deleteDoc(doc(db, "posts", postId, "comments", commentId));
     } catch (error) {
       console.error("Failed to delete comment: ", error);
-      alert("댓글 삭제 실패");
+      toast.error("댓글 삭제 실패");
     }
   };
 
@@ -101,7 +101,7 @@ const CommentComponent = ({ postId }) => {
         }
       } catch (error) {
         console.error("Failed to add reply: ", error);
-        alert("답글 추가 실패");
+        toast.error("답글 추가 실패");
       }
     }
   };

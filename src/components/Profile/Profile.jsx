@@ -6,6 +6,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { db, storage } from "../../firebaseConfig";
 import useAuth from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const Profile = () => {
   const { userCurrent, userData } = useAuth();
@@ -44,12 +45,12 @@ const Profile = () => {
         // 3. 사용자 삭제
         await deleteUser(userCurrent);
         // 4. 안내창
-        alert("회원탈퇴가 완료되었습니다.");
+        toast.success("회원탈퇴가 완료되었습니다.");
         // 5. 패스이동("/")
         navigate("/");
       } catch (error) {
         console.log("회원탈퇴 실패 : ", error);
-        alert("회원탈퇴에 실패하였습니다. 다시 시도해 주세요.");
+        toast.error("회원탈퇴에 실패하였습니다. 다시 시도해 주세요.");
       }
     }
   };
