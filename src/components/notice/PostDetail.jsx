@@ -13,8 +13,6 @@ import CommentComponent from "./CommentContainer";
 import "./PostDetail.scss";
 import StyledModal from "./StyledModal";
 
-Modal.setAppElement("#root"); // 모달 앱 엘리먼트 설정
-
 const PostDetail = ({ posts, onDelete }) => {
   if (!posts || !Array.isArray(posts)) {
     return <div>Posts data is not available</div>;

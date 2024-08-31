@@ -8,8 +8,6 @@ import { auth, db } from "../../firebaseConfig";
 import "./PostWrite.scss";
 import StyledModal from "./StyledModal";
 
-Modal.setAppElement("#root");
-
 const PostWrite = ({ postIdRef }) => {
   const [showModal, setShowModal] = useState(false);
   const [title, setTitle] = useState("");

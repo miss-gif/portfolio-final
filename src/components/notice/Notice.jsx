@@ -2,9 +2,9 @@ import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { db } from "../../firebaseConfig";
+import useDebounce from "../../hooks/useDebounce";
 import { useStore } from "../../store/store";
 import "./Notice.scss";
-import useDebounce from "../../hooks/useDebounce";
 
 function Notice() {
   const navigate = useNavigate();
@@ -14,6 +14,29 @@ function Notice() {
   const [allPosts, setAllPosts] = useState([]); // 모든 게시물
   const [filteredPosts, setFilteredPosts] = useState([]); // 검색 결과 필터링된 게시물
   const [searchTerm, setSearchTerm] = useState(""); // 검색어 상태
+  const [sortConfig, setSortConfig] = useState({
+    key: "postNumber",
+    direction: "desc",
+  });
+
+  const handleSort = (key) => {
+    let direction = "asc";
+    if (sortConfig.key === key && sortConfig.direction === "asc") {
+      direction = "desc";
+    }
+    setSortConfig({ key, direction });
+
+    const sortedPosts = [...filteredPosts].sort((a, b) => {
+      if (a[key] < b[key]) {
+        return direction === "asc" ? -1 : 1;
+      }
+      if (a[key] > b[key]) {
+        return direction === "asc" ? 1 : -1;
+      }
+      return 0;
+    });
+    setFilteredPosts(sortedPosts);
+  };
 
   useEffect(() => {
     async function fetchPosts() {
@@ -81,18 +104,17 @@ function Notice() {
         <div className="notice__header">
           <button className="notice__header__btn best-post">오름차순</button>
           <button className="notice__header__btn best-post">내림차순</button>
-          <button className="notice__header__btn best-post">공지</button>
         </div>
 
         <table className="notice__table">
           <thead>
             <tr>
-              <th>번호</th>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>작성일</th>
-              <th>조회수</th>
-              <th>추천수</th>
+              <th onClick={() => handleSort("postNumber")}>번호</th>
+              <th onClick={() => handleSort("title")}>제목</th>
+              <th onClick={() => handleSort("author")}>작성자</th>
+              <th onClick={() => handleSort("date")}>작성일</th>
+              <th onClick={() => handleSort("views")}>조회수</th>
+              <th onClick={() => handleSort("likes")}>추천수</th>
             </tr>
           </thead>
 
