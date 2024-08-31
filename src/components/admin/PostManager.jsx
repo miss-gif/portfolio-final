@@ -18,14 +18,6 @@ const PostManager = () => {
   const [posts, setPosts] = useState([]);
   const [newPost, setNewPost] = useState("");
 
-  useEffect(() => {
-    if (!isLoggedIn) {
-      navigate("/login");
-    } else {
-      fetchPosts();
-    }
-  }, [isLoggedIn, navigate]);
-
   const fetchPosts = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, "posts"));
