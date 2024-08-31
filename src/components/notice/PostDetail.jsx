@@ -1,4 +1,3 @@
-// src/PostDetail.js
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Modal from "react-modal";
@@ -45,7 +44,28 @@ const PostDetail = ({ posts, onDelete }) => {
     }
   };
 
-  // 예제: 게시물 페이지 로드 시 호출
+  const incrementPostLikes = async (postId) => {
+    try {
+      const postRef = doc(db, "posts", postId);
+      const postSnap = await getDoc(postRef);
+
+      if (postSnap.exists()) {
+        // 추천수 증가
+        await updateDoc(postRef, {
+          likes: increment(1),
+        });
+        console.log("추천수 증가 성공");
+        // 최신 데이터로 업데이트
+        const updatedPostSnap = await getDoc(postRef);
+        setPost(updatedPostSnap.data());
+      } else {
+        console.log("게시물이 존재하지 않습니다.");
+      }
+    } catch (error) {
+      console.error("추천수 증가 실패: ", error);
+    }
+  };
+
   useEffect(() => {
     if (postId) {
       incrementPostViews(postId);
@@ -168,11 +188,17 @@ const PostDetail = ({ posts, onDelete }) => {
                     </div>
                   </div>
                 </div>
-                <div className="post-detail__button">댓글</div>
               </div>
+
               <div className="post-detail__content__body">{post.content}</div>
 
               <div className="post-detail__content__footer">
+                <button
+                  className="post-detail__button post-detail__button--like"
+                  onClick={() => incrementPostLikes(postId)}
+                >
+                  추천하기
+                </button>
                 <div className="post-detail__content__footer__user-info">
                   <img src="" alt="" />
                   <a href="#" className="post-detail__button--like">
@@ -180,7 +206,7 @@ const PostDetail = ({ posts, onDelete }) => {
                   </a>
                 </div>
                 <div>
-                  <p>좋아요 10</p>
+                  <p>좋아요 {post.likes}</p>
                   <p>댓글수 5</p>
                 </div>
               </div>
