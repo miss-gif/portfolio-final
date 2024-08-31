@@ -3,7 +3,13 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import styled from "@emotion/styled";
-import { doc, getDoc, deleteDoc } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  deleteDoc,
+  updateDoc,
+  increment,
+} from "firebase/firestore";
 import { db } from "../../firebaseConfig"; // Firestore 초기화된 db를 import합니다.
 import CommentComponent from "./CommentContainer";
 import "./PostDetail.scss";
@@ -19,6 +25,32 @@ const PostDetail = ({ posts, onDelete }) => {
   const navigate = useNavigate();
   const [post, setPost] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const incrementPostViews = async (postId) => {
+    try {
+      const postRef = doc(db, "posts", postId);
+      const postSnap = await getDoc(postRef);
+
+      if (postSnap.exists()) {
+        // 조회수 증가
+        await updateDoc(postRef, {
+          views: increment(1),
+        });
+        console.log("조회수 증가 성공");
+      } else {
+        console.log("게시물이 존재하지 않습니다.");
+      }
+    } catch (error) {
+      console.error("조회수 증가 실패: ", error);
+    }
+  };
+
+  // 예제: 게시물 페이지 로드 시 호출
+  useEffect(() => {
+    if (postId) {
+      incrementPostViews(postId);
+    }
+  }, [postId]);
 
   useEffect(() => {
     const fetchPost = async () => {
