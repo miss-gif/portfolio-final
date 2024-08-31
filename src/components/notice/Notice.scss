@@ -4,11 +4,21 @@
   margin: 0 auto;
 }
 
+.notice__container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
 .notice__wrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.aside-hot-post {
+  width: 30%;
 }
 
 .notice__header {

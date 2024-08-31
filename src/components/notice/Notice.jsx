@@ -99,69 +99,87 @@ function Notice() {
 
   return (
     <div className="notice-inner">
-      <article className="notice__wrapper">
-        <h2>게시판</h2>
-        <div className="notice__header">
-          <button className="notice__header__btn best-post">오름차순</button>
-          <button className="notice__header__btn best-post">내림차순</button>
-        </div>
+      <div className="notice__container">
+        <article className="notice__wrapper">
+          <h2>게시판</h2>
+          <div className="notice__header">
+            <button className="notice__header__btn all-post">전체</button>
+            <button className="notice__header__btn best-post">공지</button>
+            <button className="notice__header__btn free-post">자유</button>
+            <button className="notice__header__btn question-post">질문</button>
+          </div>
 
-        <table className="notice__table">
-          <thead>
-            <tr>
-              <th onClick={() => handleSort("postNumber")}>번호</th>
-              <th onClick={() => handleSort("title")}>제목</th>
-              <th onClick={() => handleSort("author")}>작성자</th>
-              <th onClick={() => handleSort("date")}>작성일</th>
-              <th onClick={() => handleSort("views")}>조회수</th>
-              <th onClick={() => handleSort("likes")}>추천수</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {currentPosts.map((post) => (
-              <tr key={post.postId} onClick={() => handleRowClick(post.postId)}>
-                <td>{post.postNumber}</td>
-                <td>{post.title}</td>
-                <td>{post.author}</td>
-                <td>{post.date}</td>
-                <td>{post.views}</td>
-                <td>{post.likes}</td>
+          <table className="notice__table">
+            <thead>
+              <tr>
+                <th onClick={() => handleSort("postNumber")}>번호</th>
+                <th onClick={() => handleSort("title")}>제목</th>
+                <th onClick={() => handleSort("author")}>작성자</th>
+                <th onClick={() => handleSort("date")}>작성일</th>
+                <th onClick={() => handleSort("views")}>조회수</th>
+                <th onClick={() => handleSort("likes")}>추천수</th>
               </tr>
+            </thead>
+
+            <tbody>
+              {currentPosts.map((post) => (
+                <tr
+                  key={post.postId}
+                  onClick={() => handleRowClick(post.postId)}
+                >
+                  <td>{post.postNumber}</td>
+                  <td>{post.title}</td>
+                  <td>{post.author}</td>
+                  <td>{post.date}</td>
+                  <td>{post.views}</td>
+                  <td>{post.likes}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <div className="notice__footer">
+            <Link
+              to={isLoggedIn ? "/notice/write" : "#"}
+              className={`notice__footer__btn ${!isLoggedIn ? "disabled" : ""}`}
+              onClick={(e) => {
+                if (!isLoggedIn) e.preventDefault();
+              }}
+            >
+              글쓰기
+            </Link>
+          </div>
+
+          <div className="notice__pagination">
+            {pageNumbers.map((number) => (
+              <button key={number} onClick={() => setCurrentPage(number)}>
+                {number}
+              </button>
             ))}
-          </tbody>
-        </table>
+          </div>
 
-        <div className="notice__footer">
-          <Link
-            to={isLoggedIn ? "/notice/write" : "#"}
-            className={`notice__footer__btn ${!isLoggedIn ? "disabled" : ""}`}
-            onClick={(e) => {
-              if (!isLoggedIn) e.preventDefault();
-            }}
-          >
-            글쓰기
-          </Link>
-        </div>
-
-        <div className="notice__pagination">
-          {pageNumbers.map((number) => (
-            <button key={number} onClick={() => setCurrentPage(number)}>
-              {number}
-            </button>
-          ))}
-        </div>
-
-        <div className="notice__search">
-          <input
-            type="text"
-            value={searchTerm}
-            placeholder="제목 또는 작성자를 검색하세요"
-            onChange={handleSearch}
-          />
-          <button onClick={resetSearch}>초기화</button>
-        </div>
-      </article>
+          <div className="notice__search">
+            <input
+              type="text"
+              value={searchTerm}
+              placeholder="제목 또는 작성자를 검색하세요"
+              onChange={handleSearch}
+            />
+            <button onClick={resetSearch}>초기화</button>
+          </div>
+        </article>
+        <aside className="aside-hot-post">
+          <h2>인기글</h2>
+          <ul>
+            <li>인기글1</li>
+            <li>인기글1</li>
+            <li>인기글1</li>
+            <li>인기글1</li>
+            <li>인기글1</li>
+            <li>인기글1</li>
+          </ul>
+        </aside>
+      </div>
     </div>
   );
 }
