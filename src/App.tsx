@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import Test from "./Test.jsx";
-import Profile from "./components/Profile/Profile.jsx";
-import ProfileEdit from "./components/Profile/ProfileEdit.jsx";
-import FindPass from "./components/auth/FindPass.jsx";
+import Profile from "./components/Profile/Profile";
+import ProfileEdit from "./components/Profile/ProfileEdit";
+import FindPass from "./components/auth/FindPass";
 import Cv from "./components/cv/index";
-import AuthLayout from "./components/layout/AuthLayout.js";
+import AuthLayout from "./components/layout/AuthLayout";
 import BlogLayout from "./components/layout/BlogLayout";
 import RootLayout from "./components/layout/RootLayout";
 import Notice from "./components/notice/Notice.jsx";

@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import useAuth from "../../hooks/useAuth";
-import { auth, db, storage } from "../../firebaseConfig";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { updatePassword } from "firebase/auth";
 import { doc, updateDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { updatePassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { z } from "zod";
+import { db, storage } from "../../firebaseConfig";
+import useAuth from "../../hooks/useAuth";
 
 // zod 스키마 정의
 const schema = z

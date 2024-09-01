@@ -1,12 +1,12 @@
 import { deleteUser } from "firebase/auth";
 import { deleteDoc, doc } from "firebase/firestore";
 import { deleteObject, ref } from "firebase/storage";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { db, storage } from "../../firebaseConfig";
 import useAuth from "../../hooks/useAuth";
-import { toast } from "react-toastify";
 
 const Profile = () => {
   const { userCurrent, userData } = useAuth();
