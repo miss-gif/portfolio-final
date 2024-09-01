@@ -1,27 +1,27 @@
 import {
+  collection,
   deleteDoc,
   doc,
   getDoc,
-  increment,
-  updateDoc,
-  collection,
-  query,
-  orderBy,
   getDocs,
+  increment,
+  orderBy,
+  query,
+  updateDoc,
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { db } from "../../firebaseConfig";
-import CommentComponent from "./CommentContainer";
+import CommentComponent from "./CommentComponent"; // 수정된 CommentComponent 불러오기
 import "./PostDetail.scss";
 import StyledModal from "./StyledModal";
-import { toast } from "react-toastify";
 
 const PostDetail = () => {
   const { postId } = useParams();
   const navigate = useNavigate();
   const [post, setPost] = useState(null);
-  const [allPosts, setAllPosts] = useState([]); // 모든 게시글 목록
+  const [allPosts, setAllPosts] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const incrementPostViews = async () => {
@@ -66,7 +66,7 @@ const PostDetail = () => {
     const fetchPosts = async () => {
       try {
         const postsRef = collection(db, "posts");
-        const q = query(postsRef, orderBy("postNumber", "desc")); // 날짜 대신 번호로 정렬
+        const q = query(postsRef, orderBy("postNumber", "desc"));
         const querySnapshot = await getDocs(q);
 
         const posts = querySnapshot.docs.map((doc) => ({
@@ -92,7 +92,7 @@ const PostDetail = () => {
 
         if (docSnap.exists()) {
           setPost(docSnap.data());
-          incrementPostViews(); // 게시글 조회 시 조회수 증가
+          incrementPostViews();
         } else {
           toast.error("게시물을 찾을 수 없습니다.");
           navigate("/notice");
@@ -129,7 +129,7 @@ const PostDetail = () => {
   const handleNavigateToPost = (direction) => {
     const sortedPosts = [...allPosts].sort(
       (a, b) => new Date(b.date) - new Date(a.date)
-    ); // 최신 게시글이 먼저 오도록 정렬
+    );
     const currentIndex = sortedPosts.findIndex(
       (post) => post.postId === postId
     );
@@ -231,9 +231,9 @@ const PostDetail = () => {
                     작성자의 게시글 더보기
                   </a>
                 </div>
-                <div>
+                <div className="flex gap-2">
                   <p>좋아요 {post.likes}</p>
-                  <p>댓글수 5</p>
+                  <p>댓글수</p>
                 </div>
               </div>
               <StyledModal
@@ -251,7 +251,8 @@ const PostDetail = () => {
           ) : (
             <p>게시물을 찾을 수 없습니다.</p>
           )}
-          <CommentComponent />
+          <CommentComponent postId={postId} />
+          {/* CommentComponent에 postId 전달 */}
         </div>
       </div>
     </div>
