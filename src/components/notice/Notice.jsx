@@ -1,23 +1,56 @@
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { db } from "../../firebaseConfig";
 import useDebounce from "../../hooks/useDebounce";
 import { useStore } from "../../store/store";
 import "./Notice.scss";
+import { initializeCounters } from "./postCount";
 
 function Notice() {
   const navigate = useNavigate();
   const { isLoggedIn } = useStore((state) => state);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
-  const [allPosts, setAllPosts] = useState([]); // 모든 게시물
-  const [filteredPosts, setFilteredPosts] = useState([]); // 검색 결과 필터링된 게시물
-  const [searchTerm, setSearchTerm] = useState(""); // 검색어 상태
+  const [allPosts, setAllPosts] = useState([]);
+  const [filteredPosts, setFilteredPosts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [sortConfig, setSortConfig] = useState({
     key: "postNumber",
     direction: "desc",
   });
+
+  // 컴포넌트 초기화 시 호출
+  useEffect(() => {
+    initializeCounters(); // 앱의 루트 컴포넌트에서 호출하는 것이 좋음
+    fetchPosts();
+  }, []);
+
+  // 게시물 가져오기
+  const fetchPosts = async () => {
+    try {
+      const postsRef = collection(db, "posts");
+      const q = query(postsRef, orderBy("postNumber", "desc"));
+      const querySnapshot = await getDocs(q);
+
+      const posts = querySnapshot.docs.map((doc) => ({
+        postId: doc.id,
+        ...doc.data(),
+      }));
+
+      setAllPosts(posts);
+      setFilteredPosts(posts);
+    } catch (error) {
+      console.error("게시물 가져오기 실패: ", error);
+    }
+  };
 
   const handleSort = (key) => {
     let direction = "asc";
@@ -27,75 +60,61 @@ function Notice() {
     setSortConfig({ key, direction });
 
     const sortedPosts = [...filteredPosts].sort((a, b) => {
-      if (a[key] < b[key]) {
-        return direction === "asc" ? -1 : 1;
-      }
-      if (a[key] > b[key]) {
-        return direction === "asc" ? 1 : -1;
-      }
+      if (a[key] < b[key]) return direction === "asc" ? -1 : 1;
+      if (a[key] > b[key]) return direction === "asc" ? 1 : -1;
       return 0;
     });
     setFilteredPosts(sortedPosts);
   };
 
+  const getTotalPostsCount = async () => {
+    const countDoc = doc(db, "counters", "postCount");
+    const countSnap = await getDoc(countDoc);
+    return countSnap.exists() ? countSnap.data().count : 0;
+  };
+
   useEffect(() => {
-    async function fetchPosts() {
-      try {
-        const postsRef = collection(db, "posts");
-        const q = query(postsRef, orderBy("postNumber", "desc"));
-        const querySnapshot = await getDocs(q);
-
-        const posts = querySnapshot.docs.map((doc) => ({
-          postId: doc.id,
-          ...doc.data(),
-        }));
-
-        console.log("게시물 가져오기 성공: ", posts);
-        setAllPosts(posts);
-        setFilteredPosts(posts); // 초기 상태는 모든 게시물을 표시
-      } catch (error) {
-        console.error("게시물 가져오기 실패: ", error);
-      }
-    }
-
-    fetchPosts();
-  }, []);
+    // 페이지네이션 로직 추가 필요
+  }, [currentPage, filteredPosts]);
 
   const handleRowClick = (postId) => {
     navigate(`/notice/post/${postId}`);
   };
 
-  // 페이지네이션 관련 계산
+  // 페이지네이션 계산
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
   const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
-  const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(filteredPosts.length / postsPerPage); i++) {
-    pageNumbers.push(i);
-  }
-
-  // 검색 기능
-  const handleSearch = (event) => {
-    const searchTerm = event.target.value.toLowerCase();
-    setSearchTerm(searchTerm);
-
-    const filtered = allPosts.filter(
-      (post) =>
-        post.title.toLowerCase().includes(searchTerm) ||
-        post.author.toLowerCase().includes(searchTerm) // 작성자 검색 가능
-    );
-
-    setFilteredPosts(filtered);
+  useEffect(() => {
+    if (debouncedSearchTerm) {
+      const filtered = allPosts.filter(
+        (post) =>
+          post.title.toLowerCase().includes(debouncedSearchTerm) ||
+          post.author.toLowerCase().includes(debouncedSearchTerm)
+      );
+      setFilteredPosts(filtered);
+    } else {
+      setFilteredPosts(allPosts);
+    }
     setCurrentPage(1); // 검색 시 첫 페이지로 이동
+  }, [debouncedSearchTerm]);
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value.toLowerCase());
   };
 
   const resetSearch = () => {
     setSearchTerm("");
     setFilteredPosts(allPosts);
   };
+
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(filteredPosts.length / postsPerPage); i++) {
+    pageNumbers.push(i);
+  }
 
   return (
     <div className="notice-inner">
@@ -172,11 +191,11 @@ function Notice() {
           <h2>인기글</h2>
           <ul>
             <li>인기글1</li>
-            <li>인기글1</li>
-            <li>인기글1</li>
-            <li>인기글1</li>
-            <li>인기글1</li>
-            <li>인기글1</li>
+            <li>인기글2</li>
+            <li>인기글3</li>
+            <li>인기글4</li>
+            <li>인기글5</li>
+            <li>인기글6</li>
           </ul>
         </aside>
       </div>

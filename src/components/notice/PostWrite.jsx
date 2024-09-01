@@ -1,8 +1,6 @@
-// src/PostWrite.js
 import { onAuthStateChanged } from "firebase/auth";
 import { addDoc, collection, doc, runTransaction } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../../firebaseConfig";
 import "./PostWrite.scss";
@@ -18,62 +16,74 @@ const PostWrite = ({ postIdRef }) => {
   // 현재 로그인된 사용자 정보를 가져오는 useEffect
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setAuthor(user.displayName || user.email || "익명");
-      } else {
-        setAuthor("익명");
-      }
+      setAuthor(user ? user.displayName || user.email || "익명" : "익명");
     });
 
     return () => unsubscribe();
   }, []);
 
   const incrementPostNumber = async () => {
-    const counterDoc = doc(db, "counters", "postCounter");
+    const postCounterDoc = doc(db, "counters", "postCounter");
+    const postCountDoc = doc(db, "counters", "postCount");
 
     try {
-      const postNumber = await runTransaction(db, async (transaction) => {
-        const counterSnap = await transaction.get(counterDoc);
+      const [postNumber, postCount] = await runTransaction(
+        db,
+        async (transaction) => {
+          const postCounterSnap = await transaction.get(postCounterDoc);
+          const postCountSnap = await transaction.get(postCountDoc);
 
-        if (counterSnap.exists()) {
-          const newCount = counterSnap.data().count + 1;
-          transaction.update(counterDoc, { count: newCount });
-          return newCount;
-        } else {
-          transaction.set(counterDoc, { count: 2 });
-          return 1;
+          let newPostNumber = 1;
+          let newPostCount = 1;
+
+          if (postCounterSnap.exists()) {
+            newPostNumber = postCounterSnap.data().count + 1;
+            transaction.update(postCounterDoc, { count: newPostNumber });
+          } else {
+            transaction.set(postCounterDoc, { count: newPostNumber });
+          }
+
+          if (postCountSnap.exists()) {
+            newPostCount = postCountSnap.data().count + 1;
+            transaction.update(postCountDoc, { count: newPostCount });
+          } else {
+            transaction.set(postCountDoc, { count: newPostCount });
+          }
+
+          return [newPostNumber, newPostCount];
         }
-      });
+      );
 
-      return postNumber;
+      return { postNumber, postCount };
     } catch (error) {
       console.error("트랜잭션 실패: ", error);
-      throw error; // 트랜잭션 실패 시 오류를 던져서 게시물 작성이 중단되도록 처리
+      throw error;
     }
   };
 
   const handleSubmit = async () => {
-    const postNumber = await incrementPostNumber();
-
-    const newPost = {
-      postNumber, // 게시물 번호는 사용자에게 보여지는 용도로만 사용
-      title,
-      content,
-      author,
-      date: new Date().toLocaleDateString(),
-      views: 0,
-      likes: 0,
-    };
+    if (!title || !content) {
+      alert("제목과 내용을 입력해주세요.");
+      return;
+    }
 
     try {
-      // Firestore에 게시물 저장
+      const { postNumber } = await incrementPostNumber();
+
+      const newPost = {
+        postNumber,
+        title,
+        content,
+        author,
+        date: new Date().toLocaleDateString(),
+        views: 0,
+        likes: 0,
+      };
+
       const docRef = await addDoc(collection(db, "posts"), newPost);
       console.log("게시물 작성 완료, ID:", docRef.id);
 
-      // postIdRef에 새로 생성된 게시물의 ID 저장
       postIdRef.current = docRef.id;
-
-      // 모달 창 열기
       setShowModal(true);
     } catch (error) {
       console.error("게시물 작성 실패: ", error);
@@ -106,6 +116,7 @@ const PostWrite = ({ postIdRef }) => {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="제목을 입력하세요"
+              required
             />
             <label htmlFor="content">내용</label>
             <textarea
@@ -113,6 +124,7 @@ const PostWrite = ({ postIdRef }) => {
               name="content"
               onChange={(e) => setContent(e.target.value)}
               placeholder="내용을 입력하세요"
+              required
             />
           </form>
           <button onClick={handleSubmit}>등록</button>
