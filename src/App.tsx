@@ -4,7 +4,7 @@ import Profile from "./components/Profile/Profile.jsx";
 import ProfileEdit from "./components/Profile/ProfileEdit.jsx";
 import FindPass from "./components/auth/FindPass.jsx";
 import Cv from "./components/cv/index";
-import AuthLayout from "./components/layout/AuthLayout";
+import AuthLayout from "./components/layout/AuthLayout.js";
 import BlogLayout from "./components/layout/BlogLayout";
 import RootLayout from "./components/layout/RootLayout";
 import Notice from "./components/notice/Notice.jsx";
@@ -12,7 +12,7 @@ import PostDetail from "./components/notice/PostDetail.jsx";
 import PostEdit from "./components/notice/PostEdit.jsx";
 import PostWrite from "./components/notice/PostWrite.jsx";
 import usePosts from "./hooks/usePosts.jsx"; // Custom hook import
-import AuthPage from "./pages/AuthPage";
+import AuthPage from "./pages/AuthPage.js";
 import GraphPage from "./pages/GraphPage";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";

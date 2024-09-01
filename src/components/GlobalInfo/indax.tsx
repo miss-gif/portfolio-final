@@ -1,6 +1,6 @@
-import "./GlobalInfo.scss";
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "react-modal";
+import "./GlobalInfo.scss";
 
 const indax = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -14,20 +14,20 @@ const indax = () => {
   };
 
   const handleScrollLock = () => {
-    // document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
   };
 
   const handleScrollUnlock = () => {
-    // document.body.style.overflow = "auto";
+    document.documentElement.style.overflow = "auto";
   };
 
-  // useEffect(() => {
-  //   if (modalIsOpen) {
-  //     handleScrollLock();
-  //   } else {
-  //     handleScrollUnlock();
-  //   }
-  // }, [modalIsOpen]);
+  useEffect(() => {
+    if (modalIsOpen) {
+      handleScrollLock();
+    } else {
+      handleScrollUnlock();
+    }
+  }, [modalIsOpen]);
 
   return (
     <div className="GlobalInfo">

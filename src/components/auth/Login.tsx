@@ -4,9 +4,9 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { z } from "zod";
-import { auth } from "../../firebaseConfig.js";
-import { useStore } from "../../store/store.jsx";
-import InputField from "./InputField.jsx"; // 공통 InputField 컴포넌트 임포트
+import { auth } from "../../firebaseConfig";
+import { useStore } from "../../store/store";
+import InputField from "./InputField"; // 공통 InputField 컴포넌트 임포트
 
 // 로그인 유효성 검사 스키마
 const loginSchema = z.object({

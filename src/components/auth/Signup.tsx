@@ -6,9 +6,9 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { z } from "zod";
-import { auth, db, storage } from "../../firebaseConfig.js";
-import { useStore } from "../../store/store.jsx";
-import InputField from "./InputField.jsx"; // 공통 InputField 컴포넌트 임포트
+import { auth, db, storage } from "../../firebaseConfig";
+import { useStore } from "../../store/store.js";
+import InputField from "./InputField.js"; // 공통 InputField 컴포넌트 임포트
 
 // 회원가입 유효성 검사 스키마
 const joinSchema = z.object({

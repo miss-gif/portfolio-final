@@ -13,7 +13,6 @@ const RootLayout = () => {
       {/* <MouseCursor /> */}
       <Header />
       <GlobalNav />
-      {/* <GlobalSetting> */}
       <Outlet />
       {/* </GlobalSetting> */}
       <GlobalInfo />
