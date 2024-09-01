@@ -115,7 +115,7 @@ const CommentComponent = ({ postId }) => {
           ...(originalComment.replies || []),
           {
             content: replyContent,
-            author: currentUser,
+            author: author,
             createdAt: new Date(),
           },
         ];

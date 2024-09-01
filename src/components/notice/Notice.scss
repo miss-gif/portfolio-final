@@ -1,13 +1,16 @@
 .notice-inner {
-  max-width: 768px;
+  max-width: 1400px;
   width: 100%;
-  margin: 0 auto;
+  padding-inline: 24px;
+  margin-inline: auto;
+  background-color: #333;
 }
 
 .notice__container {
   display: flex;
   justify-content: space-between;
   gap: 20px;
+  height: 80vh;
 }
 
 .notice__wrapper {
@@ -18,6 +21,7 @@
 }
 
 .aside-hot-post {
+  background-color: #444;
   width: 30%;
 }
 

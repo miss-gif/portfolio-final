@@ -20,9 +20,11 @@ const loginSchema = z.object({
     .max(12, "비밀번호는 최대 12자입니다."),
 });
 
+const testId = "test01@a.net";
+
 const Login = ({ onSwitchToSignup }) => {
   const loginForm = useForm({
-    defaultValues: { email: "test30@b.com", pw: "test30@b.com" },
+    defaultValues: { email: testId, pw: testId },
     resolver: zodResolver(loginSchema),
     mode: "onChange",
   });
