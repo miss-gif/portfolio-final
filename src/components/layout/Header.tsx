@@ -8,6 +8,7 @@ import useAuth from "../../hooks/useAuth";
 import { sections } from "../GlobalNav/navSection";
 import "./Header.scss";
 import { toast } from "react-toastify";
+import { useStore } from "../../store/store";
 
 type SectionType = string;
 
@@ -17,11 +18,13 @@ const Header: React.FC = () => {
   const { activeSection, handleClick } = useActiveSection(sections);
   const { userCurrent, userData, setUserCurrent } = useAuth();
   const [isNav, setIsNav] = useState(true);
+  const { clearUserData } = useStore((state) => state);
 
   const handleLogout = async () => {
     // FB 에서 로그아웃
     await signOut(auth);
     setUserCurrent(null);
+    clearUserData();
     // 로그인으로 이동
     navigate("/auth");
     toast.success("로그아웃 되었습니다.");

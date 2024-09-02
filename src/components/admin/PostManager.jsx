@@ -13,8 +13,6 @@ import { useStore } from "../../store/store";
 import { useNavigate } from "react-router-dom";
 
 const PostManager = () => {
-  const { isLoggedIn } = useStore();
-  const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const [newPost, setNewPost] = useState("");
 
