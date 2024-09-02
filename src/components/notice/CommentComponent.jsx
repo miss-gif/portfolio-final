@@ -80,25 +80,37 @@ const CommentComponent = ({ postId }) => {
   };
 
   const handleCommentDelete = async (commentId) => {
-    try {
-      await deleteDoc(doc(db, "posts", postId, "comments", commentId));
-    } catch (error) {
-      console.error("댓글 삭제 실패: ", error);
-      toast.error("댓글 삭제에 실패했습니다.");
+    const commentToDelete = comments.find(
+      (comment) => comment.id === commentId
+    );
+    if (commentToDelete && commentToDelete.author === author) {
+      try {
+        await deleteDoc(doc(db, "posts", postId, "comments", commentId));
+      } catch (error) {
+        console.error("댓글 삭제 실패: ", error);
+        toast.error("댓글 삭제에 실패했습니다.");
+      }
+    } else {
+      toast.error("삭제 권한이 없습니다.");
     }
   };
 
   const handleCommentEdit = (commentId, updatedContent) => {
-    try {
-      const commentRef = doc(db, "posts", postId, "comments", commentId);
-      updateDoc(commentRef, {
-        content: updatedContent,
-        updatedAt: new Date(),
-      });
-      setEditMode((prev) => ({ ...prev, [commentId]: false }));
-    } catch (error) {
-      console.error("댓글 수정 실패: ", error);
-      toast.error("댓글 수정에 실패했습니다.");
+    const commentToEdit = comments.find((comment) => comment.id === commentId);
+    if (commentToEdit && commentToEdit.author === author) {
+      try {
+        const commentRef = doc(db, "posts", postId, "comments", commentId);
+        updateDoc(commentRef, {
+          content: updatedContent,
+          updatedAt: new Date(),
+        });
+        setEditMode((prev) => ({ ...prev, [commentId]: false }));
+      } catch (error) {
+        console.error("댓글 수정 실패: ", error);
+        toast.error("댓글 수정에 실패했습니다.");
+      }
+    } else {
+      toast.error("수정 권한이 없습니다.");
     }
   };
 
@@ -137,51 +149,69 @@ const CommentComponent = ({ postId }) => {
   };
 
   const handleReplyDelete = async (commentId, replyIndex) => {
-    try {
-      const commentRef = doc(db, "posts", postId, "comments", commentId);
-      const commentSnap = await getDoc(commentRef);
+    const commentToEdit = comments.find((comment) => comment.id === commentId);
+    if (
+      commentToEdit &&
+      commentToEdit.replies[replyIndex] &&
+      commentToEdit.replies[replyIndex].author === author
+    ) {
+      try {
+        const commentRef = doc(db, "posts", postId, "comments", commentId);
+        const commentSnap = await getDoc(commentRef);
 
-      if (commentSnap.exists()) {
-        const originalComment = commentSnap.data();
-        const updatedReplies = originalComment.replies.filter(
-          (_, index) => index !== replyIndex
-        );
+        if (commentSnap.exists()) {
+          const originalComment = commentSnap.data();
+          const updatedReplies = originalComment.replies.filter(
+            (_, index) => index !== replyIndex
+          );
 
-        await updateDoc(commentRef, {
-          replies: updatedReplies,
-        });
+          await updateDoc(commentRef, {
+            replies: updatedReplies,
+          });
+        }
+      } catch (error) {
+        console.error("답글 삭제 실패: ", error);
+        toast.error("답글 삭제에 실패했습니다.");
       }
-    } catch (error) {
-      console.error("답글 삭제 실패: ", error);
-      toast.error("답글 삭제에 실패했습니다.");
+    } else {
+      toast.error("삭제 권한이 없습니다.");
     }
   };
 
   const handleReplyEdit = async (commentId, replyIndex, updatedContent) => {
-    try {
-      const commentRef = doc(db, "posts", postId, "comments", commentId);
-      const commentSnap = await getDoc(commentRef);
+    const commentToEdit = comments.find((comment) => comment.id === commentId);
+    if (
+      commentToEdit &&
+      commentToEdit.replies[replyIndex] &&
+      commentToEdit.replies[replyIndex].author === author
+    ) {
+      try {
+        const commentRef = doc(db, "posts", postId, "comments", commentId);
+        const commentSnap = await getDoc(commentRef);
 
-      if (commentSnap.exists()) {
-        const originalComment = commentSnap.data();
-        const updatedReplies = originalComment.replies.map((reply, index) =>
-          index === replyIndex
-            ? { ...reply, content: updatedContent, updatedAt: new Date() }
-            : reply
-        );
+        if (commentSnap.exists()) {
+          const originalComment = commentSnap.data();
+          const updatedReplies = originalComment.replies.map((reply, index) =>
+            index === replyIndex
+              ? { ...reply, content: updatedContent, updatedAt: new Date() }
+              : reply
+          );
 
-        await updateDoc(commentRef, {
-          replies: updatedReplies,
-        });
+          await updateDoc(commentRef, {
+            replies: updatedReplies,
+          });
 
-        setReplyEditMode((prevState) => ({
-          ...prevState,
-          [`${commentId}-${replyIndex}`]: false,
-        }));
+          setReplyEditMode((prevState) => ({
+            ...prevState,
+            [`${commentId}-${replyIndex}`]: false,
+          }));
+        }
+      } catch (error) {
+        console.error("답글 수정 실패: ", error);
+        toast.error("답글 수정에 실패했습니다.");
       }
-    } catch (error) {
-      console.error("답글 수정 실패: ", error);
-      toast.error("답글 수정에 실패했습니다.");
+    } else {
+      toast.error("수정 권한이 없습니다.");
     }
   };
 
@@ -247,31 +277,41 @@ const CommentComponent = ({ postId }) => {
                   }
                 />
                 <button type="submit">수정 완료</button>
+                <button
+                  type="button"
+                  onClick={() => toggleEditMode(comment.id)}
+                >
+                  취소
+                </button>
               </EditCommentForm>
             ) : (
               <CommentContent>{comment.content}</CommentContent>
             )}
-            <CommentActions>
-              <button onClick={() => toggleReplyInput(comment.id)}>답글</button>
-              <button onClick={() => toggleEditMode(comment.id)}>수정</button>
-              <button onClick={() => handleCommentDelete(comment.id)}>
-                삭제
-              </button>
-            </CommentActions>
-            {replyInputVisible[comment.id] && (
-              <ReplyForm onSubmit={(e) => handleReplySubmit(e, comment.id)}>
-                <input
-                  type="text"
-                  value={replyContent}
-                  onChange={(e) => setReplyContent(e.target.value)}
-                  placeholder="답글을 작성하세요."
-                />
-                <button type="submit">답글 작성</button>
-              </ReplyForm>
+            {comment.author === author && (
+              <CommentActions>
+                <button onClick={() => toggleEditMode(comment.id)}>수정</button>
+                <button onClick={() => handleCommentDelete(comment.id)}>
+                  삭제
+                </button>
+              </CommentActions>
             )}
-            {comment.replies && (
-              <ReplyList>
-                {comment.replies.map((reply, index) => (
+            <ReplySection>
+              <ReplyToggle onClick={() => toggleReplyInput(comment.id)}>
+                답글
+              </ReplyToggle>
+              {replyInputVisible[comment.id] && (
+                <ReplyForm onSubmit={(e) => handleReplySubmit(e, comment.id)}>
+                  <textarea
+                    value={replyContent}
+                    onChange={(e) => setReplyContent(e.target.value)}
+                    placeholder="답글을 작성해주세요."
+                    required
+                  />
+                  <button type="submit">답글 작성</button>
+                </ReplyForm>
+              )}
+              {comment.replies &&
+                comment.replies.map((reply, index) => (
                   <ReplyItem key={index}>
                     <ReplyHeader>
                       <ReplyAuthor>{reply.author}</ReplyAuthor>
@@ -308,26 +348,33 @@ const CommentComponent = ({ postId }) => {
                           }
                         />
                         <button type="submit">수정 완료</button>
+                        <button
+                          type="button"
+                          onClick={() => toggleReplyEditMode(comment.id, index)}
+                        >
+                          취소
+                        </button>
                       </EditReplyForm>
                     ) : (
                       <ReplyContent>{reply.content}</ReplyContent>
                     )}
-                    <ReplyActions>
-                      <button
-                        onClick={() => toggleReplyEditMode(comment.id, index)}
-                      >
-                        수정
-                      </button>
-                      <button
-                        onClick={() => handleReplyDelete(comment.id, index)}
-                      >
-                        삭제
-                      </button>
-                    </ReplyActions>
+                    {reply.author === author && (
+                      <ReplyActions>
+                        <button
+                          onClick={() => toggleReplyEditMode(comment.id, index)}
+                        >
+                          수정
+                        </button>
+                        <button
+                          onClick={() => handleReplyDelete(comment.id, index)}
+                        >
+                          삭제
+                        </button>
+                      </ReplyActions>
+                    )}
                   </ReplyItem>
                 ))}
-              </ReplyList>
-            )}
+            </ReplySection>
           </CommentItem>
         ))}
       </CommentList>
@@ -338,7 +385,7 @@ const CommentComponent = ({ postId }) => {
 export default CommentComponent;
 
 const CommentSection = styled.div`
-  margin-top: 20px;
+  margin: 20px 0;
 `;
 
 const CommentList = styled.ul`
@@ -348,8 +395,6 @@ const CommentList = styled.ul`
 
 const CommentItem = styled.li`
   margin-bottom: 10px;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 10px;
 `;
 
 const CommentHeader = styled.div`
@@ -367,34 +412,39 @@ const CommentDate = styled.span`
 `;
 
 const CommentContent = styled.p`
-  margin: 0;
+  margin: 5px 0;
 `;
 
 const CommentActions = styled.div`
-  display: flex;
-  gap: 10px;
+  button {
+    margin-right: 5px;
+  }
 `;
 
 const EditCommentForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  textarea {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+`;
+
+const ReplySection = styled.div`
+  margin-left: 20px;
+`;
+
+const ReplyToggle = styled.button`
+  margin-top: 5px;
 `;
 
 const ReplyForm = styled.form`
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
+  textarea {
+    width: 100%;
+    margin-bottom: 5px;
+  }
 `;
 
-const ReplyList = styled.ul`
-  list-style: none;
-  padding-left: 20px;
-  margin-top: 10px;
-`;
-
-const ReplyItem = styled.li`
-  margin-bottom: 5px;
+const ReplyItem = styled.div`
+  margin-top: 5px;
 `;
 
 const ReplyHeader = styled.div`
@@ -412,16 +462,18 @@ const ReplyDate = styled.span`
 `;
 
 const ReplyContent = styled.p`
-  margin: 0;
+  margin: 5px 0;
 `;
 
 const ReplyActions = styled.div`
-  display: flex;
-  gap: 10px;
+  button {
+    margin-right: 5px;
+  }
 `;
 
 const EditReplyForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  textarea {
+    width: 100%;
+    margin-bottom: 5px;
+  }
 `;
