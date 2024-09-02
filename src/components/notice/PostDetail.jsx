@@ -1,3 +1,4 @@
+import { useStore } from "../../store/store"; // Zustand 상태 가져오기
 import {
   collection,
   deleteDoc,
@@ -23,6 +24,7 @@ const PostDetail = () => {
   const [post, setPost] = useState(null);
   const [allPosts, setAllPosts] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { rUserData } = useStore(); // 로그인한 사용자 정보 가져오기
 
   const incrementPostViews = async () => {
     try {
@@ -112,6 +114,7 @@ const PostDetail = () => {
       const docRef = doc(db, "posts", postId);
       await deleteDoc(docRef);
       navigate("/notice");
+      toast.success("게시물이 삭제되었습니다.");
     } catch (error) {
       console.error("게시물 삭제 실패: ", error);
       toast.error("게시물 삭제 실패");
@@ -148,18 +151,23 @@ const PostDetail = () => {
       <div className="post-detail">
         <div className="post-detail__header">
           <div className="post-detail__header__actions-left">
-            <button
-              className="post-detail__button"
-              onClick={() => navigate(`/notice/edit/${postId}`)}
-            >
-              수정
-            </button>
-            <button
-              className="post-detail__button post-detail__button--delete"
-              onClick={handleDeleteClick}
-            >
-              삭제
-            </button>
+            {/* 수정 및 삭제 버튼은 작성자와 현재 로그인한 사용자가 동일할 때만 표시 */}
+            {rUserData?.email === post?.author && (
+              <>
+                <button
+                  className="post-detail__button"
+                  onClick={() => navigate(`/notice/edit/${postId}`)}
+                >
+                  수정
+                </button>
+                <button
+                  className="post-detail__button post-detail__button--delete"
+                  onClick={handleDeleteClick}
+                >
+                  삭제
+                </button>
+              </>
+            )}
           </div>
 
           <div className="post-detail__header__actions-right">
@@ -252,7 +260,6 @@ const PostDetail = () => {
             <p>게시물을 찾을 수 없습니다.</p>
           )}
           <CommentComponent postId={postId} />
-          {/* CommentComponent에 postId 전달 */}
         </div>
       </div>
     </div>
