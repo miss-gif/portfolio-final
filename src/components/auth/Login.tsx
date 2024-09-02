@@ -92,22 +92,24 @@ const Login = ({ onSwitchToSignup }) => {
         >
           로그인
         </button>
-        <button
-          type="button"
-          className="text-blue-500 hover:underline"
-          onClick={onSwitchToSignup}
-        >
-          계정 만들기
-        </button>
-        <button
-          type="button"
-          className="text-blue-500 hover:underline"
-          onClick={() => {
-            navigate("/auth/findpass");
-          }}
-        >
-          비밀번호 찾기
-        </button>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            className="text-blue-500 hover:underline"
+            onClick={onSwitchToSignup}
+          >
+            계정 만들기
+          </button>
+          <button
+            type="button"
+            className="text-blue-500 hover:underline"
+            onClick={() => {
+              navigate("/auth/findpass");
+            }}
+          >
+            비밀번호 찾기
+          </button>
+        </div>
       </form>
     </div>
   );
