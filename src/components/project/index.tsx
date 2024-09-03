@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
+import TypeIt from "typeit-react";
 import { project } from "./project";
-import ProjectDetailModal from "./ProjectDetailModal";
-import TooltipButton from "./TooltipButton";
 import "./project.scss";
+import ProjectDetailModal from "./ProjectDetailModal";
 
 // 타입 정의
 interface ProjectItem {
@@ -45,13 +45,21 @@ const Project: React.FC = () => {
         item={selectedItem}
       />
       <section className="project section">
-        <div className="project__title-cover">
+        <div className="project__title-cover flex flex-col">
           <h2 className="section__title text-cs" id="project">
             FE & BE 협업 프로젝트
           </h2>
-          <button className="tooltip-btn">
-            <TooltipButton />
-          </button>
+          <TypeIt
+            className="py-4 text-center text-lg text-green-500"
+            options={{
+              speed: 20,
+              waitUntilVisible: true,
+            }}
+          >
+            KDT 수강생 FE/BE 팀이 협업하여 실무에 가까운 환경에서 실제 서비스를
+            개발하는 프로젝트입니다. <br /> 정해진 기간 내에 서비스 완성을
+            목표로 하며, 실무 경험과 협업 능력을 향상시키는 기회를 제공했습니다.
+          </TypeIt>
         </div>
         <p className="section__subtitle">
           My <span>role</span>
