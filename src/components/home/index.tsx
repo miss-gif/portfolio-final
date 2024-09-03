@@ -1,3 +1,4 @@
+import "animate.css";
 import { useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { GiNotebook } from "react-icons/gi";
@@ -10,7 +11,6 @@ import { handleClick } from "../../utils/scrollClick";
 import { home } from "./home";
 import "./home.scss";
 import VideoMain from "./VideoMain.jsx";
-import "animate.css";
 
 const Home = () => {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -86,7 +86,7 @@ const Home = () => {
             title="Click!"
           >
             <div className="home__banner__front">
-              <img src="" alt="" className="home__profile" />
+              <img src="/public/Avatar1.png" alt="" className="home__profile" />
             </div>
             <div className="home__banner__back">
               <img src="" alt="" className="home__profile" />
