@@ -1,9 +1,9 @@
 import { format } from "date-fns";
-import { doc, increment, runTransaction } from "firebase/firestore";
+import { doc, runTransaction } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { db } from "../../firebaseConfig";
-import { toast } from "react-toastify";
 import { useCookies } from "react-cookie";
+import { toast } from "react-toastify";
+import { db } from "../../firebaseConfig";
 
 const Visitors = () => {
   const [todayCount, setTodayCount] = useState(null);
@@ -15,8 +15,6 @@ const Visitors = () => {
     const incrementPageViews = async () => {
       const today = format(new Date(), "yyyy-MM-dd");
       const month = format(new Date(), "yyyy-MM");
-
-      toast.success("방문해 주셔서 감사합니다!");
 
       // 쿠키가 있는지 확인
       if (cookies.lastVisit) {
@@ -59,6 +57,7 @@ const Visitors = () => {
           setTotalCount(newTotalCount);
           setTodayCount(newTodayCount);
           setMonthCount(newMonthCount);
+          toast.success("방문해 주셔서 감사합니다!");
           toast.success(`오늘 방문자 수: ${newTodayCount}`);
         });
 
@@ -72,13 +71,7 @@ const Visitors = () => {
     incrementPageViews();
   }, [setCookie]);
 
-  return (
-    <div>
-      <div>오늘 방문자 수: {todayCount}</div>
-      <div>이달 방문자 수: {monthCount}</div>
-      <div>총 방문자 수: {totalCount}</div>
-    </div>
-  );
+  return;
 };
 
 export default Visitors;

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Modal from "react-modal";
 import "./GlobalInfo.scss";
-import Visitors from "../visitors/Visitors";
 
 const indax = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -49,7 +48,7 @@ const indax = () => {
           더욱 편리하고 빠른 서비스를 제공하기 위해 노력하고 있습니다. <br />
           최대한 빠른 시일 내에 작업을 완료하겠습니다.
         </div>
-        <Visitors />
+
         <button className="Modal__close-btn" onClick={closeModal}>
           Close
         </button>
