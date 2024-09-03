@@ -5,6 +5,7 @@ import Project from "../components/project";
 import Resume from "../components/resume";
 import Services from "../components/services";
 import Skills from "../components/skills";
+import Visitors from "../components/visitors/Visitors";
 
 const HomePage = () => {
   return (
@@ -17,6 +18,7 @@ const HomePage = () => {
         <Portfolio />
         <Resume />
         <Contact />
+        <Visitors />
       </main>
     </>
   );

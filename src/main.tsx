@@ -25,8 +25,8 @@ if (rootElement) {
       <App />
       <ToastContainer
         position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
+        autoClose={2000}
+        hideProgressBar={true}
         newestOnTop={false}
         closeOnClick
         rtl={false}

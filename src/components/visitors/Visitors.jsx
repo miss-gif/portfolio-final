@@ -1,24 +1,28 @@
+import { format } from "date-fns";
+import { doc, increment, runTransaction } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "../../firebaseConfig";
-import {
-  doc,
-  getDoc,
-  updateDoc,
-  setDoc,
-  increment,
-  runTransaction,
-} from "firebase/firestore";
-import { format } from "date-fns";
+import { toast } from "react-toastify";
+import { useCookies } from "react-cookie";
 
 const Visitors = () => {
-  const [todayCount, setTodayCount] = useState(0);
-  const [monthCount, setMonthCount] = useState(0);
-  const [totalCount, setTotalCount] = useState(0);
+  const [todayCount, setTodayCount] = useState(null);
+  const [monthCount, setMonthCount] = useState(null);
+  const [totalCount, setTotalCount] = useState(null);
+  const [cookies, setCookie] = useCookies(["lastVisit"]);
 
   useEffect(() => {
     const incrementPageViews = async () => {
       const today = format(new Date(), "yyyy-MM-dd");
       const month = format(new Date(), "yyyy-MM");
+
+      toast.success("방문해 주셔서 감사합니다!");
+
+      // 쿠키가 있는지 확인
+      if (cookies.lastVisit) {
+        console.log("쿠키가 존재하여 카운트를 증가시키지 않습니다.");
+        return;
+      }
 
       try {
         await runTransaction(db, async (transaction) => {
@@ -30,31 +34,43 @@ const Visitors = () => {
           const dailySnap = await transaction.get(dailyRef);
           const monthlySnap = await transaction.get(monthlyRef);
 
-          if (!totalSnap.exists()) {
-            transaction.set(totalRef, { count: 0 });
-          }
-          if (!dailySnap.exists()) {
-            transaction.set(dailyRef, { count: 0, date: today });
-          }
-          if (!monthlySnap.exists()) {
-            transaction.set(monthlyRef, { count: 0, date: month });
-          }
+          const newTotalCount = totalSnap.exists()
+            ? totalSnap.data().count + 1
+            : 1;
+          const newTodayCount = dailySnap.exists()
+            ? dailySnap.data().count + 1
+            : 1;
+          const newMonthCount = monthlySnap.exists()
+            ? monthlySnap.data().count + 1
+            : 1;
 
-          transaction.update(totalRef, { count: increment(1) });
-          transaction.update(dailyRef, { count: increment(1) });
-          transaction.update(monthlyRef, { count: increment(1) });
+          transaction.set(totalRef, { count: newTotalCount }, { merge: true });
+          transaction.set(
+            dailyRef,
+            { count: newTodayCount, date: today },
+            { merge: true }
+          );
+          transaction.set(
+            monthlyRef,
+            { count: newMonthCount, date: month },
+            { merge: true }
+          );
 
-          setTotalCount(totalSnap.data()?.count + 1 || 1);
-          setTodayCount(dailySnap.data()?.count + 1 || 1);
-          setMonthCount(monthlySnap.data()?.count + 1 || 1);
+          setTotalCount(newTotalCount);
+          setTodayCount(newTodayCount);
+          setMonthCount(newMonthCount);
+          toast.success(`오늘 방문자 수: ${newTodayCount}`);
         });
+
+        // 방문 기록을 쿠키에 저장 (1시간 유효)
+        setCookie("lastVisit", "true", { path: "/", maxAge: 3600 });
       } catch (error) {
-        console.error("방문자 수 증가 실패: ", error);
+        toast.error("방문자 수 증가 실패");
       }
     };
 
     incrementPageViews();
-  }, []);
+  }, [setCookie]);
 
   return (
     <div>
