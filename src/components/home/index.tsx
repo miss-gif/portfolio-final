@@ -86,7 +86,7 @@ const Home = () => {
             title="Click!"
           >
             <div className="home__banner__front">
-              <img src="/public/Avatar1.png" alt="" className="home__profile" />
+              <img src="/Avatar1.png" alt="" className="home__profile" />
             </div>
             <div className="home__banner__back">
               <img src="" alt="" className="home__profile" />
