@@ -8,6 +8,7 @@ import "./index.css";
 import "./index.scss";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { initializeCounters } from "./init/postCount";
 
 AOS.init({
   duration: 1000, // 애니메이션 지속 시간 (밀리초)
@@ -18,6 +19,8 @@ Modal.setAppElement("#root");
 
 // 타입 단언(Type Assertion)을 사용하여 'root' 요소를 HTMLDivElement로 지정
 const rootElement = document.getElementById("root") as HTMLElement;
+
+initializeCounters();
 
 if (rootElement) {
   ReactDOM.createRoot(rootElement).render(

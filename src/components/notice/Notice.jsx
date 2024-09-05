@@ -11,8 +11,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { db } from "../../firebaseConfig";
 import useDebounce from "../../hooks/useDebounce";
 import { useStore } from "../../store/store";
+import AsideHotPost from "./AsideHotPost";
 import "./Notice.scss";
-import { initializeCounters } from "./postCount";
 
 function Notice() {
   const navigate = useNavigate();
@@ -29,7 +29,6 @@ function Notice() {
 
   // 컴포넌트 초기화 시 호출
   useEffect(() => {
-    initializeCounters(); // 앱의 루트 컴포넌트에서 호출하는 것이 좋음
     fetchPosts();
   }, []);
 
@@ -144,10 +143,11 @@ function Notice() {
               {currentPosts.map((post) => (
                 <tr
                   key={post.postId}
+                  className="hover:bg-gray-800 cursor-pointer"
                   onClick={() => handleRowClick(post.postId)}
                 >
                   <td>{post.postNumber}</td>
-                  <td>{post.title}</td>
+                  <td className="max-w-xs truncate">{post.title}</td>
                   <td>{post.author}</td>
                   <td>{post.date}</td>
                   <td>{post.views}</td>
@@ -187,17 +187,7 @@ function Notice() {
             <button onClick={resetSearch}>초기화</button>
           </div>
         </article>
-        <aside className="aside-hot-post">
-          <h2>인기글</h2>
-          <ul>
-            <li>인기글1</li>
-            <li>인기글2</li>
-            <li>인기글3</li>
-            <li>인기글4</li>
-            <li>인기글5</li>
-            <li>인기글6</li>
-          </ul>
-        </aside>
+        <AsideHotPost />
       </div>
     </div>
   );
