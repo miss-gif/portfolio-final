@@ -66,7 +66,7 @@ const Portfolio = () => {
   ];
 
   useEffect(() => {
-    filterItems(defaultCategories);
+    // filterItems(defaultCategories);
   }, []);
 
   return (
