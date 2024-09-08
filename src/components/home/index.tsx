@@ -94,7 +94,7 @@ const Home = () => {
           </div>
           <p className="home__data home__data-one">
             <span className="text-lg">
-              1 <b>+</b>
+              2 <b>+</b>
             </span>
             <span className="text-sm text-cs">
               Years of <span>Experience</span>
@@ -103,10 +103,10 @@ const Home = () => {
 
           <p className="home__data home__data-two">
             <span className="text-lg">
-              10<b>+</b>
+              19<b>+</b>
             </span>
             <span className="text-sm text-cs">
-              Completed <span>Projects</span>
+              Completed <span>Portfolio</span>
             </span>
           </p>
 

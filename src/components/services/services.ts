@@ -11,38 +11,43 @@ export const services: Services[] = [
   {
     id: 1,
     name: "Web Development",
-    title: "Web Design",
-    description: "반응형 디자인, 웹 접근성, 웹 표준을 고려한 UI/UX 개발 경험",
+    title: "Responsive Web Design",
+    description:
+      "HTML5, CSS3, SCSS를 활용하여 반응형 웹사이트를 개발. 다양한 기기에서 최적화된 사용자 경험 제공.",
   },
   {
     id: 2,
-    name: "Web Development",
-    title: "Web Design",
+    name: "UI/UX Optimization",
+    title: "Accessibility & Standards",
     description:
-      "요구사항 분석 및 다른 개발자와 협업을 위한 원활한 커뮤니케이션 능력",
+      "웹 접근성(WCAG 2.1 기준) 준수와 W3C 웹 표준을 준수하여 누구나 접근 가능한 사용자 인터페이스 제공.",
   },
   {
     id: 3,
-    name: "Web Development",
-    title: "Web Design",
-    description: "성능 이슈, 메모리 누수, 네트워크 프로파일링 경험",
+    name: "Performance Tuning",
+    title: "Optimization & Debugging",
+    description:
+      "성능 이슈 해결, 메모리 누수 및 네트워크 프로파일링을 통해 웹 애플리케이션의 성능을 향상.",
   },
   {
     id: 4,
-    name: "Web Development",
-    title: "Web Design",
-    description: "신규 서비스 플랫폼 개발 및 기존 서비스 고도화",
+    name: "Platform Development",
+    title: "Service Scalability",
+    description:
+      "신규 플랫폼 설계 및 기존 서비스 아키텍처 개선을 통해 확장 가능하고 유지보수가 용이한 시스템 개발.",
   },
   {
     id: 5,
-    name: "Web Development",
-    title: "Web Design",
-    description: "더 나은 고객 경험 제공을 위한 서비스 개선",
+    name: "User-Centric Design",
+    title: "Customer Experience",
+    description:
+      "고객 피드백과 사용자 행동 데이터를 분석하여 더욱 직관적이고 만족스러운 사용자 경험을 설계.",
   },
   {
     id: 6,
-    name: "Web Development",
-    title: "Web Design",
-    description: "기술 부채 식별 및 점진적 개선",
+    name: "Technical Debt Management",
+    title: "Code Refactoring",
+    description:
+      "기술 부채를 식별하고 단계별로 개선하여 유지보수성과 확장성을 향상시킨 경험이 있습니다.",
   },
 ];
