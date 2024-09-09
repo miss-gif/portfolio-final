@@ -17,6 +17,10 @@ import firebase from "../../assets/skill/Firebase-Light.svg";
 import tailwind from "../../assets/skill/TailwindCSS-Light.svg";
 import zod from "../../assets/skill/Zod.svg";
 import reacthookform from "../../assets/skill/React-Hook-Form.svg";
+import recoil from "../../assets/skill/recoil.svg";
+import nextjs from "../../assets/skill/NextJS-Light.svg";
+import supabase from "../../assets/skill/supabase.svg";
+import native from "../../assets/skill/react-native.svg";
 
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
@@ -73,81 +77,53 @@ const RoadMap = () => {
         <div className="horizontal-item">
           <p>학습 로드맵</p>
         </div>
+
         <div className="horizontal-item">
           <img src={html} alt="HTML" />
-          <p>HTML</p>
-        </div>
-        <div className="horizontal-item">
           <img src={css} alt="CSS" />
-          <p>CSS</p>
-        </div>
-        <div className="horizontal-item">
           <img src={js} alt="JavaScript" />
-          <p>JavaScript</p>
+          <img src={sass} alt="Sass" />
         </div>
+
         <div className="horizontal-item">
           <img src={react} alt="React" />
-          <p>React</p>
+          <img src={reactrouter} alt="React Router" />
+          <img src={emotion} alt="Emotion" />
+          <img src={axios} alt="Axios" />
+          <img src={recoil} alt="Recoil" />
         </div>
-        <div className="horizontal-item">
-          <img src={ts} alt="TypeScript" />
-          <p>TypeScript</p>
-        </div>
+
         <div className="horizontal-item">
           <img src={redux} alt="Redux" />
-          <p>Redux Toolkit</p>
+          <img src={ts} alt="TypeScript" />
+          <img src={swagger} alt="Swagger" />
+          <img src={mui} alt="Material UI" />
         </div>
-        <div className="horizontal-item">
-          <img src={zustand} alt="Zustand" />
-          <p>Zustand</p>
-        </div>
-        <div className="horizontal-item">
-          <img src={axios} alt="Axios" />
-          <p>Axios</p>
-        </div>
+
         <div className="horizontal-item">
           <img src={reactQuery} alt="React Query" />
-          <p>React Query</p>
+          <img src={reacthookform} alt="React Hook Form" />
+          <img src={zod} alt="Zod" />
         </div>
-        <div className="horizontal-item">
-          <img src={figma} alt="Figma" />
-          <p>Figma</p>
-        </div>
-        <div className="horizontal-item">
-          <img src={sass} alt="Sass" />
-          <p>Sass</p>
-        </div>
-        <div className="horizontal-item">
-          <img src={emotion} alt="Emotion" />
-          <p>Emotion</p>
-        </div>
-        <div className="horizontal-item">
-          <img src={swagger} alt="Swagger" />
-          <p>Swagger</p>
-        </div>
-        <div className="horizontal-item">
-          <img src={mui} alt="Material UI" />
-          <p>Material UI</p>
-        </div>
-        <div className="horizontal-item">
-          <img src={reactrouter} alt="React Router" />
-          <p>React Router</p>
-        </div>
+
         <div className="horizontal-item">
           <img src={firebase} alt="Firebase" />
-          <p>Firebase</p>
+          <img src={zustand} alt="Zustand" />
         </div>
+
         <div className="horizontal-item">
+          <img src={nextjs} alt="nextjs" />
           <img src={tailwind} alt="Tailwind CSS" />
-          <p>Tailwind CSS</p>
+          <img src={supabase} alt="supabase" />
         </div>
+
         <div className="horizontal-item">
-          <img src={zod} alt="Zod" />
-          <p>Zod</p>
+          <img src={native} alt="React Native" />
         </div>
+
         <div className="horizontal-item">
-          <img src={reacthookform} alt="React Hook Form" />
-          <p>React Hook Form</p>
+          <p>협업 툴</p>
+          <img src={figma} alt="Figma" />
         </div>
       </div>
     </div>
