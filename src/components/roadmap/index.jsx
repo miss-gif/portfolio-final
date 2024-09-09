@@ -79,51 +79,74 @@ const RoadMap = () => {
         </div>
 
         <div className="horizontal-item">
-          <img src={html} alt="HTML" />
-          <img src={css} alt="CSS" />
-          <img src={js} alt="JavaScript" />
-          <img src={sass} alt="Sass" />
+          <div className="flex gap-10">
+            <img src={html} alt="HTML" />
+            <img src={css} alt="CSS" />
+            <img src={js} alt="JavaScript" />
+            <img src={sass} alt="Sass" />
+          </div>
+          <p>텍스트</p>
         </div>
 
         <div className="horizontal-item">
-          <img src={react} alt="React" />
-          <img src={reactrouter} alt="React Router" />
-          <img src={emotion} alt="Emotion" />
-          <img src={axios} alt="Axios" />
-          <img src={recoil} alt="Recoil" />
+          <div className="flex gap-10">
+            <img src={react} alt="React" />
+            <img src={reactrouter} alt="React Router" />
+            <img src={emotion} alt="Emotion" />
+            <img src={axios} alt="Axios" />
+            <img src={recoil} alt="Recoil" />
+          </div>
+          <p>텍스트</p>
         </div>
 
         <div className="horizontal-item">
-          <img src={redux} alt="Redux" />
-          <img src={ts} alt="TypeScript" />
-          <img src={swagger} alt="Swagger" />
-          <img src={mui} alt="Material UI" />
+          <div className="flex gap-10">
+            <img src={redux} alt="Redux" />
+            <img src={ts} alt="TypeScript" />
+            <img src={swagger} alt="Swagger" />
+            <img src={mui} alt="Material UI" />
+          </div>
+          <p>텍스트</p>
         </div>
 
         <div className="horizontal-item">
-          <img src={reactQuery} alt="React Query" />
-          <img src={reacthookform} alt="React Hook Form" />
-          <img src={zod} alt="Zod" />
+          <div className="flex gap-10">
+            <img src={reactQuery} alt="React Query" />
+            <img src={reacthookform} alt="React Hook Form" />
+            <img src={zod} alt="Zod" />
+          </div>
+          <p>텍스트</p>
         </div>
 
         <div className="horizontal-item">
-          <img src={firebase} alt="Firebase" />
-          <img src={zustand} alt="Zustand" />
+          <div className="flex gap-10">
+            <img src={firebase} alt="Firebase" />
+            <img src={zustand} alt="Zustand" />
+          </div>
+          <p>텍스트</p>
         </div>
 
         <div className="horizontal-item">
-          <img src={nextjs} alt="nextjs" />
-          <img src={tailwind} alt="Tailwind CSS" />
-          <img src={supabase} alt="supabase" />
+          <div className="flex gap-10">
+            <img src={nextjs} alt="nextjs" />
+            <img src={tailwind} alt="Tailwind CSS" />
+            <img src={supabase} alt="supabase" />
+          </div>
+          <p>텍스트</p>
         </div>
 
         <div className="horizontal-item">
-          <img src={native} alt="React Native" />
+          <div className="flex gap-10">
+            <img src={native} alt="React Native" />
+          </div>
+          <p>텍스트</p>
         </div>
 
         <div className="horizontal-item">
-          <p>협업 툴</p>
-          <img src={figma} alt="Figma" />
+          <div className="flex gap-10">
+            <img src={figma} alt="Figma" />
+          </div>
+          <p>텍스트</p>
         </div>
       </div>
     </div>

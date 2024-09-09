@@ -7,12 +7,14 @@ import Roadmap from "../components/roadmap";
 import Services from "../components/services";
 import Skills from "../components/skills";
 import Visitors from "../components/visitors/Visitors";
+import OneTest from "./../components/roadmap/OneTest";
 
 const HomePage = () => {
   return (
     <>
       <main>
         <Home />
+        <OneTest />
         <Roadmap />
         <Skills />
         <Services />

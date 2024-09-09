@@ -9,16 +9,16 @@
   }
 
   .horizontal-item {
-    flex: 0 0 100vw;
     display: flex;
+    flex: 0 0 100vw;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     scroll-snap-align: center;
     transition: background-color 0.3s ease;
-    padding: 2rem;
     background-color: lightblue;
     position: relative;
+    gap: 40px;
 
     &:nth-child(even) {
       background-color: lightcoral;
@@ -27,17 +27,11 @@
     img {
       width: 100px; /* 이미지 크기 조정 */
       height: 100px;
-      margin-bottom: 1rem;
       transition: transform 0.3s ease;
     }
 
-    p {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-
     &:hover img {
-      transform: scale(1.1); /* 호버 시 이미지 확대 */
+      transform: scale(1.3); /* 호버 시 이미지 확대 */
     }
 
     &:hover {
