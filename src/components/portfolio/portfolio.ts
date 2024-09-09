@@ -184,15 +184,15 @@ export const portfolio: PortfolioItem[] = [
       },
     ],
     demoUrl: "https://apple-ipad-app-wheat.vercel.app/",
-    githubUrl: "",
+    githubUrl: "https://github.com/miss-gif/DP_Study_apple-ipad-app",
   },
   {
     id: 2,
     img: Project2,
     category: ["퍼블리싱", "반응형"],
     techStack: [html, sass, js],
-    title: "Gooir",
-    description: "디자인 파일을 제공 받아 제작됨",
+    title: "KlayUniverse",
+    description: "피그마 파일만을 제공 받아 디자인대로 작업했습니다.",
     features: [
       {
         title: "",
@@ -208,8 +208,8 @@ export const portfolio: PortfolioItem[] = [
       },
     ],
 
-    demoUrl: "",
-    githubUrl: "",
+    demoUrl: "https://lighthearted-profiterole-5975f7.netlify.app/",
+    githubUrl: "https://github.com/miss-gif/KlayUniverse_04",
   },
   {
     id: 3,
@@ -254,7 +254,7 @@ export const portfolio: PortfolioItem[] = [
       },
     ],
     demoUrl: "https://diary-one-kappa.vercel.app/",
-    githubUrl: "",
+    githubUrl: "https://github.com/miss-gif/react-emotion-diary",
   },
   {
     id: 4,
@@ -287,7 +287,7 @@ export const portfolio: PortfolioItem[] = [
       },
     ],
     demoUrl: "https://react-naras-app.vercel.app/",
-    githubUrl: "",
+    githubUrl: "https://github.com/miss-gif/react-naras-app",
   },
   {
     id: 5,
@@ -330,8 +330,8 @@ export const portfolio: PortfolioItem[] = [
         ],
       },
     ],
-    demoUrl: "",
-    githubUrl: "",
+    demoUrl: "https://dp-study-starbucks-03.vercel.app/",
+    githubUrl: "https://github.com/miss-gif/DP_Study_Starbucks_03",
   },
   {
     id: 6,
@@ -355,8 +355,8 @@ export const portfolio: PortfolioItem[] = [
       },
     ],
 
-    demoUrl: "",
-    githubUrl: "",
+    demoUrl: "https://dp-shopping-mall-site-basic.vercel.app/",
+    githubUrl: "https://github.com/miss-gif/DP_Shopping-mall-site-Basic",
   },
   {
     id: 7,
@@ -396,7 +396,7 @@ export const portfolio: PortfolioItem[] = [
     ],
 
     demoUrl: "https://dp-study-disney-plus-app.vercel.app/",
-    githubUrl: "",
+    githubUrl: "https://github.com/miss-gif/DP_Study_disney-plus-app",
   },
   {
     id: 8,
@@ -431,7 +431,7 @@ export const portfolio: PortfolioItem[] = [
       },
     ],
     demoUrl: "https://react-blog-kakaobrain.vercel.app/",
-    githubUrl: "",
+    githubUrl: "https://github.com/miss-gif/react-blog-kakaobrain",
   },
   {
     id: 9,
@@ -452,7 +452,7 @@ export const portfolio: PortfolioItem[] = [
     ],
 
     demoUrl: "https://mecha-smile-impact-02.vercel.app/",
-    githubUrl: "",
+    githubUrl: "https://github.com/miss-gif/mecha-smile-impact_02",
   },
   {
     id: 10,
@@ -476,7 +476,7 @@ export const portfolio: PortfolioItem[] = [
       },
     ],
     demoUrl: "https://mecha-smile-impact-02-lpxs.vercel.app/",
-    githubUrl: "",
+    githubUrl: "https://github.com/miss-gif/MEGABOX",
   },
   {
     id: 11,
@@ -500,7 +500,7 @@ export const portfolio: PortfolioItem[] = [
       },
     ],
 
-    demoUrl: "",
-    githubUrl: "",
+    demoUrl: "https://zealous-heisenberg-77e41a.netlify.app/",
+    githubUrl: "https://github.com/miss-gif/Reactive-web",
   },
 ];

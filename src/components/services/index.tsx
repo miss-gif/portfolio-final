@@ -11,8 +11,13 @@ import "./services.scss";
 
 const Services = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalContent, setModalContent] = useState({
+    title: "",
+    description: "",
+  });
 
-  const openModal = () => {
+  const openModal = (title: string, description: string) => {
+    setModalContent({ title, description });
     setModalIsOpen(true);
   };
 
@@ -55,7 +60,10 @@ const Services = () => {
               <span className="services__subtitle text-cs">{name}</span>
               <h3 className="services__title">{title}</h3>
               <p className="services__description">{description}</p>
-              <button className="link" onClick={openModal}>
+              <button
+                className="link"
+                onClick={() => openModal(title, description)}
+              >
                 More
                 <FaArrowRight className="link__icon" />
               </button>
@@ -64,6 +72,7 @@ const Services = () => {
           ))}
         </Swiper>
       </section>
+
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -71,10 +80,8 @@ const Services = () => {
         className="Modal"
         overlayClassName="Overlay"
       >
-        <h2 className="Modal__title">Web Design</h2>
-        <div className="Modal__content">
-          반응형 디자인, 웹 접근성, 웹 표준을 고려한 UI/UX 개발 경험
-        </div>
+        <h2 className="Modal__title">{modalContent.title}</h2>
+        <div className="Modal__content">{modalContent.description}</div>
         <button className="Modal__close-btn" onClick={closeModal}>
           Close
         </button>

@@ -8,14 +8,14 @@ interface Skill {
   id: number;
   name: string;
   percentage: number;
-  description: string;
+  description: string[];
 }
 
 interface SkillItemProps {
   img: string;
   name: string;
   percentage: number;
-  description: string;
+  description: string[];
 }
 
 const Skills = () => {
@@ -76,32 +76,29 @@ const SkillItem = ({ img, name, percentage, description }: SkillItemProps) => {
     const handleIntersection = (entries: IntersectionObserverEntry[]) => {
       const [entry] = entries;
       if (entry.isIntersecting) {
-        // 요소가 화면에 보일 때 애니메이션 시작
         const interval = setInterval(() => {
           setCurrentPercentage((prev) => {
             if (prev < percentage) {
-              return Math.min(prev + 1, percentage); // 1씩 증가
+              return Math.min(prev + 1, percentage);
             } else {
-              clearInterval(interval); // 목표에 도달하면 인터벌 정지
+              clearInterval(interval);
               return percentage;
             }
           });
-        }, 20); // 20ms마다 실행
+        }, 20);
       } else {
-        // 요소가 화면에서 벗어날 때 `currentPercentage` 초기화
         setCurrentPercentage(0);
       }
     };
 
     const observer = new IntersectionObserver(handleIntersection, {
-      threshold: 0.5, // 10%가 보일 때 콜백 호출
+      threshold: 0.5,
     });
 
     if (skillRef.current) {
       observer.observe(skillRef.current);
     }
 
-    // 클린업 함수는 옵저버를 해제하지 않고 애니메이션과 초기화만 처리합니다.
     return () => {
       if (skillRef.current) {
         observer.unobserve(skillRef.current);
@@ -126,7 +123,11 @@ const SkillItem = ({ img, name, percentage, description }: SkillItemProps) => {
             {currentPercentage} <span>%</span>
           </span>
         </div>
-        <p className="skills__description">{description}</p>
+        <ul className="skills__description">
+          {description.map((desc, index) => (
+            <li key={index}>{desc}</li>
+          ))}
+        </ul>
         <div className="skills__bar">
           <span
             className="skills__percentage"

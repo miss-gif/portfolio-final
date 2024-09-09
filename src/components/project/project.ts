@@ -29,6 +29,10 @@ import team2_6 from "../../assets/team2/6.png";
 import team2_7 from "../../assets/team2/7.png";
 import team3_1 from "../../assets/team3/1.png";
 
+import swagger1 from "../../assets/team1/swagger1.png";
+import swagger2 from "../../assets/team2/swagger2.png";
+import swagger3 from "../../assets/team3/swagger3.png";
+
 // 객체 타입 정의
 interface Project {
   id: number;
@@ -51,7 +55,16 @@ export const project: Project[] = [
   {
     id: 1,
     tag: ["작업중"],
-    img: [team3_1, team2_2, team2_3, team2_4, team2_5, team2_6, team2_7],
+    img: [
+      team3_1,
+      team2_2,
+      team2_3,
+      team2_4,
+      team2_5,
+      team2_6,
+      team2_7,
+      swagger3,
+    ],
     date: "2024.07.24 ~ 2024.8.23",
     title: "주문이요 (음식주문 플랫폼)",
     description:
@@ -96,7 +109,16 @@ export const project: Project[] = [
   {
     id: 2,
     tag: ["최신"],
-    img: [team2_1, team2_2, team2_3, team2_4, team2_5, team2_6, team2_7],
+    img: [
+      team2_1,
+      team2_2,
+      team2_3,
+      team2_4,
+      team2_5,
+      team2_6,
+      team2_7,
+      swagger2,
+    ],
     date: "2024.06.24 ~ 2024.07.23",
     title: "주문이요 (음식주문 플랫폼)",
     description:
@@ -159,6 +181,7 @@ export const project: Project[] = [
       team1_11,
       team1_12,
       team1_13,
+      swagger1,
     ],
     date: "2024.05.24 ~ 2024.6.23",
     title: "Plant Diary (식물관리 서비스)",
