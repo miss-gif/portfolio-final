@@ -3,6 +3,7 @@ import Home from "../components/home";
 import Portfolio from "../components/portfolio";
 import Project from "../components/project";
 import Resume from "../components/resume";
+import Roadmap from "../components/roadmap";
 import Services from "../components/services";
 import Skills from "../components/skills";
 import Visitors from "../components/visitors/Visitors";
@@ -12,6 +13,7 @@ const HomePage = () => {
     <>
       <main>
         <Home />
+        <Roadmap />
         <Skills />
         <Services />
         <Project />

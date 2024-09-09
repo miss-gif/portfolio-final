@@ -55,6 +55,7 @@ body {
 body {
   color: var(--text-color);
   background-color: var(--bg-color);
+  overflow-x: hidden;
   @media (max-width: 410px) {
     min-width: 410px;
     overflow-x: hidden;

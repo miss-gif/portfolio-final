@@ -1,0 +1,48 @@
+.road-map {
+  .horizontal-container {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .horizontal-item {
+    flex: 0 0 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: center;
+    transition: background-color 0.3s ease;
+    padding: 2rem;
+    background-color: lightblue;
+    position: relative;
+
+    &:nth-child(even) {
+      background-color: lightcoral;
+    }
+
+    img {
+      width: 100px; /* 이미지 크기 조정 */
+      height: 100px;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    p {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    &:hover img {
+      transform: scale(1.1); /* 호버 시 이미지 확대 */
+    }
+
+    &:hover {
+      background-color: #007bff; /* 호버 시 배경색 변경 */
+      color: #fff;
+    }
+  }
+}
