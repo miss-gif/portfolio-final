@@ -13,6 +13,7 @@ import useDebounce from "../../hooks/useDebounce";
 import { useStore } from "../../store/store";
 import AsideHotPost from "./AsideHotPost";
 import "./Notice.scss";
+import { FaArrowDownShortWide } from "react-icons/fa6";
 
 function Notice() {
   const navigate = useNavigate();
@@ -130,12 +131,54 @@ function Notice() {
           <table className="notice__table">
             <thead>
               <tr>
-                <th onClick={() => handleSort("postNumber")}>번호</th>
-                <th onClick={() => handleSort("title")}>제목</th>
-                <th onClick={() => handleSort("author")}>작성자</th>
-                <th onClick={() => handleSort("date")}>작성일</th>
-                <th onClick={() => handleSort("views")}>조회수</th>
-                <th onClick={() => handleSort("likes")}>추천수</th>
+                <th
+                  className="text-center px-4 py-2"
+                  onClick={() => handleSort("postNumber")}
+                >
+                  <button className="flex justify-center items-center gap-1">
+                    번호 <FaArrowDownShortWide />
+                  </button>
+                </th>
+                <th
+                  className="w-2/4 px-4 py-2 text-left truncate"
+                  onClick={() => handleSort("title")}
+                >
+                  <button className="flex justify-center items-center gap-1">
+                    제목 <FaArrowDownShortWide />
+                  </button>
+                </th>
+                <th
+                  className="text-center px-4 py-2"
+                  onClick={() => handleSort("author")}
+                >
+                  <button className="flex justify-center items-center gap-1">
+                    작성자 <FaArrowDownShortWide />
+                  </button>
+                </th>
+                <th
+                  className="text-center px-4 py-2"
+                  onClick={() => handleSort("date")}
+                >
+                  <button className="flex justify-center items-center gap-1">
+                    작성일 <FaArrowDownShortWide />
+                  </button>
+                </th>
+                <th
+                  className="text-center px-4 py-2"
+                  onClick={() => handleSort("views")}
+                >
+                  <button className="flex justify-center items-center gap-1">
+                    조회수 <FaArrowDownShortWide />
+                  </button>
+                </th>
+                <th
+                  className="text-center px-4 py-2"
+                  onClick={() => handleSort("likes")}
+                >
+                  <button className="flex justify-center items-center gap-1">
+                    추천수 <FaArrowDownShortWide />
+                  </button>
+                </th>
               </tr>
             </thead>
 
@@ -143,15 +186,17 @@ function Notice() {
               {currentPosts.map((post) => (
                 <tr
                   key={post.postId}
-                  className="hover:bg-gray-800 cursor-pointer"
                   onClick={() => handleRowClick(post.postId)}
+                  className="hover:bg-gray-900 cursor-pointer border-b transition ease-in-out duration-150"
                 >
-                  <td>{post.postNumber}</td>
-                  <td className="max-w-xs truncate">{post.title}</td>
-                  <td>{post.author}</td>
-                  <td>{post.date}</td>
-                  <td>{post.views}</td>
-                  <td>{post.likes}</td>
+                  <td className="text-center px-4 py-2">{post.postNumber}</td>
+                  <td className="w-2/4 px-4 py-2 text-left truncate">
+                    {post.title}
+                  </td>
+                  <td className="text-center px-4 py-2">{post.author}</td>
+                  <td className="text-center px-4 py-2">{post.date}</td>
+                  <td className="text-center px-4 py-2">{post.views}</td>
+                  <td className="text-center px-4 py-2">{post.likes}</td>
                 </tr>
               ))}
             </tbody>
