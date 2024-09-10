@@ -28,13 +28,13 @@ const Project: React.FC = () => {
   const openModal = (item: ProjectItem) => {
     setSelectedItem(item);
     setIsModal(true);
-    document.body.style.overflow = "hidden"; // 스크롤 정지
+    document.documentElement.style.overflow = "hidden"; // 스크롤 정지
   };
 
   const closeModal = () => {
     setIsModal(false);
     setSelectedItem(null);
-    document.body.style.overflow = "auto"; // 스크롤 해제
+    document.documentElement.style.overflow = "auto"; // 스크롤 해제
   };
 
   return (
