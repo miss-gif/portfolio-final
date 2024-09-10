@@ -1,6 +1,18 @@
 import React from "react";
 
-const List = ({ categories, filterItems, selectedCategories, selectAll }) => {
+interface ListProps {
+  categories: string[];
+  filterItems: (category: string) => void;
+  selectedCategories: string[];
+  selectAll: () => void;
+}
+
+const List: React.FC<ListProps> = ({
+  categories,
+  filterItems,
+  selectedCategories,
+  selectAll,
+}) => {
   const handleSelectAll = () => {
     selectAll();
   };
@@ -13,13 +25,13 @@ const List = ({ categories, filterItems, selectedCategories, selectAll }) => {
         checked={selectedCategories.length === 0}
         onChange={handleSelectAll}
       />
-      <label htmlFor="seeAll" className="portfolio__list-item text-cs">
+      <label htmlFor="seeAll" className="portfolio__list-item text-cs text-2xl">
         전체보기
       </label>
       {categories.map((category, index) => (
         <div
           key={index}
-          className="portfolio__list-item text-cs checkbox-style"
+          className="portfolio__list-item text-cs checkbox-style text-2xl"
         >
           <input
             type="checkbox"

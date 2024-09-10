@@ -5,7 +5,7 @@ const Items = ({ projectItems, openModal }) => {
   return (
     <>
       {projectItems.map((item) => {
-        const { id, img, category, title, description } = item;
+        const { id, img, category, title, description, date } = item;
         return (
           <motion.div
             layout
@@ -22,13 +22,16 @@ const Items = ({ projectItems, openModal }) => {
                 <img src={img} alt="" className="portfolio__img" />
               </div>
               <ul className="portfolio__category text-cs">
-                {item.category.map((category, index) => (
+                {category.map((item, index) => (
                   <li key={index} className="category__item">
-                    <span>#{category}</span>
+                    <span>#{item}</span>
                   </li>
                 ))}
               </ul>
-              <h3 className="portfolio__title">{title}</h3>
+              <h3 className="portfolio__title">
+                {title}
+                <span className="text-sm">({date})</span>
+              </h3>
               <p className="portfolio__description">{description}</p>
               <div className="techStack__wrap">
                 <ul className="techStack__list">

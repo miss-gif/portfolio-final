@@ -7,7 +7,7 @@ import { portfolio } from "./portfolio";
 import "./portfolio.scss";
 
 const allCategories = [
-  ...new Set(portfolio.flatMap((project) => project.category)),
+  ...new Set(portfolio.flatMap((project) => project.date)),
 ];
 
 const Portfolio = () => {
@@ -45,7 +45,7 @@ const Portfolio = () => {
       setProjectItems(portfolio);
     } else {
       const newProjectItems = portfolio.filter((item) =>
-        updatedCategories.every((cat) => item.category.includes(cat))
+        updatedCategories.every((cat) => item.date.includes(cat))
       );
       setProjectItems(newProjectItems);
     }
@@ -56,14 +56,8 @@ const Portfolio = () => {
     setProjectItems(portfolio);
   };
 
-  const defaultCategories = [
-    "리액트",
-    "비동기통신",
-    "라우터",
-    "전역상태관리",
-    "타입스크립트",
-    "반응형",
-  ];
+  // 디폴트 필터링 카테고리
+  const defaultCategories = ["2024"];
 
   useEffect(() => {
     // filterItems(defaultCategories);

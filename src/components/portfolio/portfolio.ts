@@ -41,10 +41,12 @@ interface PortfolioItem {
   techStack: string[];
   demoUrl: string;
   githubUrl: string;
+  date?: string;
 }
 
 export const portfolio: PortfolioItem[] = [
   {
+    date: "2024",
     id: 0,
     img: Project0,
     category: [
@@ -138,6 +140,7 @@ export const portfolio: PortfolioItem[] = [
     githubUrl: "https://github.com/miss-gif/portfolio-final",
   },
   {
+    date: "2023",
     id: 1,
     img: Project1,
     category: ["퍼블리싱", "인터랙션", "반응형"],
@@ -187,6 +190,7 @@ export const portfolio: PortfolioItem[] = [
     githubUrl: "https://github.com/miss-gif/DP_Study_apple-ipad-app",
   },
   {
+    date: "2022",
     id: 2,
     img: Project2,
     category: ["퍼블리싱", "반응형"],
@@ -212,6 +216,7 @@ export const portfolio: PortfolioItem[] = [
     githubUrl: "https://github.com/miss-gif/KlayUniverse_04",
   },
   {
+    date: "2024",
     id: 3,
     img: Project3,
     category: ["리액트", "라우터", "반응형"],
@@ -257,12 +262,13 @@ export const portfolio: PortfolioItem[] = [
     githubUrl: "https://github.com/miss-gif/react-emotion-diary",
   },
   {
+    date: "2024",
     id: 4,
     img: Project4,
     category: ["리액트", "전역상태관리", "라우터", "비동기통신"],
     techStack: [react, reactrouter, sass, emotion],
-    title: "나라 정보를 검색하는..",
-    description: "API를 사용해서 간단한 나라 정보를 받는..",
+    title: "NARAS",
+    description: "NARAS API를 활용한 웹 애플리케이션",
     features: [
       {
         title: "NARAS API 연동",
@@ -290,6 +296,7 @@ export const portfolio: PortfolioItem[] = [
     githubUrl: "https://github.com/miss-gif/react-naras-app",
   },
   {
+    date: "2022",
     id: 5,
     img: Project5,
     category: ["퍼블리싱"],
@@ -334,6 +341,7 @@ export const portfolio: PortfolioItem[] = [
     githubUrl: "https://github.com/miss-gif/DP_Study_Starbucks_03",
   },
   {
+    date: "2023",
     id: 6,
     img: Project6,
     category: ["퍼블리싱"],
@@ -359,6 +367,7 @@ export const portfolio: PortfolioItem[] = [
     githubUrl: "https://github.com/miss-gif/DP_Shopping-mall-site-Basic",
   },
   {
+    date: "2023",
     id: 7,
     img: Project7,
     category: ["리액트", "라우터", "전역상태관리", "비동기통신"],
@@ -399,6 +408,7 @@ export const portfolio: PortfolioItem[] = [
     githubUrl: "https://github.com/miss-gif/DP_Study_disney-plus-app",
   },
   {
+    date: "2024",
     id: 8,
     img: Project8,
     category: ["리액트", "반응형", "마이그레이션"],
@@ -434,6 +444,7 @@ export const portfolio: PortfolioItem[] = [
     githubUrl: "https://github.com/miss-gif/react-blog-kakaobrain",
   },
   {
+    date: "2022",
     id: 9,
     img: Project9,
     category: ["퍼블리싱", "반응형"],
@@ -455,6 +466,7 @@ export const portfolio: PortfolioItem[] = [
     githubUrl: "https://github.com/miss-gif/mecha-smile-impact_02",
   },
   {
+    date: "2022",
     id: 10,
     img: Project10,
     category: ["퍼블리싱", "반응형"],
@@ -479,6 +491,7 @@ export const portfolio: PortfolioItem[] = [
     githubUrl: "https://github.com/miss-gif/MEGABOX",
   },
   {
+    date: "2022",
     id: 11,
     img: Project11,
     category: ["퍼블리싱", "반응형"],
