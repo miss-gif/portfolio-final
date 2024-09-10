@@ -66,7 +66,58 @@ const RoadMap = () => {
           },
         });
       });
+
+      // 배경 색상 전환 애니메이션
+      gsap.utils.toArray(".horizontal-item").forEach((section, index) => {
+        gsap.to(section, {
+          backgroundColor: index % 2 === 0 ? "lightblue" : "lightcoral",
+          duration: 1.5, // 색상 전환에 시간을 추가
+          ease: "power1.inOut", // 부드러운 전환 효과를 위한 이징 함수 추가
+          scrollTrigger: {
+            trigger: section,
+            start: "top center",
+            end: "bottom center",
+            scrub: 1,
+            containerAnimation: horizontalTween,
+          },
+        });
+      });
+
+      // 기술 아이콘 회전 애니메이션
+      gsap.utils.toArray(".horizontal-item img").forEach((img) => {
+        gsap.fromTo(
+          img,
+          { rotate: 0 },
+          {
+            rotate: 360,
+            duration: 2, // 회전이 좀 더 명확하게 보이도록 지속 시간 추가
+            scrollTrigger: {
+              trigger: img,
+              start: "top 90%", // 트리거 시작점을 뷰포트와 좀 더 가깝게 설정
+              end: "top 10%", // 끝점도 넓게 잡아 스크롤 범위 확장
+              scrub: 1, // 스크롤과 애니메이션을 비례해서 동작
+              containerAnimation: horizontalTween,
+            },
+          }
+        );
+      });
+
+      // 텍스트 등장 애니메이션
+      gsap.utils.toArray(".horizontal-item p").forEach((text) => {
+        gsap.from(text, {
+          y: 50,
+          opacity: 0,
+          scrollTrigger: {
+            trigger: text,
+            start: "top 80%",
+            end: "top 20%",
+            scrub: true,
+            containerAnimation: horizontalTween,
+          },
+        });
+      });
     },
+
     { scope: horizontalRef }
   );
 
