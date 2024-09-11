@@ -116,6 +116,27 @@ const RoadMap = () => {
           },
         });
       });
+
+      // 아이콘 마우스 인터랙션 애니메이션
+      gsap.utils.toArray(".horizontal-item p").forEach((img) => {
+        // 마우스 호버 시 회전 및 크기 변화
+        img.addEventListener("mouseenter", () => {
+          gsap.to(img, {
+            scale: 1.2, // 확대
+            duration: 0.5,
+            ease: "power1.out",
+          });
+        });
+
+        // 마우스 떠났을 때 원상태로 복구
+        img.addEventListener("mouseleave", () => {
+          gsap.to(img, {
+            scale: 1, // 원래 크기
+            duration: 0.5,
+            ease: "power1.out",
+          });
+        });
+      });
     },
 
     { scope: horizontalRef }
@@ -136,7 +157,7 @@ const RoadMap = () => {
             <img src={js} alt="JavaScript" />
             <img src={sass} alt="Sass" />
           </div>
-          <div>
+          <div className="chapter__text">
             <p>
               HTML과 CSS로 웹 페이지의 기본 구조와 스타일을 설계합니다.
               JavaScript를 사용하여 페이지에 동적인 기능을 추가합니다.
@@ -156,7 +177,7 @@ const RoadMap = () => {
             <img src={axios} alt="Axios" />
             <img src={recoil} alt="Recoil" />
           </div>
-          <div>
+          <div className="chapter__text">
             <p>
               React로 컴포넌트 기반 UI를 구축하며 재사용성과 유지보수성을
               강화했습니다.
@@ -188,7 +209,7 @@ const RoadMap = () => {
             <img src={swagger} alt="Swagger" />
             <img src={mui} alt="Material UI" />
           </div>
-          <div>
+          <div className="chapter__text">
             <p>
               RTK로 전역 상태를 관리하여 복잡한 상태 변화를 예측 가능하고
               안정적으로 처리합니다.
@@ -214,7 +235,7 @@ const RoadMap = () => {
             <img src={reacthookform} alt="React Hook Form" />
             <img src={zod} alt="Zod" />
           </div>
-          <div>
+          <div className="chapter__text">
             <p>
               React Query를 통해 서버 데이터를 캐싱하고, API 요청을
               최적화했습니다. 특히 페이지 간 이동 시 데이터를 지속적으로
@@ -236,7 +257,7 @@ const RoadMap = () => {
             <img src={firebase} alt="Firebase" />
             <img src={zustand} alt="Zustand" />
           </div>
-          <div>
+          <div className="chapter__text">
             <p>
               Firebase로 인증 및 실시간 데이터베이스를 구현해 서버 관리를
               최소화했습니다.
@@ -254,7 +275,7 @@ const RoadMap = () => {
             <img src={tailwind} alt="Tailwind CSS" />
             <img src={supabase} alt="supabase" />
           </div>
-          <div>
+          <div className="chapter__text">
             <p>
               Next.js(15+)로 SSR, ISR, App Router을 공부하고 있습니다. (입문
               단계)
@@ -274,7 +295,7 @@ const RoadMap = () => {
           <div className="flex gap-10">
             <img src={native} alt="React Native" />
           </div>
-          <div>
+          <div className="chapter__text">
             <p>
               React Native을 사용해 모바일 애플리케이션을 개발을 공부 중입니다.
               (입문 단계)
@@ -286,7 +307,7 @@ const RoadMap = () => {
           <div className="flex gap-10">
             <img src={figma} alt="Figma" />
           </div>
-          <div>
+          <div className="chapter__text">
             <p>
               Figma를 활용한 실시간 협업으로 디자인과 개발의 간극을 줄이고,
               빠르게 변화하는 요구사항에 유연하게 대응할 수 있습니다.

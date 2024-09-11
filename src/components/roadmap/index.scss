@@ -15,46 +15,36 @@
     align-items: center;
     justify-content: center;
     scroll-snap-align: center;
-    transition: background-color 0.3s ease;
-    // background-color: lightblue;
+    background-color: lightblue;
     position: relative;
     gap: 40px;
-
-    &:nth-child(even) {
-      // background-color: lightcoral;
-    }
-
-    img {
-      width: 100px; /* 이미지 크기 조정 */
-      height: 100px;
-      transition: transform 0.3s ease;
-    }
-
-    &:hover img {
-      transform: scale(1.3); /* 호버 시 이미지 확대 */
-    }
-
-    &:hover {
-      background-color: #007bff; /* 호버 시 배경색 변경 */
-      color: #fff;
-    }
-  }
-}
-
-.road-map {
-  .horizontal-item {
-    position: relative;
     padding: 40px;
-    transition: background-color 0.5s ease;
+    transition: background-color 0.5s ease, color 0.3s ease;
+
+    // nth-child 짝수 스타일
+    &:nth-child(even) {
+      background-color: lightcoral;
+    }
+
+    // hover 효과
+    &:hover {
+      background-color: #0056b3;
+      color: #fff;
+
+      img {
+        transform: scale(1.5) rotate(20deg); /* 확대 및 회전 */
+      }
+
+      p {
+        color: #fff;
+        transform: translateY(-10px); /* 호버 시 텍스트 이동 */
+      }
+    }
 
     img {
-      width: 120px;
-      height: 120px;
+      width: 300px;
+      height: 300px;
       transition: transform 0.3s ease, rotate 0.5s ease;
-
-      &:hover {
-        transform: scale(1.5) rotate(20deg); /* 호버 시 확대 및 회전 */
-      }
     }
 
     p {
@@ -63,18 +53,13 @@
       color: #333;
       transition: color 0.3s ease, transform 0.5s ease;
     }
-
-    &:nth-child(even) {
-      background-color: lightcoral;
-    }
-
-    &:hover {
-      background-color: #0056b3;
-      color: #fff;
-
-      p {
-        color: #fff;
-      }
-    }
   }
+}
+
+.chapter__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
 }
