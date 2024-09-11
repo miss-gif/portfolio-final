@@ -19,7 +19,7 @@ import ts from "../../assets/skill/TypeScript.svg";
 import redux from "../../assets/skill/Redux.svg";
 import zustand from "../../assets/skill/Zustand.svg";
 import axios from "../../assets/skill/Axios.svg";
-import reactQuery from "../../assets/skill/React-Query.svg";
+import reactQuery from "../../assets/skill/react-query.svg";
 import figma from "../../assets/skill/Figma.svg";
 import sass from "../../assets/skill/Sass.svg";
 import emotion from "../../assets/skill/Emotion-Light.svg";
