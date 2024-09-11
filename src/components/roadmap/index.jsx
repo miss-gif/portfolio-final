@@ -142,178 +142,97 @@ const RoadMap = () => {
     { scope: horizontalRef }
   );
 
+  const roadMapData = [
+    {
+      title: "웹 개발의 기초",
+      images: [html, css, js, sass],
+      description: [
+        "HTML과 CSS로 웹의 기초를 다집니다.",
+        "JavaScript로 동적인 기능을 더하고, Sass로 스타일 관리를 최적화합니다.",
+      ],
+    },
+    {
+      title: "유연한 SPA 구축",
+      images: [react, reactrouter, emotion, axios, recoil],
+      description: [
+        "React로 컴포넌트를 재사용하며, Router로 페이지 전환을 관리합니다.",
+        "Emotion으로 동적 스타일을 처리하고, Axios와 Recoil로 데이터와 상태를 간결하게 관리합니다.",
+      ],
+    },
+    {
+      title: "복잡한 상태 관리",
+      images: [redux, ts, mui],
+      description: [
+        "Redux Toolkit으로 상태 관리를 체계화하고, TypeScript로 안전성을 강화합니다.",
+        "Material UI로 일관된 UI를 빠르게 구축합니다.",
+      ],
+    },
+    {
+      title: "성능 최적화",
+      images: [reactQuery, reacthookform, zod],
+      description: [
+        "React Query로 서버 데이터를 효율적으로 캐싱하고,",
+        "Hook Form과 Zod로 폼의 상태와 유효성 검사를 간소화합니다.",
+      ],
+    },
+    {
+      title: "빠른 개발 도구",
+      images: [firebase, zustand],
+      description: [
+        "Firebase로 인증과 데이터 관리를 간소화하고,",
+        "Zustand로 가벼운 상태 관리를 구현합니다.",
+      ],
+    },
+    {
+      title: "최신 기술 습득",
+      images: [nextjs, tailwind, supabase],
+      description: [
+        "Next.js(15+)로 SSR과 ISR을 학습 중입니다.",
+        "Tailwind CSS로 생산성을 높였습니다.",
+        "Supabase로 빠른 데이터베이스 구축을 학습 중입니다.",
+      ],
+    },
+    {
+      title: "모바일 개발 시작",
+      images: [native],
+      description: [
+        "React Native를 사용한 크로스 플랫폼 모바일 앱을 개발을 학습 중입니다.",
+      ],
+    },
+    {
+      title: "효율적인 협업",
+      images: [figma, swagger],
+      description: [
+        "Figma로 실시간 협업을 하고, Swagger로 백엔드와 소통을 원활하게 합니다.",
+      ],
+    },
+  ];
+
   return (
     <div className="road-map">
       {/* 가로 스크롤 컨테이너 */}
+
       <div className="horizontal-container" ref={horizontalRef}>
         <div className="horizontal-item">
-          <p>학습 로드맵</p>
+          <h2 className="text-9xl">학습 로드맵</h2>
         </div>
-
-        <div className="horizontal-item chapter">
-          <div className="flex gap-10">
-            <img src={html} alt="HTML" />
-            <img src={css} alt="CSS" />
-            <img src={js} alt="JavaScript" />
-            <img src={sass} alt="Sass" />
+        {roadMapData.map((chapter, index) => (
+          <div className="horizontal-item chapter" key={index}>
+            <div className="chapter__title">
+              <h3 className="text-6xl">{chapter.title}</h3>
+            </div>
+            <div className="flex gap-10">
+              {chapter.images.map((image, idx) => (
+                <img src={image} alt={chapter.title} key={idx} />
+              ))}
+            </div>
+            <div className="chapter__text">
+              {chapter.description.map((text, idx) => (
+                <p key={idx}>{text}</p>
+              ))}
+            </div>
           </div>
-          <div className="chapter__text">
-            <p>
-              HTML과 CSS로 웹 페이지의 기본 구조와 스타일을 설계합니다.
-              JavaScript를 사용하여 페이지에 동적인 기능을 추가합니다.
-            </p>
-            <p>
-              Sass를 통해 CSS의 유지보수성과 코드 재사용성을 높입니다. 변수를
-              사용하고 중첩된 규칙을 통해 스타일을 보다 효과적으로 관리합니다.
-            </p>
-          </div>
-        </div>
-
-        <div className="horizontal-item chapter">
-          <div className="flex gap-10">
-            <img src={react} alt="React" />
-            <img src={reactrouter} alt="React Router" />
-            <img src={emotion} alt="Emotion" />
-            <img src={axios} alt="Axios" />
-            <img src={recoil} alt="Recoil" />
-          </div>
-          <div className="chapter__text">
-            <p>
-              React로 컴포넌트 기반 UI를 구축하며 재사용성과 유지보수성을
-              강화했습니다.
-            </p>
-            <p>
-              React Router를 사용해 SPA 환경에서 경로 관리를 효율적으로
-              처리하였습니다.
-            </p>
-            <p>
-              Emotion으로 동적인 CSS-in-JS 방식을 도입해 스타일 관리가
-              쉬워졌습니다. 상태 변화에 따라 스타일을 동적으로 적용할 수
-              있었습니다.
-            </p>
-            <p>
-              Axios로 API 요청과 응답을 처리했으며, 비동기 처리에서의 에러
-              핸들링을 간단히 처리했습니다.
-            </p>
-            <p>
-              Recoil로 상태 관리를 중앙화하여 복잡한 컴포넌트 간 상태를 간결하게
-              관리하며, 불필요한 props 전달을 최소화하여 성능을 최적화했습니다.
-            </p>
-          </div>
-        </div>
-
-        <div className="horizontal-item chapter">
-          <div className="flex gap-10">
-            <img src={redux} alt="Redux" />
-            <img src={ts} alt="TypeScript" />
-            <img src={swagger} alt="Swagger" />
-            <img src={mui} alt="Material UI" />
-          </div>
-          <div className="chapter__text">
-            <p>
-              RTK로 전역 상태를 관리하여 복잡한 상태 변화를 예측 가능하고
-              안정적으로 처리합니다.
-            </p>
-            <p>
-              TypeScript를 도입해 정적 타입을 제공함으로써 런타임 오류를 줄이고,
-              타입 안전성을 확보했습니다.
-            </p>
-            <p>
-              Swagger로 API 명세를 문서화하고, 백엔드와의 협업을 원활하게
-              진행했습니다.
-            </p>
-            <p>
-              Material UI를 사용해 UI 요소를 빠르게 구성하고, 커스텀 디자인도
-              적용해 일관성 있는 UI를 유지했습니다.
-            </p>
-          </div>
-        </div>
-
-        <div className="horizontal-item chapter">
-          <div className="flex gap-10">
-            <img src={reactQuery} alt="React Query" />
-            <img src={reacthookform} alt="React Hook Form" />
-            <img src={zod} alt="Zod" />
-          </div>
-          <div className="chapter__text">
-            <p>
-              React Query를 통해 서버 데이터를 캐싱하고, API 요청을
-              최적화했습니다. 특히 페이지 간 이동 시 데이터를 지속적으로
-              동기화하여 사용자 경험을 향상시켰습니다.
-            </p>
-            <p>
-              React Hook Form으로 폼 상태를 간결하게 관리하고, 비동기 검증을
-              포함한 다양한 유효성 검사를 구현했습니다.
-            </p>
-            <p>
-              Zod를 도입해 복잡한 폼 데이터 구조에 대해 유효성 검사를 타입
-              안전하게 적용했습니다.
-            </p>
-          </div>
-        </div>
-
-        <div className="horizontal-item chapter">
-          <div className="flex gap-10">
-            <img src={firebase} alt="Firebase" />
-            <img src={zustand} alt="Zustand" />
-          </div>
-          <div className="chapter__text">
-            <p>
-              Firebase로 인증 및 실시간 데이터베이스를 구현해 서버 관리를
-              최소화했습니다.
-            </p>
-            <p>
-              Zustand로 경량화된 상태 관리를 도입하여 간단한 애플리케이션에서
-              RTK보다 더 직관적이고 빠르게 상태를 처리했습니다.
-            </p>
-          </div>
-        </div>
-
-        <div className="horizontal-item chapter">
-          <div className="flex gap-10">
-            <img src={nextjs} alt="nextjs" />
-            <img src={tailwind} alt="Tailwind CSS" />
-            <img src={supabase} alt="supabase" />
-          </div>
-          <div className="chapter__text">
-            <p>
-              Next.js(15+)로 SSR, ISR, App Router을 공부하고 있습니다. (입문
-              단계)
-            </p>
-            <p>
-              Tailwind CSS로 클래스 기반의 직관적인 스타일링을 통해 반복적인 CSS
-              작성을 줄이고 생산성을 높였습니다.
-            </p>
-            <p>
-              Supabase를 사용해 빠른 데이터베이스 구축을 통해 개발 시간을
-              절감했습니다. 학습 중인 기술입니다.
-            </p>
-          </div>
-        </div>
-
-        <div className="horizontal-item chapter">
-          <div className="flex gap-10">
-            <img src={native} alt="React Native" />
-          </div>
-          <div className="chapter__text">
-            <p>
-              React Native을 사용해 모바일 애플리케이션을 개발을 공부 중입니다.
-              (입문 단계)
-            </p>
-          </div>
-        </div>
-
-        <div className="horizontal-item chapter">
-          <div className="flex gap-10">
-            <img src={figma} alt="Figma" />
-          </div>
-          <div className="chapter__text">
-            <p>
-              Figma를 활용한 실시간 협업으로 디자인과 개발의 간극을 줄이고,
-              빠르게 변화하는 요구사항에 유연하게 대응할 수 있습니다.
-            </p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

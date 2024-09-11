@@ -17,38 +17,33 @@
     scroll-snap-align: center;
     background-color: lightblue;
     position: relative;
-    gap: 40px;
-    padding: 40px;
+    gap: 80px;
     transition: background-color 0.5s ease, color 0.3s ease;
 
     // nth-child 짝수 스타일
     &:nth-child(even) {
       background-color: lightcoral;
     }
+    &:nth-child(odd) {
+      p {
+      }
+    }
 
     // hover 효과
     &:hover {
-      background-color: #0056b3;
-      color: #fff;
-
-      img {
-        transform: scale(1.5) rotate(20deg); /* 확대 및 회전 */
-      }
-
       p {
         color: #fff;
-        transform: translateY(-10px); /* 호버 시 텍스트 이동 */
       }
     }
 
     img {
-      width: 300px;
-      height: 300px;
+      width: 200px;
+      height: 200px;
       transition: transform 0.3s ease, rotate 0.5s ease;
     }
 
     p {
-      font-size: 18px;
+      font-size: 1.6rem;
       line-height: 1.5;
       color: #333;
       transition: color 0.3s ease, transform 0.5s ease;
