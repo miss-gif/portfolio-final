@@ -1,10 +1,10 @@
 import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import PortfolioDetailModal from "./PortfolioDetailModal";
 import Items from "./Items";
 import List from "./List";
 import { portfolio } from "./portfolio";
 import "./portfolio.scss";
+import PortfolioDetailModal from "./PortfolioDetailModal";
 
 const allCategories = [
   ...new Set(portfolio.flatMap((project) => project.date)),
@@ -45,7 +45,7 @@ const Portfolio = () => {
       setProjectItems(portfolio);
     } else {
       const newProjectItems = portfolio.filter((item) =>
-        updatedCategories.every((cat) => item.date.includes(cat))
+        updatedCategories.some((cat) => item.date.includes(cat))
       );
       setProjectItems(newProjectItems);
     }
@@ -57,7 +57,7 @@ const Portfolio = () => {
   };
 
   // 디폴트 필터링 카테고리
-  const defaultCategories = ["2024"];
+  // const defaultCategories = ["2024", "2023", "2022"];
 
   useEffect(() => {
     // filterItems(defaultCategories);

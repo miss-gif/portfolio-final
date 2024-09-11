@@ -25,9 +25,7 @@ const List: React.FC<ListProps> = ({
         checked={selectedCategories.length === 0}
         onChange={handleSelectAll}
       />
-      <label htmlFor="seeAll" className="portfolio__list-item text-cs text-2xl">
-        전체보기
-      </label>
+
       {categories.map((category, index) => (
         <div
           key={index}
