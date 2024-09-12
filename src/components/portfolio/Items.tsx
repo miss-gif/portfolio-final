@@ -5,7 +5,16 @@ const Items = ({ projectItems, openModal }) => {
   return (
     <>
       {projectItems.map((item) => {
-        const { id, img, category, title, description, date } = item;
+        const {
+          id,
+          img,
+          category,
+          title,
+          description,
+          date,
+          demoUrl,
+          githubUrl,
+        } = item;
         return (
           <motion.div
             layout
@@ -15,7 +24,7 @@ const Items = ({ projectItems, openModal }) => {
             transition={{ duration: 0.3 }}
             className="portfolio__items card card-two"
             key={id}
-            onClick={() => openModal(item)}
+            // onClick={() => openModal(item)}
           >
             <div className="portfolio__item">
               <div className="portfolio__img-wrapper">
@@ -41,10 +50,24 @@ const Items = ({ projectItems, openModal }) => {
                     </li>
                   ))}
                 </ul>
-                <a href="#" className="link">
-                  View More
-                  <FaArrowRight className="link__icon" />
-                </a>
+                <div className="flex gap-4">
+                  <a
+                    href={demoUrl}
+                    className="link py-2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Dome
+                  </a>
+                  <a
+                    href={githubUrl}
+                    className="link py-2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub
+                  </a>
+                </div>
               </div>
             </div>
           </motion.div>
