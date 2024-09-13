@@ -78,8 +78,8 @@ const GraphPage = () => {
     <div className="flex flex-col items-center justify-center p-8 space-y-8">
       <h2 className="text-2xl font-bold">방문자 수 차트</h2>
 
-      <div className="flex items-center w-full max-w-4xl space-y-8">
-        <div className="flex flex-col items-center">
+      <div className="flex justify-center items-center w-full max-w-4xl gap-10">
+        <div className="flex flex-col items-center w-1/2">
           <h3 className="text-xl font-semibold mb-4">일별 방문자 수</h3>
           <ResponsiveContainer width="100%" height={400}>
             <LineChart data={dailyData}>
@@ -98,7 +98,7 @@ const GraphPage = () => {
           </ResponsiveContainer>
         </div>
 
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center w-96">
           <h3 className="text-xl font-semibold mb-4">주간 방문자 수</h3>
           <ResponsiveContainer width="100%" height={400}>
             <LineChart data={weeklyData}>
@@ -117,7 +117,7 @@ const GraphPage = () => {
           </ResponsiveContainer>
         </div>
 
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center w-96">
           <h3 className="text-xl font-semibold mb-4">월별 방문자 수</h3>
           <ResponsiveContainer width="100%" height={400}>
             <LineChart data={monthlyData}>
@@ -135,11 +135,11 @@ const GraphPage = () => {
             </LineChart>
           </ResponsiveContainer>
         </div>
+      </div>
 
-        <div className="flex flex-col items-center">
-          <h3 className="text-xl font-semibold mb-4">전체 방문자 수</h3>
-          <div className="text-3xl font-bold">{totalData}</div>
-        </div>
+      <div className="flex flex-col items-center">
+        <h3 className="text-xl font-semibold mb-4">전체 방문자 수</h3>
+        <div className="text-3xl font-bold">{totalData}</div>
       </div>
     </div>
   );
