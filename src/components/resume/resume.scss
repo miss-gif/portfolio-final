@@ -81,14 +81,23 @@
   &__title {
     font-family: var(--second-font);
     font-size: var(--h3-font-size);
+    &:hover {
+      color: var(--primary-color);
+    }
   }
   &__date {
     color: var(--title-color);
     font-size: var(--tiny-font-size);
     font-weight: 700;
+    &:hover {
+      color: var(--primary-color);
+    }
   }
   &__description {
     margin-block: 20px 30px;
+    &:hover {
+      color: var(--primary-color);
+    }
   }
 }
 

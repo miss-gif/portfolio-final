@@ -146,7 +146,7 @@ export const portfolio: PortfolioItem[] = [
     category: ["퍼블리싱", "인터랙션", "반응형"],
     techStack: [html, sass, js],
     title: "애플 웹사이트",
-    description: ``,
+    description: `애플 웹사이트를 클론 코딩하며 스크롤 인터랙션을 구현했습니다. 고화질 비디오와 스크롤 액션을 연동하여 더욱 부드럽고 자연스러운 사용자 경험을 제공하는 방법을 학습했습니다.`,
     features: [
       {
         title: "스크롤 인터랙션 구현",
@@ -196,7 +196,8 @@ export const portfolio: PortfolioItem[] = [
     category: ["퍼블리싱", "반응형"],
     techStack: [html, sass, js],
     title: "KlayUniverse",
-    description: "피그마 파일만을 제공 받아 디자인대로 작업했습니다.",
+    description:
+      "피그마 디자인을 제공 받아 디자인 그대로 코딩한 웹사이트입니다.",
     features: [
       {
         title: "",
@@ -222,7 +223,8 @@ export const portfolio: PortfolioItem[] = [
     category: ["리액트", "라우터", "반응형"],
     techStack: [react, reactrouter, sass, emotion],
     title: "감정 다이어리",
-    description: "감정 다이어리 웹앱",
+    description: `사용자의 감정을 기록하고 관리하는 감정 다이어리 웹 애플리케이션입니다.
+      사용자의 감정을 기록하고, 수정하고, 삭제하며, 조회할 수 있습니다.`,
     features: [
       {
         title: "CRUD 기능 구현",
@@ -268,7 +270,7 @@ export const portfolio: PortfolioItem[] = [
     category: ["리액트", "전역상태관리", "라우터", "비동기통신"],
     techStack: [react, reactrouter, sass, emotion],
     title: "NARAS",
-    description: "NARAS API를 활용한 웹 애플리케이션",
+    description: `NARAS API를 활용하여 실시간 데이터를 가져와 웹 페이지에 동적으로 반영하는 웹 애플리케이션입니다.`,
     features: [
       {
         title: "NARAS API 연동",
@@ -301,8 +303,8 @@ export const portfolio: PortfolioItem[] = [
     img: Project5,
     category: ["퍼블리싱"],
     techStack: [html, sass, js],
-    title: "스타벅스 홈페이지 클론 코딩",
-    description: `스타벅스 홈페이지 클론 코딩`,
+    title: "스타벅스 홈페이지",
+    description: `스타벅스 홈페이지를 클론 코딩하며 웹 개발의 기본기를 다지고, 실전 경험을 쌓았습니다.`,
     features: [
       {
         title: "HTML, CSS, JavaScript 기반 웹 개발",
@@ -346,8 +348,8 @@ export const portfolio: PortfolioItem[] = [
     img: Project6,
     category: ["퍼블리싱"],
     techStack: [html, sass],
-    title: "쇼핑몰",
-    description: "일반적인 쇼핑몰의..",
+    title: "Basic 쇼핑몰",
+    description: "Basic 디자인의 쇼핑몰을 클론코딩",
     features: [
       {
         title: "",
@@ -372,8 +374,8 @@ export const portfolio: PortfolioItem[] = [
     img: Project7,
     category: ["리액트", "라우터", "전역상태관리", "비동기통신"],
     techStack: [react, reactrouter, sass, emotion],
-    title: "디즈니 플러스 클론코딩",
-    description: "디즈니 플러스 클론코딩..",
+    title: "디즈니 플러스",
+    description: "디즈니 플러스 클론코딩",
     features: [
       {
         title: "파이어베이스를 활용한 사용자 인증",
@@ -413,8 +415,8 @@ export const portfolio: PortfolioItem[] = [
     img: Project8,
     category: ["리액트", "반응형", "마이그레이션"],
     techStack: [react],
-    title: "카카오브래인 클론코딩",
-    description: "카카오브래인 클론코딩",
+    title: "카카오브래인",
+    description: "카카오브레인 블로그 클론코딩",
     features: [
       {
         title: "HTML, CSS, JavaScript 기반 클론 코딩",
@@ -450,7 +452,7 @@ export const portfolio: PortfolioItem[] = [
     category: ["퍼블리싱", "반응형"],
     techStack: [html, sass, js],
     title: "메카스마",
-    description: "메카스마 클론코딩",
+    description: "해외 이벤트성 랜딩 페이지 커스텀 제작",
     features: [
       {
         title: "해외 이벤트 랜딩 페이지 커스텀 제작",
@@ -472,7 +474,7 @@ export const portfolio: PortfolioItem[] = [
     category: ["퍼블리싱", "반응형"],
     techStack: [html, sass, js],
     title: "메가박스",
-    description: "메가박스 클론코딩",
+    description: "메가박스 홈페이지 클론코딩",
     features: [
       {
         title: "",
@@ -496,8 +498,8 @@ export const portfolio: PortfolioItem[] = [
     img: Project11,
     category: ["퍼블리싱", "반응형"],
     techStack: [html, sass, js],
-    title: "표준 웹사이트",
-    description: "표준 웹사이트의 기본형을",
+    title: "표준형 웹사이트",
+    description: "표준형 웹사이트 클론코딩",
     features: [
       {
         title: "",
