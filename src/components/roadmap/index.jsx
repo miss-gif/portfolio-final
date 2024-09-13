@@ -70,7 +70,7 @@ const RoadMap = () => {
       // 배경 색상 전환 애니메이션
       gsap.utils.toArray(".horizontal-item").forEach((section, index) => {
         gsap.to(section, {
-          backgroundColor: index % 2 === 0 ? "lightblue" : "lightcoral",
+          backgroundColor: index % 2 === 0 ? "#334155" : "#424B5A",
           duration: 1.5, // 색상 전환에 시간을 추가
           ease: "power1.inOut", // 부드러운 전환 효과를 위한 이징 함수 추가
           scrollTrigger: {
