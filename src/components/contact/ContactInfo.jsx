@@ -39,7 +39,7 @@ const ContactInfo = ({ profile }) => {
             <FaSeedling />
           </span>
           <p className="contact-info__label">개발경력</p>
-          <p className="contact-info__value">신입</p>
+          <p className="contact-info__value">신입 (공부 2년)</p>
         </div>
       </li>
       <li className="contact-info__item">
@@ -47,8 +47,8 @@ const ContactInfo = ({ profile }) => {
           <span className="contact-info__icon" aria-hidden="true">
             <ImFire />
           </span>
-          <p className="contact-info__label">흥미진진</p>
-          <p className="contact-info__value">TypeScript</p>
+          <p className="contact-info__label">학습중</p>
+          <p className="contact-info__value">Next, Supabase</p>
         </div>
       </li>
       <li className="contact-info__item">
