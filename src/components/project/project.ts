@@ -27,7 +27,20 @@ import team2_4 from "../../assets/team2/4.png";
 import team2_5 from "../../assets/team2/5.png";
 import team2_6 from "../../assets/team2/6.png";
 import team2_7 from "../../assets/team2/7.png";
+
 import team3_1 from "../../assets/team3/1.png";
+import team3_2 from "../../assets/team3/1 (1).png";
+import team3_3 from "../../assets/team3/1 (2).png";
+import team3_4 from "../../assets/team3/1 (3).png";
+import team3_5 from "../../assets/team3/1 (4).png";
+import team3_6 from "../../assets/team3/1 (5).png";
+import team3_7 from "../../assets/team3/1 (6).png";
+import team3_8 from "../../assets/team3/1 (7).png";
+import team3_9 from "../../assets/team3/1 (8).png";
+import team3_10 from "../../assets/team3/1 (9).png";
+import team3_11 from "../../assets/team3/1 (10).png";
+import team3_12 from "../../assets/team3/1 (11).png";
+import team3_13 from "../../assets/team3/1 (12).png";
 
 import swagger1 from "../../assets/team1/swagger1.png";
 import swagger2 from "../../assets/team2/swagger2.png";
@@ -54,15 +67,21 @@ interface Project {
 export const project: Project[] = [
   {
     id: 1,
-    tag: ["작업중"],
+    tag: ["완료"],
     img: [
       team3_1,
-      team2_2,
-      team2_3,
-      team2_4,
-      team2_5,
-      team2_6,
-      team2_7,
+      team3_2,
+      team3_3,
+      team3_4,
+      team3_5,
+      team3_6,
+      team3_7,
+      team3_8,
+      team3_9,
+      team3_10,
+      team3_11,
+      team3_12,
+      team3_13,
       swagger3,
     ],
     date: "2024.07.24 ~ 2024.8.23",
@@ -72,27 +91,50 @@ export const project: Project[] = [
     features: [
       {
         title: "회원 관리",
-        details: ["회원가입 (일반 사용자, 사업자), 로그인, 로그아웃"],
+        details: [
+          "회원가입 (일반 사용자, 사업자) 및 소셜 로그인(카카오, 네이버, 구글), 로그인, 로그아웃",
+          "아아디, 비밀번호 찾기",
+        ],
       },
       {
         title: "사용자 기능",
         details: [
-          "마이페이지 (사용자 정보 수정, 주소 관리, 주문 내역 조회, 리뷰 관리, 회원 탈퇴)",
-          "위치 기반 검색",
-          "카테고리 필터",
-          "장바구니",
-          "주문 및 결제",
+          "사용자 정보 수정",
+          "주소관리",
+          "상점 즐겨찾기",
+          "주문내역 조회",
+          "리뷰관리 (리뷰 작성, 수정, 삭제)",
+          "쿠폰확인 및 내역조회",
+          "회원탈퇴",
+          "상점 검색(주소 기반)",
+          "상점 카테고리 필터",
+          "메뉴 장바구니",
+          "메뉴 주문 및 결제(NicePay)",
           "주문 확인 및 주문 취소",
+          "리뷰 신고",
         ],
       },
       {
         title: "사업자 기능",
         details: [
-          "주문 관리",
-          "주문 내역 조회",
-          "리뷰 관리",
-          "매장 관리 (메뉴 등록 및 수정, 영업 시간 설정, 매장 정보 업데이트)",
-          "통계 (매출, 주문량, 인기 메뉴 등)",
+          "사업장 관리",
+          "메뉴등록 및 수정",
+          "주문접수",
+          "리뷰관리",
+          "주문접수 내역조회",
+          "매장쿠폰 발급",
+          "매출 통계",
+        ],
+      },
+      {
+        title: "관리자 기능",
+        details: [
+          "사업자 회원가입 시 승인 관리",
+          "사이트 메뉴 카테고리 관리",
+          "고객센터 문의 내용 관리",
+          "리뷰 신고 내용 관리",
+          "가입자, 탈퇴 통계",
+          "전체 상점 매출, 주문 수 관리",
         ],
       },
     ],
@@ -108,7 +150,7 @@ export const project: Project[] = [
   },
   {
     id: 2,
-    tag: ["최신"],
+    tag: [],
     img: [
       team2_1,
       team2_2,
@@ -135,7 +177,7 @@ export const project: Project[] = [
           "위치 기반 상점검색 및 조회",
           "카테고리 검색 및 정렬",
           "장바구니",
-          "주문 및 결제",
+          "주문 및 결제(PortOne)",
           "주문 확인 및 주문 취소",
         ],
       },
