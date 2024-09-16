@@ -120,13 +120,13 @@ function Notice() {
     <div className="notice-inner">
       <div className="notice__container">
         <article className="notice__wrapper">
-          <h2>게시판</h2>
-          <div className="notice__header">
+          <h2 className="py-4 text-2xl">게시판</h2>
+          {/* <div className="notice__header">
             <button className="notice__header__btn all-post">전체</button>
             <button className="notice__header__btn best-post">공지</button>
             <button className="notice__header__btn free-post">자유</button>
             <button className="notice__header__btn question-post">질문</button>
-          </div>
+          </div> */}
 
           <table className="notice__table">
             <thead>
@@ -203,15 +203,19 @@ function Notice() {
           </table>
 
           <div className="notice__footer">
-            <Link
-              to={isLoggedIn ? "/notice/write" : "#"}
-              className={`notice__footer__btn ${!isLoggedIn ? "disabled" : ""}`}
-              onClick={(e) => {
-                if (!isLoggedIn) e.preventDefault();
-              }}
-            >
-              글쓰기
-            </Link>
+            {isLoggedIn && (
+              <Link
+                to={isLoggedIn ? "/notice/write" : "#"}
+                className={`notice__footer__btn ${
+                  !isLoggedIn ? "disabled" : ""
+                }`}
+                onClick={(e) => {
+                  if (!isLoggedIn) e.preventDefault();
+                }}
+              >
+                글쓰기
+              </Link>
+            )}
           </div>
 
           <div className="notice__pagination">
@@ -222,17 +226,18 @@ function Notice() {
             ))}
           </div>
 
-          <div className="notice__search">
+          <div className="notice__search w-full">
             <input
+              className="w-96"
               type="text"
               value={searchTerm}
               placeholder="제목 또는 작성자를 검색하세요"
               onChange={handleSearch}
             />
-            <button onClick={resetSearch}>초기화</button>
+            {/* <button onClick={resetSearch}>초기화</button> */}
           </div>
         </article>
-        <AsideHotPost />
+        {/* <AsideHotPost /> */}
       </div>
     </div>
   );
