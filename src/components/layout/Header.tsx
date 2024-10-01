@@ -2,13 +2,13 @@ import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { IoIosClose, IoIosMenu } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { auth } from "../../firebaseConfig";
 import useActiveSection from "../../hooks/useActiveSection";
 import useAuth from "../../hooks/useAuth";
+import { useStore } from "../../store/store";
 import { sections } from "../GlobalNav/navSection";
 import "./Header.scss";
-import { toast } from "react-toastify";
-import { useStore } from "../../store/store";
 
 type SectionType = string;
 

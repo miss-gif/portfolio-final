@@ -68,49 +68,54 @@ const Login = ({ onSwitchToSignup }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <h1 className="text-2xl font-bold mb-4">로그인</h1>
-      <form
-        onSubmit={loginForm.handleSubmit(handleLogin)}
-        className="mb-2 w-80"
-      >
-        <InputField
-          label="이메일"
-          register={loginForm.register("email")}
-          error={loginForm.formState.errors.email}
-          type="email"
-        />
-        <InputField
-          label="비밀번호"
-          register={loginForm.register("pw")}
-          error={loginForm.formState.errors.pw}
-          type="password"
-        />
-        <button
-          type="submit"
-          className="mb-2 p-2 bg-blue-500 text-white rounded hover:bg-blue-600 w-80"
+    <div className="flex items-center justify-center min-h-screen">
+      <div className=" bg-slate-800 rounded p-8 flex flex-col gap-4 shadow-2xl">
+        <h2 className="text-4xl font-bold">Login</h2>
+        <p className="text-slate-400">
+          테스트 위한 계정 정보가 입력되어 있습니다
+        </p>
+        <form
+          onSubmit={loginForm.handleSubmit(handleLogin)}
+          className="mb-2 w-80 "
         >
-          로그인
-        </button>
-        <div className="flex gap-2">
+          <InputField
+            label="이메일"
+            register={loginForm.register("email")}
+            error={loginForm.formState.errors.email}
+            type="email"
+          />
+          <InputField
+            label="비밀번호"
+            register={loginForm.register("pw")}
+            error={loginForm.formState.errors.pw}
+            type="password"
+          />
           <button
-            type="button"
-            className="text-blue-500 hover:underline"
-            onClick={onSwitchToSignup}
+            type="submit"
+            className="mb-2 p-2 bg-slate-600 text-white rounded hover:bg-slate-700 w-80"
           >
-            계정 만들기
+            로그인
           </button>
-          <button
-            type="button"
-            className="text-blue-500 hover:underline"
-            onClick={() => {
-              navigate("/auth/findpass");
-            }}
-          >
-            비밀번호 찾기
-          </button>
-        </div>
-      </form>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              className="text-slate-500 hover:underline hover:text-white"
+              onClick={onSwitchToSignup}
+            >
+              계정 만들기
+            </button>
+            <button
+              type="button"
+              className="text-slate-500 hover:underline hover:text-white"
+              onClick={() => {
+                navigate("/auth/findpass");
+              }}
+            >
+              비밀번호 찾기
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

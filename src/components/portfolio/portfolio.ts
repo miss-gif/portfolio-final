@@ -415,13 +415,14 @@ export const portfolio: PortfolioItem[] = [
     img: Project8,
     category: ["리액트", "반응형", "마이그레이션"],
     techStack: [react],
-    title: "카카오브래인",
-    description: "카카오브레인 블로그 클론코딩",
+    title: "카카오브레인 Blog",
+    description:
+      "HTML, CSS, JavaScript를 사용하여 1차적으로 구현하고, React로 마이그레이션 작업을 진행했습니다.",
     features: [
       {
         title: "HTML, CSS, JavaScript 기반 클론 코딩",
         details: [
-          "카카오브레인 블로그의 레이아웃과 기능을 HTML, CSS, JavaScript를 사용하여 1차적으로 구현했습니다.",
+          "카카오브레인 Blog의 레이아웃과 기능을 HTML, CSS, JavaScript를 사용하여 1차적으로 구현했습니다.",
           "간단한 캐러셀 기능, 다양한 애니메이션 효과, 반응형 디자인을 적용하여 원본 블로그의 디자인과 기능을 최대한 구현해냈습니다.",
         ],
       },

@@ -45,7 +45,10 @@ const Home = () => {
               className="home__social-link"
               rel="noopener noreferrer"
             >
-              <FaGithub fontSize={28} />
+              <div className="flex gap-2 justify-center items-center">
+                <FaGithub fontSize={28} />
+                <p className="text-sm">GitHub</p>
+              </div>
             </a>
             <a
               href="https://instinctive-answer-8a6.notion.site/7cc024f51ae948aca2c3bbb605a95827"
@@ -53,7 +56,10 @@ const Home = () => {
               className="home__social-link"
               rel="noopener noreferrer"
             >
-              <RiNotionFill fontSize={32} />
+              <div className="flex gap-2 justify-center items-center">
+                <RiNotionFill fontSize={32} />
+                <p className="text-sm">Notion Resume</p>
+              </div>
             </a>
             <a
               href="https://instinctive-answer-8a6.notion.site/74e393256dd24977beb8733d1fc23937"
@@ -61,7 +67,10 @@ const Home = () => {
               className="home__social-link"
               rel="noopener noreferrer"
             >
-              <GiNotebook fontSize={32} />
+              <div className="flex gap-2 justify-center items-center">
+                <GiNotebook fontSize={32} />
+                <p className="text-sm">Study Note</p>
+              </div>
             </a>
           </div>
           {/* 버튼3 */}
